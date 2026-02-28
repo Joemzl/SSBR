@@ -188,7 +188,8 @@ Follow-up TODOs: None
 ### 指导文件
 
 运行时开发指导参见：
-- 解读技能模板：`other/ssbr-dsc-interpretation.txt` 及后续补充的其他表征解读规范
+- 解读技能模板：`skills/ssbr-dsc-interpretation/SKILL.md` 及其他表征解读 Skill
+- 智能推荐技能：`skills/ssbr-recommender/SKILL.md`
 - 项目说明：`other/ssbr项目.txt`
 
 **Version**: 1.0.0 | **Ratified**: 2026-02-28 | **Last Amended**: 2026-02-28
