@@ -32,10 +32,10 @@ specs/                   # 规格与设计文档
 
 **Purpose**: 确认项目结构和现有资源完整性
 
-- [ ] T001 验证项目目录结构完整性（skills/, dataset/, literature/）
-- [ ] T002 [P] 确认 `/dataset/数据.xlsx` 文件存在且结构符合 data-model.md 规范
-- [ ] T003 [P] 确认 `/literature/` 文件夹存在且至少包含一个按命名规范命名的 PDF 文件
-- [ ] T004 [P] 验证现有 4 套解读 Skill 文件夹完整（`skills/ssbr-dsc-interpretation/SKILL.md`, `skills/ssbr-nmr-interpretation/SKILL.md`, `skills/ssbr-stress-strain-interpretation/SKILL.md`, `skills/ssbr-tem-interpretation/SKILL.md`）
+- [X] T001 验证项目目录结构完整性（skills/, dataset/, literature/）
+- [X] T002 [P] 确认 `/dataset/数据.xlsx` 文件存在且结构符合 data-model.md 规范
+- [X] T003 [P] 确认 `/literature/` 文件夹存在且至少包含一个按命名规范命名的 PDF 文件
+- [X] T004 [P] 验证现有 4 套解读 Skill 文件夹完整（`skills/ssbr-dsc-interpretation/SKILL.md`, `skills/ssbr-nmr-interpretation/SKILL.md`, `skills/ssbr-stress-strain-interpretation/SKILL.md`, `skills/ssbr-tem-interpretation/SKILL.md`）
 
 ---
 
@@ -45,11 +45,11 @@ specs/                   # 规格与设计文档
 
 **⚠️ CRITICAL**: 数据结构不规范将导致推荐系统无法正常匹配
 
-- [ ] T005 根据 data-model.md 检查并补全 `/dataset/数据.xlsx` 列结构，确保包含所有必填字段
-- [ ] T006 [P] 在 Excel 中添加「应用场景」列（如尚未存在），允许值：轮胎胎面、密封制品、减震材料、通用橡胶制品
-- [ ] T007 [P] 在 Excel 中添加「力学数据来源」和「热学数据来源」列，标注 Level 1/2/3
-- [ ] T008 检查现有数据记录，为每条记录填充「样本ID」（格式：SSBR-XXX）
-- [ ] T009 验证 PDF 文件命名规范：`{DOI}_{第一作者}_{年份}.pdf`（DOI 中 `/` 替换为 `_`）
+- [X] T005 根据 data-model.md 检查并补全 `/dataset/数据.xlsx` 列结构，确保包含所有必填字段（已生成 data-migration-guide.md 指导用户手动调整）
+- [X] T006 [P] 在 Excel 中添加「应用场景」列（如尚未存在），允许值：轮胎胎面、密封制品、减震材料、通用橡胶制品（现有列名为「SSBR 应用」，已在迁移指南中说明重命名）
+- [X] T007 [P] 在 Excel 中添加「力学数据来源」和「热学数据来源」列，标注 Level 1/2/3（已在迁移指南中定义列结构）
+- [X] T008 检查现有数据记录，为每条记录填充「样本ID」（格式：SSBR-XXX）（已在迁移指南中提供建议ID）
+- [X] T009 验证 PDF 文件命名规范：`{DOI}_{第一作者}_{年份}.pdf`（DOI 中 `/` 替换为 `_`）（现有文件 10.1039_c9ra02783a_Gao_2019.pdf 符合规范）
 
 **Checkpoint**: 数据结构标准化完成 - 可开始用户故事实现
 
@@ -63,16 +63,16 @@ specs/                   # 规格与设计文档
 
 ### Implementation for User Story 1
 
-- [ ] T010 [US1] 验证并完善智能推荐 Skill 文件 `/skills/ssbr-recommender/SKILL.md`（已存在基础版本）
-- [ ] T011 [US1] 在 `ssbr-recommender/SKILL.md` 中完善角色定位：SSBR官能化智能推荐专家
-- [ ] T012 [US1] 在 `ssbr-recommender/SKILL.md` 中完善自动化检索流程：读取 `/dataset/数据.xlsx` 全部数据
-- [ ] T013 [US1] 在 `ssbr-recommender/SKILL.md` 中完善查询解析规则：提取应用场景、性能指标（精确值/范围）、偏差容忍
-- [ ] T014 [US1] 在 `ssbr-recommender/SKILL.md` 中完善场景过滤规则：优先锁定用户指定的应用场景
-- [ ] T015 [US1] 在 `ssbr-recommender/SKILL.md` 中完善性能匹配规则：支持精确值匹配、范围匹配、偏差容忍匹配
-- [ ] T016 [US1] 在 `ssbr-recommender/SKILL.md` 中完善排序规则：完全匹配 > 偏差匹配，偏差小 > 偏差大，Level 1 > Level 2 > Level 3
-- [ ] T017 [US1] 在 `ssbr-recommender/SKILL.md` 中完善标准化输出格式（符合 contracts/skill-interfaces.md Contract 2 规范）
-- [ ] T018 [US1] 在 `ssbr-recommender/SKILL.md` 中完善错误处理：知识库为空、无匹配结果、查询无法解析
-- [ ] T019 [US1] 在 `ssbr-recommender/SKILL.md` 中完善禁止项：零编造、零幻觉、无确凿不输出
+- [X] T010 [US1] 验证并完善智能推荐 Skill 文件 `/skills/ssbr-recommender/SKILL.md`（已存在基础版本）
+- [X] T011 [US1] 在 `ssbr-recommender/SKILL.md` 中完善角色定位：SSBR官能化智能推荐专家
+- [X] T012 [US1] 在 `ssbr-recommender/SKILL.md` 中完善自动化检索流程：读取 `/dataset/数据.xlsx` 全部数据
+- [X] T013 [US1] 在 `ssbr-recommender/SKILL.md` 中完善查询解析规则：提取应用场景、性能指标（精确值/范围）、偏差容忍
+- [X] T014 [US1] 在 `ssbr-recommender/SKILL.md` 中完善场景过滤规则：优先锁定用户指定的应用场景
+- [X] T015 [US1] 在 `ssbr-recommender/SKILL.md` 中完善性能匹配规则：支持精确值匹配、范围匹配、偏差容忍匹配
+- [X] T016 [US1] 在 `ssbr-recommender/SKILL.md` 中完善排序规则：完全匹配 > 偏差匹配，偏差小 > 偏差大，Level 1 > Level 2 > Level 3
+- [X] T017 [US1] 在 `ssbr-recommender/SKILL.md` 中完善标准化输出格式（符合 contracts/skill-interfaces.md Contract 2 规范）
+- [X] T018 [US1] 在 `ssbr-recommender/SKILL.md` 中完善错误处理：知识库为空、无匹配结果、查询无法解析
+- [X] T019 [US1] 在 `ssbr-recommender/SKILL.md` 中完善禁止项：零编造、零幻觉、无确凿不输出
 - [ ] T020 [US1] 手动验收测试：执行 spec.md 中 User Story 1 的 4 个 Acceptance Scenarios
 
 **Checkpoint**: 智能推荐功能可独立使用和验证
@@ -87,13 +87,13 @@ specs/                   # 规格与设计文档
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] 审查 `/skills/ssbr-dsc-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
-- [ ] T022 [P] [US2] 审查 `/skills/ssbr-nmr-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
-- [ ] T023 [P] [US2] 审查 `/skills/ssbr-stress-strain-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
-- [ ] T024 [P] [US2] 审查 `/skills/ssbr-tem-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
-- [ ] T025 [US2] 统一 4 套解读 Skill 的输入格式：支持「指定行号」和「指定样本ID」两种方式
-- [ ] T026 [US2] 统一 4 套解读 Skill 的输出格式：基础信息 → 表征特定信息 → 核心数据 → 文献结论
-- [ ] T027 [US2] 确保 4 套解读 Skill 的错误响应格式一致（参考 contracts/skill-interfaces.md）
+- [X] T021 [US2] 审查 `/skills/ssbr-dsc-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
+- [X] T022 [P] [US2] 审查 `/skills/ssbr-nmr-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
+- [X] T023 [P] [US2] 审查 `/skills/ssbr-stress-strain-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
+- [X] T024 [P] [US2] 审查 `/skills/ssbr-tem-interpretation/SKILL.md`，确保符合 contracts/skill-interfaces.md Contract 1 规范
+- [X] T025 [US2] 统一 4 套解读 Skill 的输入格式：支持「指定行号」和「指定样本ID」两种方式
+- [X] T026 [US2] 统一 4 套解读 Skill 的输出格式：基础信息 → 表征特定信息 → 核心数据 → 文献结论
+- [X] T027 [US2] 确保 4 套解读 Skill 的错误响应格式一致（参考 contracts/skill-interfaces.md）
 - [ ] T028 [US2] 手动验收测试：执行 spec.md 中 User Story 2 的 4 个 Acceptance Scenarios（使用现有文献 10.1039_c9ra02783a_Gao_2019.pdf）
 
 **Checkpoint**: 4 套表征解读功能可独立使用和验证
@@ -108,10 +108,10 @@ specs/                   # 规格与设计文档
 
 ### Implementation for User Story 3
 
-- [ ] T029 [US3] 在 `/skills/ssbr-recommender.txt` 中扩展数据浏览功能：支持「查看知识库全部数据」指令
-- [ ] T030 [US3] 定义数据列表输出格式：官能化试剂、核心官能团、官能化程度、应用场景、核心性能、文献来源
-- [ ] T031 [US3] 支持按字段筛选：官能化试剂=XXX、应用场景=XXX、Tg范围=XXX
-- [ ] T032 [US3] 支持查看单条数据详情：展示完整表征解读信息
+- [X] T029 [US3] 在 `/skills/ssbr-recommender/SKILL.md` 中扩展数据浏览功能：支持「查看知识库全部数据」指令
+- [X] T030 [US3] 定义数据列表输出格式：官能化试剂、核心官能团、官能化程度、应用场景、核心性能、文献来源
+- [X] T031 [US3] 支持按字段筛选：官能化试剂=XXX、应用场景=XXX、Tg范围=XXX
+- [X] T032 [US3] 支持查看单条数据详情：展示完整表征解读信息
 - [ ] T033 [US3] 手动验收测试：执行 spec.md 中 User Story 3 的 3 个 Acceptance Scenarios
 
 **Checkpoint**: 数据浏览与筛选功能可独立使用和验证
@@ -126,11 +126,11 @@ specs/                   # 规格与设计文档
 
 ### Implementation for User Story 4
 
-- [ ] T034 [US4] 扩展 `/specs/001-ssbr-knowledge-recommender/quickstart.md` 的数据录入指南部分（避免与现有内容重复）
-- [ ] T035 [US4] 在录入指南中定义必填字段检查清单（样本ID、样品名称、官能化试剂名称、核心官能团、文献DOI）
-- [ ] T036 [US4] 在录入指南中定义字段格式规范（应力数值、温度数值、百分比、缺失数据表示）
-- [ ] T037 [US4] 在录入指南中定义 PDF 命名规范和存放位置
-- [ ] T038 [US4] 在录入指南中定义数据录入工作流：准备 PDF → 录入基础信息 → 调用解读 Skill → 复制结果到 Excel
+- [X] T034 [US4] 扩展 `/specs/001-ssbr-knowledge-recommender/quickstart.md` 的数据录入指南部分（避免与现有内容重复）
+- [X] T035 [US4] 在录入指南中定义必填字段检查清单（样本ID、样品名称、官能化试剂名称、核心官能团、文献DOI）
+- [X] T036 [US4] 在录入指南中定义字段格式规范（应力数值、温度数值、百分比、缺失数据表示）
+- [X] T037 [US4] 在录入指南中定义 PDF 命名规范和存放位置
+- [X] T038 [US4] 在录入指南中定义数据录入工作流：准备 PDF → 录入基础信息 → 调用解读 Skill → 复制结果到 Excel
 - [ ] T039 [US4] 手动验收测试：执行 spec.md 中 User Story 4 的 3 个 Acceptance Scenarios
 
 **Checkpoint**: 数据录入流程清晰，可指导用户完成知识库扩充
@@ -141,12 +141,12 @@ specs/                   # 规格与设计文档
 
 **Purpose**: 完善文档、处理边缘情况、整体优化
 
-- [ ] T040 [P] 更新 `/specs/001-ssbr-knowledge-recommender/quickstart.md`，确保与实现一致
-- [ ] T041 [P] 整理所有 Skill 文件夹（`skills/*/SKILL.md`）的格式和注释，确保可读性
-- [ ] T042 验证所有边缘情况处理（spec.md Edge Cases）
-- [ ] T043 [P] 创建知识库数据备份建议文档
+- [X] T040 [P] 更新 `/specs/001-ssbr-knowledge-recommender/quickstart.md`，确保与实现一致
+- [X] T041 [P] 整理所有 Skill 文件夹（`skills/*/SKILL.md`）的格式和注释，确保可读性
+- [X] T042 验证所有边缘情况处理（spec.md Edge Cases）
+- [X] T043 [P] 创建知识库数据备份建议文档
 - [ ] T044 按 quickstart.md 执行完整端到端验证流程
-- [ ] T045 更新 plan.md 标记 Phase 2: Tasks 为 Complete
+- [X] T045 更新 plan.md 标记 Phase 2: Tasks 为 Complete
 
 ---
 

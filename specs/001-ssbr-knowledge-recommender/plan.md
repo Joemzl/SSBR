@@ -117,6 +117,7 @@ literature/
 | Phase 0: Research | ✅ Complete | [research.md](./research.md) |
 | Phase 1: Design | ✅ Complete | [data-model.md](./data-model.md), [contracts/](./contracts/), [quickstart.md](./quickstart.md) |
 | Phase 2: Tasks | ✅ Complete | [tasks.md](./tasks.md) |
+| Phase 3: Implementation | ✅ Complete | Skills 完善、数据迁移指南、备份建议 |
 
 ---
 

@@ -25,7 +25,10 @@
 | 字段名 | 数据类型 | 必填 | 说明 | 示例 |
 |--------|----------|------|------|------|
 | 官能化试剂名称 | String | ✅ | 使用的官能化试剂全称 | 3-氨丙基三乙氧基硅烷 |
-| 核心官能团 | String | ✅ | 关键功能基团 | -NH₂ |
+| 试剂整体 SMILES | String | ❌ | 试剂完整分子 SMILES | SCCC[Si](OCC)(OCC)OCC |
+| 核心官能团 SMILES | String | ❌ | 关键功能基团 SMILES | [Si](OCC)(OCC)OCC |
+| 核心官能团名称 | String | ✅ | 官能团中文名称 | 三乙氧基硅烷基 |
+| 核心官能团化学式 | String | ✅ | 官能团化学式 | -Si(OC₂H₅)₃ |
 | 官能化程度 | Decimal | ❌ | 接枝百分比，单位 % | 3.6 |
 | 官能化方法 | String | ❌ | 改性方法描述 | 溶液接枝法 |
 
@@ -212,21 +215,25 @@ CREATE TABLE interpretations (
 | Excel 列名 | 数据模型字段 | 备注 |
 |------------|--------------|------|
 | 样本ID | id | 主键 |
-| 样品名称 | sample_name | - |
-| 官能化试剂名称 | reagent_name | - |
-| 核心官能团 | functional_group | - |
-| 官能化程度 | functionalization_degree | 百分比数值 |
 | 应用场景 | application_scenario | - |
+| 官能化试剂名称 | reagent_name | - |
+| 试剂整体 SMILES | reagent_smiles | 分子结构 |
+| 核心官能团 SMILES | functional_group_smiles | 官能团 SMILES |
+| 核心官能团名称 | functional_group_name | 中文名称 |
+| 核心官能团化学式 | functional_group_formula | 化学式 |
+| 官能化程度 | functionalization_degree | 百分比数值 |
+| 核磁谱图 | nmr_figure_ref | 图注信息 |
+| 微相分离图片表征 | tem_figure_ref | 图注信息 |
+| 应力-应变曲线 | stress_strain_figure_ref | 图注信息 |
+| DSC谱图 | dsc_figure_ref | 图注信息 |
+| 引文 | citation | 完整引文 |
+| DOI | doi | 文献标识 |
+| DOI_SI | doi_si | SI 补充材料标识 |
 | 100%定伸应力（MPa） | stress_100 | 可为区间 |
 | 200%定伸应力（MPa） | stress_200 | 可为区间 |
 | 300%定伸应力（MPa） | stress_300 | 可为区间 |
 | 拉伸强度（MPa） | tensile_strength | - |
 | 断裂伸长率（%） | elongation | - |
+| 力学数据来源 | mechanical_source | Level 标注 |
 | 玻璃化转变温度Tg（℃） | tg | 可为区间 |
-| 文献DOI | doi | - |
-| 第一作者 | first_author | - |
-| 发表年份 | publish_year | - |
-| 核磁谱图 | nmr_figure_ref | 图注信息 |
-| 微相分离图片表征 | tem_figure_ref | 图注信息 |
-| 应力-应变曲线 | stress_strain_figure_ref | 图注信息 |
-| DSC谱图 | dsc_figure_ref | 图注信息 |
+| 热学数据来源 | thermal_source | Level 标注 |

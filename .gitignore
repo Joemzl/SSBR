@@ -1,0 +1,23 @@
+# SSBR Knowledge Base - Git Ignore
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+
+# IDE
+.vscode/
+.idea/
+
+# Backup files
+*.bak
+*~
+
+# Temporary files
+*.log
+*.cache
+
+# Excel temporary files
+~$*.xlsx
+~$*.xls
