@@ -1,6 +1,6 @@
 # Data Model: SSBR官能化知识库
 
-**Date**: 2026-02-28 | **Branch**: `001-ssbr-knowledge-recommender`
+**Date**: 2026-03-01 | **Branch**: `001-ssbr-knowledge-recommender`
 
 ## Overview
 
@@ -8,6 +8,43 @@
 - 与现有 Excel 结构兼容
 - 支持推荐系统的匹配需求
 - 兼容未来向 SQLite/PostgreSQL 迁移
+
+---
+
+## Business Scope: 业务边界定义
+
+本知识库专注于以下明确的技术路线：
+
+### 官能化方法
+
+| 约束项 | 定义 | 说明 |
+|--------|------|------|
+| **官能化化学** | 巯基-烯点击化学 (Thiol-ene Click Chemistry) | 利用巯基（-SH）与 SSBR 分子链上的双键进行自由基加成反应 |
+| **官能化位置** | 链中官能化 (In-chain Functionalization) | 官能化发生在 SSBR 主链的乙烯基双键位置，非链端官能化 |
+| **官能化程度单位** | 重量百分比 (wt%) | 接枝试剂占 SSBR 的质量百分比 |
+
+### 适用范围
+
+- ✅ 巯基点击化学改性的 SSBR
+- ✅ 链中乙烯基位置的官能化
+- ✅ 以 wt% 表示的官能化程度
+- ❌ 链端官能化 SSBR
+- ❌ 非巯基点击化学（如活性阴离子聚合引入官能团）
+- ❌ 以摩尔分数表示的官能化程度
+
+### 官能化反应机理
+
+```
+SSBR 分子链（含乙烯基双键）
+        |
+        + R-SH（巯基化合物）
+        |
+        ↓ 自由基引发
+        |
+    SSBR-g-R（官能化 SSBR）
+```
+
+> **注意**：不同文献使用的 SSBR 基体可能具有不同的苯乙烯含量、乙烯基含量和分子量，这些属于实验条件而非官能化改性的核心结果，因此不作为知识库的标准字段存储。
 
 ---
 
@@ -29,7 +66,7 @@
 | 核心官能团 SMILES | String | ❌ | 关键功能基团 SMILES | [Si](OCC)(OCC)OCC |
 | 核心官能团名称 | String | ✅ | 官能团中文名称 | 三乙氧基硅烷基 |
 | 核心官能团化学式 | String | ✅ | 官能团化学式 | -Si(OC₂H₅)₃ |
-| 官能化程度 | Decimal | ❌ | 接枝百分比，单位 % | 3.6 |
+| 官能化程度 | Decimal | ❌ | 接枝重量百分比 (wt%)，基于 SSBR 质量 | 3.6 |
 | 官能化方法 | String | ❌ | 改性方法描述 | 溶液接枝法 |
 
 ### 应用场景字段
@@ -221,7 +258,7 @@ CREATE TABLE interpretations (
 | 核心官能团 SMILES | functional_group_smiles | 官能团 SMILES |
 | 核心官能团名称 | functional_group_name | 中文名称 |
 | 核心官能团化学式 | functional_group_formula | 化学式 |
-| 官能化程度 | functionalization_degree | 百分比数值 |
+| 官能化程度 (wt%) | functionalization_degree | 接枝重量百分比 |
 | 核磁谱图 | nmr_figure_ref | 图注信息 |
 | 微相分离图片表征 | tem_figure_ref | 图注信息 |
 | 应力-应变曲线 | stress_strain_figure_ref | 图注信息 |
