@@ -113,7 +113,7 @@ SSBR 分子链（含乙烯基双键）
 |--------|----------|------|------|
 | 核磁谱图 | String | ❌ | 图注信息，如 `Figure 2a` |
 | 微相分离图片表征 | String | ❌ | TEM 图注信息 |
-| 应力-应变曲线 | String | ❌ | 曲线图注信息 |
+| 核心力学图谱 | String | ❌ | 包含静态拉伸（应力-应变曲线）或动态力学（Payne效应/DMA曲线）的图注信息 |
 | DSC谱图 | String | ❌ | DSC 图注信息 |
 
 ### 表征解读字段
@@ -122,7 +122,7 @@ SSBR 分子链（含乙烯基双键）
 |--------|----------|------|------|
 | 核磁解读 | Text | ❌ | ¹H NMR 标准化解读结果 |
 | TEM解读 | Text | ❌ | TEM 标准化解读结果 |
-| 应力应变解读 | Text | ❌ | 应力-应变曲线标准化解读结果 |
+| 力学图谱解读 | Text | ❌ | 核心力学图谱（应力-应变/Payne效应/DMA）标准化解读结果 |
 | DSC解读 | Text | ❌ | DSC 谱图标准化解读结果 |
 
 ---
@@ -236,7 +236,7 @@ CREATE TABLE thermal_properties (
 CREATE TABLE interpretations (
     id SERIAL PRIMARY KEY,
     sample_id VARCHAR(20) REFERENCES samples(id),
-    type VARCHAR(20) CHECK (type IN ('NMR', 'TEM', 'StressStrain', 'DSC')),
+    type VARCHAR(20) CHECK (type IN ('NMR', 'TEM', 'Mechanical', 'DSC')),
     content TEXT,
     figure_ref VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -261,7 +261,7 @@ CREATE TABLE interpretations (
 | 官能化程度 (wt%) | functionalization_degree | 接枝重量百分比 |
 | 核磁谱图 | nmr_figure_ref | 图注信息 |
 | 微相分离图片表征 | tem_figure_ref | 图注信息 |
-| 应力-应变曲线 | stress_strain_figure_ref | 图注信息 |
+| 核心力学图谱 | mechanical_figure_ref | 静态拉伸或动态力学图注 |
 | DSC谱图 | dsc_figure_ref | 图注信息 |
 | 引文 | citation | 完整引文 |
 | DOI | doi | 文献标识 |
