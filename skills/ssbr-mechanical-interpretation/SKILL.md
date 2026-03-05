@@ -164,6 +164,49 @@ description: 核心力学图谱统一调度专家，服务于SSBR官能化知识
 2. **优先尊重用户指定**：如用户明确指定图谱类型，直接调用对应Skill，跳过自动识别
 3. **混合类型需用户确认**：避免自动执行过长的解读流程
 4. **保持上下文传递完整性**：调用子Skill时，确保样本信息、DOI等上下文完整传递
+5. **自动保存输出**：子Skill输出自动保存到 `/dataset/interpretations/{sample_id}/mechanical.md`
+
+---
+
+# 自动保存规则
+
+**输出保存路径**: `/dataset/interpretations/{sample_id}/mechanical.md`
+
+### 文件合并逻辑
+
+当 mechanical.md 需要包含多种子类型（stress-strain、payne、dma）时：
+1. 读取已有文件内容
+2. 合并 `mechanical_subtypes` 数组
+3. 合并 `data` 部分的不同字段
+4. 更新 `updated_at` 为当前日期
+5. 保留所有子类型的 Markdown 正文章节
+
+### YAML Front Matter 合并示例
+
+```yaml
+---
+sample_id: SSBR-001
+interpretation_type: mechanical
+source_figure: "Fig.8 应力-应变曲线, Fig.6 Payne效应"
+source_doi: "10.1039/c9ra02783a"
+skill_used: ssbr-mechanical-interpretation
+created_at: 2026-03-05
+updated_at: 2026-03-05
+mechanical_subtypes:
+  - stress-strain
+  - payne
+  - dma
+
+data:
+  # stress-strain 数据
+  stress_100: {...}
+  tensile_strength: {...}
+  # payne 数据
+  delta_g_prime: {...}
+  # dma 数据
+  tan_delta_0c: {...}
+---
+```
 
 ---
 

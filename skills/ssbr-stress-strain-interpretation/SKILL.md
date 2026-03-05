@@ -53,26 +53,98 @@ description: 应力-应变曲线自动化解读专家，服务于SSBR官能化�
 4.  禁止做出超出曲线/文献内容的性能预测、机理推断；
 5.  禁止跳过前置检索流程，要求用户手动上传文件/图片。
 
-# 标准化输出格式（与Excel列一一对应，可直接复制入库）
-## 一、基础信息
-- 样本ID：【从Excel提取】
-- 样品名称：【从Excel/文献提取】
-- 文献DOI：【从Excel提取】
-- 对应Excel列：应力-应变曲线
+# 标准化输出格式（YAML front matter + Markdown 正文）
 
-## 二、测试基础信息
+## 输出文件位置
+**保存路径**: `/dataset/interpretations/{sample_id}/mechanical.md`
+**文件格式**: YAML front matter + Markdown 正文
+
+## YAML Front Matter 模板
+
+```yaml
+---
+sample_id: SSBR-XXX
+interpretation_type: mechanical
+source_figure: "【图注信息】"
+source_doi: "【DOI】"
+skill_used: ssbr-stress-strain-interpretation
+created_at: 【当前日期 YYYY-MM-DD】
+updated_at: null
+mechanical_subtypes:
+  - stress-strain
+
+data:
+  # ========== 应力-应变数据 ==========
+  stress_100:
+    value: 【数值或null】
+    range: 【区间字符串或null】
+    unit: MPa
+    source: "【来源：文献Table X / SI Table SX / 图面标注 / 曲线估读】"
+  stress_200:
+    value: 【数值或null】
+    range: null
+    unit: MPa
+    source: "【来源】"
+  stress_300:
+    value: 【数值或null】
+    range: null
+    unit: MPa
+    source: "【来源】"
+  tensile_strength:
+    value: 【数值或null】
+    range: null
+    unit: MPa
+    source: "【来源】"
+  elongation:
+    value: 【数值或null】
+    range: null
+    unit: "%"
+    source: "【来源】"
+  mechanical_source: "【数据来源描述】"
+---
+```
+
+## Markdown 正文模板
+
+```markdown
+# 力学性能解读：{样本ID}
+
+> **样本性质**: 【样本基本描述】
+
+## 一、静态力学性能（应力-应变曲线）
+
+### 测试条件
 - 测试条件：【拉伸速率、测试标准、测试温度，提取自文献，无则填「-」】
 
-## 三、核心力学性能数据（按优先级提取）
-1.  100%定伸应力：【数值/区间 + 单位MPa】，数据来源：【】
-2.  300%定伸应力：【数值/区间 + 单位MPa / 样品提前断裂，无此数据】，数据来源：【】
-3.  拉伸强度：【数值/区间 + 单位MPa】，数据来源：【】
-4.  断裂伸长率：【数值/区间 + 单位%】，数据来源：【】
+### 数值数据
 
-## 四、曲线整体特征
-1.  相对模量趋势：【如：初始斜率高于空白组，定伸模量更大】
-2.  相对韧性趋势：【如：断裂伸长率低于空白组，柔韧性有所下降】
-3.  其他特征：【如：存在明显屈服平台/无明显屈服行为】
+| 指标 | 数值 | 单位 | 来源 |
+|------|------|------|------|
+| 100%定伸应力 | 【数值】 | MPa | 【来源】 |
+| 200%定伸应力 | 【数值】 | MPa | 【来源】 |
+| 300%定伸应力 | 【数值】 | MPa | 【来源】 |
+| 拉伸强度 | 【数值】 | MPa | 【来源】 |
+| 断裂伸长率 | 【数值】 | % | 【来源】 |
 
-## 五、文献对应结论
+### 核心发现
+
+1. **【发现一标题】**: 【描述】
+2. **【发现二标题】**: 【描述】
+
+### 曲线整体特征
+- 相对模量趋势：【如：初始斜率高于空白组，定伸模量更大】
+- 相对韧性趋势：【如：断裂伸长率低于空白组，柔韧性有所下降】
+- 其他特征：【如：存在明显屈服平台/无明显屈服行为】
+
+---
+
+## 文献对应结论
+
 【严格复制文献原文中对力学性能变化的机制解释，无则填「-」】
+```
+
+## 自动保存规则
+
+**完成解读后，自动将输出保存到** `/dataset/interpretations/{sample_id}/mechanical.md`
+- 如文件已存在且包含其他子类型数据，应合并更新而非覆盖
+- 更新 `updated_at` 字段为当前日期

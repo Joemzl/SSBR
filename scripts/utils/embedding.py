@@ -3,12 +3,46 @@ Embedding API 封装
 用于文本向量化，支持错误处理和降级逻辑
 
 Created: 2026-03-05
+
+支持的环境变量:
+- OPENAI_API_KEY: API 密钥 (必需)
+- OPENAI_BASE_URL: API 代理地址 (可选，如 https://api.uiuiapi.com/v1)
+
+配置方式:
+1. 环境变量: export OPENAI_API_KEY=xxx
+2. .env 文件: 在项目根目录创建 .env 文件
 """
 
 import os
 import time
 from typing import List, Optional
 import logging
+from pathlib import Path
+
+# 尝试加载 .env 文件
+def _load_dotenv():
+    """从项目根目录加载 .env 文件"""
+    try:
+        # 查找项目根目录 (包含 dataset 目录的父目录)
+        current = Path(__file__).resolve()
+        for parent in [current] + list(current.parents):
+            env_file = parent / '.env'
+            if env_file.exists():
+                with open(env_file, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and not line.startswith('#') and '=' in line:
+                            key, value = line.split('=', 1)
+                            key = key.strip()
+                            value = value.strip().strip('"').strip("'")
+                            if key and value and key not in os.environ:
+                                os.environ[key] = value
+                return True
+    except Exception:
+        pass
+    return False
+
+_load_dotenv()
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -27,16 +61,23 @@ class EmbeddingService:
     MAX_RETRIES = 3
     RETRY_DELAY = 2  # 秒
     
-    def __init__(self, api_key: Optional[str] = None):
+    def __init__(self, api_key: Optional[str] = None, base_url: Optional[str] = None):
         """
         初始化 Embedding 服务
         
         Args:
             api_key: OpenAI API Key，默认从环境变量 OPENAI_API_KEY 获取
+            base_url: API Base URL，默认从环境变量 OPENAI_BASE_URL 获取
+                     支持代理 API 如 UiUiAPI: https://api.uiuiapi.com/v1
         """
         self.api_key = api_key or os.environ.get('OPENAI_API_KEY')
+        self.base_url = base_url or os.environ.get('OPENAI_BASE_URL')
+        
         if not self.api_key:
             logger.warning("未设置 OPENAI_API_KEY，Embedding 功能将不可用")
+        
+        if self.base_url:
+            logger.info(f"使用代理 API: {self.base_url}")
         
         self._client = None
     
@@ -46,7 +87,11 @@ class EmbeddingService:
         if self._client is None:
             try:
                 from openai import OpenAI
-                self._client = OpenAI(api_key=self.api_key)
+                # 支持代理 API (如 UiUiAPI)
+                client_kwargs = {"api_key": self.api_key}
+                if self.base_url:
+                    client_kwargs["base_url"] = self.base_url
+                self._client = OpenAI(**client_kwargs)
             except ImportError:
                 raise ImportError("请安装 openai 库: pip install openai")
         return self._client

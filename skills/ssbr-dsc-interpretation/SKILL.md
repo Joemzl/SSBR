@@ -52,22 +52,86 @@ description: DSC热分析数据自动化解读专家，服务于SSBR官能化知
 4.  禁止做出超出谱图/文献内容的性能预测、机理推断；
 5.  禁止跳过前置检索流程，要求用户手动上传文件/图片。
 
-# 标准化输出格式（与Excel列一一对应，可直接复制入库）
-## 一、基础信息
-- 样本ID：【从Excel提取】
-- 样品名称：【从Excel/文献提取】
-- 文献DOI：【从Excel提取】
-- 对应Excel列：DSC谱图
+# 标准化输出格式（YAML front matter + Markdown 正文）
 
-## 二、测试基础信息
-- 测试条件：【升降温速率、测试氛围、温度扫描范围，提取自文献，无则填「-」】
-- 吸放热方向：【如Exo up/Exo down，提取自图注，无则填「-」】
+## 输出文件位置
+**保存路径**: `/dataset/interpretations/{sample_id}/dsc.md`
+**文件格式**: YAML front matter + Markdown 正文
+
+## YAML Front Matter 模板
+
+```yaml
+---
+sample_id: SSBR-XXX
+interpretation_type: dsc
+source_figure: "【图注信息】"
+source_doi: "【DOI】"
+skill_used: ssbr-dsc-interpretation
+created_at: 【当前日期 YYYY-MM-DD】
+updated_at: null
+
+data:
+  tg:
+    value: 【数值或null】
+    range: 【区间字符串或null】
+    unit: "℃"
+    source: "【来源：文献Table X / SI Table SX / 图面标注 / 曲线估读】"
+  thermal_source: "【数据来源描述】"
+  working_temp_window:
+    value: "【温度区间，如 -50 ~ 80】"
+    unit: "℃"
+    source: "【来源】"
+  other_transitions:
+    value: "【如：无明显熔融/结晶峰 或 在XX℃存在熔融峰】"
+    source: "【来源】"
+---
+```
+
+## Markdown 正文模板
+
+```markdown
+# DSC 热分析解读：{样本ID}
+
+> **样本性质**: 【样本基本描述】
+
+## 一、基础信息
+
+- **样本ID**: 【从Excel提取】
+- **样品名称**: 【从Excel/文献提取】
+- **文献DOI**: 【从Excel提取】
+
+## 二、测试条件
+
+- **升降温速率**: 【提取自文献，无则填「-」】
+- **测试氛围**: 【提取自文献，无则填「-」】
+- **温度扫描范围**: 【提取自文献，无则填「-」】
+- **吸放热方向**: 【如Exo up/Exo down，提取自图注，无则填「-」】
 
 ## 三、核心热学性能数据
-1.  玻璃化转变温度(Tg)：【显式标注的精确数值℃ / 台阶偏移的估读区间℃】
-2.  数据来源：【文献Table X/SI Table SX/图面标注/曲线估读】
-3.  其他热转变：【如：无明显熔融/结晶峰；或在XX℃-XX℃存在熔融峰】
-4.  高弹性工作温度窗口：【基于Tg，如Tg以上至150℃无明显热分解，适合XX℃区间使用】
 
-## 四、文献对应结论
+| 指标 | 数值 | 单位 | 来源 |
+|------|------|------|------|
+| 玻璃化转变温度 (Tg) | 【数值】 | ℃ | 【来源】 |
+| 高弹性工作温度窗口 | 【区间】 | ℃ | 【来源】 |
+
+### 其他热转变
+
+【如：无明显熔融/结晶峰；或在XX℃-XX℃存在熔融峰】
+
+## 四、核心发现
+
+1. **Tg 特征分析**: 【描述】
+2. **应用场景评估**: 【基于Tg的应用适配性分析】
+
+---
+
+## 文献对应结论
+
 【严格复制文献原文中对Tg升高/降低的分子链运动层面解释，无则填「-」】
+```
+
+## 自动保存规则
+
+**完成解读后，自动将输出保存到** `/dataset/interpretations/{sample_id}/dsc.md`
+- 如文件已存在，更新 `updated_at` 字段为当前日期
+- 保持其他字段不变，仅更新有新数据的字段

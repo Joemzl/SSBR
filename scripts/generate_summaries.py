@@ -506,12 +506,12 @@ def generate_all_summaries(dry_run: bool = False) -> Dict[str, Any]:
             
             if result['created']:
                 stats['created'] += 1
-                print(f"  ✓ summary.md 已生成")
+                print(f"  [OK] summary.md 已生成")
             
             if result['errors']:
                 stats['errors'].extend([f"{sample_id}: {e}" for e in result['errors']])
                 for err in result['errors']:
-                    print(f"  ✗ 错误: {err}")
+                    print(f"  [ERROR] 错误: {err}")
     
     return stats
 
@@ -537,9 +537,9 @@ def main():
         with ExcelHandler(EXCEL_PATH) as excel:
             result = generate_summary(args.sample, excel, dry_run=args.dry_run)
             if result['created']:
-                print(f"\n✓ {args.sample}/summary.md 生成成功")
+                print(f"\n[OK] {args.sample}/summary.md 生成成功")
             else:
-                print(f"\n✗ 生成失败: {result['errors']}")
+                print(f"\n[ERROR] 生成失败: {result['errors']}")
     else:
         # 批量处理
         stats = generate_all_summaries(dry_run=args.dry_run)
