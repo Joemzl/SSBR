@@ -1,0 +1,17 @@
+# SSBR RAG Recommendation System Dependencies
+# Created: 2026-03-05
+
+# Excel 读写
+openpyxl>=3.1.0
+
+# YAML 解析
+pyyaml>=6.0
+
+# OpenAI Embedding API
+openai>=1.0.0
+
+# 数值计算 (余弦相似度)
+numpy>=1.24.0
+
+# 可选: 进度条显示
+tqdm>=4.65.0
