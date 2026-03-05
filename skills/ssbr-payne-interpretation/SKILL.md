@@ -89,3 +89,101 @@ description: Payne效应曲线自动化解读专家，服务于SSBR官能化知�
 6.  **跨文献比对刚性红线**：不同文献间的$\Delta G'$绝对值无任何可比性，受白炭黑用量、硅烷体系、生胶基础参数、测试条件等多种因素影响存在极大基线差异。评价SSBR官能化改性效果时，必须优先提取**改性样相对空白样的ΔG'下降比率**作为跨文献泛化评估的唯一核心指标，标准化计算公式为：
     $$\Delta G'下降比率 = \frac{空白样\Delta G' - 改性样\Delta G'}{空白样\Delta G'} \times 100\%$$
     下降比率数值越大，代表改性对填料分散的优化效果越显著。
+
+---
+
+# 标准化输出格式（YAML front matter + Markdown 正文）
+
+## 输出文件位置
+**保存路径**: `/dataset/interpretations/{sample_id}/mechanical.md`
+**文件格式**: YAML front matter + Markdown 正文
+
+## YAML Front Matter 模板
+
+```yaml
+---
+sample_id: SSBR-XXX
+interpretation_type: mechanical
+source_figure: "【图注信息】"
+source_doi: "【DOI】"
+skill_used: ssbr-payne-interpretation
+created_at: 【当前日期 YYYY-MM-DD】
+updated_at: null
+mechanical_subtypes:
+  - payne
+
+data:
+  # ========== Payne 效应数据 ==========
+  delta_g_prime:
+    value: 【数值或null】
+    unit: kPa
+    source: "【来源】"
+  delta_g_prime_reduction:
+    value: 【百分比数值或null】
+    unit: "%"
+    source: "calculated"
+  g_prime_0:
+    value: 【数值或null】
+    unit: kPa
+    source: "【来源】"
+  g_prime_inf:
+    value: 【数值或null】
+    unit: kPa
+    source: "【来源】"
+  gamma_c:
+    value: 【数值或null】
+    unit: "%"
+    source: "【来源】"
+  e_a:
+    value: 【数值或null】
+    unit: "kJ/mol"
+    source: "【来源】"
+  mechanical_source: "【数据来源描述】"
+---
+```
+
+## Markdown 正文模板
+
+```markdown
+# Payne 效应解读：{样本ID}
+
+> **样本性质**: 【样本基本描述】
+
+## 一、Payne 效应核心参数
+
+### 数值数据
+
+| 参数 | 数值 | 单位 | 来源 | 物理意义 |
+|------|------|------|------|----------|
+| ΔG' | 【数值】 | kPa | 【来源】 | Payne效应幅度 |
+| G'₀ | 【数值】 | kPa | 【来源】 | 初始储能模量 |
+| G'∞ | 【数值】 | kPa | 【来源】 | 稳定储能模量 |
+| γc | 【数值】 | % | 【来源】 | 临界应变 |
+
+### 核心发现
+
+1. **填料分散性评价**: 【描述】
+2. **界面相互作用评价**: 【描述】
+
+---
+
+## 二、与空白组对比分析
+
+| 样本 | ΔG' (kPa) | ΔG'下降比率 |
+|------|-----------|-------------|
+| 空白组 | 【数值】 | - |
+| 改性组 | 【数值】 | 【比率】% |
+
+---
+
+## 文献对应结论
+
+【严格复制文献原文中对Payne效应变化的机制解释，无则填「-」】
+```
+
+## 自动保存规则
+
+**完成解读后，自动将输出保存到** `/dataset/interpretations/{sample_id}/mechanical.md`
+- 如文件已存在且包含其他子类型数据，应合并更新而非覆盖
+- 更新 `mechanical_subtypes` 数组，添加 `payne`
+- 更新 `updated_at` 字段为当前日期

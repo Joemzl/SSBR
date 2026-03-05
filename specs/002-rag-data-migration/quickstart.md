@@ -220,6 +220,131 @@ docs(002): 更新数据模型文档
 
 ---
 
+## 实际使用示例
+
+### 示例 1：自然语言推荐查询
+
+**场景**：研究人员需要找到改善白炭黑分散的官能化方案
+
+```
+@ssbr-recommender 我需要改善白炭黑分散性，同时保持良好的低温性能
+```
+
+**预期输出**：
+```markdown
+## 推荐结果
+
+### Top 1: SSBR-004 (相关度: 0.85)
+- **官能化方案**: 硅氧烷官能团 (-Si(OEt)₃)
+- **核心优势**: 与白炭黑形成化学键合，分散性优异
+- **关键数据**: 拉伸强度 26.0 MPa, Tg -25.5℃
+- **文献来源**: Gao et al., RSC Advances, 2019
+
+### Top 2: SSBR-016 (相关度: 0.78)
+...
+```
+
+### 示例 2：批量生成综合档案
+
+**场景**：为所有样本更新 summary.md
+
+```bash
+# 预览模式
+python scripts/generate_summaries.py --dry-run
+
+# 实际执行
+python scripts/generate_summaries.py
+```
+
+**输出**：
+```
+============================================================
+SSBR Summary 综合档案生成工具
+============================================================
+
+开始生成 17 个样本的综合档案...
+
+处理 SSBR-001...
+  [OK] summary.md 已生成
+
+处理 SSBR-002...
+  [OK] summary.md 已生成
+...
+
+============================================================
+生成统计
+============================================================
+  总样本数: 17
+  成功生成: 17
+  错误数: 0
+```
+
+### 示例 3：新样本录入
+
+**场景**：添加新文献中的样本 SSBR-018
+
+```bash
+# Step 1: 初始化目录
+python scripts/init_new_sample.py --sample-id SSBR-018
+
+# Step 2: 在 Excel 中添加元数据 (手动)
+
+# Step 3: 生成解读文档 (在 IDE 中)
+@ssbr-mechanical-interpretation 请解读样本 SSBR-018 的核心力学图谱
+@ssbr-dsc-interpretation 请解读样本 SSBR-018 的 DSC 谱图
+
+# Step 4: 生成综合档案
+python scripts/generate_summaries.py --sample SSBR-018
+
+# Step 5: 验证
+python scripts/update_vector_index.py --sample SSBR-018 --validate-only
+```
+
+### 示例 4：验证数据完整性
+
+**场景**：检查所有样本的 summary.md 是否有效
+
+```bash
+python scripts/update_vector_index.py --validate-only
+```
+
+**输出**：
+```
+============================================================
+SSBR Vector Index Update Tool
+============================================================
+
+[VALIDATION MODE]
+
+  SSBR-001: [OK]
+  SSBR-002: [OK]
+  ...
+  SSBR-017: [OK]
+
+Validation complete: 17/17 valid
+```
+
+---
+
+## 脚本命令速查
+
+| 脚本 | 命令 | 用途 |
+|------|------|------|
+| `generate_summaries.py` | `--dry-run` | 预览模式 |
+| | `--sample SSBR-001` | 单个样本 |
+| | (无参数) | 批量生成 |
+| `init_new_sample.py` | `--sample-id SSBR-018` | 指定 ID |
+| | `--next-id` | 显示下一个可用 ID |
+| | `--force` | 覆盖已有文件 |
+| `update_vector_index.py` | `--validate-only` | 仅验证 |
+| | `--sample SSBR-001` | 单个样本 |
+| | `--all` | 全量更新 |
+| | `--dry-run` | 预览模式 |
+| `rag_search.py` | `--query "查询文本"` | 执行检索 |
+| | `--top-k 5` | 返回数量 |
+
+---
+
 ## 相关文档
 
 | 文档 | 路径 | 说明 |

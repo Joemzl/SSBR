@@ -73,10 +73,10 @@
 
 > **说明**: 以下任务需要手动调用对应的解读 Skills，AI 将从文献 PDF 中提取数据并生成标准化解读文档
 
-- [ ] T013 [US2] 为 17 个样本生成 mechanical.md（调用 ssbr-mechanical-interpretation Skill 解读力学图谱）
-- [ ] T014 [US2] 为 17 个样本生成 dsc.md（调用 ssbr-dsc-interpretation Skill 解读 DSC 谱图）
-- [ ] T015 [US2] 为 17 个样本生成 nmr.md（调用 ssbr-nmr-interpretation Skill 解读核磁谱图）
-- [ ] T016 [US2] 为 17 个样本生成 tem.md（调用 ssbr-tem-interpretation Skill 解读 TEM 图片）
+- [x] T013 [US2] 为 17 个样本生成 mechanical.md（调用 ssbr-mechanical-interpretation Skill 解读力学图谱）
+- [x] T014 [US2] 为 17 个样本生成 dsc.md（调用 ssbr-dsc-interpretation Skill 解读 DSC 谱图）
+- [x] T015 [US2] 为 17 个样本生成 nmr.md（调用 ssbr-nmr-interpretation Skill 解读核磁谱图）
+- [x] T016 [US2] 为 17 个样本生成 tem.md（调用 ssbr-tem-interpretation Skill 解读 TEM 图片）
 
 > **注意**: 
 > - 解读任务需要逐个样本手动调用 Skills，AI 会自动读取 Excel 和 PDF 文献
@@ -104,7 +104,7 @@
 - [x] T023 [US3] 实现从 dsc.md 提取热学数据和核心发现
 - [x] T024 [US3] 实现 summary.md YAML front matter 生成（含 interpretations_included/missing）
 - [x] T025 [US3] 实现 summary.md Markdown 正文生成（自然语言描述）
-- [ ] T026 [US3] 批量为 17 个样本生成 summary.md
+- [x] T026 [US3] 批量为 17 个样本生成 summary.md
 
 **Checkpoint**: 17 个样本全部生成符合规范的 summary.md，每个文件包含至少 4 个必需章节
 
@@ -144,15 +144,15 @@
 
 ### Implementation for User Story 4
 
-- [ ] T037 [P] [US4] 更新 ssbr-stress-strain-interpretation Skill 输出格式 `skills/ssbr-stress-strain-interpretation/SKILL.md`
-- [ ] T038 [P] [US4] 更新 ssbr-payne-interpretation Skill 输出格式 `skills/ssbr-payne-interpretation/SKILL.md`
-- [ ] T039 [P] [US4] 更新 ssbr-dma-interpretation Skill 输出格式 `skills/ssbr-dma-interpretation/SKILL.md`
-- [ ] T040 [P] [US4] 更新 ssbr-dsc-interpretation Skill 输出格式 `skills/ssbr-dsc-interpretation/SKILL.md`
-- [ ] T041 [P] [US4] 更新 ssbr-nmr-interpretation Skill 输出格式 `skills/ssbr-nmr-interpretation/SKILL.md`
-- [ ] T042 [P] [US4] 更新 ssbr-tem-interpretation Skill 输出格式 `skills/ssbr-tem-interpretation/SKILL.md`
-- [ ] T043 [US4] 更新 ssbr-mechanical-interpretation 调度层 `skills/ssbr-mechanical-interpretation/SKILL.md`
-- [ ] T044 [US4] 创建新 Skill: ssbr-summary-generator `skills/ssbr-summary-generator/SKILL.md`
-- [ ] T045 [US4] 实现 Skills 自动保存输出到 interpretations 目录的逻辑
+- [x] T037 [P] [US4] 更新 ssbr-stress-strain-interpretation Skill 输出格式 `skills/ssbr-stress-strain-interpretation/SKILL.md`
+- [x] T038 [P] [US4] 更新 ssbr-payne-interpretation Skill 输出格式 `skills/ssbr-payne-interpretation/SKILL.md`
+- [x] T039 [P] [US4] 更新 ssbr-dma-interpretation Skill 输出格式 `skills/ssbr-dma-interpretation/SKILL.md`
+- [x] T040 [P] [US4] 更新 ssbr-dsc-interpretation Skill 输出格式 `skills/ssbr-dsc-interpretation/SKILL.md`
+- [x] T041 [P] [US4] 更新 ssbr-nmr-interpretation Skill 输出格式 `skills/ssbr-nmr-interpretation/SKILL.md`
+- [x] T042 [P] [US4] 更新 ssbr-tem-interpretation Skill 输出格式 `skills/ssbr-tem-interpretation/SKILL.md`
+- [x] T043 [US4] 更新 ssbr-mechanical-interpretation 调度层 `skills/ssbr-mechanical-interpretation/SKILL.md`
+- [x] T044 [US4] 创建新 Skill: ssbr-summary-generator `skills/ssbr-summary-generator/SKILL.md`
+- [x] T045 [US4] 实现 Skills 自动保存输出到 interpretations 目录的逻辑
 
 **Checkpoint**: 所有 7 个解读 Skills 和 1 个新 Skill 输出格式符合 YAML+Markdown 规范
 
@@ -168,11 +168,11 @@
 
 ### Implementation for User Story 5
 
-- [ ] T046 [US5] 编写新样本录入 SOP 文档 `specs/002-rag-data-migration/new-sample-sop.md`（含 MVP 单用户模式声明，明确不支持并发录入）
-- [ ] T047 [US5] 创建新样本目录初始化脚本 `scripts/init_new_sample.py`
-- [ ] T048 [US5] 实现新样本 Excel 行添加逻辑（元数据 A-O 列）
-- [ ] T049 [US5] 实现新样本 summary.md 自动生成触发（调用 ssbr-summary-generator）
-- [ ] T050 [US5] 实现向量索引增量更新 `scripts/update_vector_index.py`（支持单样本实时更新，避免全量重计算；覆盖 FR-022）
+- [x] T046 [US5] 编写新样本录入 SOP 文档 `specs/002-rag-data-migration/new-sample-sop.md`（含 MVP 单用户模式声明，明确不支持并发录入）
+- [x] T047 [US5] 创建新样本目录初始化脚本 `scripts/init_new_sample.py`
+- [x] T048 [US5] 实现新样本 Excel 行添加逻辑（元数据 A-O 列）
+- [x] T049 [US5] 实现新样本 summary.md 自动生成触发（调用 ssbr-summary-generator）
+- [x] T050 [US5] 实现向量索引增量更新 `scripts/update_vector_index.py`（支持单样本实时更新，避免全量重计算；覆盖 FR-022）
 
 **Checkpoint**: 新样本录入流程完整可用，录入后推荐系统可立即检索到新样本
 
@@ -182,11 +182,11 @@
 
 **Purpose**: 跨用户故事的优化和完善工作
 
-- [ ] T051 [P] 更新 quickstart.md 添加实际使用示例 `specs/002-rag-data-migration/quickstart.md`
-- [ ] T052 [P] 更新 CODEBUDDY.md 项目上下文 `CODEBUDDY.md`
-- [ ] T053 代码清理和重构（移除调试代码，优化性能）
-- [ ] T054 [P] 创建边界情况处理文档（空查询、超长查询、YAML 解析失败、文件缺失）
-- [ ] T055 运行 quickstart.md 验证所有功能正常
+- [x] T051 [P] 更新 quickstart.md 添加实际使用示例 `specs/002-rag-data-migration/quickstart.md`
+- [x] T052 [P] 更新 CODEBUDDY.md 项目上下文 `CODEBUDDY.md`
+- [x] T053 代码清理和重构（移除调试代码，优化性能）
+- [x] T054 [P] 创建边界情况处理文档（空查询、超长查询、YAML 解析失败、文件缺失）
+- [x] T055 运行 quickstart.md 验证所有功能正常
 
 ---
 

@@ -53,21 +53,98 @@ description: 核磁共振(NMR)谱图自动化解读专家，服务于SSBR官能�
 4.  禁止做出超出谱图/文献内容的性能预测、机理推断；
 5.  禁止跳过前置检索流程，要求用户手动上传文件/图片。
 
-# 标准化输出格式（与Excel列一一对应，可直接复制入库）
+# 标准化输出格式（YAML front matter + Markdown 正文）
+
+## 输出文件位置
+**保存路径**: `/dataset/interpretations/{sample_id}/nmr.md`
+**文件格式**: YAML front matter + Markdown 正文
+
+## YAML Front Matter 模板
+
+```yaml
+---
+sample_id: SSBR-XXX
+interpretation_type: nmr
+source_figure: "【图注信息】"
+source_doi: "【DOI】"
+skill_used: ssbr-nmr-interpretation
+created_at: 【当前日期 YYYY-MM-DD】
+updated_at: null
+
+data:
+  functionalization_degree:
+    value: 【数值或null】
+    unit: "wt%"
+    source: "【来源】"
+    calculation_method: "【计算方法说明或null】"
+  characteristic_peaks:
+    - chemical_shift: 【化学位移 ppm】
+      assignment: "【峰归属】"
+      integral: 【积分比或null】
+    - chemical_shift: 【化学位移 ppm】
+      assignment: "【峰归属】"
+      integral: null
+  vinyl_content:
+    value: 【数值或null】
+    unit: "%"
+    source: "【来源】"
+---
+```
+
+## Markdown 正文模板
+
+```markdown
+# NMR 核磁共振谱图解读：{样本ID}
+
+> **样本性质**: 【样本基本描述】
+
 ## 一、基础信息
-- 样本ID：【从Excel提取】
-- 样品名称：【从Excel/文献提取】
-- 文献DOI：【从Excel提取】
-- 对应Excel列：核磁谱图
+
+- **样本ID**: 【从Excel提取】
+- **样品名称**: 【从Excel/文献提取】
+- **文献DOI**: 【从Excel提取】
 
 ## 二、结构验证与特征峰归属
-1.  SSBR基体特征峰：【描述特征峰所在的ppm区间，对应苯乙烯、1,2-聚丁二烯、1,4-聚丁二烯单元】
-2.  官能团新增特征峰：【描述新增峰所在的ppm区间、质子归属，验证目标官能团是否成功接枝】
-3.  样品纯度验证：【是否存在未反应单体/副反应特征峰，无则填「无明显杂峰，样品纯度良好」】
 
-## 三、核心定量数据（仅限文献显式提及）
-- 官能化程度（接枝百分比）：【提取自文献文本/表格/SI补充材料，如3.6%；若无，填「文献未明确提供」】
-- 数据来源：【文献Table X/SI Table SX/正文X部分，若无则填「-」】
+### SSBR 基体特征峰
 
-## 四、图谱与文献交叉结论
+| 化学位移 (ppm) | 峰归属 | 说明 |
+|----------------|--------|------|
+| 6.5-7.5 | 苯乙烯单元 | 芳香氢 |
+| 5.3-5.6 | 1,4-聚丁二烯 | 内烯氢 |
+| 4.8-5.0 | 1,2-聚丁二烯 | 乙烯基氢 |
+
+### 官能团新增特征峰
+
+| 化学位移 (ppm) | 峰归属 | 来源 |
+|----------------|--------|------|
+| 【ppm】 | 【归属】 | 【来源】 |
+
+### 样品纯度验证
+
+【是否存在未反应单体/副反应特征峰，无则填「无明显杂峰，样品纯度良好」】
+
+## 三、核心定量数据
+
+| 指标 | 数值 | 单位 | 来源 |
+|------|------|------|------|
+| 官能化程度 | 【数值或"文献未明确提供"】 | wt% | 【来源】 |
+| 乙烯基含量 | 【数值或"-"】 | % | 【来源】 |
+
+## 四、核心发现
+
+1. **接枝验证**: 【描述官能团是否成功接枝的证据】
+2. **结构特征**: 【描述结构变化】
+
+---
+
+## 文献对应结论
+
 【严格复制文献原文中对该图谱的结论，用一句话总结该图谱证明的化学结构变化，无主观延伸】
+```
+
+## 自动保存规则
+
+**完成解读后，自动将输出保存到** `/dataset/interpretations/{sample_id}/nmr.md`
+- 如文件已存在，更新 `updated_at` 字段为当前日期
+- 保持其他字段不变，仅更新有新数据的字段
