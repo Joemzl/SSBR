@@ -75,9 +75,9 @@ python scripts/evaluate_rag.py --top-k 5
 ```
 SSBR/
 ├── dataset/
-│   ├── 数据.xlsx                    # 元数据（13 个样本的基础信息）
+│   ├── 数据.xlsx                    # 元数据（样本基础信息）
 │   └── interpretations/             # 解读文档库
-│       ├── SSBR-XXX/                # 各样本目录 (当前 13 个)
+│       ├── SSBR-XXX/                # 各样本目录
 │       │   ├── mechanical.md        # 力学解读
 │       │   ├── dsc.md              # 热学解读
 │       │   ├── nmr.md              # 核磁解读

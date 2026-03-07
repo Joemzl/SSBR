@@ -85,8 +85,7 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 ## Recent Changes
 
 - 002-rag-data-migration (2026-03-07):
-  - 移除空白对照样本（SSBR-001, 005, 009, 013）
-  - 当前知识库包含 13 个官能化样本
+  - 移除空白对照样本，仅保留官能化样本
   - RAG 评估 Hit Rate@5 = 91.7%
 
 - 002-rag-data-migration (2026-03-05):
@@ -101,6 +100,7 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 - **解读文档**: YAML front matter (结构化数据) + Markdown 正文 (自然语言)
 - **数据来源层级**: L1 (表格) > L2 (图面标注) > L3 (曲线估读)
 - **零幻觉原则**: 所有数值必须来自文献，禁止编造
+- **样本编号规则**: 样本 ID (如 SSBR-002) 是稀疏非连续的，文档中禁止硬编码样本总数或使用范围描述 (如 SSBR-001~017)
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
