@@ -131,75 +131,179 @@ EXAMPLE_QUERIES = [
 
 # ==================== 构建界面 ====================
 
+# 简约学术风格主题
+ACADEMIC_THEME = gr.themes.Base(
+    primary_hue=gr.themes.colors.emerald,
+    secondary_hue=gr.themes.colors.slate,
+    neutral_hue=gr.themes.colors.slate,
+    font=gr.themes.GoogleFont("IBM Plex Sans"),
+    font_mono=gr.themes.GoogleFont("IBM Plex Mono"),
+).set(
+    # 深色背景
+    body_background_fill="#0f172a",
+    body_background_fill_dark="#0f172a",
+    background_fill_primary="#1e293b",
+    background_fill_primary_dark="#1e293b",
+    background_fill_secondary="#334155",
+    background_fill_secondary_dark="#334155",
+    # 文字颜色
+    body_text_color="#e2e8f0",
+    body_text_color_dark="#e2e8f0",
+    body_text_color_subdued="#94a3b8",
+    body_text_color_subdued_dark="#94a3b8",
+    # 边框
+    border_color_primary="#475569",
+    border_color_primary_dark="#475569",
+    block_border_width="1px",
+    # 按钮
+    button_primary_background_fill="#10b981",
+    button_primary_background_fill_dark="#10b981",
+    button_primary_background_fill_hover="#059669",
+    button_primary_background_fill_hover_dark="#059669",
+    button_primary_text_color="#ffffff",
+    button_primary_text_color_dark="#ffffff",
+    # 输入框
+    input_background_fill="#1e293b",
+    input_background_fill_dark="#1e293b",
+    input_border_color="#475569",
+    input_border_color_dark="#475569",
+    input_border_color_focus="#10b981",
+    input_border_color_focus_dark="#10b981",
+    # 块元素
+    block_background_fill="#1e293b",
+    block_background_fill_dark="#1e293b",
+    block_label_background_fill="#334155",
+    block_label_background_fill_dark="#334155",
+    block_label_text_color="#e2e8f0",
+    block_label_text_color_dark="#e2e8f0",
+    block_title_text_color="#e2e8f0",
+    block_title_text_color_dark="#e2e8f0",
+)
+
+# 学术简约风格 CSS
+ACADEMIC_CSS = """
+/* 学术简约风格 */
+.main-header {
+    text-align: center;
+    padding: 32px 24px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+.main-header h1 {
+    color: #f1f5f9 !important;
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.02em;
+}
+.main-header p {
+    color: #94a3b8 !important;
+    font-size: 0.95rem;
+    margin: 0;
+}
+.main-header .accent {
+    color: #10b981;
+}
+/* 卡片样式 */
+.result-card, .detail-card {
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 20px;
+    background: #1e293b;
+}
+.query-section {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+}
+/* Markdown 样式优化 */
+.prose h3, .prose h4 {
+    color: #f1f5f9 !important;
+}
+.prose p, .prose li {
+    color: #cbd5e1 !important;
+}
+.prose strong {
+    color: #10b981 !important;
+}
+.prose code {
+    background: #334155 !important;
+    color: #10b981 !important;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+/* 表格样式 */
+.prose table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.prose th {
+    background: #334155 !important;
+    color: #f1f5f9 !important;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 2px solid #10b981;
+}
+.prose td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #475569;
+    color: #cbd5e1 !important;
+}
+.prose tr:hover td {
+    background: #334155;
+}
+/* 状态指示 */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #10b981;
+}
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+}
+/* 示例按钮 */
+.examples-table button {
+    background: #334155 !important;
+    border: 1px solid #475569 !important;
+    color: #e2e8f0 !important;
+}
+.examples-table button:hover {
+    background: #475569 !important;
+    border-color: #10b981 !important;
+}
+"""
+
+
 def create_demo():
     """创建 Gradio 演示界面"""
     
-    with gr.Blocks(
-        title="SSBR 官能化方案推荐系统",
-        theme=gr.themes.Soft(
-            primary_hue="blue",
-            secondary_hue="slate"
-        ),
-        css="""
-        .main-header {
-            text-align: center;
-            padding: 20px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        .main-header h1 {
-            color: white !important;
-            margin: 0;
-        }
-        .main-header p {
-            color: rgba(255,255,255,0.9) !important;
-            margin: 10px 0 0 0;
-        }
-        .result-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 16px;
-            background: #fafafa;
-        }
-        .detail-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 20px;
-            background: white;
-        }
-        .query-section {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-        }
-        .status-badge {
-            font-size: 12px;
-            padding: 4px 12px;
-            border-radius: 20px;
-            background: #e8f5e9;
-            color: #2e7d32;
-        }
-        """
-    ) as demo:
+    with gr.Blocks(title="SSBR 官能化方案推荐系统") as demo:
         
-        # 标题区域
+        # 标题区域 - 简约学术风格
         gr.HTML("""
         <div class="main-header">
-            <h1>🧪 SSBR 官能化方案智能推荐系统</h1>
-            <p>基于语义理解的绿色轮胎材料解决方案推荐</p>
+            <h1>SSBR 官能化方案智能推荐系统</h1>
         </div>
         """)
         
         with gr.Row():
             # 左侧：查询面板
             with gr.Column(scale=2):
-                gr.Markdown("### 🔍 描述您的需求")
+                gr.Markdown("### 描述您的研究需求")
                 
                 with gr.Group(elem_classes="query-section"):
                     query_input = gr.Textbox(
                         label="",
-                        placeholder="例如：改善白炭黑分散性、降低滚动阻力、提高抓地力...",
+                        placeholder="例如：改善白炭黑分散性、降低滚动阻力、提高湿地抓地力...",
                         lines=2,
                         show_label=False
                     )
@@ -210,11 +314,11 @@ def create_demo():
                             maximum=10,
                             value=5,
                             step=1,
-                            label="推荐方案数量"
+                            label="返回方案数"
                         )
-                        search_btn = gr.Button("🚀 获取推荐", variant="primary", size="lg")
+                        search_btn = gr.Button("检索", variant="primary", size="lg")
                 
-                gr.Markdown("### 💡 试试这些查询")
+                gr.Markdown("### 示例查询")
                 gr.Examples(
                     examples=EXAMPLE_QUERIES,
                     inputs=query_input,
@@ -222,52 +326,53 @@ def create_demo():
                     examples_per_page=7
                 )
                 
-                # 系统状态（简化）
+                # 系统状态
                 with gr.Row():
                     status_text = gr.Markdown(get_system_status())
             
             # 右侧：结果展示
             with gr.Column(scale=3):
-                gr.Markdown("### 📊 推荐方案")
+                gr.Markdown("### 推荐方案")
                 
                 result_output = gr.Markdown(
-                    value="*输入您的需求，点击「获取推荐」查看结果*",
+                    value="*输入研究需求后点击「检索」查看推荐结果*",
                     elem_classes="result-card"
                 )
         
         # 详情区域
         gr.Markdown("---")
-        gr.Markdown("### 📋 方案详情")
+        gr.Markdown("### 方案详情")
         
         with gr.Row():
             with gr.Column(scale=1):
                 sample_dropdown = gr.Dropdown(
-                    label="选择查看详情",
+                    label="选择方案",
                     choices=[],
                     interactive=True
                 )
             with gr.Column(scale=3):
                 detail_output = gr.Markdown(
-                    value="*选择上方推荐方案查看详细信息*",
+                    value="*从下拉列表选择方案查看详细信息*",
                     elem_classes="detail-card"
                 )
         
         # 底部说明
         gr.Markdown("""
         ---
-        ### 📖 使用指南
+        ### 使用说明
         
-        1. **输入需求**: 用自然语言描述您希望解决的问题，如"改善分散性"、"降低滚阻"等
-        2. **查看推荐**: 系统会返回最相关的官能化方案，按匹配度排序
-        3. **方案详情**: 点击下拉菜单可查看每个方案的详细信息
+        | 步骤 | 操作 | 说明 |
+        |:----:|------|------|
+        | 1 | **输入需求** | 用自然语言描述研究目标，如"改善分散性"、"降低滚阻" |
+        | 2 | **查看推荐** | 系统返回语义最相关的官能化方案，按匹配度排序 |
+        | 3 | **方案详情** | 选择具体方案查看官能团结构、性能指标、文献来源 |
         
-        **匹配度说明**:
-        - 🟢 **高**: 与您的需求高度相关
-        - 🟡 **中**: 有一定参考价值
-        - 🔵 **低**: 供参考，建议结合具体情况评估
+        **匹配度**: 🟢 高 (≥0.75) · 🟡 中 (≥0.65) · 🔵 参考 (<0.65)
         
         ---
-        *SSBR 官能化知识库 | 基于语义检索的智能推荐系统*
+        <p style="text-align: center; color: #64748b; font-size: 0.85rem;">
+        SSBR 官能化知识库
+        </p>
         """)
         
         # 绑定事件
@@ -307,5 +412,7 @@ if __name__ == "__main__":
         server_name="0.0.0.0",
         server_port=7860,
         share=False,  # 设为 True 可生成公网分享链接
-        show_error=True
+        show_error=True,
+        theme=ACADEMIC_THEME,
+        css=ACADEMIC_CSS
     )
