@@ -16,7 +16,7 @@ Auto-generated from all feature plans. Last updated: 2026-03-05
 dataset/
 ├── 数据.xlsx                    # 元数据 (A-O 列)
 └── interpretations/             # 解读文档库
-    ├── SSBR-001/ ~ SSBR-017/   # 17 个样本目录
+    ├── SSBR-XXX/                # 各样本目录 (动态)
     │   ├── mechanical.md        # 力学解读
     │   ├── dsc.md              # 热学解读
     │   ├── nmr.md              # 核磁解读
@@ -84,9 +84,13 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 
 ## Recent Changes
 
+- 002-rag-data-migration (2026-03-07):
+  - 移除空白对照样本（SSBR-001, 005, 009, 013）
+  - 当前知识库包含 13 个官能化样本
+  - RAG 评估 Hit Rate@5 = 91.7%
+
 - 002-rag-data-migration (2026-03-05):
   - 实现 RAG 语义检索推荐系统
-  - 17 个样本全部生成 4 类解读文档 + summary.md
   - 更新 8 个 Skills 输出格式为 YAML + Markdown
   - 新增 ssbr-summary-generator Skill
   - 新增新样本录入 SOP 和脚本

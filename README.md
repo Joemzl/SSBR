@@ -15,9 +15,9 @@
 
 ### 数据规模
 
-- **17 个样本**：来自 4 篇文献的官能化 SSBR 配方
-- **85 篇解读文档**：每个样本 5 个文档（力学、热学、核磁、TEM、综合档案）
-- **覆盖官能团**：氨基、环氧基、羟基、羧基、硅氧烷等
+- **13 个样本**：来自 4 篇文献的官能化 SSBR 配方
+- **65 篇解读文档**：每个样本 5 个文档（力学、热学、核磁、TEM、综合档案）
+- **覆盖官能团**：羟基、羧基、硅氧烷、oxa-Michael 等
 
 ## 安装
 
@@ -62,14 +62,22 @@ python demo/app.py
 python scripts/rag_search.py --query "改善白炭黑分散性" --top-k 5
 ```
 
+### 运行 RAG 评估
+
+```bash
+python scripts/evaluate_rag.py --top-k 5
+```
+
+评估报告将保存到 `evaluation/report.md`。
+
 ## 项目结构
 
 ```
 SSBR/
 ├── dataset/
-│   ├── 数据.xlsx                    # 元数据（17 个样本的基础信息）
+│   ├── 数据.xlsx                    # 元数据（13 个样本的基础信息）
 │   └── interpretations/             # 解读文档库
-│       ├── SSBR-001/ ~ SSBR-017/   # 17 个样本目录
+│       ├── SSBR-XXX/                # 各样本目录 (当前 13 个)
 │       │   ├── mechanical.md        # 力学解读
 │       │   ├── dsc.md              # 热学解读
 │       │   ├── nmr.md              # 核磁解读
@@ -81,8 +89,13 @@ SSBR/
 │   ├── app.py                       # Gradio Web 应用
 │   └── data_formatter.py            # 数据格式化工具
 │
+├── evaluation/
+│   ├── test_queries.yaml            # 评估测试集
+│   └── report.md                    # 评估报告
+│
 ├── scripts/
 │   ├── rag_search.py                # RAG 检索引擎
+│   ├── evaluate_rag.py              # RAG 评估脚本
 │   ├── generate_summaries.py        # 批量生成 summary.md
 │   ├── init_new_sample.py           # 新样本初始化
 │   ├── backfill_summary_metrics.py  # 性能指标回填
@@ -153,10 +166,12 @@ Top-K 结果排序
 
 | 文献 | 样本范围 | 官能团类型 |
 |------|----------|------------|
-| Gao_2019 | SSBR-001~004 | 氨基、环氧基、羟基 |
-| Qu_2014 | SSBR-005~008 | 硅氧烷偶联 |
-| Zhang_2018 | SSBR-009~012 | oxa-Michael 交联 |
-| Wang_2018 | SSBR-013~017 | 多官能团复合 |
+| Gao_2019 | SSBR-002~004 | 羟基、羧基、硅烷 |
+| Qu_2014 | SSBR-006~008 | 羧基（不同含量） |
+| Zhang_2018 | SSBR-010~012 | oxa-Michael 改性 |
+| Wang_2018 | SSBR-014~017 | 羧基（不同含量） |
+
+> 注：空白对照样本（SSBR-001, 005, 009, 013）已移除，仅保留官能化样本。
 
 ## 许可证
 
