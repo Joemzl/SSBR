@@ -90,20 +90,17 @@ def validate_row(row: Dict[str, str]) -> Dict[str, Any]:
     result = {}
     errors = []
     
-    # 必填字段检查
-    required_fields = ['是否是SSBR', '是否是链中官能化', '官能化试剂名称']
+    # 必填字段检查（只要求是 SSBR）
+    required_fields = ['是否是SSBR']
     for field in required_fields:
         if field not in row or not row[field] or row[field] == '-':
             errors.append(f"缺少必填字段: {field}")
     
-    # 检查是否为有效样本（必须是 SSBR 且是链中官能化）
+    # 检查是否为 SSBR 样本
     is_ssbr = row.get('是否是SSBR', '').strip()
-    is_inchain = row.get('是否是链中官能化', '').strip()
     
     if is_ssbr != '是':
         errors.append(f"非 SSBR 样本 (是否是SSBR={is_ssbr})")
-    if is_inchain != '是':
-        errors.append(f"非链中官能化样本 (是否是链中官能化={is_inchain})")
     
     if errors:
         return {'valid': False, 'errors': errors, 'data': row}
