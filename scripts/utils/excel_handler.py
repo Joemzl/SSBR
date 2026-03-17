@@ -18,7 +18,7 @@ class ExcelHandler:
     """
     SSBR 数据 Excel 文件处理器
     
-    列定义 (A-W 共 23 列):
+    列定义 (A-X 共 24 列):
     A: 样本ID
     B: 是否是 SSBR
     C: 是否是链中官能化
@@ -29,22 +29,23 @@ class ExcelHandler:
     H: 官能化试剂名称
     I: 试剂整体 SMILES
     J: 接枝反应基团
-    K: 核心官能团 SMILES
-    L: 核心官能团名称
-    M: 核心官能团化学式
-    N: 官能化程度_原始数值
-    O: 官能化程度_原始单位
-    P: 高分子指纹描述符
-    Q: 核磁谱图
-    R: 微相分离图片表征
-    S: 核心力学图谱
-    T: DSC 谱图
-    U: 引文
-    V: DOI
-    W: DOI_SI
+    K: 接枝反应基团 SMILES  ← 新增
+    L: 核心官能团 SMILES
+    M: 核心官能团名称
+    N: 核心官能团化学式
+    O: 官能化程度_原始数值
+    P: 官能化程度_原始单位
+    Q: 高分子指纹描述符
+    R: 核磁谱图
+    S: 微相分离图片表征
+    T: 核心力学图谱
+    U: DSC 谱图
+    V: 引文
+    W: DOI
+    X: DOI_SI
     """
     
-    # 列名映射（新 23 列结构）
+    # 列名映射（新 24 列结构）
     COLUMN_MAP = {
         'sample_id': 'A',
         'is_ssbr': 'B',
@@ -56,19 +57,20 @@ class ExcelHandler:
         'reagent_name': 'H',
         'reagent_smiles': 'I',
         'grafting_group': 'J',
-        'functional_group_smiles': 'K',
-        'functional_group_name': 'L',
-        'functional_group_formula': 'M',
-        'functionalization_degree': 'N',
-        'functionalization_unit': 'O',
-        'polymer_fingerprint': 'P',
-        'nmr_figure': 'Q',
-        'tem_figure': 'R',
-        'mechanical_figure': 'S',
-        'dsc_figure': 'T',
-        'citation': 'U',
-        'doi': 'V',
-        'doi_si': 'W',
+        'grafting_group_smiles': 'K',  # 新增
+        'functional_group_smiles': 'L',
+        'functional_group_name': 'M',
+        'functional_group_formula': 'N',
+        'functionalization_degree': 'O',
+        'functionalization_unit': 'P',
+        'polymer_fingerprint': 'Q',
+        'nmr_figure': 'R',
+        'tem_figure': 'S',
+        'mechanical_figure': 'T',
+        'dsc_figure': 'U',
+        'citation': 'V',
+        'doi': 'W',
+        'doi_si': 'X',
     }
     
     # 反向映射
@@ -90,6 +92,8 @@ class ExcelHandler:
         '试剂整体SMILES': 'reagent_smiles',
         '试剂整体 SMILES': 'reagent_smiles',
         '接枝反应基团': 'grafting_group',
+        '接枝反应基团SMILES': 'grafting_group_smiles',  # 新增
+        '接枝反应基团 SMILES': 'grafting_group_smiles',  # 新增
         '核心官能团SMILES': 'functional_group_smiles',
         '核心官能团 SMILES': 'functional_group_smiles',
         '核心官能团名称': 'functional_group_name',

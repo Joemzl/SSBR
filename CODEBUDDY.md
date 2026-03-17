@@ -8,7 +8,7 @@ Auto-generated from all feature plans. Last updated: 2026-03-14
 - **脚本语言**: Python 3.x
 - **AI Skills**: CodeBuddy IDE Skills
 - **Embedding API**: OpenAI text-embedding-3-small (1536 维)
-- **数据存储**: Excel (元数据 A-W 列) + Markdown (解读文档)
+- **数据存储**: Excel (元数据 A-X 列) + Markdown (解读文档)
 - **文献管理**: Zotero + MCP 集成（literature/ 目录作为 fallback）
 
 ## Project Structure
@@ -96,10 +96,11 @@ python scripts/zotero_bridge.py list --with-pdf
 ## Recent Changes
 
 - 002-rag-data-migration (2026-03-14):
+  - 新增「接枝反应基团SMILES」列（K列），Excel 扩展为 24 列
+  - 更新高分子指纹描述符格式：使用 SMILES 替代中文名
   - 集成 Zotero MCP 用于文献管理
   - 新增 `import_metadata.py` 元数据导入脚本
   - 新增 `zotero_bridge.py` Zotero 桥接工具
-  - Excel 扩展为 23 列新结构（A-W 列）
   - 更新 `excel_handler.py` 支持新列结构
   - DOI 列改为原始格式，DOI_SI 改为存在性标记
 
