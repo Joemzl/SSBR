@@ -41,21 +41,45 @@ data:
   mechanical_source: ""
   
   # ========== Payne 效应数据 (如适用) ==========
-  # delta_g_prime:
-  #   value: null
-  #   unit: kPa
-  #   source: ""
-  # delta_g_prime_reduction:
+  # bound_rubber:            # 结合橡胶含量
   #   value: null
   #   unit: "%"
   #   source: ""
-  
-  # ========== DMA 数据 (如适用) ==========
-  # tan_delta_0c:
+  # tan_delta_7_strain:      # 7% 应变下的 tan δ
   #   value: null
   #   unit: "-"
   #   source: ""
-  # tan_delta_60c:
+  # delta_g_prime:           # ΔG' (Payne 效应幅度)
+  #   value: null
+  #   unit: kPa
+  #   source: ""
+  # delta_g_prime_reduction: # ΔG' 下降百分比
+  #   value: null
+  #   unit: "%"
+  #   source: ""
+  # g_prime_0:               # 初始储能模量
+  #   value: null
+  #   unit: kPa
+  #   source: ""
+  # g_prime_inf:             # 稳定储能模量
+  #   value: null
+  #   unit: kPa
+  #   source: ""
+  
+  # ========== DMA 数据 (如适用) ==========
+  # tg_dma:                  # DMA 测得的 Tg
+  #   value: null
+  #   unit: "℃"
+  #   source: ""
+  # tan_delta_0c:            # 0℃ tanδ (湿地抓地力指标)
+  #   value: null
+  #   unit: "-"
+  #   source: ""
+  # tan_delta_60c:           # 60℃ tanδ (滚动阻力指标)
+  #   value: null
+  #   unit: "-"
+  #   source: ""
+  # performance_balance_factor:  # 0℃tanδ / 60℃tanδ
   #   value: null
   #   unit: "-"
   #   source: ""
@@ -101,10 +125,14 @@ data:
 
 ### 数值数据
 
-| 指标 | 数值 | 单位 |
-|------|------|------|
-| ΔG' | - | kPa |
-| ΔG' 下降率 | - | % |
+| 指标 | 数值 | 单位 | 来源 |
+|------|------|------|------|
+| 结合橡胶含量 | - | % | - |
+| ΔG' | - | kPa | - |
+| ΔG' 下降率 | - | % | - |
+| G'₀ (初始模量) | - | kPa | - |
+| G'∞ (稳定模量) | - | kPa | - |
+| tan δ (7% strain) | - | - | - |
 
 ### 核心发现
 
@@ -118,10 +146,12 @@ data:
 
 ### 数值数据
 
-| 指标 | 数值 | 说明 |
-|------|------|------|
-| 0℃ tanδ | - | 湿地抓地力指标 |
-| 60℃ tanδ | - | 滚动阻力指标 |
+| 指标 | 数值 | 单位 | 说明 |
+|------|------|------|------|
+| Tg (DMA) | - | ℃ | tan δ 峰值温度 |
+| tan δ (0℃) | - | - | 湿地抓地力指标 |
+| tan δ (60℃) | - | - | 滚动阻力指标 |
+| 性能平衡因子 | - | - | tan δ(0℃) / tan δ(60℃) |
 
 ### 核心发现
 
