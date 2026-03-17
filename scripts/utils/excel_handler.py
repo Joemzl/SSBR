@@ -3,6 +3,7 @@ Excel 读写工具
 用于读取和修改 SSBR 数据 Excel 文件
 
 Created: 2026-03-05
+Updated: 2026-03-14 - 扩展为 23 列新结构
 """
 
 from pathlib import Path
@@ -17,62 +18,94 @@ class ExcelHandler:
     """
     SSBR 数据 Excel 文件处理器
     
-    列定义 (A-O 为元数据，P-W 为待迁移数据):
+    列定义 (A-W 共 23 列):
     A: 样本ID
-    B: 应用场景
-    C: 官能化试剂名称
-    D: 试剂整体 SMILES
-    E: 核心官能团 SMILES
-    F: 核心官能团名称
-    G: 核心官能团化学式
-    H: 官能化程度 (wt%)
-    I: 核磁谱图
-    J: 微相分离图片表征
-    K: 核心力学图谱
-    L: DSC 谱图
-    M: 引文
-    N: DOI
-    O: DOI_SI
-    P: 100%定伸应力（MPa）
-    Q: 200%定伸应力（MPa）
-    R: 300%定伸应力（MPa）
-    S: 拉伸强度（MPa）
-    T: 断裂伸长率（%）
-    U: 力学数据来源
-    V: 玻璃化转变温度Tg（℃）
-    W: 热学数据来源
+    B: 是否是 SSBR
+    C: 是否是链中官能化
+    D: 苯乙烯含量_wt%
+    E: 乙烯基含量_mol%
+    F: 数均分子量 (Mn)
+    G: 应用场景
+    H: 官能化试剂名称
+    I: 试剂整体 SMILES
+    J: 接枝反应基团
+    K: 核心官能团 SMILES
+    L: 核心官能团名称
+    M: 核心官能团化学式
+    N: 官能化程度_原始数值
+    O: 官能化程度_原始单位
+    P: 高分子指纹描述符
+    Q: 核磁谱图
+    R: 微相分离图片表征
+    S: 核心力学图谱
+    T: DSC 谱图
+    U: 引文
+    V: DOI
+    W: DOI_SI
     """
     
-    # 列名映射
+    # 列名映射（新 23 列结构）
     COLUMN_MAP = {
         'sample_id': 'A',
-        'application': 'B',
-        'reagent_name': 'C',
-        'reagent_smiles': 'D',
-        'functional_group_smiles': 'E',
-        'functional_group_name': 'F',
-        'functional_group_formula': 'G',
-        'functionalization_degree': 'H',
-        'nmr_figure': 'I',
-        'tem_figure': 'J',
-        'mechanical_figure': 'K',
-        'dsc_figure': 'L',
-        'citation': 'M',
-        'doi': 'N',
-        'doi_si': 'O',
-        # 待迁移的数值列
-        'stress_100': 'P',
-        'stress_200': 'Q',
-        'stress_300': 'R',
-        'tensile_strength': 'S',
-        'elongation': 'T',
-        'mechanical_source': 'U',
-        'tg': 'V',
-        'thermal_source': 'W',
+        'is_ssbr': 'B',
+        'is_inchain_functionalization': 'C',
+        'styrene_content': 'D',
+        'vinyl_content': 'E',
+        'mn': 'F',
+        'application': 'G',
+        'reagent_name': 'H',
+        'reagent_smiles': 'I',
+        'grafting_group': 'J',
+        'functional_group_smiles': 'K',
+        'functional_group_name': 'L',
+        'functional_group_formula': 'M',
+        'functionalization_degree': 'N',
+        'functionalization_unit': 'O',
+        'polymer_fingerprint': 'P',
+        'nmr_figure': 'Q',
+        'tem_figure': 'R',
+        'mechanical_figure': 'S',
+        'dsc_figure': 'T',
+        'citation': 'U',
+        'doi': 'V',
+        'doi_si': 'W',
     }
     
     # 反向映射
     COLUMN_TO_FIELD = {v: k for k, v in COLUMN_MAP.items()}
+    
+    # 中文表头映射（用于从 AI 输出导入）
+    HEADER_CN_MAP = {
+        '样本ID': 'sample_id',
+        '是否是SSBR': 'is_ssbr',
+        '是否是 SSBR': 'is_ssbr',
+        '是否是链中官能化': 'is_inchain_functionalization',
+        '苯乙烯含量_wt%': 'styrene_content',
+        '乙烯基含量_mol%': 'vinyl_content',
+        '数均分子量 (Mn)': 'mn',
+        '数均分子量': 'mn',
+        'Mn': 'mn',
+        '应用场景': 'application',
+        '官能化试剂名称': 'reagent_name',
+        '试剂整体SMILES': 'reagent_smiles',
+        '试剂整体 SMILES': 'reagent_smiles',
+        '接枝反应基团': 'grafting_group',
+        '核心官能团SMILES': 'functional_group_smiles',
+        '核心官能团 SMILES': 'functional_group_smiles',
+        '核心官能团名称': 'functional_group_name',
+        '核心官能团化学式': 'functional_group_formula',
+        '官能化程度_原始数值': 'functionalization_degree',
+        '官能化程度_原始单位': 'functionalization_unit',
+        '高分子指纹描述符': 'polymer_fingerprint',
+        '核磁谱图': 'nmr_figure',
+        '微相分离图片表征': 'tem_figure',
+        '核心力学图谱': 'mechanical_figure',
+        'DSC谱图': 'dsc_figure',
+        'DSC 谱图': 'dsc_figure',
+        '引文': 'citation',
+        'DOI': 'doi',
+        'DOI_SI': 'doi_si',
+    }
     
     def __init__(self, excel_path: Path | str):
         """
@@ -201,7 +234,7 @@ class ExcelHandler:
     
     def get_metadata_fields(self, sample_id: str) -> Dict[str, Any]:
         """
-        获取样本的元数据字段 (A-O 列)
+        获取样本的所有元数据字段 (A-W 列)
         
         Args:
             sample_id: 样本 ID
@@ -213,44 +246,190 @@ class ExcelHandler:
         if not data:
             return {}
         
-        # 只返回 A-O 列的数据
-        metadata_fields = [
-            'sample_id', 'application', 'reagent_name', 'reagent_smiles',
-            'functional_group_smiles', 'functional_group_name', 
-            'functional_group_formula', 'functionalization_degree',
-            'nmr_figure', 'tem_figure', 'mechanical_figure', 'dsc_figure',
-            'citation', 'doi', 'doi_si'
-        ]
-        return {k: data[k] for k in metadata_fields if k in data}
+        return data
     
-    def get_migration_data(self, sample_id: str) -> Dict[str, Any]:
+    def get_next_sample_id(self) -> str:
         """
-        获取待迁移的数据字段 (P-W 列)
+        获取下一个可用的样本 ID
+        
+        Returns:
+            下一个样本 ID (如 'SSBR-015')
+        """
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
+        
+        max_num = 0
+        for row in range(2, self.worksheet.max_row + 1):
+            sample_id = self.get_cell_value(row, 'A')
+            if sample_id and sample_id.startswith('SSBR-'):
+                try:
+                    num = int(sample_id.split('-')[1])
+                    max_num = max(max_num, num)
+                except (ValueError, IndexError):
+                    pass
+        
+        return f"SSBR-{max_num + 1:03d}"
+    
+    def add_sample(self, data: Dict[str, Any], sample_id: Optional[str] = None) -> str:
+        """
+        添加新样本
+        
+        Args:
+            data: 样本数据字典（字段名或中文表头作为键）
+            sample_id: 指定样本 ID，默认自动分配
+            
+        Returns:
+            分配的样本 ID
+        """
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
+        
+        # 标准化字段名（将中文表头转换为字段名）
+        normalized_data = self._normalize_field_names(data)
+        
+        # 分配样本 ID
+        if sample_id:
+            # 检查是否已存在
+            if self.find_sample_row(sample_id):
+                raise ValueError(f"样本 ID {sample_id} 已存在")
+            normalized_data['sample_id'] = sample_id
+        else:
+            normalized_data['sample_id'] = self.get_next_sample_id()
+        
+        # 找到下一个空行（从第 2 行开始查找，跳过表头）
+        new_row = self._find_next_empty_row()
+        
+        # 写入数据
+        for field, col in self.COLUMN_MAP.items():
+            value = normalized_data.get(field)
+            if value is not None:
+                self.set_cell_value(new_row, col, value)
+        
+        return normalized_data['sample_id']
+    
+    def _find_next_empty_row(self) -> int:
+        """
+        找到下一个空行（A 列为空的行）
+        
+        Returns:
+            空行的行号
+        """
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
+        
+        # 从第 2 行开始查找（第 1 行是表头）
+        row = 2
+        while row <= self.worksheet.max_row + 1:
+            cell_value = self.get_cell_value(row, 'A')
+            if cell_value is None or str(cell_value).strip() == '':
+                return row
+            row += 1
+        return row
+    
+    def update_sample(self, sample_id: str, data: Dict[str, Any]) -> bool:
+        """
+        更新现有样本
         
         Args:
             sample_id: 样本 ID
+            data: 要更新的数据字典
             
         Returns:
-            迁移数据字典，分为 mechanical 和 dsc 两部分
+            是否成功
         """
-        data = self.get_sample_data(sample_id)
-        if not data:
-            return {}
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
         
-        return {
-            'mechanical': {
-                'stress_100': data.get('stress_100'),
-                'stress_200': data.get('stress_200'),
-                'stress_300': data.get('stress_300'),
-                'tensile_strength': data.get('tensile_strength'),
-                'elongation': data.get('elongation'),
-                'mechanical_source': data.get('mechanical_source'),
-            },
-            'dsc': {
-                'tg': data.get('tg'),
-                'thermal_source': data.get('thermal_source'),
-            }
-        }
+        row = self.find_sample_row(sample_id)
+        if not row:
+            return False
+        
+        # 标准化字段名
+        normalized_data = self._normalize_field_names(data)
+        
+        # 更新数据（跳过 sample_id）
+        for field, col in self.COLUMN_MAP.items():
+            if field == 'sample_id':
+                continue
+            if field in normalized_data:
+                value = normalized_data[field]
+                self.set_cell_value(row, col, value)
+        
+        return True
+    
+    def _normalize_field_names(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        将数据字典的键标准化为字段名
+        
+        Args:
+            data: 原始数据字典（键可能是中文表头或字段名）
+            
+        Returns:
+            标准化后的数据字典
+        """
+        normalized = {}
+        for key, value in data.items():
+            # 如果是中文表头，转换为字段名
+            if key in self.HEADER_CN_MAP:
+                field = self.HEADER_CN_MAP[key]
+            elif key in self.COLUMN_MAP:
+                field = key
+            else:
+                # 尝试直接作为字段名
+                field = key
+            
+            # 处理 "-" 占位符
+            if value == '-' or value == '－':
+                value = None
+            
+            normalized[field] = value
+        
+        return normalized
+    
+    def find_by_doi(self, doi: str) -> Optional[Dict[str, Any]]:
+        """
+        通过 DOI 查找样本
+        
+        Args:
+            doi: 文献 DOI
+            
+        Returns:
+            样本数据字典，未找到返回 None
+        """
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
+        
+        doi_lower = doi.lower().strip()
+        
+        for row in range(2, self.worksheet.max_row + 1):
+            cell_doi = self.get_cell_value(row, self.COLUMN_MAP['doi'])
+            if cell_doi and str(cell_doi).lower().strip() == doi_lower:
+                return self.get_row_data(row)
+        
+        return None
+    
+    def get_samples_by_doi(self, doi: str) -> List[Dict[str, Any]]:
+        """
+        获取同一 DOI 下的所有样本（一篇文献可能有多个样本）
+        
+        Args:
+            doi: 文献 DOI
+            
+        Returns:
+            样本数据列表
+        """
+        if not self.worksheet:
+            raise RuntimeError("Excel 文件未打开")
+        
+        doi_lower = doi.lower().strip()
+        samples = []
+        
+        for row in range(2, self.worksheet.max_row + 1):
+            cell_doi = self.get_cell_value(row, self.COLUMN_MAP['doi'])
+            if cell_doi and str(cell_doi).lower().strip() == doi_lower:
+                samples.append(self.get_row_data(row))
+        
+        return samples
     
     def delete_columns(self, columns: List[str]) -> None:
         """
@@ -311,6 +490,12 @@ class ExcelHandler:
 if __name__ == '__main__':
     # 简单测试
     print("ExcelHandler 模块测试")
-    print("使用方法:")
+    print("\n使用方法:")
     print("  with ExcelHandler('dataset/数据.xlsx') as excel:")
+    print("      # 获取样本数据")
     print("      data = excel.get_sample_data('SSBR-001')")
+    print("      # 添加新样本")
+    print("      new_id = excel.add_sample({'官能化试剂名称': 'MPA', ...})")
+    print("      # 通过 DOI 查找")
+    print("      samples = excel.get_samples_by_doi('10.1039/xxx')")
+    print("      excel.save()")

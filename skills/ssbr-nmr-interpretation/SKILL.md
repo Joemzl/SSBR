@@ -23,16 +23,21 @@ description: 核磁共振(NMR)谱图自动化解读专家，服务于SSBR官能�
 
 ## 检索流程
 
-1.  读取项目本地固定路径`/dataset/数据.xlsx`，获取用户指定行的样本信息，提取4个核心字段：
-    - 样本唯一ID、核磁谱图图注信息、文献DOI、文献SI的DOI（DOI_SI）、引文信息
-2.  按提取的文献DOI，检索项目本地固定路径`/literature/`文件夹，匹配文件名中包含对应DOI的PDF文献；
-3.  **【关键】按提取的DOI_SI，检索项目本地固定路径`/literature_SI/`文件夹，匹配文件名中包含对应DOI_SI的PDF补充材料（Supporting Information）**；
+1.  读取项目本地固定路径`/dataset/数据.xlsx`，获取用户指定行的样本信息，提取核心字段：
+    - 样本唯一ID（A列）、核磁谱图图注信息（Q列）、文献DOI（V列）、DOI_SI存在性标记（W列）、引文信息（U列）
+2.  **【Zotero MCP 优先】** 使用 zotero-mcp 的 search_library 工具，按 DOI 搜索 Zotero 库：
+    - 调用参数：`{"q": "{DOI}", "limit": 3}`
+    - 从返回结果的 `attachments` 中获取 PDF 文件路径（`filePath` 字段）
+    - 若同一条目有多个 PDF 附件，文件名包含 `SI`/`Supporting`/`Supplementary` 的为 SI 补充材料
+3.  **【Fallback】** 若 Zotero MCP 不可用或未找到：
+    - 按文献 DOI，检索项目本地固定路径 `/literature/` 文件夹，匹配文件名中包含对应 DOI 的 PDF 文献
+    - 若 DOI_SI 列为"有"，检索 `/literature_SI/` 文件夹获取 SI 补充材料
 4.  在匹配到的PDF文献中，按图注信息定位到对应的¹H核磁谱图，同时提取该文献中与该样本相关的正文、表格数据；
 5.  **【关键】若主文献中未找到完整的结构表征数据（如官能化程度、接枝百分比），必须在SI补充材料中继续检索Table S1-S2等补充表格**；
 6.  若检索失败：
     - 找不到对应Excel行/字段：输出「错误：未在/dataset/数据.xlsx中找到指定行的有效信息，请检查行号」
-    - 找不到对应文献PDF：输出「错误：未在/literature/文件夹中找到DOI为{DOI}的对应文献，请检查PDF命名是否符合规则」
-    - 找不到对应SI文献：输出「提示：未在/literature_SI/文件夹中找到SI补充材料，部分详细数据可能无法获取」
+    - 找不到对应文献PDF：输出「错误：未找到DOI为{DOI}的对应文献，请确认文献已导入Zotero或放置在literature/目录」
+    - 找不到对应SI文献：输出「提示：未找到SI补充材料，部分详细数据可能无法获取」
     - 找不到对应图片：输出「错误：在对应文献中未找到图注为{图注}的核磁谱图，请检查Excel图注信息」
 7.  检索成功后，再执行后续的解读规则。
 

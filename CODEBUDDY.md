@@ -1,6 +1,6 @@
 ﻿# SSBR Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-03-05
+Auto-generated from all feature plans. Last updated: 2026-03-14
 
 ## Active Technologies
 
@@ -8,13 +8,14 @@ Auto-generated from all feature plans. Last updated: 2026-03-05
 - **脚本语言**: Python 3.x
 - **AI Skills**: CodeBuddy IDE Skills
 - **Embedding API**: OpenAI text-embedding-3-small (1536 维)
-- **数据存储**: Excel (元数据) + Markdown (解读文档)
+- **数据存储**: Excel (元数据 A-W 列) + Markdown (解读文档)
+- **文献管理**: Zotero + MCP 集成（literature/ 目录作为 fallback）
 
 ## Project Structure
 
 ```text
 dataset/
-├── 数据.xlsx                    # 元数据 (A-O 列)
+├── 数据.xlsx                    # 元数据 (A-W 列，23 列)
 └── interpretations/             # 解读文档库
     ├── SSBR-XXX/                # 各样本目录 (动态)
     │   ├── mechanical.md        # 力学解读
@@ -38,6 +39,8 @@ skills/
 scripts/
 ├── generate_summaries.py        # 批量生成 summary.md
 ├── init_new_sample.py           # 新样本初始化
+├── import_metadata.py           # 元数据导入（从 AI 提取的 Markdown 表格）
+├── zotero_bridge.py             # Zotero MCP 桥接工具
 ├── update_vector_index.py       # 向量索引更新
 ├── rag_search.py                # RAG 检索核心
 └── utils/                       # 工具函数
@@ -63,17 +66,25 @@ specs/002-rag-data-migration/    # 规范文档
 ## Commands
 
 ```bash
-# 生成所有样本的 summary.md
-python scripts/generate_summaries.py
+# 从 AI 提取的数据导入到 Excel（推荐工作流）
+python scripts/import_metadata.py --file extracted_data.md --dry-run  # 预览
+python scripts/import_metadata.py --file extracted_data.md            # 导入
 
 # 初始化新样本
 python scripts/init_new_sample.py --sample-id SSBR-018
+
+# 生成所有样本的 summary.md
+python scripts/generate_summaries.py
 
 # 验证数据完整性
 python scripts/update_vector_index.py --validate-only
 
 # RAG 检索测试
 python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
+
+# Zotero 文献查询
+python scripts/zotero_bridge.py search "10.1039/xxx"
+python scripts/zotero_bridge.py list --with-pdf
 ```
 
 ## Code Style
@@ -83,6 +94,14 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 - Markdown: 标准 CommonMark
 
 ## Recent Changes
+
+- 002-rag-data-migration (2026-03-14):
+  - 集成 Zotero MCP 用于文献管理
+  - 新增 `import_metadata.py` 元数据导入脚本
+  - 新增 `zotero_bridge.py` Zotero 桥接工具
+  - Excel 扩展为 23 列新结构（A-W 列）
+  - 更新 `excel_handler.py` 支持新列结构
+  - DOI 列改为原始格式，DOI_SI 改为存在性标记
 
 - 002-rag-data-migration (2026-03-07):
   - 移除空白对照样本，仅保留官能化样本
@@ -101,6 +120,8 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 - **数据来源层级**: L1 (表格) > L2 (图面标注) > L3 (曲线估读)
 - **零幻觉原则**: 所有数值必须来自文献，禁止编造
 - **样本编号规则**: 样本 ID (如 SSBR-002) 是稀疏非连续的，文档中禁止硬编码样本总数或使用范围描述 (如 SSBR-001~017)
+- **文献检索优先级**: Zotero MCP 优先 → literature/ 目录 fallback
+- **元数据导入流程**: AI 提取 Markdown 表格 → import_metadata.py 导入 Excel
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
