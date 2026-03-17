@@ -48,7 +48,7 @@
 | **微相分离图片表征** | TEM/SEM/AFM等，遵循规则1的图注格式，无则填"-"。 | 文献 Fig.8 TEM图 |
 | **核心力学图谱** | 包含静态拉伸或Payne效应/DMA动态力学曲线，遵循规则1图注格式。 | 文献 Fig.6 Payne效应曲线 |
 | **DSC谱图** | Tg相关测试的图注格式，遵循规则1。 | 文献 Fig.11 DSC曲线 |
-| **引文** | 完整引文格式：作者. 标题[J]. 期刊, 年, 卷(期): 页码. | Qu L, et al. Contribution of silica... RSC Adv, 2014, 4: 64354. |
+| **引文** | 严格遵循 GB/T 7714-2015 期刊论文著录格式，完整引文格式为：作者。完整文献标题 [J]. 期刊全称，出版年，卷 (期): 起止页码。规范要求：1. 期刊论文统一标注 [J] 作为文献类型标识；2. 必须提取文献完整标题，严禁使用省略号、缩略语简写标题，确保标题信息完整无缺；3. 3 位及以内作者全部列出，3 位以上作者列出前 3 位，后加 ", et al."；4. 无对应著录项的内容填 "-"。 | Qu L, Zhang W, Yang H, et al. Contribution of silica interaction with functionalized SSBR on the performance of green tire tread compounds[J]. RSC Advances, 2014, 4(109): 64354-64362. |
 | **DOI** | 直接填写文献的**原始 DOI**，保留 `/` 符号，不做任何转换。 | 10.1039/c4ra09492a |
 | **DOI_SI** | 标记该文献是否附有 SI 补充材料。若有则填"有"，若无则填"-"。 | 有 |
 
@@ -60,6 +60,6 @@
 
 | 样本ID | 是否是SSBR | 是否是链中官能化 | 苯乙烯含量_wt% | 乙烯基含量_mol% | 数均分子量 (Mn) | 应用场景 | 官能化试剂名称 | 试剂整体SMILES | 接枝反应基团 | 接枝反应基团SMILES | 核心官能团SMILES | 核心官能团名称 | 核心官能团化学式 | 官能化程度_原始数值 | 官能化程度_原始单位 | 高分子指纹描述符 | 核磁谱图 | 微相分离图片表征 | 核心力学图谱 | DSC谱图 | 引文 | DOI | DOI_SI |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| - | 是 | 是 | 21.0 | 60.0 | 206600 | 绿色轮胎胎面胶 | 3-巯基丙酸（MPA） | O=C(O)CCS | 巯基 | S | C(=O)O | 羧基 | -COOH | 10.5 | mol% | O=C(O)CCS-206600-21.0-60.0-S-C(=O)O-10.5mol% | 文献 Fig.1 ¹H NMR谱图 | 文献 Fig.8 TEM图 | 文献 Fig.6 Payne效应曲线 | 文献 Fig.11 DSC曲线 | Qu L, et al. Contribution of silica... RSC Adv, 2014, 4: 64354. | 10.1039/c4ra09492a | 有 |
+| - | 是 | 是 | 21.0 | 60.0 | 206600 | 绿色轮胎胎面胶 | 3-巯基丙酸（MPA） | O=C(O)CCS | 巯基 | S | C(=O)O | 羧基 | -COOH | 10.5 | mol% | O=C(O)CCS-206600-21.0-60.0-S-C(=O)O-10.5mol% | 文献 Fig.1 ¹H NMR谱图 | 文献 Fig.8 TEM图 | 文献 Fig.6 Payne效应曲线 | 文献 Fig.11 DSC曲线 | Qu L, Zhang W, Yang H, et al. Contribution of silica interaction with functionalized SSBR on the performance of green tire tread compounds[J]. RSC Advances, 2014, 4(109): 64354-64362. | 10.1039/c4ra09492a | 有 |
 
 请确认你已理解上述提取规则与逻辑拼接公式。一旦我上传具体的学术文献 PDF 文件，请立即解析并按照此标准表格输出。
