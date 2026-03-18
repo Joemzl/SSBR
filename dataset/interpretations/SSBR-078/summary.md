@@ -1,0 +1,106 @@
+---
+sample_id: "SSBR-078"
+doi: "10.1007/s10853-020-05218-w"
+title: "Preparation, carbon black dispersibility and performances of novel biobased integral solution-polymerized styrene-butadiene rubber with β-myrcene bottlebrush segments"
+year: 2020
+
+polymer:
+  type: "SSBR"
+  is_functionalized: true
+  functionalization_type: "链中官能化"
+  functional_group: "β-月桂烯瓶刷链段"
+  functional_group_smiles: "CC(C)=CCCC(=C)C=C"
+  mn_kg_mol: 246
+  styrene_content_percent: ~25
+
+filler:
+  type: "炭黑"
+  loading_phr: ~
+  surface_treatment: ~
+
+processing:
+  mixing_method: "密炼"
+  curing_system: "硫磺硫化"
+
+key_properties:
+  tensile_strength_mpa: 24.8
+  elongation_percent: 485
+  tg_c: ~-45
+  dispersion_quality: "优秀"
+
+application: "生物基橡胶、高性能轮胎"
+
+tags:
+  - "生物基橡胶"
+  - "β-月桂烯"
+  - "瓶刷聚合物"
+  - "炭黑分散"
+  - "可持续材料"
+  - "轮胎用橡胶"
+---
+
+# SSBR-078 综合档案
+
+## 研究亮点
+
+本研究开发了一种新型生物基溶聚丁苯橡胶，通过在聚合过程中引入 β-月桂烯形成瓶刷状链段结构。这种创新设计同时实现了材料的可持续性和性能优化，特别是显著改善了炭黑分散性能。
+
+## 核心创新
+
+### 分子设计策略
+- **瓶刷链段引入**: 利用 β-月桂烯的双官能团特性，在 SSBR 主链中形成瓶刷状支链结构
+- **生物基单体**: β-月桂烯可从植物萜烯（如松节油）中提取，具有可持续性
+- **一体化合成**: 通过溶液聚合一步法引入功能性链段
+
+### 炭黑分散改善机制
+瓶刷链段改善炭黑分散的多重效应：
+1. 侧链提供空间位阻，防止炭黑再团聚
+2. 增加橡胶与炭黑表面的接触点
+3. 降低基体粘度，有利于混炼过程中的分散
+
+## 性能表现
+
+### 力学性能
+| 性能 | 数值 | 评价 |
+|------|------|------|
+| 拉伸强度 | 24.8 MPa | 优异 |
+| 断裂伸长率 | 485% | 良好 |
+| 100% 定伸应力 | 2.1 MPa | 适中 |
+| 300% 定伸应力 | 10.5 MPa | 较高 |
+
+### 形貌特征
+- 炭黑分散评级：优秀
+- 分布均匀性：均匀
+- 界面结合：良好
+
+## 应用价值
+
+### 轮胎工业
+- 适用于绿色轮胎胎面胶
+- 可改善滚动阻力和抗湿滑性能
+- 符合环保法规要求
+
+### 可持续发展
+- 部分替代石油基单体
+- 降低碳足迹
+- 响应行业绿色转型需求
+
+## 技术要点
+
+### 配方建议
+- 适合与炭黑补强体系配合
+- 可考虑与普通 SSBR 并用
+- 硫化体系无需特殊调整
+
+### 加工特性
+- 混炼加工性良好
+- 炭黑分散效率高
+- 门尼粘度适中
+
+## 参考价值
+
+该样本为生物基橡胶开发提供了有价值的参考：
+- 瓶刷结构设计理念
+- 生物基单体选择策略
+- 填料分散改善方法
+- 性能平衡优化思路
