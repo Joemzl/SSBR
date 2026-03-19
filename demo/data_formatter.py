@@ -57,8 +57,10 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
     }
     
     # 提取官能化信息
-    # 核心官能团: 羧基 (-COOH)
-    fg_match = re.search(r'\*\*核心官能团\*\*:\s*(.+?)(?:\s*\(|$)', content)
+    # 支持两种格式：
+    # 1. **核心官能团**: 羧基 (-COOH)
+    # 2. - **核心官能团**: 羧基（-COOH）
+    fg_match = re.search(r'[-\s]*\*\*核心官能团\*\*:\s*(.+?)(?:\s*[（(]|$|\n)', content)
     if fg_match:
         fg_name = fg_match.group(1).strip()
         if fg_name and fg_name != '-' and fg_name != '- (-)':
@@ -67,7 +69,8 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
             result["functional_group"] = "未官能化（空白对照）"
     
     # 官能化试剂
-    reagent_match = re.search(r'\*\*官能化试剂\*\*:\s*(.+)', content)
+    # 支持 "- **官能化试剂**: ..." 格式
+    reagent_match = re.search(r'[-\s]*\*\*官能化试剂\*\*:\s*(.+?)(?:\n|$)', content)
     if reagent_match:
         reagent = reagent_match.group(1).strip()
         if "无" in reagent or "空白" in reagent:
@@ -76,7 +79,8 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
             result["reagent"] = reagent
     
     # 官能化程度
-    degree_match = re.search(r'\*\*官能化程度\*\*:\s*([\d.]+)\s*wt%', content)
+    # 支持 "- **官能化程度**: 8.7 wt%" 格式
+    degree_match = re.search(r'[-\s]*\*\*官能化程度\*\*:\s*([\d.]+)\s*wt%', content)
     if degree_match:
         result["degree"] = f"{degree_match.group(1)} wt%"
     else:
@@ -129,23 +133,22 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
         result["application"] = [app.strip() for app in apps if app.strip()]
     
     # 文献来源
-    # 从引文中提取作者年份
-    cite_match = re.search(r'\*\*引文\*\*:\s*(.+)', content)
+    # 从 DOI 和引文中提取
+    doi_match = re.search(r'\*\*DOI\*\*:\s*(.+?)(?:\n|$)', content)
+    cite_match = re.search(r'\*\*引文\*\*:\s*(.+?)(?:\n|$)', content)
+    
     if cite_match:
         cite_text = cite_match.group(1).strip()
-        # 提取第一作者
-        author_match = re.match(r'(\w+)\s*\w*\s*,', cite_text)
-        # 从引文中提取年份（在期刊名后面）
-        year_match = re.search(r',(\d{4}),', cite_text)
-        if not year_match:
-            # 尝试从 DOI 中提取
-            doi_year_match = re.search(r'_(\d{4})(?:_|$)', content)
-            if doi_year_match:
-                year_match = doi_year_match
-        
-        if author_match:
-            year = year_match.group(1) if year_match else "N/A"
-            result["source"] = f"{author_match.group(1)} et al. {year}"
+        # 尝试提取期刊和年份，格式如 "RSC Adv., 2019, 9, 18888-18897"
+        journal_year_match = re.search(r'([A-Za-z\s\.]+),\s*(\d{4})', cite_text)
+        if journal_year_match:
+            journal = journal_year_match.group(1).strip().rstrip(',.')
+            year = journal_year_match.group(2)
+            result["source"] = f"{journal}, {year}"
+        else:
+            result["source"] = cite_text[:50]  # 截取前50字符
+    elif doi_match:
+        result["source"] = f"DOI: {doi_match.group(1).strip()}"
     
     return result
 

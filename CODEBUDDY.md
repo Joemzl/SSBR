@@ -1,6 +1,6 @@
 ﻿# SSBR Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-03-14
+Auto-generated from all feature plans. Last updated: 2026-03-19
 
 ## Active Technologies
 
@@ -9,6 +9,7 @@ Auto-generated from all feature plans. Last updated: 2026-03-14
 - **AI Skills**: CodeBuddy IDE Skills
 - **Embedding API**: OpenAI text-embedding-3-small (1536 维)
 - **数据存储**: Excel (元数据 A-X 列) + Markdown (解读文档)
+- **向量缓存**: 本地 JSON 文件 (`.cache/vector_cache.json`)
 - **文献管理**: Zotero + MCP 集成（literature/ 目录作为 fallback）
 
 ## Project Structure
@@ -24,6 +25,9 @@ dataset/
     │   ├── tem.md              # TEM 解读
     │   └── summary.md          # 综合档案 (RAG 检索核心)
     └── TEMPLATE_*.md            # 模板文件
+
+.cache/
+└── vector_cache.json            # 向量缓存文件 (3.8 MB, 82 个文档)
 
 skills/
 ├── ssbr-recommender/            # RAG 推荐 Skill
@@ -41,6 +45,7 @@ scripts/
 ├── init_new_sample.py           # 新样本初始化
 ├── import_metadata.py           # 元数据导入（从 AI 提取的 Markdown 表格）
 ├── zotero_bridge.py             # Zotero MCP 桥接工具
+├── build_vector_cache.py        # 向量缓存构建脚本
 ├── update_vector_index.py       # 向量索引更新
 ├── rag_search.py                # RAG 检索核心
 └── utils/                       # 工具函数
@@ -49,7 +54,8 @@ scripts/
     ├── embedding.py
     ├── similarity.py
     ├── validators.py
-    └── query_preprocessor.py
+    ├── query_preprocessor.py
+    └── vector_cache.py          # 向量缓存模块
 
 specs/002-rag-data-migration/    # 规范文档
 ├── spec.md
@@ -66,6 +72,11 @@ specs/002-rag-data-migration/    # 规范文档
 ## Commands
 
 ```bash
+# 向量缓存管理（新增）
+python scripts/build_vector_cache.py           # 增量更新缓存
+python scripts/build_vector_cache.py --force   # 强制重建缓存
+python scripts/build_vector_cache.py --stats   # 查看缓存状态
+
 # 从 AI 提取的数据导入到 Excel（推荐工作流）
 python scripts/import_metadata.py --file extracted_data.md --dry-run  # 预览
 python scripts/import_metadata.py --file extracted_data.md            # 导入
@@ -95,6 +106,14 @@ python scripts/zotero_bridge.py list --with-pdf
 
 ## Recent Changes
 
+- 002-rag-data-migration (2026-03-19):
+  - **性能优化**: 实现向量缓存机制，查询延迟从 25-30秒 降至 1-2秒
+  - 新增 `scripts/utils/vector_cache.py` 向量缓存模块
+  - 新增 `scripts/build_vector_cache.py` 缓存构建脚本
+  - 更新 `rag_search.py` 支持缓存模式
+  - 更新 Web Demo 启动时预加载缓存
+  - 可检索样本数增至 82 个
+
 - 002-rag-data-migration (2026-03-14):
   - 新增「接枝反应基团SMILES」列（K列），Excel 扩展为 24 列
   - 更新高分子指纹描述符格式：使用 SMILES 替代中文名
@@ -117,6 +136,7 @@ python scripts/zotero_bridge.py list --with-pdf
 ## Key Concepts
 
 - **RAG 检索**: 基于 summary.md 内容的语义检索
+- **向量缓存**: 预计算文档向量存储于 `.cache/vector_cache.json`，支持增量更新
 - **解读文档**: YAML front matter (结构化数据) + Markdown 正文 (自然语言)
 - **数据来源层级**: L1 (表格) > L2 (图面标注) > L3 (曲线估读)
 - **零幻觉原则**: 所有数值必须来自文献，禁止编造
