@@ -8,6 +8,8 @@ python scripts/import_metadata.py --file other/extracted_data.md --dry-run
 ---
 
 <!-- 在此行下方粘贴 Gemini 输出的表格，注意每次粘贴表格时，请把之前的表格删掉 -->
+| 样本ID | 是否是SSBR | 是否是链中官能化 | 苯乙烯含量_wt% | 乙烯基含量_mol% | 数均分子量 (Mn) | 应用场景 | 官能化试剂名称 | 试剂整体SMILES | 接枝反应基团 | 接枝反应基团SMILES | 核心官能团SMILES | 核心官能团名称 | 核心官能团化学式 | 官能化程度_原始数值 | 官能化程度_原始单位 | 高分子指纹描述符 | 核磁谱图 | 微相分离图片表征 | 核心力学图谱 | DSC谱图 | 引文 | DOI | DOI_SI |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | - | 是 | 否 | - | - | - | 绿色轮胎、白炭黑/EBR 纳米复合材料 | - | - | - | - | - | - | - | - | - | - | - | 文献 Fig.3 TEM图 | 文献 Fig.11 应力-应变曲线 | - | Hui J, Liu L, Zhang Y, et al. Structure and performance of silica/functionalized solution-polymerized styrene butadiene rubber/epoxidized butadiene rubber nanocomposites[J]. Polymer, 2024, 294: 126682. | 10.1016/j.polymer.2024.126682 | - |
 | - | 是 | 是 | 10 | 41 | 161000 | 轮胎、可逆网络、功能化接枝 | 腈氧化物 (CNO-py/CNO-COOH) | c1cc[n+]cc1C=N[O-].OC(=O)c1ccccc1C=N[O-] | 碳碳双键 | C=C | - | 吡啶基/羧基 | - | 1.9-16.8 | % | c1cc[n+]cc1C=N[O-]-161000-10-41-C=C--16.8% | 文献 Fig.4 | - | 文献 Fig.7 应力-应变曲线 | 文献 Fig.5 | Jiang L, Manai D, Kawasaki S, et al. Ionic functionalization of poly(styrene-co-butadiene) via catalyst-free click reactions with acid and base-tethered nitrile N-oxides[J]. European Polymer Journal, 2025, 223: 113653. | 10.1016/j.europolj.2024.113653 | 有 |
 | - | 是 | 否 | - | - | - | 橡胶混炼加工、内混机磨损研究 | 石墨烯润滑剂 | - | - | - | - | - | - | - | - | - | - | - | - | - | Han D, Liu C, Wang L, et al. Investigation of NR, BR, and SBR composite material properties and internal mixer Wear under various lubricating oil media during mixing process[J]. Surface & Coatings Technology, 2024, 480: 130611. | 10.1016/j.surfcoat.2024.130611 | - |

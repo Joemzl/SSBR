@@ -101,8 +101,8 @@ python scripts/reranker.py --warmup            # 加载重排模型
 python scripts/reranker.py --test              # 运行重排测试
 
 # 从 AI 提取的数据导入到 Excel（推荐工作流）
-python scripts/import_metadata.py --file extracted_data.md --dry-run  # 预览
-python scripts/import_metadata.py --file extracted_data.md            # 导入
+python scripts/import_metadata.py --file dataset/extracted_data.md --dry-run  # 预览
+python scripts/import_metadata.py --file dataset/extracted_data.md            # 导入
 
 # 初始化新样本
 python scripts/init_new_sample.py --sample-id SSBR-018
