@@ -15,6 +15,9 @@ pyyaml>=6.0
 # OpenAI Embedding API
 openai>=1.0.0
 
+# Anthropic Claude API (可选，用于生成回答，优先于 OpenAI)
+anthropic>=0.18.0
+
 # 数值计算 (余弦相似度等)
 numpy>=1.24.0
 

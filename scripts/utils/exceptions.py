@@ -47,9 +47,9 @@ class RerankError(QAError):
 
 
 class GenerationError(QAError):
-    """Raised when GPT API call fails."""
+    """Raised when LLM API call fails (Claude or OpenAI)."""
     
-    def __init__(self, message: str = "GPT API 调用失败", original_error: Exception = None):
+    def __init__(self, message: str = "LLM API 调用失败", original_error: Exception = None):
         self.original_error = original_error
         super().__init__(message, code="QA005")
 
@@ -91,7 +91,7 @@ class TimeoutError(QAError):
 
 def handle_generation_error(error: Exception) -> str:
     """
-    Generate a fallback message when GPT generation fails.
+    Generate a fallback message when LLM generation fails.
     
     Args:
         error: The original exception

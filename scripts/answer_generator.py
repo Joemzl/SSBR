@@ -1,13 +1,23 @@
 """
 Answer Generator Module for RAG QA System
 
-This module generates natural language answers using OpenAI GPT API
+This module generates natural language answers using LLM APIs
 based on retrieved and reranked samples.
+
+支持的模型提供商（按优先级）：
+1. Claude 3.5 Sonnet (优先，需要 ANTHROPIC_API_KEY)
+2. GPT-4o-mini (降级，需要 OPENAI_API_KEY)
+
+配置方式：
+- 设置 ANTHROPIC_API_KEY 启用 Claude
+- 设置 OPENAI_API_KEY 作为降级或默认选项
+- Claude 不可用时自动降级到 OpenAI
 """
 
 import os
 import re
 import time
+import logging
 from typing import List, Optional, Dict, Any
 from pathlib import Path
 
@@ -23,65 +33,60 @@ from utils.prompt_templates import (
     get_system_prompt, build_user_prompt, AnswerType as PromptAnswerType
 )
 from utils.exceptions import GenerationError, handle_generation_error
+from utils.llm_client import UnifiedLLMClient, LLMConfig, LLMProvider
+
+logger = logging.getLogger(__name__)
 
 
 class AnswerGenerator:
     """
-    Generate natural language answers using GPT API.
+    Generate natural language answers using LLM APIs.
     
     This class handles:
     - Building prompts from ranked results
-    - Calling OpenAI API
+    - Calling LLM API (Claude 优先, OpenAI 降级)
     - Extracting and validating citations
     - Post-processing answers
+    
+    Usage:
+        generator = AnswerGenerator()
+        answer = generator.generate(query, ranked_results, answer_type)
+        print(f"使用模型: {answer.model_used}")
     """
     
-    DEFAULT_MODEL = "gpt-4o-mini"
     DEFAULT_MAX_TOKENS = 800
     DEFAULT_TEMPERATURE = 0.3
     DEFAULT_TIMEOUT = 30
     
     def __init__(
         self,
-        model: str = DEFAULT_MODEL,
         max_tokens: int = DEFAULT_MAX_TOKENS,
         temperature: float = DEFAULT_TEMPERATURE,
         timeout: float = DEFAULT_TIMEOUT,
-        api_key: Optional[str] = None
+        llm_config: Optional[LLMConfig] = None
     ):
         """
         Initialize AnswerGenerator.
         
         Args:
-            model: OpenAI model name
             max_tokens: Maximum tokens in response
             temperature: Sampling temperature
             timeout: API timeout in seconds
-            api_key: OpenAI API key (or use OPENAI_API_KEY env var)
+            llm_config: LLM 配置，默认从环境变量加载
         """
-        self.model = os.environ.get("QA_MODEL", model)
         self.max_tokens = int(os.environ.get("QA_MAX_TOKENS", max_tokens))
         self.temperature = temperature
         self.timeout = timeout
         
-        # Initialize OpenAI client
-        self._client = None
-        self._api_key = api_key or os.environ.get("OPENAI_API_KEY")
-    
-    def _get_client(self):
-        """Get or create OpenAI client."""
-        if self._client is None:
-            try:
-                from openai import OpenAI
-                self._client = OpenAI(
-                    api_key=self._api_key,
-                    timeout=self.timeout
-                )
-            except ImportError:
-                raise ImportError(
-                    "openai package is required. Install with: pip install openai>=1.0.0"
-                )
-        return self._client
+        # 初始化统一 LLM 客户端
+        if llm_config is None:
+            llm_config = LLMConfig.from_env()
+            llm_config.max_tokens = self.max_tokens
+            llm_config.temperature = self.temperature
+            llm_config.timeout = self.timeout
+        
+        self._llm_client = UnifiedLLMClient(llm_config)
+        self._last_provider: Optional[LLMProvider] = None
     
     def generate(
         self,
@@ -122,24 +127,22 @@ class AnswerGenerator:
         user_prompt = build_user_prompt(query, samples_for_prompt, prompt_answer_type)
         
         try:
-            # Call OpenAI API
-            client = self._get_client()
-            
-            response = client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
-                ],
-                max_tokens=self.max_tokens,
-                temperature=self.temperature
+            # 使用统一 LLM 客户端调用 (Claude 优先, OpenAI 降级)
+            answer_text, provider = self._llm_client.chat(
+                system_prompt=system_prompt,
+                user_prompt=user_prompt
             )
+            self._last_provider = provider
             
-            answer_text = response.choices[0].message.content.strip()
+            # 记录降级日志（仅后台可见）
+            if self._llm_client.fallback_used:
+                logger.warning(
+                    f"LLM 降级触发: Claude → OpenAI, 原因: {self._llm_client.fallback_reason}"
+                )
             
         except Exception as e:
             raise GenerationError(
-                f"GPT API call failed: {str(e)[:200]}",
+                f"LLM API call failed: {str(e)[:200]}",
                 original_error=e
             )
         
@@ -166,7 +169,7 @@ class AnswerGenerator:
             query=query,
             source_samples=[r.sample_id for r in ranked_results],
             generation_time_ms=generation_time_ms,
-            model_used=self.model
+            model_used=self._llm_client.get_model_name()
         )
     
     def generate_guidance(self, query: str) -> GeneratedAnswer:
@@ -390,6 +393,12 @@ def get_answer_generator(**kwargs) -> AnswerGenerator:
 if __name__ == "__main__":
     import argparse
     
+    # 配置日志
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s"
+    )
+    
     parser = argparse.ArgumentParser(description="Answer Generator Utility")
     parser.add_argument("--test", action="store_true",
                         help="Run a simple test")
@@ -400,6 +409,15 @@ if __name__ == "__main__":
     
     if args.test or args.query:
         print("Testing Answer Generator...")
+        print("=" * 60)
+        
+        # 显示 LLM 配置
+        config = LLMConfig.from_env()
+        print(f"📋 LLM 配置:")
+        print(f"   Claude API Key: {'已配置' if config.claude_api_key else '未配置'}")
+        print(f"   OpenAI API Key: {'已配置' if config.openai_api_key else '未配置'}")
+        print(f"   降级策略: {'启用' if config.enable_fallback else '禁用'}")
+        print("=" * 60)
         
         # Create test ranked results
         test_results = [
@@ -445,8 +463,13 @@ DOI: 10.1016/j.polymer.2023.001
             print(answer.answer_text)
             print("-" * 50)
             print(f"\n⏱️ Generation time: {answer.generation_time_ms}ms")
+            print(f"🤖 Model used: {answer.model_used}")
             print(f"🔗 Citations: {[c.sample_id for c in answer.citations]}")
             print(f"📊 Confidence: {answer.confidence.value}")
+            
+            # 显示降级信息（如果有）
+            if generator._llm_client.fallback_used:
+                print(f"\n⚠️ 降级触发: {generator._llm_client.fallback_reason}")
             
         except Exception as e:
             print(f"❌ Error: {e}")

@@ -43,7 +43,6 @@ class QAEngineConfig:
         rerank_candidates: int = 10,
         rerank_top_k: int = 3,
         answer_max_length: int = 500,
-        model: str = "gpt-4o-mini",
         generation_timeout: float = 30.0,
         enable_rerank: bool = True,
         enable_quality_scoring: bool = True
@@ -53,7 +52,6 @@ class QAEngineConfig:
         self.rerank_candidates = rerank_candidates
         self.rerank_top_k = int(os.environ.get("RERANK_TOP_K", rerank_top_k))
         self.answer_max_length = answer_max_length
-        self.model = os.environ.get("QA_MODEL", model)
         self.generation_timeout = generation_timeout
         self.enable_rerank = enable_rerank
         self.enable_quality_scoring = enable_quality_scoring
@@ -124,7 +122,6 @@ class QAEngine:
         """Get or create answer generator."""
         if self._answer_generator is None:
             self._answer_generator = get_answer_generator(
-                model=self.config.model,
                 timeout=self.config.generation_timeout
             )
         return self._answer_generator
@@ -294,8 +291,7 @@ class QAEngine:
         self,
         query: str,
         top_k: int = 3,
-        include_samples: bool = True,
-        model: Optional[str] = None
+        include_samples: bool = True
     ) -> QAResponse:
         """
         Generate answer for user query.
@@ -306,7 +302,6 @@ class QAEngine:
             query: User query string
             top_k: Number of samples to use for answer generation
             include_samples: Whether to include sample list in response
-            model: Override model for this request
         
         Returns:
             QAResponse containing answer and samples
@@ -353,11 +348,9 @@ class QAEngine:
         generation_start = time.time()
         
         try:
-            # Override model if specified
-            if model:
-                generator = AnswerGenerator(model=model)
-            else:
-                generator = self.answer_generator
+            # 使用默认的 AnswerGenerator（model 参数已废弃，由环境变量配置）
+            # 注意：新架构通过 LLMConfig 配置模型，不再支持运行时切换
+            generator = self.answer_generator
             
             generated_answer = generator.generate(
                 query=query,
