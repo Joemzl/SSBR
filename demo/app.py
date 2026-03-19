@@ -1,17 +1,22 @@
 """
 SSBR 官能化方案智能推荐系统 - Web Demo
-基于 RAG 语义检索的绿色轮胎材料推荐
+基于 RAG 语义检索和问答生成的绿色轮胎材料推荐
 
 用于毕业项目演示
 
 Usage:
     python demo/app.py
     
-Then open http://localhost:7860 in browser
+Then open http://localhost:7861 in browser
 
 性能优化 (2026-03-19):
 - 启动时预加载向量缓存
 - 查询延迟从 25-30秒 降低到 1-2秒
+
+功能增强 (2026-03-19 - 003-rag-qa-enhancement):
+- 添加 AI 问答功能（自然语言回答生成）
+- 集成交叉编码器重排
+- 支持检索+回答和仅检索两种模式
 """
 
 import sys
@@ -32,6 +37,8 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
 import gradio as gr
 from scripts.rag_search import RAGSearchEngine
+from scripts.qa_engine import QAEngine, QAEngineConfig
+from scripts.models import AnswerType
 from demo.data_formatter import (
     format_result_for_display,
     format_results_as_markdown,
@@ -43,6 +50,14 @@ from demo.data_formatter import (
 # 初始化检索引擎（启用向量缓存）
 print("正在初始化检索引擎...")
 engine = RAGSearchEngine(use_cache=True)
+
+# 初始化 QA 引擎
+print("正在初始化问答引擎...")
+qa_config = QAEngineConfig(
+    enable_rerank=True,
+    enable_quality_scoring=True
+)
+qa_engine = QAEngine(config=qa_config, search_engine=engine)
 
 # 存储当前搜索结果（用于详情查看）
 current_results: list[FriendlyResult] = []
@@ -74,6 +89,97 @@ def preload_cache():
 
 
 # ==================== 核心功能函数 ====================
+
+def search_and_answer(query: str, top_k: int = 3) -> tuple:
+    """
+    执行语义检索并生成 AI 回答
+    
+    Returns:
+        (answer_html, samples_html, dropdown_choices, stats_text)
+    """
+    global current_results
+    
+    # 确保缓存已加载
+    preload_cache()
+    
+    if not query.strip():
+        return (
+            "❌ 请输入您的研究问题",
+            "",
+            gr.update(choices=[], value=None),
+            ""
+        )
+    
+    try:
+        # 执行问答
+        response = qa_engine.answer(query, top_k=int(top_k), include_samples=True)
+        
+        # 格式化 AI 回答
+        answer = response.answer
+        answer_type_label = {
+            AnswerType.DIRECT: "✅ 高相关度回答",
+            AnswerType.REFERENCE: "⚠️ 参考性回答",
+            AnswerType.GUIDANCE: "💡 引导性回答"
+        }.get(answer.answer_type, "回答")
+        
+        answer_html = f"""### {answer_type_label}
+
+{answer.answer_text}
+
+---
+**引用样本**: {', '.join(answer.source_samples) if answer.source_samples else '无'}
+**置信度**: {answer.confidence.value}
+"""
+        
+        # 格式化样本列表
+        if response.samples:
+            samples_html = "### 相关样本\n\n"
+            samples_html += "| 排名 | 样本 | 重排分数 | 原始相似度 | 数据质量 |\n"
+            samples_html += "|:----:|------|:--------:|:----------:|:--------:|\n"
+            
+            for r in response.samples:
+                samples_html += f"| {r.final_rank} | **{r.sample_id}** | {r.rerank_score:.3f} | {r.similarity:.2f} | {r.quality_score:.0%} |\n"
+            
+            # 更新 current_results 用于详情查看
+            friendly_results = []
+            for i, r in enumerate(response.samples, 1):
+                content = engine.get_summary_content(r.sample_id)
+                if content:
+                    fr = format_result_for_display(
+                        sample_id=r.sample_id,
+                        similarity=r.similarity,
+                        summary_content=content,
+                        index=i,
+                        query=query
+                    )
+                    friendly_results.append(fr)
+            current_results = friendly_results
+            
+            dropdown_choices = [f"方案 {r.index}: {r.functional_group}" for r in friendly_results]
+        else:
+            samples_html = "*无相关样本*"
+            current_results = []
+            dropdown_choices = []
+        
+        # 性能统计
+        stats_text = f"⏱️ 总耗时: {response.total_time_ms}ms | 检索: {response.search_time_ms}ms | 重排: {response.rerank_time_ms}ms | 生成: {response.generation_time_ms}ms"
+        
+        return (
+            answer_html,
+            samples_html,
+            gr.update(choices=dropdown_choices, value=dropdown_choices[0] if dropdown_choices else None),
+            stats_text
+        )
+        
+    except Exception as e:
+        current_results = []
+        return (
+            f"❌ 生成回答出错: {str(e)[:100]}",
+            "",
+            gr.update(choices=[], value=None),
+            ""
+        )
+
 
 def search_samples(query: str, top_k: int = 5) -> tuple:
     """执行语义检索并返回格式化结果"""
@@ -333,6 +439,7 @@ def create_demo():
         gr.HTML("""
         <div class="main-header">
             <h1>SSBR 官能化方案智能推荐系统</h1>
+            <p>基于 RAG 语义检索与 AI 问答的绿色轮胎材料推荐</p>
         </div>
         """)
         
@@ -353,11 +460,14 @@ def create_demo():
                         top_k_slider = gr.Slider(
                             minimum=1,
                             maximum=10,
-                            value=5,
+                            value=3,
                             step=1,
                             label="返回方案数"
                         )
-                        search_btn = gr.Button("检索", variant="primary", size="lg")
+                    
+                    with gr.Row():
+                        qa_btn = gr.Button("🤖 检索并生成回答", variant="primary", size="lg")
+                        search_btn = gr.Button("🔍 仅检索推荐", variant="secondary", size="lg")
                 
                 gr.Markdown("### 示例查询")
                 gr.Examples(
@@ -367,16 +477,24 @@ def create_demo():
                     examples_per_page=7
                 )
                 
-                # 系统状态
+                # 系统状态和性能统计
                 with gr.Row():
                     status_text = gr.Markdown(get_system_status())
+                stats_output = gr.Markdown("", elem_id="stats-output")
             
             # 右侧：结果展示
             with gr.Column(scale=3):
-                gr.Markdown("### 推荐方案")
+                # AI 回答区域
+                gr.Markdown("### 📝 AI 回答")
+                answer_output = gr.Markdown(
+                    value="*输入研究需求后点击「检索并生成回答」获取 AI 分析*",
+                    elem_classes="result-card"
+                )
                 
+                # 推荐列表区域
+                gr.Markdown("### 📋 推荐方案")
                 result_output = gr.Markdown(
-                    value="*输入研究需求后点击「检索」查看推荐结果*",
+                    value="*输入研究需求后点击「仅检索推荐」查看推荐结果*",
                     elem_classes="result-card"
                 )
         
@@ -402,31 +520,44 @@ def create_demo():
         ---
         ### 使用说明
         
-        | 步骤 | 操作 | 说明 |
+        | 模式 | 按钮 | 说明 |
         |:----:|------|------|
-        | 1 | **输入需求** | 用自然语言描述研究目标，如"改善分散性"、"降低滚阻" |
-        | 2 | **查看推荐** | 系统返回语义最相关的官能化方案，按匹配度排序 |
-        | 3 | **方案详情** | 选择具体方案查看官能团结构、性能指标、文献来源 |
+        | **问答模式** | 🤖 检索并生成回答 | 基于检索结果生成专业的 AI 回答，包含引用来源 |
+        | **推荐模式** | 🔍 仅检索推荐 | 传统语义检索，返回最相关的官能化方案列表 |
         
-        **匹配度**: 🟢 高 (≥0.75) · 🟡 中 (≥0.65) · 🔵 参考 (<0.65)
+        **回答类型**:
+        - ✅ 高相关度回答：找到高度匹配的样本 (相似度 ≥ 0.7)
+        - ⚠️ 参考性回答：找到中等相关的样本 (相似度 0.5-0.7)，建议进一步验证
+        - 💡 引导性回答：未找到高相关样本，提供领域通用建议
         
         ---
         <p style="text-align: center; color: #64748b; font-size: 0.85rem;">
-        SSBR 官能化知识库
+        SSBR 官能化知识库 · RAG QA Enhancement v1.0
         </p>
         """)
         
-        # 绑定事件
-        search_btn.click(
-            search_samples,
+        # 绑定事件 - 问答模式
+        qa_btn.click(
+            search_and_answer,
             inputs=[query_input, top_k_slider],
-            outputs=[result_output, detail_output, sample_dropdown]
+            outputs=[answer_output, result_output, sample_dropdown, stats_output]
+        )
+        
+        # 绑定事件 - 仅检索模式
+        def search_only_wrapper(query, top_k):
+            result, detail, dropdown = search_samples(query, top_k)
+            return "*使用「检索并生成回答」获取 AI 分析*", result, dropdown, ""
+        
+        search_btn.click(
+            search_only_wrapper,
+            inputs=[query_input, top_k_slider],
+            outputs=[answer_output, result_output, sample_dropdown, stats_output]
         )
         
         query_input.submit(
-            search_samples,
+            search_and_answer,
             inputs=[query_input, top_k_slider],
-            outputs=[result_output, detail_output, sample_dropdown]
+            outputs=[answer_output, result_output, sample_dropdown, stats_output]
         )
         
         sample_dropdown.change(
@@ -443,6 +574,7 @@ def create_demo():
 if __name__ == "__main__":
     print("=" * 60)
     print("SSBR 官能化方案智能推荐系统")
+    print("RAG QA Enhancement v1.0")
     print("=" * 60)
     print()
     
@@ -454,6 +586,19 @@ if __name__ == "__main__":
     # 显示缓存统计
     stats = engine.get_cache_stats()
     print(f"缓存状态: {stats.get('total_documents', 0)} 个文档已索引")
+    
+    # 预热 QA 引擎（可选，首次查询会自动加载）
+    print()
+    print("正在预热 QA 引擎...")
+    try:
+        warmup_times = qa_engine.warmup()
+        print(f"  ✅ 搜索引擎: {warmup_times.get('search_engine', 0)}ms")
+        print(f"  ✅ 质量评估: {warmup_times.get('quality_scorer', 0)}ms")
+        if 'reranker' in warmup_times:
+            print(f"  ✅ 重排模型: {warmup_times.get('reranker', 0)}ms")
+        print("QA 引擎预热完成!")
+    except Exception as e:
+        print(f"  ⚠️ 重排模型将在首次使用时加载: {e}")
     print()
     
     demo = create_demo()
