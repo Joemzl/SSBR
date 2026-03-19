@@ -94,11 +94,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T020 [US3] 实现 GUIDANCE 类型回答的 Prompt 模板 in `scripts/utils/prompt_templates.py`
-- [ ] T021 [US3] 实现引导性回答生成逻辑（问题分析 + 通用建议 + 查询优化提示）in `scripts/answer_generator.py`
-- [ ] T022 [US3] 添加相似度阈值检测和回答类型自动切换 in `scripts/qa_engine.py`
-- [ ] T023 [US3] 实现 REFERENCE 类型回答（0.5-0.7 相似度）的"仅供参考"声明 in `scripts/answer_generator.py`
-- [ ] T024 [US3] 处理边缘情况：检索结果为空、非技术性查询、生成异常 in `scripts/qa_engine.py`
+- [x] T020 [US3] 实现 GUIDANCE 类型回答的 Prompt 模板 in `scripts/utils/prompt_templates.py`
+- [x] T021 [US3] 实现引导性回答生成逻辑（问题分析 + 通用建议 + 查询优化提示）in `scripts/answer_generator.py`
+- [x] T022 [US3] 添加相似度阈值检测和回答类型自动切换 in `scripts/qa_engine.py`
+- [x] T023 [US3] 实现 REFERENCE 类型回答（0.5-0.7 相似度）的"仅供参考"声明 in `scripts/answer_generator.py`
+- [x] T024 [US3] 处理边缘情况：检索结果为空、非技术性查询、生成异常 in `scripts/qa_engine.py`
 
 **Checkpoint**: User Story 3 完成 - 低质量匹配场景可独立验证
 
@@ -127,10 +127,11 @@
 
 **Purpose**: 跨用户故事的改进和优化
 
-- [ ] T031 [P] 添加 QAEngine 启动时重排模型预加载（减少首次查询延迟）in `demo/app.py`
-- [ ] T032 [P] 优化错误处理：GPT API 失败时回退到纯推荐模式 in `scripts/qa_engine.py`
-- [ ] T033 [P] 添加配置管理（环境变量：QA_MODEL, QA_MAX_TOKENS, RERANK_TOP_K）in `scripts/qa_engine.py`
+- [x] T031 [P] 添加 QAEngine 启动时重排模型预加载（减少首次查询延迟）in `demo/app.py`
+- [x] T032 [P] 优化错误处理：GPT API 失败时回退到纯推荐模式 in `scripts/qa_engine.py`
+- [x] T033 [P] 添加配置管理（环境变量：QA_MODEL, QA_MAX_TOKENS, RERANK_TOP_K）in `scripts/qa_engine.py`
 - [x] T034 运行 quickstart.md 验证流程确认所有功能正常 in `specs/003-rag-qa-enhancement/quickstart.md`
+- [x] T035 [FR-011] 网页界面隐藏数据库内部信息（样本ID、分数），转换为用户友好描述 in `demo/app.py`, `scripts/utils/prompt_templates.py`, `scripts/answer_generator.py`
 
 ---
 

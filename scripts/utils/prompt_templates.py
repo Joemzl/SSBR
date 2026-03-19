@@ -41,9 +41,9 @@ SYSTEM_PROMPT_DIRECT = """你是一位 SSBR（溶聚丁苯橡胶）官能化改�
 ## 回答规范
 
 1. **引用规范**：
-   - 必须引用具体样本 ID（如 SSBR-002）
-   - 引用格式：[样本ID]，如 [SSBR-002]
-   - 每个数据点都必须有引用来源
+   - 使用官能团类型或试剂名称描述方案（如"硅烷官能化方案"、"采用丙烯酸的羧基化改性"）
+   - 禁止直接展示样本 ID（如 SSBR-002），必须转换为用户友好的描述
+   - 可引用文献来源（期刊名、年份）增加可信度
 
 2. **内容规范**：
    - 基于文献数据回答，禁止编造不存在的数据
@@ -71,8 +71,8 @@ SYSTEM_PROMPT_REFERENCE = """你是一位 SSBR（溶聚丁苯橡胶）官能化�
    - 建议用户进一步验证关键数据
 
 2. **引用规范**：
-   - 必须引用具体样本 ID（如 SSBR-002）
-   - 引用格式：[样本ID]
+   - 使用官能团类型或试剂名称描述方案（如"硅烷官能化方案"、"羧基化改性"）
+   - 禁止直接展示样本 ID（如 SSBR-002），必须转换为用户友好的描述
    - 明确标注数据的不确定性
 
 3. **内容规范**：
@@ -137,7 +137,7 @@ def build_user_prompt_direct(query: str, samples: List[Dict[str, Any]]) -> str:
 ## 回答要求
 
 请基于以上样本信息，生成一个专业、准确的回答：
-1. 引用具体样本 ID 支持你的观点
+1. 使用官能团名称或试剂名称描述方案（禁止直接展示样本ID）
 2. 综合多个样本的信息
 3. 回答长度 400-500 字"""
 
@@ -167,8 +167,9 @@ def build_user_prompt_reference(query: str, samples: List[Dict[str, Any]]) -> st
 
 请基于以上样本信息，生成一个参考性回答：
 1. 开头声明"仅供参考"
-2. 谨慎使用具体数据，强调不确定性
-3. 回答长度 300-400 字"""
+2. 使用官能团名称描述方案（禁止直接展示样本ID）
+3. 谨慎使用具体数据，强调不确定性
+4. 回答长度 300-400 字"""
 
 
 def build_user_prompt_guidance(query: str) -> str:
@@ -208,24 +209,67 @@ def _format_samples(samples: List[Dict[str, Any]]) -> str:
     formatted = []
     
     for i, sample in enumerate(samples, 1):
-        sample_id = sample.get('sample_id', 'Unknown')
         similarity = sample.get('similarity', 0)
         quality = sample.get('quality_score', 0)
         content = sample.get('content', '')
+        
+        # 从内容中提取官能团名称
+        functional_group = _extract_functional_group(content)
         
         # Truncate content if too long
         max_content_length = 2000
         if len(content) > max_content_length:
             content = content[:max_content_length] + "\n...[内容已截断]"
         
-        formatted.append(f"""### 样本 {i}: {sample_id}
+        # 使用官能团名称作为标题，不再显示样本 ID
+        formatted.append(f"""### 方案 {i}: {functional_group}
 
-**相似度**: {similarity:.2f} | **数据质量**: {quality:.0%}
+**相关度**: {similarity:.2f} | **数据完整度**: {quality:.0%}
 
 {content}
 """)
     
     return "\n---\n".join(formatted)
+
+
+def _extract_functional_group(content: str) -> str:
+    """从样本内容中提取官能团名称。"""
+    import re
+    
+    # 尝试从 YAML 或 Markdown 格式中提取
+    patterns = [
+        r'[-\s]*\*\*核心官能团\*\*:\s*(.+?)(?:\s*[（(]|$|\n)',
+        r'官能团[：:]\s*(.+?)(?:\n|$)',
+        r'functional[_\s]?group[：:]\s*(.+?)(?:\n|$)',
+    ]
+    
+    for pattern in patterns:
+        match = re.search(pattern, content, re.IGNORECASE)
+        if match:
+            fg = match.group(1).strip()
+            if fg and fg not in ['-', '无', 'N/A']:
+                return f"{fg}官能化"
+    
+    # 尝试从官能化试剂中推断
+    reagent_match = re.search(r'[-\s]*\*\*官能化试剂\*\*:\s*(.+?)(?:\n|$)', content)
+    if reagent_match:
+        reagent = reagent_match.group(1).strip()
+        if reagent and "无" not in reagent:
+            # 简化试剂名称
+            if "硅烷" in reagent or "silane" in reagent.lower():
+                return "硅烷官能化"
+            elif "丙烯酸" in reagent or "acrylic" in reagent.lower():
+                return "羧基官能化"
+            elif "马来酸" in reagent or "maleic" in reagent.lower():
+                return "马来酸酐官能化"
+            elif "巯基" in reagent or "mercapto" in reagent.lower():
+                return "巯基官能化"
+            elif "氨基" in reagent or "amino" in reagent.lower():
+                return "氨基官能化"
+            else:
+                return f"{reagent[:10]}官能化"
+    
+    return "官能化方案"
 
 
 def get_system_prompt(answer_type: AnswerType) -> str:
