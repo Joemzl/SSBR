@@ -295,6 +295,7 @@ class AnswerGenerator:
         """
         Post-process generated answer.
         
+        - Remove any sample IDs that may have leaked through
         - Ensure proper formatting
         - Add reference disclaimer for REFERENCE type
         - Check length constraints
@@ -309,15 +310,23 @@ class AnswerGenerator:
         # Clean up whitespace
         answer_text = answer_text.strip()
         
+        # 移除所有样本 ID 引用（用户界面不应显示内部 ID）
+        # 匹配格式：[SSBR-XXX]、（样本 SSBR-XXX）、SSBR-XXX 等
+        answer_text = re.sub(r'\[SSBR-\d+\]', '', answer_text)
+        answer_text = re.sub(r'[（(]样本\s*SSBR-\d+[）)]', '', answer_text)
+        answer_text = re.sub(r'样本\s*SSBR-\d+', '该方案', answer_text)
+        answer_text = re.sub(r'SSBR-\d+\s*样本', '该方案', answer_text)
+        # 单独出现的 SSBR-XXX（带编号格式）
+        answer_text = re.sub(r'(?<!\w)SSBR-\d{3}(?!\w)', '该方案', answer_text)
+        
+        # 清理可能产生的多余空格
+        answer_text = re.sub(r'\s+', ' ', answer_text)
+        answer_text = re.sub(r' ([，。、；：])', r'\1', answer_text)
+        
         # For REFERENCE type, ensure disclaimer is present
         if answer_type == AnswerType.REFERENCE:
             if "仅供参考" not in answer_text and "⚠️" not in answer_text:
                 answer_text = "⚠️ **以下内容仅供参考，检索相关性中等**\n\n" + answer_text
-        
-        # For GUIDANCE type, ensure no false sample references
-        if answer_type == AnswerType.GUIDANCE:
-            # Remove any accidental sample references
-            answer_text = re.sub(r'\[SSBR-\d+\]', '', answer_text)
         
         return answer_text
     

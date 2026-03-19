@@ -167,7 +167,7 @@ class QAEngine:
         # Use existing RAG search engine
         results: List[SearchResult] = self.search_engine.search(
             query=query,
-            top_k=top_k
+            k=top_k
         )
         
         # Convert SearchResult to Candidate

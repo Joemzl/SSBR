@@ -54,7 +54,7 @@ engine = RAGSearchEngine(use_cache=True)
 # 初始化 QA 引擎
 print("正在初始化问答引擎...")
 qa_config = QAEngineConfig(
-    enable_rerank=True,
+    enable_rerank=False,  # 暂时禁用重排（模型加载问题）
     enable_quality_scoring=True
 )
 qa_engine = QAEngine(config=qa_config, search_engine=engine)
@@ -122,25 +122,43 @@ def search_and_answer(query: str, top_k: int = 3) -> tuple:
             AnswerType.GUIDANCE: "💡 引导性回答"
         }.get(answer.answer_type, "回答")
         
+        # 将样本ID转换为用户友好的官能团名称
+        source_descriptions = []
+        if answer.source_samples and response.samples:
+            for sample_id in answer.source_samples:
+                for r in response.samples:
+                    if r.sample_id == sample_id:
+                        content = engine.get_summary_content(sample_id)
+                        if content:
+                            fr = format_result_for_display(
+                                sample_id=sample_id,
+                                similarity=r.similarity,
+                                summary_content=content,
+                                index=0,
+                                query=query
+                            )
+                            source_descriptions.append(fr.functional_group)
+                        break
+        
+        # 置信度转换为用户友好描述
+        confidence_label = {
+            "high": "高",
+            "medium": "中等",
+            "low": "较低"
+        }.get(answer.confidence.value, answer.confidence.value)
+        
         answer_html = f"""### {answer_type_label}
 
 {answer.answer_text}
 
 ---
-**引用样本**: {', '.join(answer.source_samples) if answer.source_samples else '无'}
-**置信度**: {answer.confidence.value}
+**参考方案**: {', '.join(source_descriptions) if source_descriptions else '通用领域知识'}
+**置信度**: {confidence_label}
 """
         
-        # 格式化样本列表
+        # 格式化样本列表（用户友好格式，不暴露内部ID和分数）
         if response.samples:
-            samples_html = "### 相关样本\n\n"
-            samples_html += "| 排名 | 样本 | 重排分数 | 原始相似度 | 数据质量 |\n"
-            samples_html += "|:----:|------|:--------:|:----------:|:--------:|\n"
-            
-            for r in response.samples:
-                samples_html += f"| {r.final_rank} | **{r.sample_id}** | {r.rerank_score:.3f} | {r.similarity:.2f} | {r.quality_score:.0%} |\n"
-            
-            # 更新 current_results 用于详情查看
+            # 先转换为用户友好格式
             friendly_results = []
             for i, r in enumerate(response.samples, 1):
                 content = engine.get_summary_content(r.sample_id)
@@ -155,14 +173,27 @@ def search_and_answer(query: str, top_k: int = 3) -> tuple:
                     friendly_results.append(fr)
             current_results = friendly_results
             
+            # 使用用户友好的表格格式
+            samples_html = "### 相关方案\n\n"
+            samples_html += "| 排名 | 官能化方案 | 匹配度 | 官能化试剂 | 来源 |\n"
+            samples_html += "|:----:|-----------|:------:|-----------|------|\n"
+            
+            for fr in friendly_results:
+                match_emoji = {"高": "🟢", "中": "🟡", "低": "🔵"}.get(fr.match_level, "⚪")
+                samples_html += f"| {fr.index} | **{fr.functional_group}** | {match_emoji} {fr.match_level} | {fr.reagent[:20]}... | {fr.source[:15]}... |\n" if len(fr.reagent) > 20 else f"| {fr.index} | **{fr.functional_group}** | {match_emoji} {fr.match_level} | {fr.reagent} | {fr.source[:20]}... |\n"
+            
             dropdown_choices = [f"方案 {r.index}: {r.functional_group}" for r in friendly_results]
         else:
             samples_html = "*无相关样本*"
             current_results = []
             dropdown_choices = []
         
-        # 性能统计
-        stats_text = f"⏱️ 总耗时: {response.total_time_ms}ms | 检索: {response.search_time_ms}ms | 重排: {response.rerank_time_ms}ms | 生成: {response.generation_time_ms}ms"
+        # 性能统计（简化展示，隐藏技术细节）
+        total_time = response.total_time_ms
+        if total_time < 1000:
+            stats_text = f"⏱️ 响应时间: {total_time}ms"
+        else:
+            stats_text = f"⏱️ 响应时间: {total_time/1000:.1f}s"
         
         return (
             answer_html,
