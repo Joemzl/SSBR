@@ -1,17 +1,25 @@
 ---
 sample_id: SSBR-002
-interpretation_type: summary
-skill_used: ssbr-summary-generator
+doi: 10.1039/c9ra02783a
+polymer_type: 羧基（-COOH）官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 11-巯基十一烷酸（MUA, 11-Mercaptoundecanoic acid）
+  functional_group: 羧基（-COOH）
+  degree: 8.7 wt%
+  method: 巯基-烯点击化学（thiol-ene click reaction）
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-17
-updated_at: null
-interpretations_included:
-  - mechanical
-  - dsc
-  - nmr
-  - tem
-interpretations_missing: []
+updated_at: '2026-03-19'
 ---
-
 # SSBR-002 综合档案
 
 ## 一句话总结

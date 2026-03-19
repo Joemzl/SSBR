@@ -2,27 +2,31 @@
 sample_id: SSBR-049
 doi: 10.1002/app.43342
 polymer_type: 未官能化工业 SSBR
-styrene_content: 34.6 wt%
-vinyl_content: 40.1 mol%
-application: 乘用车轮胎胎面胶
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
 filler_system: 沉淀法白炭黑 + TESPT
-research_focus: 硅烷化温度对性能的影响
+application: 乘用车轮胎胎面胶
 data_completeness:
-  mechanical: partial
-  thermal: partial
-  nmr: none
-  morphology: partial
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 硅烷化温度
-  - TESPT 偶联剂
-  - 白炭黑分散
-  - Payne 效应
-  - 乘用车轮胎
-  - 湿地抓地力
-  - 滚动阻力
-extraction_date: 2026-03-18
+- 硅烷化温度
+- TESPT 偶联剂
+- 白炭黑分散
+- Payne 效应
+- 乘用车轮胎
+- 湿地抓地力
+- 滚动阻力
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-049 综合档案
 
 ## 样本概述

@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-073"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "NR/SSBR 共混与白炭黑分布研究"
-doi: "10.5254/rct.19.80439"
+sample_id: SSBR-073
+doi: 10.5254/rct.19.80439
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: NR/SSBR 共混与白炭黑分布研究
 data_completeness:
-  mechanical: partial
-  thermal: false
-  nmr: false
-  morphology: partial
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "NR/SSBR 共混"
-  - "白炭黑分布"
-  - "选择性定位"
-  - "两相体系"
-  - "界面"
+- NR/SSBR 共混
+- 白炭黑分布
+- 选择性定位
+- 两相体系
+- 界面
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-073 综合档案
 
 ## 基本信息

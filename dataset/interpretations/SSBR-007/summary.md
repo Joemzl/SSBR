@@ -1,90 +1,25 @@
 ---
-# SSBR-007 综合档案
 sample_id: SSBR-007
-version: "1.0"
-created: "2026-03-18"
-data_source: "10.1002/app.41182"
-
-# 样本基本信息
-sample_info:
-  name: "S-SBR (Dycon Chemicals)"
-  type: "未官能化工业级 S-SBR"
-  application: "热塑性硫化橡胶 (TPV)"
-  target_scenario: "汽车、电子、建筑工业领域"
-
-# 高分子结构
-polymer_structure:
-  base_polymer: "溶聚丁苯橡胶 (S-SBR)"
-  styrene_content:
-    value: 23.5
-    unit: "wt%"
-  vinyl_content: null
-  molecular_weight: null
-  functionalization: null
-  supplier: "Dycon Chemicals, Mumbai, India"
-
-# 复合材料体系
-composite_system:
-  blend_partner: "S-EB-S (Kraton G1657)"
-  blend_ratio: "50/50 wt%"
-  filler: null
-  vulcanization_systems:
-    - name: "SEV (半有效硫化)"
-      recipe: "ZnO 4, 硬脂酸 1, CBS 1, 硫黄 1 phr"
-    - name: "EV (有效硫化)"
-      recipe: "ZnO 4, 硬脂酸 1, CBS 1, TMTD 0.5, 硫黄 1 phr"
-  processing:
-    method: "动态硫化"
-    temperature: "160°C"
-    rotor_speed: "60 rpm"
-    equipment: "Brabender Plastograph EC"
-
-# 关键性能指标
-key_properties:
-  tensile_strength:
-    SEV: "4.9 MPa → 6.3 MPa (再加工后)"
-    EV: "4.8 MPa → 4.4 MPa (再加工后)"
-  elongation_at_break:
-    SEV: "672%"
-    EV: "533%"
-  hardness:
-    SEV: "52 Shore A"
-    EV: "55 Shore A"
-  crosslink_density:
-    SEV: "~7.1e-5 mol/mL → ~7.9e-5 mol/mL"
-    EV: "~8.5e-5 mol/mL → ~8.6e-5 mol/mL"
-
-# 形态学特征
-morphology:
-  type: "共连续形态"
-  characterization: ["SEM", "AFM"]
-  key_observation: "SEV 体系含拉长橡胶粒子，再加工后形成部分液滴形态"
-
-# 文献信息
-literature:
-  title: "Meticulous Analysis and Consequences of Microstructure Changes on Melt Rheology and Dynamic Viscoelasticity of Thermoplastic Vulcanizates upon Reprocessing"
-  authors: "Dey P, Naskar K, Nando GB, et al."
-  journal: "Journal of Applied Polymer Science"
-  year: 2014
-  volume: 131
-  issue: 23
-  pages: 41182
-  doi: "10.1002/app.41182"
-
-# RAG 检索关键词
-rag_keywords:
-  - "热塑性硫化橡胶"
-  - "TPV"
-  - "动态硫化"
-  - "再加工性"
-  - "共连续形态"
-  - "S-EB-S/S-SBR 共混"
-  - "流变性能"
-  - "蠕变"
-  - "应力松弛"
-  - "交联密度"
+doi: 10.1002/app.41182
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-18'
+updated_at: '2026-03-19'
 ---
-
 ## 样本概述
 
 SSBR-007 是一种未官能化的工业级溶聚丁苯橡胶（S-SBR），来源于印度 Dycon Chemicals 公司。该样本被用于与 S-EB-S（Kraton G1657）制备热塑性硫化橡胶（TPV）的研究中。

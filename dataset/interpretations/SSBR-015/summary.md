@@ -1,72 +1,25 @@
 ---
 sample_id: SSBR-015
-interpretation_type: summary
-source_doi: "10.1021/acs.iecr.6b02259"
+doi: 10.1021/acs.iecr.6b02259
+polymer_type: DPES官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: p-(2,2'-二苯基乙基)苯乙烯 (DPES)
+  functional_group: DPES
+  degree: 5.1 wt%
+  method: 热可分解基团共聚
+filler_system: 炭黑
+application: 绿色轮胎胎面材料
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-# ========== 样本基本信息 ==========
-sample_name: "SBDR-5 / CB/SBDR-5"
-sample_type: "DPES 官能化 SSBR/炭黑复合材料"
-is_chain_functionalized: false
-functionalization_type: "热可分解基团共聚"
-functionalization_reagent: "p-(2,2'-二苯基乙基)苯乙烯 (DPES)"
-reagent_smiles: "C=Cc1ccc(CCC(c2ccccc2)c3ccccc3)cc1"
-functionalization_degree:
-  value: 5.1
-  unit: "wt%"
-
-# ========== 聚合物结构参数 ==========
-polymer_structure:
-  butadiene_content:
-    value: 74.8
-    unit: "wt%"
-  styrene_content:
-    value: 20.1
-    unit: "wt%"
-  dpes_content:
-    value: 5.1
-    unit: "wt%"
-  mn:
-    value: 196000
-    unit: "g/mol"
-  pdi: 1.23
-  distribution: "无规共聚"
-
-# ========== 填料信息 ==========
-filler:
-  type: "炭黑"
-  grade: "N330"
-  specific_surface_area: "78±5 m²/g"
-  particle_size: "25 nm"
-
-# ========== 力学性能数据 ==========
-mechanical_properties:
-  tensile_strength_improvement: "+43.8%"
-  elongation_improvement: "+11.6%"
-  bound_rubber: 26.9
-
-# ========== 热学性能数据 ==========
-thermal_properties:
-  tg_type: "单一 Tg"
-  tan_delta_0c: "增大 (湿地抓地力提高)"
-  tan_delta_60c: "-30.8% (滚动阻力降低)"
-
-# ========== 形貌数据 ==========
-morphology:
-  dispersion_quality: "显著改善"
-  rg_saxs: 18.16
-  rg_control: 24.15
-  improvement: "25%"
-
-# ========== 动态性能数据 ==========
-dynamic_properties:
-  payne_effect: "显著降低"
-
-# ========== 应用场景 ==========
-application: "绿色轮胎胎面材料"
+updated_at: '2026-03-19'
 ---
-
 # 综合档案：SSBR-015
 
 > **一句话总结**: 通过共价接枝机制实现炭黑优异分散的 DPES 官能化 SSBR 复合材料，力学性能和轮胎动态性能全面提升。

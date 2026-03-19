@@ -1,17 +1,25 @@
 ---
 sample_id: SSBR-001
-interpretation_type: summary
-skill_used: ssbr-summary-generator
+doi: 10.1039/c9ra02783a
+polymer_type: 羟基（-OH）官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 3-巯基丙醇（MPL, 3-Mercapto-1-propanol）
+  functional_group: 羟基（-OH）
+  degree: 3.6 wt%
+  method: 巯基-烯点击化学（thiol-ene click reaction）
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-17
-updated_at: null
-interpretations_included:
-  - mechanical
-  - dsc
-  - nmr
-  - tem
-interpretations_missing: []
+updated_at: '2026-03-19'
 ---
-
 # SSBR-001 综合档案
 
 ## 一句话总结

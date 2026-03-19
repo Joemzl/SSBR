@@ -2,22 +2,29 @@
 sample_id: SSBR-029
 doi: 10.1002/app.45975
 polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 结构性能研究
-research_focus: 乙烯基和苯基含量对 HVBR/SSBR 性能的影响
 data_completeness:
-  mechanical: limited
-  thermal: limited
-  nmr: limited
-  morphology: limited
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - HVBR 对比
-  - 乙烯基含量
-  - 苯基含量
-  - 动态力学性能
-  - 结构-性能关系
-extraction_date: 2026-03-18
+- HVBR 对比
+- 乙烯基含量
+- 苯基含量
+- 动态力学性能
+- 结构-性能关系
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-029 综合档案
 
 ## 样本概述

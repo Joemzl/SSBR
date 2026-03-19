@@ -1,53 +1,25 @@
 ---
 sample_id: SSBR-017
-interpretation_type: summary
-source_doi: "10.1021/acs.iecr.6b04146"
-created_at: 2026-03-18
-updated_at: null
-
-# ===== 核心标识 =====
-functionalization_reagent: "TMPMP"
-functionalization_reagent_full: "三羟甲基丙烷三(3-巯基丙酸酯)"
-core_functional_group: "巯基 (-SH)"
-reaction_mechanism: "巯基-烯点击反应 (thiol-ene click)"
-strategy: "One-step (一步法)"
-
-# ===== 关键性能指标 =====
-performance_summary:
-  tensile_strength:
-    value: 14.1
-    unit: "MPa"
-    change_vs_control: "-4%"
-  elongation:
-    value: 264
-    unit: "%"
-    change_vs_control: "-28%"
-  stress_100:
-    value: 2.6
-    unit: "MPa"
-    change_vs_control: "+37%"
-  stress_200:
-    value: 8.4
-    unit: "MPa"
-    change_vs_control: "+53%"
-  wet_grip: "略有提高"
-  rolling_resistance: "降低"
-
-# ===== 界面作用机制 =====
-interface_interaction:
-  type: "共价键 + 交联网络"
-  mechanism: "TMPMP 三巯基与 SSBR 乙烯基的点击反应"
-  limitation: "TMPMP 倾向于交联 SSBR 而非偶联 SiR/SSBR 界面"
-
-# ===== 数据完整性 =====
-data_availability:
+doi: 10.1021/acs.iecr.6b04146
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: TMPMP
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
-  tem: false
-  note: "文献未提供 one-step 样品的 TEM 图像"
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: 2026-03-18
+updated_at: '2026-03-19'
 ---
-
 # SSBR-017 综合档案
 
 ## 一句话总结

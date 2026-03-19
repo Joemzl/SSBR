@@ -1,17 +1,25 @@
 ---
-sample_id: "SSBR-062"
-functionalization_type: "环氧化"
-reagent: "甲酸、过氧化氢（原位生成过氧甲酸）"
-reagent_smiles: "C(=O)O.OO"
-target_performance:
-  - "改善白炭黑分散"
-  - "零 VOC 排放"
-  - "提高湿地抓地力"
-  - "降低滚动阻力"
-data_quality: "高"
-literature_doi: "10.3390/polym12061257"
+sample_id: SSBR-062
+doi: 10.3390/polym12061257
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: 环氧化
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-062 综合档案
 
 ## 基本信息

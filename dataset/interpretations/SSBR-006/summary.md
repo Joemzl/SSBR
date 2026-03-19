@@ -1,24 +1,31 @@
 ---
-sample_id: "SSBR-006"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "汽车及轮胎动态应用"
-styrene_content: "23.5 wt%"
-doi: "10.1039/c4ra04722b"
+sample_id: SSBR-006
+doi: 10.1039/c4ra04722b
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 汽车及轮胎动态应用
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: partial
-  morphology: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "轮胎"
-  - "动态力学"
-  - "复数模量"
-  - "频率依赖性"
-  - "AFM"
-  - "SEM"
+- 轮胎
+- 动态力学
+- 复数模量
+- 频率依赖性
+- AFM
+- SEM
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-006 综合档案
 
 ## 基本信息

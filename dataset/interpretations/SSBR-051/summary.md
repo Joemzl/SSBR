@@ -1,36 +1,31 @@
 ---
 sample_id: SSBR-051
 doi: 10.1016/j.polymer.2010.03.006
-polymer:
-  type: SSBR
-  grade: null
-  manufacturer: null
+polymer_type: 硅基官能化 SSBR
+functionalization:
   is_functionalized: true
-  functionalization_type: chain_end
-  functional_reagent: 叔丁基氯二苯基硅烷 (TBCSi)
+  type: in_chain
+  reagent: 叔丁基氯二苯基硅烷 (TBCSi)
   functional_group: 硅基
-  styrene_content: null
-  vinyl_content: null
-  Mn: null
-filler:
-  type: Carbon Black
-  loading: 50 phr
-  grade: N330/N550
+  degree: null
+  method: null
+filler_system: Carbon Black (50 phr)
 application: 炭黑填充 SSBR 复合材料
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
-  tem: false
+  tem: true
 keywords:
-  - 大体积官能团
-  - 链端官能化
-  - TBCSi
-  - 硅基
-  - 炭黑填充
-  - 分子动力学
+- 大体积官能团
+- 链端官能化
+- TBCSi
+- 硅基
+- 炭黑填充
+- 分子动力学
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-051 综合档案
 
 ## 样本概述

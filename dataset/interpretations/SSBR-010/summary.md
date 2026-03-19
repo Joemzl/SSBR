@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-010"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "冬季轮胎胎面胶"
-doi: "10.1016/j.polymertesting.2020.106558"
+sample_id: SSBR-010
+doi: 10.1016/j.polymertesting.2020.106558
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 冬季轮胎胎面胶
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: false
-  morphology: false
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "冬季轮胎"
-  - "胎面胶"
-  - "Payne 效应"
-  - "应力-应变"
-  - "低温性能"
+- 冬季轮胎
+- 胎面胶
+- Payne 效应
+- 应力-应变
+- 低温性能
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-010 综合档案
 
 ## 基本信息

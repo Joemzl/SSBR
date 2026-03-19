@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-082"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "铝合金-橡胶粘接界面研究"
-doi: "10.4028/www.scientific.net/AMR.11-12.657"
+sample_id: SSBR-082
+doi: 10.4028/www.scientific.net/AMR.11-12.657
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 铝合金-橡胶粘接界面研究
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: false
-  morphology: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "铝合金"
-  - "橡胶粘接"
-  - "界面"
-  - "SEM"
-  - "粘接强度"
+- 铝合金
+- 橡胶粘接
+- 界面
+- SEM
+- 粘接强度
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-082 综合档案
 
 ## 基本信息

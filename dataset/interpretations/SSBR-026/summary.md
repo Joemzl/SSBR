@@ -1,36 +1,30 @@
 ---
 sample_id: SSBR-026
 doi: 10.1002/app.48159
-title: "Solution Styrene-β-myrcene-Butadiene Rubber: Synthesis and Properties"
-functionalization_type: copolymerization
-functional_group: β-月桂烯 (生物基萜烯)
-functional_group_smiles: CC(=C)C=CC=C(C)C
-functionalization_position: 主链无规共聚
-filler_type: 炭黑
-filler_loading: 50 phr
-filler_grade: N234
 polymer_type: S-SMBR
-styrene_content: 27 wt%
-myrcene_content: 15 wt%
-vinyl_content: 50%
-mn: 350 kg/mol
-pdi: 1.9
-tg_dsc: -61°C
-tg_dma: -32°C
-tensile_strength: 24.7 MPa
-elongation_at_break: 420%
-modulus_100: 2.8 MPa
-modulus_300: 15.2 MPa
-tan_delta_0c: 0.38
-tan_delta_60c: 0.15
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: β-月桂烯
+  degree: null
+  method: copolymerization
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 生物基橡胶
-  - β-月桂烯
-  - 萜烯共聚
-  - 炭黑分散
-  - 可持续材料
+- 生物基橡胶
+- β-月桂烯
+- 萜烯共聚
+- 炭黑分散
+- 可持续材料
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-026 综合档案
 
 ## 研究亮点

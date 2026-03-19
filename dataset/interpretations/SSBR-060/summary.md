@@ -2,24 +2,30 @@
 sample_id: SSBR-060
 doi: 10.1016/j.polymertesting.2017.01.007
 polymer_type: 未官能化工业 SSBR
-application: 汽车工业、轮胎生产
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
 filler_system: 碳纳米粒子（CNP）
-research_focus: 填料几何形状对力学各向异性影响
+application: 汽车工业、轮胎生产
 data_completeness:
-  mechanical: partial
-  thermal: none
-  nmr: none
-  morphology: partial
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 碳纳米粒子
-  - 几何形状效应
-  - 力学各向异性
-  - AFM 形貌分析
-  - Mullins 效应
-  - 填料取向
-extraction_date: 2026-03-18
+- 碳纳米粒子
+- 几何形状效应
+- 力学各向异性
+- AFM 形貌分析
+- Mullins 效应
+- 填料取向
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-060 综合档案
 
 ## 样本概述

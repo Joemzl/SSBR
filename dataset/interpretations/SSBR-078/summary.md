@@ -1,44 +1,25 @@
 ---
-sample_id: "SSBR-078"
-doi: "10.1007/s10853-020-05218-w"
-title: "Preparation, carbon black dispersibility and performances of novel biobased integral solution-polymerized styrene-butadiene rubber with β-myrcene bottlebrush segments"
-year: 2020
-
-polymer:
-  type: "SSBR"
+sample_id: SSBR-078
+doi: 10.1007/s10853-020-05218-w
+polymer_type: β-月桂烯瓶刷链段官能化 SSBR
+functionalization:
   is_functionalized: true
-  functionalization_type: "链中官能化"
-  functional_group: "β-月桂烯瓶刷链段"
-  functional_group_smiles: "CC(C)=CCCC(=C)C=C"
-  mn_kg_mol: 246
-  styrene_content_percent: ~25
-
-filler:
-  type: "炭黑"
-  loading_phr: ~
-  surface_treatment: ~
-
-processing:
-  mixing_method: "密炼"
-  curing_system: "硫磺硫化"
-
-key_properties:
-  tensile_strength_mpa: 24.8
-  elongation_percent: 485
-  tg_c: ~-45
-  dispersion_quality: "优秀"
-
-application: "生物基橡胶、高性能轮胎"
-
-tags:
-  - "生物基橡胶"
-  - "β-月桂烯"
-  - "瓶刷聚合物"
-  - "炭黑分散"
-  - "可持续材料"
-  - "轮胎用橡胶"
+  type: 链中官能化
+  reagent: null
+  functional_group: β-月桂烯瓶刷链段
+  degree: null
+  method: null
+filler_system: 炭黑
+application: 生物基橡胶、高性能轮胎
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-078 综合档案
 
 ## 研究亮点

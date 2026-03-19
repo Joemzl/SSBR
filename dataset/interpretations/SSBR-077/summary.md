@@ -2,23 +2,29 @@
 sample_id: SSBR-077
 doi: 10.1007/s10853-008-3223-8
 polymer_type: 未官能化工业 SSBR
-application: 纳米复合材料研究
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
 filler_system: OMMT/白炭黑
-research_focus: 有机改性蒙脱土和白炭黑填充 SSBR 的性能
+application: 纳米复合材料研究
 data_completeness:
-  mechanical: partial
-  thermal: partial
-  nmr: none
-  morphology: limited
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 有机蒙脱土
-  - OMMT
-  - 白炭黑
-  - 纳米复合材料
-  - 粘弹性能
-extraction_date: 2026-03-18
+- 有机蒙脱土
+- OMMT
+- 白炭黑
+- 纳米复合材料
+- 粘弹性能
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-077 综合档案
 
 ## 样本概述

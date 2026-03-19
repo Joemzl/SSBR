@@ -1,22 +1,30 @@
 ---
 sample_id: SSBR-041
+doi: 10.1016/j.matdes.2018.05.048
 polymer_type: SSBR
-filler_system: "抗氧剂官能化白炭黑 (AO-SiO₂)"
-modification_strategy: "填料表面改性 + 抗老化功能整合"
-literature_doi: "10.1016/j.matdes.2018.05.048"
-performance_highlights:
-  - "拉伸强度 18.5 MPa"
-  - "极低滚动阻力 tan δ(60°C)≈0.085"
-  - "优异填料分散性 ΔG'≈1.15 MPa"
-  - "长效抗老化保护"
+functionalization:
+  is_functionalized: true
+  type: filler_modification
+  reagent: 抗氧剂官能化白炭黑 (AO-SiO₂)
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 抗氧剂官能化白炭黑 (AO-SiO₂)
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "抗氧剂"
-  - "功能化填料"
-  - "白炭黑"
-  - "绿色轮胎"
-  - "抗老化"
+- 抗氧剂
+- 功能化填料
+- 白炭黑
+- 绿色轮胎
+- 抗老化
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-041 综合档案
 
 ## 样本概述

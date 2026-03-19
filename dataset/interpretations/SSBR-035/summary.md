@@ -1,41 +1,30 @@
 ---
 sample_id: SSBR-035
 doi: 10.1016/j.compositesb.2019.107027
-polymer:
-  type: SSBR
-  grade: Buna VSL 5025-2HM
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-  oil_extended: true
-  oil_content: 37.5 phr
-filler:
-  type: RGO/SiO₂ self-assembled nanocomposite
-  loading: 50 phr total
-  components:
-    - name: RGO
-      content: 1-2 phr
-    - name: SiO₂
-      content: 48-49 phr
-  coupling_agent: Si-69
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: RGO/SiO₂ self-assembled nanocomposite (50 phr total)
 application: 高性能纳米复合材料、轮胎
-blend_ratio: SSBR/BR = 80/20
 data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
+  dsc: true
+  nmr: true
   tem: true
 keywords:
-  - 自组装纳米复合材料
-  - RGO/SiO₂
-  - 绿色轮胎
-  - 低滚动阻力
-  - 高抓地力
+- 自组装纳米复合材料
+- RGO/SiO₂
+- 绿色轮胎
+- 低滚动阻力
+- 高抓地力
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-035 综合档案
 
 ## 样本概述

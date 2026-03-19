@@ -1,39 +1,31 @@
 ---
 sample_id: SSBR-036
 doi: 10.1016/j.compositesb.2020.108301
-polymer:
-  type: SSBR
-  grade: Buna VSL 5025-2HM
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-filler:
-  type: SiO₂
-  loading: 60 phr
-  coupling_agent: BEP (双环氧丙基多硫化物)
-modifier:
-  name: BEP
-  full_name: 双环氧丙基多硫化物
-  functional_group: 环氧基
-  mechanism: VOC-free 界面偶联
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: SiO₂ (60 phr)
 application: 绿色轮胎
 data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
-  tem: true (SEM)
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - VOC-free
-  - 环氧基偶联剂
-  - BEP
-  - 绿色轮胎
-  - 低滚动阻力
-  - 环保硅烷替代
+- VOC-free
+- 环氧基偶联剂
+- BEP
+- 绿色轮胎
+- 低滚动阻力
+- 环保硅烷替代
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-036 综合档案
 
 ## 样本概述

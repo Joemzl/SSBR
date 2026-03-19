@@ -2,22 +2,29 @@
 sample_id: SSBR-028
 doi: 10.1002/app.45749
 polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 结构性能研究
-research_focus: SSBR 分子结构特征对复合材料性能的影响
 data_completeness:
-  mechanical: limited
-  thermal: limited
-  nmr: limited
-  morphology: limited
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 结构-性能关系
-  - 苯乙烯含量
-  - 乙烯基含量
-  - 分子量分布
-  - SSBR 分子设计
-extraction_date: 2026-03-18
+- 结构-性能关系
+- 苯乙烯含量
+- 乙烯基含量
+- 分子量分布
+- SSBR 分子设计
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-028 综合档案
 
 ## 样本概述

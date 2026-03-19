@@ -1,45 +1,32 @@
 ---
-sample_id: "SSBR-063"
-title: "白炭黑填充 SSBR/BR 并用胶拉伸形貌研究"
-application: "绿色轮胎、白炭黑填充复合材料"
-doi: "10.1002/jemt.23814"
-citation: "Zhang H, Zheng S, Zheng L, et al. Study on volume change and scanning electron microscopy observation of silica-filled solution polymerized styrene-butadiene rubber/cis-1,4-polybutadiene rubber blends upon stretching[J]. Microscopy Research and Technique, 2021."
-
-polymer:
-  type: "SSBR/BR 并用胶"
+sample_id: SSBR-063
+doi: 10.1002/jemt.23814
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  blend_components:
-    - "SSBR"
-    - "顺丁橡胶 (BR)"
-
-filler:
-  type: "白炭黑 (SiO2)"
-  loading_phr: null
-
-morphology_study:
-  technique: "SEM 原位拉伸"
-  key_findings:
-    - "拉伸过程中微空穴形成"
-    - "体积变化与应变相关"
-    - "填料-橡胶界面脱粘"
-
-key_properties:
-  tensile_strength_MPa: 18.5
-  elongation_at_break_percent: 520
-  modulus_300_MPa: 8.5
-  tg_ssbr_celsius: -25
-  tg_br_celsius: -105
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑 (SiO2)
+application: 绿色轮胎、白炭黑填充复合材料
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "SSBR/BR并用胶"
-  - "白炭黑填充"
-  - "拉伸形貌"
-  - "体积变化"
-  - "微空穴"
-  - "SEM原位观察"
-  - "绿色轮胎"
+- SSBR/BR并用胶
+- 白炭黑填充
+- 拉伸形貌
+- 体积变化
+- 微空穴
+- SEM原位观察
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-063 综合档案
 
 ## 研究概述

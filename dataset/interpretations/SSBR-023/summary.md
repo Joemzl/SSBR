@@ -1,35 +1,25 @@
 ---
 sample_id: SSBR-023
-interpretation_type: summary
-source_doi: "10.1002/app.46653"
+doi: 10.1002/app.46653
+polymer_type: 羧基官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: 羧基
+  degree: 2.6 mol%
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-functional_group: "羧基"
-functional_reagent: "3-MPA"
-functional_reagent_smiles: "OC(=O)CCS"
-interface_mechanism: "氢键"
-grafting_method: "固态原位接枝"
-
-key_metrics:
-  functionalization_degree: "2.6 mol%"
-  bound_rubber: "67.1%"
-  tg_dma: "-7.3℃"
-  tan_delta_0c: "0.9059"
-  tan_delta_60c: "0.0734"
-  dispersion_quality: "良"
-
-performance_changes:
-  wet_grip: "+19.3%"
-  rolling_resistance: "-19.6%"
-  bound_rubber_change: "+17.5%"
-
-application_scenario:
-  - "轮胎胎面配方"
-  - "需要同时改善湿地抓地力和滚动阻力"
-  - "固态加工工艺优化"
+updated_at: '2026-03-19'
 ---
-
 # SSBR-023 综合档案
 
 ## 一句话总结

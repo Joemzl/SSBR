@@ -1,37 +1,31 @@
 ---
 sample_id: SSBR-054
 doi: 10.1016/j.polymer.2015.11.039
-polymer:
-  type: SSBR
-  grade: Buna VSL 5025-2HM
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-research_type: theoretical_modeling
-model:
-  type: multiscale
-  scales:
-    - microscale (molecular)
-    - mesoscale (aggregate)
-    - macroscale (continuum)
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 增强弹性体动力学建模
 data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
-  tem: false
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 多尺度建模
-  - 动态力学
-  - 本构模型
-  - Payne 效应
-  - 时温等效
-  - 计算材料学
+- 多尺度建模
+- 动态力学
+- 本构模型
+- Payne 效应
+- 时温等效
+- 计算材料学
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-054 综合档案
 
 ## 样本概述

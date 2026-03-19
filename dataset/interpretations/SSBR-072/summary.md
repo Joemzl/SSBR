@@ -1,21 +1,29 @@
 ---
-sample_id: "SSBR-072"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "半钢子午线轮胎胎面胶性能评价"
-doi: "10.5254/rct.17.83724"
+sample_id: SSBR-072
+doi: 10.5254/rct.17.83724
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 半钢子午线轮胎胎面胶性能评价
 data_completeness:
-  mechanical: partial
-  thermal: false
-  nmr: false
-  morphology: false
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "半钢子午线轮胎"
-  - "胎面胶"
-  - "性能评价"
-  - "乘用车轮胎"
+- 半钢子午线轮胎
+- 胎面胶
+- 性能评价
+- 乘用车轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-072 综合档案
 
 ## 基本信息

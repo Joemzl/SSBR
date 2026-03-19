@@ -1,31 +1,31 @@
 ---
 sample_id: SSBR-037
 doi: 10.1016/j.compscitech.2018.01.036
-title: "In situ assembly of SiO2 nanodots/layered double hydroxide nanocomposite for the reinforcement of SSBR/BR"
-functionalization_type: hybrid-filler
-functional_group: SiO₂/LDH 杂化纳米填料
-functional_group_smiles: null
-functionalization_position: 填料表面
-filler_type: SiO₂/LDH 杂化
-filler_loading: 70 phr
 polymer_type: SSBR/BR
-styrene_content: 25 wt%
-vinyl_content: 50%
-tg_dsc: null
-tensile_strength: 22.8 MPa
-elongation_at_break: ~600%
-tan_delta_0c_change: +48% (vs Zeosil 1165 MP)
-tan_delta_60c_change: -62% (vs Zeosil 1165 MP)
-heat_buildup_change: -6.1°C (vs Zeosil 1165 MP)
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: SiO₂/LDH 杂化纳米填料
+  degree: null
+  method: hybrid-filler
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 杂化填料
-  - LDH
-  - 原位组装
-  - 超低滚阻
-  - 高湿抓
-  - 绿色轮胎
+- 杂化填料
+- LDH
+- 原位组装
+- 超低滚阻
+- 高湿抓
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-037 综合档案
 
 ## 研究亮点

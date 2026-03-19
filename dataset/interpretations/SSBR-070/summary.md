@@ -2,24 +2,30 @@
 sample_id: SSBR-070
 doi: 10.1002/pen.25650
 polymer_type: 未官能化工业 SSBR
-application: 绿色轮胎、白炭黑混炼
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
 filler_system: 白炭黑母炼胶
-research_focus: 液相混炼法白炭黑母炼胶拉伸体积变化
+application: 绿色轮胎、白炭黑混炼
 data_completeness:
-  mechanical: limited
-  thermal: none
-  nmr: none
-  morphology: partial
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 液相混炼
-  - 白炭黑母炼胶
-  - 体积变化
-  - SEM 形貌
-  - 空洞化
-  - 界面脱粘
-extraction_date: 2026-03-18
+- 液相混炼
+- 白炭黑母炼胶
+- 体积变化
+- SEM 形貌
+- 空洞化
+- 界面脱粘
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-070 综合档案
 
 ## 样本概述

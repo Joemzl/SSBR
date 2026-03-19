@@ -1,44 +1,32 @@
 ---
-sample_id: "SSBR-064"
-title: "PPD 改性氧化石墨烯/SSBR 多功能复合材料"
-application: "绿色轮胎、抗湿滑与抗老化"
-doi: "10.3390/ma13051025"
-citation: "Wan S, Lu X, Zhao H, et al. Effect of Graphene Oxide Modified with Organic Amine on the Aging Resistance, Rolling Loss and Wet-skid Resistance of Solution Polymerized Styrene-Butadiene Rubber[J]. Materials, 2020, 13(5): 1025."
-
-polymer:
-  type: "SSBR"
+sample_id: SSBR-064
+doi: 10.3390/ma13051025
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-
-filler:
-  type: "PPD改性氧化石墨烯"
-  modifier: "对苯二胺 (PPD)"
-  core_functional_group: "氨基"
-
-key_properties:
-  tensile_strength_MPa: 19.5
-  elongation_at_break_percent: 480
-  modulus_300_MPa: 9.5
-  tan_delta_60C: 0.08
-  tan_delta_0C: 0.35
-  aging_retention_percent: 85
-  tg_celsius: -28
-
-performance_triangle:
-  rolling_resistance: "降低"
-  wet_grip: "提高"
-  wear_resistance: "保持"
-  aging_resistance: "显著提高"
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: PPD改性氧化石墨烯
+application: 绿色轮胎、抗湿滑与抗老化
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "PPD改性GO"
-  - "氧化石墨烯"
-  - "抗老化"
-  - "滚动阻力"
-  - "抗湿滑"
-  - "多功能填料"
-  - "绿色轮胎"
+- PPD改性GO
+- 氧化石墨烯
+- 抗老化
+- 滚动阻力
+- 抗湿滑
+- 多功能填料
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-064 综合档案
 
 ## 研究概述

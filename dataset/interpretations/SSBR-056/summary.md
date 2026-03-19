@@ -1,37 +1,31 @@
 ---
 sample_id: SSBR-056
 doi: 10.1016/j.polymer.2017.08.051
-polymer:
-  type: SSBR
-  grade: Buna VSL 5025-2HM
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-research_type: theoretical_modeling
-model:
-  type: superposition
-  principles:
-    - time-temperature superposition (TTS)
-    - strain superposition
-    - filler content superposition
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 轮胎生产
 data_completeness:
-  mechanical: true (DMA)
-  dsc: false
-  nmr: false
-  tem: false
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 叠加原理
-  - 时温等效
-  - WLF 方程
-  - 动态力学
-  - 轮胎材料
-  - 主曲线
+- 叠加原理
+- 时温等效
+- WLF 方程
+- 动态力学
+- 轮胎材料
+- 主曲线
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-056 综合档案
 
 ## 样本概述

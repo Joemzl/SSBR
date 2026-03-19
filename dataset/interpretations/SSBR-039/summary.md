@@ -1,38 +1,30 @@
 ---
 sample_id: SSBR-039
 doi: 10.1016/j.compscitech.2018.04.008
-polymer:
-  type: SSBR
-  grade: Buna VSL 5025-2HM
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-filler:
-  type: MWCNT/SiO₂ nanocomposite
-  total_loading: 50 phr
-  components:
-    - name: MWCNT
-      content: 1-3 phr
-    - name: SiO₂
-      content: 47-49 phr
-  coupling_agent: Si-69
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: MWCNT/SiO₂ nanocomposite
 application: 弹性体复合材料
 data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
+  dsc: true
+  nmr: true
   tem: true
 keywords:
-  - MWCNT
-  - 碳纳米管
-  - 一维/零维协同
-  - 高性能弹性体
-  - 填料网络
+- MWCNT
+- 碳纳米管
+- 一维/零维协同
+- 高性能弹性体
+- 填料网络
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-039 综合档案
 
 ## 样本概述

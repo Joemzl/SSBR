@@ -1,35 +1,25 @@
 ---
 sample_id: SSBR-024
-interpretation_type: summary
-source_doi: "10.1002/app.48243"
+doi: 10.1002/app.48243
+polymer_type: 酯基官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 甲基丙烯酸甲酯
+  functional_group: 酯基
+  degree: 2.6 mol%
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-functionalizing_agent:
-  name: "MMP"
-  full_name: "甲基丙烯酸甲酯"
-  smiles: "CC(=C)C(=O)OC"
-  core_functional_group: "酯基"
-  
-key_metrics:
-  functionalization_degree: "2.6 mol%"
-  bound_rubber: "63.3%"
-  tensile_strength: "18.7 MPa"
-  elongation: "389%"
-  tg_composite: "-10.0℃"
-  tan_delta_0c: "0.8726"
-  tan_delta_60c: "0.0859"
-  dispersion_quality: "良"
-
-interface_mechanism: "氢键（酯基与白炭黑硅羟基）"
-
-performance_highlights:
-  - "拉伸强度提升 32.6%"
-  - "结合橡胶含量提升 19.9%"
-  - "湿地抓地力提升 15.0%"
-  - "滚动阻力降低 6.2%"
+updated_at: '2026-03-19'
 ---
-
 # SSBR-024 综合档案
 
 ## 样本概述

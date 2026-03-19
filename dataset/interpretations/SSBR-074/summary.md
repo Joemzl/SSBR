@@ -1,37 +1,31 @@
 ---
-sample_id: "SSBR-074"
-title: "白炭黑填充 SSBR 的非线性流变行为研究"
-application: "橡胶非线性粘弹性研究"
-doi: "10.1002/polb.21263"
-citation: "Sun J, Song Y, Zheng Q, et al. Nonlinear Rheological Behavior of Silica Filled Solution-Polymerized Styrene Butadiene Rubber[J]. Journal of Polymer Science Part B: Polymer Physics, 2007, 45(16): 2271-2281."
-
-polymer:
-  type: "SSBR"
+sample_id: SSBR-074
+doi: 10.1002/polb.21263
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-
-filler:
-  type: "白炭黑 (SiO2)"
-  loading_phr: "变量研究"
-
-research_focus:
-  - "非线性粘弹性"
-  - "Payne效应"
-  - "填料网络动力学"
-  - "流变学模型"
-
-key_properties:
-  payne_effect: "显著"
-  tg_celsius: -30
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑 (SiO2)
+application: 橡胶非线性粘弹性研究
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "非线性粘弹性"
-  - "Payne效应"
-  - "Mullins效应"
-  - "流变学"
-  - "填料网络"
-  - "白炭黑"
+- 非线性粘弹性
+- Payne效应
+- Mullins效应
+- 流变学
+- 填料网络
+- 白炭黑
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-074 综合档案
 
 ## 研究概述

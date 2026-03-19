@@ -1,20 +1,29 @@
 ---
 sample_id: SSBR-040
+doi: 10.1016/j.compscitech.2020.108482
 polymer_type: SSBR
-filler_system: "HMDS 改性纳米白炭黑"
-modification_strategy: "填料表面改性"
-literature_doi: "10.1016/j.compscitech.2020.108482"
-performance_highlights:
-  - "拉伸强度 17.2 MPa"
-  - "低滚动阻力 tan δ(60°C)≈0.095"
-  - "良好填料分散性"
+functionalization:
+  is_functionalized: true
+  type: filler_modification
+  reagent: HMDS 改性纳米白炭黑
+  functional_group: null
+  degree: null
+  method: null
+filler_system: HMDS 改性纳米白炭黑
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "HMDS"
-  - "表面改性"
-  - "白炭黑"
-  - "绿色轮胎"
+- HMDS
+- 表面改性
+- 白炭黑
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-040 综合档案
 
 ## 样本概述

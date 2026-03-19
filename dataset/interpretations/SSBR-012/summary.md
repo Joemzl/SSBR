@@ -1,25 +1,31 @@
 ---
-sample_id: "SSBR-012"
-polymer_type: "未官能化工业 SSBR (高乙烯基)"
-functionalization: "无"
-application: "轮胎用高刚度橡胶复合材料"
-styrene_content: "21.0 wt%"
-vinyl_content: "62.0 mol%"
-doi: "10.3390/polym13101626"
+sample_id: SSBR-012
+doi: 10.3390/polym13101626
+polymer_type: 未官能化工业 SSBR (高乙烯基)
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 轮胎用高刚度橡胶复合材料
 data_completeness:
   mechanical: true
-  thermal: true
+  dsc: true
   nmr: true
-  morphology: true
+  tem: true
 keywords:
-  - "高乙烯基"
-  - "高刚度"
-  - "高温增强"
-  - "AFM"
-  - "X-ray CT"
-  - "NMR"
+- 高乙烯基
+- 高刚度
+- 高温增强
+- AFM
+- X-ray CT
+- NMR
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-012 综合档案
 
 ## 基本信息

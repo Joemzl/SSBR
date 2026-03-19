@@ -1,16 +1,25 @@
 ---
-sample_id: "SSBR-076"
-functionalization_type: "环氧化"
-reagent: "间氯过氧苯甲酸 (m-CPBA)"
-reagent_smiles: "OOC(=O)c1cccc(Cl)c1"
-target_performance:
-  - "改善白炭黑分散"
-  - "零 VOC 排放"
-  - "高选择性环氧化"
-data_quality: "中"
-literature_doi: "10.3390/polym12061257"
+sample_id: SSBR-076
+doi: 10.3390/polym12061257
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: 环氧化
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-076 综合档案
 
 ## 基本信息

@@ -2,22 +2,29 @@
 sample_id: SSBR-066
 doi: 10.1002/masy.201650001
 polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 生胶质量控制与结构表征
-research_focus: 桌面式 NMR 光谱用于生胶质量控制
 data_completeness:
-  mechanical: none
-  thermal: none
-  nmr: partial
-  morphology: none
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 低场 NMR
-  - 桌面式 NMR
-  - 质量控制
-  - 快速检测
-  - 生胶表征
-extraction_date: 2026-03-18
+- 低场 NMR
+- 桌面式 NMR
+- 质量控制
+- 快速检测
+- 生胶表征
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-066 综合档案
 
 ## 样本概述

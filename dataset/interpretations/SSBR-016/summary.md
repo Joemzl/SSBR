@@ -1,53 +1,25 @@
 ---
 sample_id: SSBR-016
-interpretation_type: summary
-source_doi: "10.1021/acs.iecr.6b02259"
-skill_used: ssbr-summary-generator
+doi: 10.1021/acs.iecr.6b02259
+polymer_type: 二苯基乙基 (triphenylethane pendant)官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: p-(2,2'-二苯基乙基)苯乙烯 (DPES)
+  functional_group: 二苯基乙基 (triphenylethane pendant)
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-# 样本基本信息
-sample_info:
-  literature_id: "SBDR-5"
-  is_ssbr: true
-  is_in_chain: false
-  functionalization_agent: "p-(2,2'-二苯基乙基)苯乙烯 (DPES)"
-  agent_smiles: "C=Cc1ccc(CCC(c2ccccc2)c3ccccc3)cc1"
-  core_functional_group: "二苯基乙基 (triphenylethane pendant)"
-  functional_group_smiles: "c1ccc(C(CCc2ccccc2)c3ccccc3)cc1"
-  functionalization_degree: "5.1 wt%"
-  styrene_content: "20.1 wt%"
-  vinyl_content: null
-  mn: 196000
-  pdi: 1.23
-  filler_type: "炭黑 N330"
-  application: "炭黑分散改性、绿色轮胎胎面胶"
-
-# 关键性能数据汇总
-key_metrics:
-  tensile_strength_change: "+43.8%"
-  elongation_change: "+11.6%"
-  bound_rubber: "26.9%"
-  tan_delta_0C_change: "增加（改善湿地抓地力）"
-  tan_delta_60C_change: "-30.8%（降低滚动阻力）"
-  tg: "-45℃"
-  dispersion_quality: "优"
-  cb_aggregate_rg: "18.16 nm"
-
-# RAG 检索关键词
-rag_keywords:
-  - DPES
-  - 二苯基乙基
-  - 炭黑分散
-  - 共价键界面
-  - 自由基接枝
-  - 热分解基团
-  - 绿色轮胎
-  - 湿地抓地力
-  - 滚动阻力
-  - Payne效应
+updated_at: '2026-03-19'
 ---
-
 # 综合档案：SSBR-016
 
 > **一句话总结**: DPES 官能化 SSBR 通过热分解产生自由基与炭黑形成共价键界面，显著改善炭黑分散、力学性能和动态性能，适用于绿色轮胎胎面胶。

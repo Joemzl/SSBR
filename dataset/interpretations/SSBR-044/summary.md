@@ -1,97 +1,25 @@
 ---
 sample_id: SSBR-044
-interpretation_type: summary
-source_doi: "10.1002/app.28621"
+doi: 10.1002/app.28621
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: '[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷 (AMMO)'
+  functional_group: null
+  degree: null
+  method: 硅烷偶联剂改性
+filler_system: 纳米白炭黑 (20)
+application: 绿色轮胎胎面材料
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-# ========== 样本基本信息 ==========
-sample_name: "YK-3-2"
-sample_type: "N-SSBR/SiO2 共凝聚纳米复合材料"
-is_chain_functionalized: false
-functionalization_type: "硅烷偶联剂改性"
-functionalization_reagent: "[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷 (AMMO)"
-reagent_smiles: "COC[Si](CCC(NCCN)OC)(OC)OC"
-
-# ========== 聚合物结构参数 ==========
-polymer_structure:
-  styrene_content:
-    value: 29.5
-    unit: "wt%"
-  vinyl_content:
-    value: 34.7
-    unit: "mol%"
-  mn:
-    value: 351000
-    unit: "g/mol"
-  mw:
-    value: 574000
-    unit: "g/mol"
-  pdi: 1.63
-  random_degree: 91.5
-  architecture: "星形 (4支链)"
-
-# ========== 填料信息 ==========
-filler:
-  type: "纳米白炭黑"
-  grade: "Rhodia Tixosil 383"
-  loading: 20
-  unit: "phr"
-  particle_size: "20-40 nm"
-  surface_area: "100-200 m²/g"
-  coupling_agent: "AMMO (7 wt% of silica)"
-  pre_dispersion: "7 phr in N-SSBR (highest among three)"
-
-# ========== 力学性能数据 ==========
-mechanical_properties:
-  stress_300:
-    value: 3.7
-    unit: "MPa"
-    source: "Table II"
-  tensile_strength:
-    value: 10.3
-    unit: "MPa"
-    source: "Table II"
-  elongation:
-    value: 455
-    unit: "%"
-    source: "Table II"
-  tear_strength:
-    value: 22.2
-    unit: "kN/m"
-    source: "Table II"
-  hardness:
-    value: 56
-    unit: "Shore A"
-    source: "Table II"
-
-# ========== 热学性能数据 ==========
-thermal_properties:
-  tg_shift:
-    value: "+2"
-    unit: "℃"
-    description: "相比 SSBR/SiO2 复合材料"
-  tg_rank: "中等"
-  tan_delta_strain: "略高于其他两种样本"
-
-# ========== 形貌数据 ==========
-morphology:
-  dispersion_quality: "最优"
-  particle_size_observed: "20-30 nm"
-  fb_value: 0.30
-  fb_control: 0.45
-  improvement: "FB 值降低 33%"
-
-# ========== 动态性能数据 ==========
-dynamic_properties:
-  payne_effect: "降低"
-  tan_delta_strain: "略高（高苯乙烯含量导致）"
-  internal_friction: "降低"
-
-# ========== 应用场景 ==========
-application: "绿色轮胎胎面材料"
+updated_at: '2026-03-19'
 ---
-
 # 综合档案：SSBR-044
 
 > **一句话总结**: 高苯乙烯含量的星形 SSBR 共凝聚纳米复合材料，具有该系列**最佳的填料分散**，但因结构刚性导致断裂伸长率最低。

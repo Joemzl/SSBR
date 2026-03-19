@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-080"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "橡胶加工动力学研究"
-doi: "10.1142/S0256767908003503"
+sample_id: SSBR-080
+doi: 10.1142/S0256767908003503
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 橡胶加工动力学研究
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: false
-  morphology: false
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "加工动力学"
-  - "流变行为"
-  - "粘度"
-  - "剪切变稀"
-  - "橡胶加工"
+- 加工动力学
+- 流变行为
+- 粘度
+- 剪切变稀
+- 橡胶加工
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-080 综合档案
 
 ## 基本信息

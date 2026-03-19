@@ -1,20 +1,29 @@
 ---
 sample_id: SSBR-038
+doi: 10.1016/j.compscitech.2018.03.036
 polymer_type: SSBR
-filler_system: "DT-GO (烷基硫醇改性氧化石墨烯)"
-modification_strategy: "填料表面改性"
-literature_doi: "10.1016/j.compscitech.2018.03.036"
-performance_highlights:
-  - "拉伸强度 16.4 MPa"
-  - "低滚动阻力 tan δ(60°C)=0.099"
-  - "填料分散性显著改善"
+functionalization:
+  is_functionalized: true
+  type: filler_modification
+  reagent: DT-GO (烷基硫醇改性氧化石墨烯)
+  functional_group: null
+  degree: null
+  method: null
+filler_system: DT-GO (烷基硫醇改性氧化石墨烯)
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "氧化石墨烯"
-  - "硫醇-烯点击反应"
-  - "表面改性"
-  - "绿色轮胎"
+- 氧化石墨烯
+- 硫醇-烯点击反应
+- 表面改性
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-038 综合档案
 
 ## 样本概述

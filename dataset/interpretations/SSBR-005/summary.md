@@ -1,17 +1,25 @@
 ---
 sample_id: SSBR-005
-interpretation_type: summary
-skill_used: ssbr-summary-generator
+doi: 10.1039/c9ra02783a
+polymer_type: 三乙氧基硅烷基（-Si(OC₂H₅)₃）官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 3-巯基丙基三乙氧基硅烷（MPTES）
+  functional_group: 三乙氧基硅烷基（-Si(OC₂H₅)₃）
+  degree: 9.5 wt%（约70个MPTES分子/链）
+  method: 巯基-烯点击化学
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-17
-updated_at: null
-interpretations_included:
-  - mechanical
-  - dsc
-  - nmr
-  - tem
-interpretations_missing: []
+updated_at: '2026-03-19'
 ---
-
 # SSBR-005 综合档案
 
 ## 一句话总结

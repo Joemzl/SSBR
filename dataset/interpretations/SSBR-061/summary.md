@@ -1,47 +1,32 @@
 ---
-sample_id: "SSBR-061"
-title: "APTES 端基官能化 SSBR/白炭黑复合材料"
-application: "汽车工业、白炭黑填充复合材料"
-doi: "10.1016/j.polymertesting.2020.106431"
-citation: "Hassanabadi M, Najafi M, Motlagh G H, et al. Synthesis and characterization of end-functionalized solution polymerized styrene-butadiene rubber and study the impact of silica dispersion improvement on the wear behavior of the composite[J]. Polymer Testing, 2020, 85: 106431."
-
-polymer:
-  type: "SSBR"
-  is_functionalized: true
-  functionalization_type: "端基官能化"
-  styrene_content_wt_percent: 25.0
-
+sample_id: SSBR-061
+doi: 10.1016/j.polymertesting.2020.106431
+polymer_type: SSBR
 functionalization:
-  reagent: "3-(氨基丙基)三乙氧基硅烷 (APTES)"
-  reagent_smiles: "C1(OCC)[Si](OCC)(OCC)CCCN"
-  grafting_group: "烷氧基硅烷基"
-  grafting_group_smiles: "[Si](OC)(OC)OC"
-  core_functional_group: "氨基"
-  core_group_smiles: "N"
-  core_group_formula: "-NH2"
-
-filler:
-  type: "白炭黑 (SiO2)"
-  loading_phr: null
-
-key_properties:
-  tensile_strength_MPa: 20.0
-  elongation_at_break_percent: 450
-  modulus_300_MPa: 10.0
-  shore_A_hardness: 65
-  din_abrasion_mm3: 85
-  tg_celsius: -25
-
+  is_functionalized: true
+  type: 端基官能化
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑 (SiO2)
+application: 汽车工业、白炭黑填充复合材料
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "端基官能化"
-  - "APTES"
-  - "氨基"
-  - "烷氧基硅烷"
-  - "白炭黑分散"
-  - "耐磨性"
-  - "绿色轮胎"
+- 端基官能化
+- APTES
+- 氨基
+- 烷氧基硅烷
+- 白炭黑分散
+- 耐磨性
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-061 综合档案
 
 ## 研究概述

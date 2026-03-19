@@ -1,21 +1,30 @@
 ---
 sample_id: SSBR-045
+doi: 10.1002/app.29646
 polymer_type: SSBR
-filler_system: "沉淀法白炭黑"
-modification_strategy: "基准配方（Si69 原位改性）"
-literature_doi: "10.1002/app.29646"
-performance_highlights:
-  - "系统研究应力松弛行为"
-  - "揭示填料网络动力学机理"
-  - "拉伸强度 14.2 MPa"
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 沉淀法白炭黑
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "应力松弛"
-  - "填料网络"
-  - "Payne 效应"
-  - "白炭黑"
-  - "动力学"
+- 应力松弛
+- 填料网络
+- Payne 效应
+- 白炭黑
+- 动力学
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-045 综合档案
 
 ## 样本概述

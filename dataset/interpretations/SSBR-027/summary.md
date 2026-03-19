@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-027"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "复合材料 3D 形貌研究"
-doi: "10.1039/c3ra47050d"
+sample_id: SSBR-027
+doi: 10.1039/c3ra47050d
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 复合材料 3D 形貌研究
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: false
-  morphology: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "3D 形貌"
-  - "填料网络"
-  - "三维表征"
-  - "复合材料"
-  - "填料分布"
+- 3D 形貌
+- 填料网络
+- 三维表征
+- 复合材料
+- 填料分布
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-027 综合档案
 
 ## 基本信息

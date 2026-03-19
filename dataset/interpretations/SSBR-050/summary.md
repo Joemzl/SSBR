@@ -1,36 +1,31 @@
 ---
 sample_id: SSBR-050
 doi: 10.1016/j.nanoen.2018.03.038
-polymer:
-  type: SSBR
-  grade: null
-  manufacturer: null
+polymer_type: 羟基 (-OH)官能化 SSBR
+functionalization:
   is_functionalized: true
-  functionalization_type: chain_end
-  functional_reagent: 环氧乙烷
+  type: in_chain
+  reagent: 环氧乙烷
   functional_group: 羟基 (-OH)
-  styrene_content: null
-  vinyl_content: null
-  Mn: null
-filler:
-  type: SiO₂
-  loading: ~60 phr
-  coupling_agent: null
+  degree: null
+  method: null
+filler_system: SiO₂ (~60 phr)
 application: 极低滚阻节能轮胎
 data_completeness:
   mechanical: true
   dsc: true
-  nmr: false
+  nmr: true
   tem: true
 keywords:
-  - 大分子组装
-  - 极低滚动阻力
-  - 羟基官能化
-  - 节能轮胎
-  - Nano Energy
-  - 界面设计
+- 大分子组装
+- 极低滚动阻力
+- 羟基官能化
+- 节能轮胎
+- Nano Energy
+- 界面设计
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-050 综合档案
 
 ## 样本概述

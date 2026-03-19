@@ -2,25 +2,30 @@
 sample_id: SSBR-011
 doi: 10.1016/j.compositesb.2015.07.001
 polymer_type: 未官能化工业 SSBR/ESBR 并用胶
-styrene_content: 25.37 wt%
-application: 轮胎用橡胶复合材料
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
 filler_system: 高填料量白炭黑
-research_focus: 乳液共混法制备白炭黑母炼胶
+application: 轮胎用橡胶复合材料
 data_completeness:
-  mechanical: partial
-  thermal: limited
-  nmr: none
-  morphology: partial
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 乳液共混法
-  - 白炭黑母炼胶
-  - 高填料量
-  - SSBR/ESBR 并用
-  - Payne 效应
-  - TEM/AFM 形貌
-extraction_date: 2026-03-18
+- 乳液共混法
+- 白炭黑母炼胶
+- 高填料量
+- SSBR/ESBR 并用
+- Payne 效应
+- TEM/AFM 形貌
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-011 综合档案
 
 ## 样本概述

@@ -1,38 +1,31 @@
 ---
-sample_id: "SSBR-068"
-title: "XSBR 增容膨胀石墨/SSBR 纳米复合材料"
-application: "膨胀石墨/橡胶纳米复合材料"
-doi: "10.1002/pen.23533"
-citation: "Malas A, Das C K. Development of Modified Expanded Graphite-Filled Solution Polymerized Styrene Butadiene Rubber Vulcanizates in the Presence and Absence of Carbon Black[J]. Polymer Engineering & Science, 2014, 54: 33-41."
-
-polymer:
-  type: "SSBR"
+sample_id: SSBR-068
+doi: 10.1002/pen.23533
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-
-modifier:
-  type: "XSBR (羧基化丁苯橡胶)"
-  role: "增容剂"
-  core_functional_group: "羧基"
-
-filler:
-  primary: "膨胀石墨 (EG)"
-  secondary: "炭黑 (可选)"
-
-key_properties:
-  tensile_strength_MPa: 16.5
-  elongation_at_break_percent: 380
-  modulus_300_MPa: 7.5
-  tg_celsius: -35
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: ''
+application: 膨胀石墨/橡胶纳米复合材料
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "膨胀石墨"
-  - "XSBR增容"
-  - "羧基"
-  - "纳米复合材料"
-  - "炭黑复配"
-  - "导电橡胶"
+- 膨胀石墨
+- XSBR增容
+- 羧基
+- 纳米复合材料
+- 炭黑复配
+- 导电橡胶
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-068 综合档案
 
 ## 研究概述

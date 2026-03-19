@@ -1,24 +1,32 @@
 ---
-sample_id: "SSBR-009"
-polymer_type: "未官能化工业 SSBR"
-functionalization: "无"
-application: "绿色轮胎胎面胶"
-doi: "10.5254/rct.15.84881"
+sample_id: SSBR-009
+doi: 10.5254/rct.15.84881
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 绿色轮胎胎面胶
 data_completeness:
   mechanical: true
-  thermal: true
-  nmr: false
-  morphology: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "绿色轮胎"
-  - "胎面胶"
-  - "tan δ"
-  - "滚动阻力"
-  - "抗湿滑"
-  - "Payne 效应"
-  - "TEM"
+- 绿色轮胎
+- 胎面胶
+- tan δ
+- 滚动阻力
+- 抗湿滑
+- Payne 效应
+- TEM
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-009 综合档案
 
 ## 基本信息

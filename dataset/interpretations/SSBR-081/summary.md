@@ -1,45 +1,25 @@
 ---
-sample_id: "SSBR-081"
-doi: "10.1002/vnl.21784"
-title: "Fatty acid benzyl esters as bio-based plasticizers in silica-filled solution-polymerized styrene-butadiene rubber/butadiene rubber composites"
-year: 2020
-
-polymer:
-  type: "SSBR/BR 并用"
+sample_id: SSBR-081
+doi: 10.1002/vnl.21784
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: ~
-  functional_group: ~
-  functional_group_smiles: ~
-  mn_kg_mol: ~
-  styrene_content_percent: ~
-
-filler:
-  type: "白炭黑"
-  loading_phr: ~
-  surface_treatment: "硅烷偶联剂"
-
-processing:
-  mixing_method: "密炼"
-  curing_system: "硫磺硫化"
-  plasticizer: "脂肪酸苄酯"
-
-key_properties:
-  tensile_strength_mpa: 18.5
-  elongation_percent: 420
-  tg_c: ~-50
-  dispersion_quality: "良好"
-
-application: "环保型增塑剂研究"
-
-tags:
-  - "生物基增塑剂"
-  - "脂肪酸苄酯"
-  - "环保轮胎"
-  - "SSBR/BR 并用"
-  - "白炭黑填充"
-  - "低 PAHs"
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑
+application: 环保型增塑剂研究
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-081 综合档案
 
 ## 研究亮点

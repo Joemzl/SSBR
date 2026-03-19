@@ -1,35 +1,31 @@
 ---
-sample_id: "SSBR-067"
-title: "星型 SSBR/白炭黑/炭黑共凝聚复合材料"
-application: "星型 SSBR 形貌与力学性能研究"
-doi: "10.1002/pat.1324"
-citation: "Liu X, Zhao S, Yang Y, et al. Structure and properties of star-shaped solution-polymerized styrene-butadiene rubber and its co-coagulated rubber filled with silica/carbon black-I: morphological structure and mechanical properties[J]. Polymers for Advanced Technologies, 2008."
-
-polymer:
-  type: "星型 SSBR"
-  architecture: "星型 (4-6 臂)"
+sample_id: SSBR-067
+doi: 10.1002/pat.1324
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-
-filler:
-  type: "白炭黑/炭黑双填料"
-  preparation: "共凝聚"
-
-key_properties:
-  tensile_strength_MPa: 22.0
-  elongation_at_break_percent: 420
-  modulus_300_MPa: 12.0
-  shore_A_hardness: 68
-  tg_celsius: -30
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑/炭黑双填料
+application: 星型 SSBR 形貌与力学性能研究
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "星型SSBR"
-  - "共凝聚"
-  - "双填料体系"
-  - "白炭黑/炭黑"
-  - "形貌研究"
-  - "力学性能"
+- 星型SSBR
+- 共凝聚
+- 双填料体系
+- 白炭黑/炭黑
+- 形貌研究
+- 力学性能
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-067 综合档案
 
 ## 研究概述

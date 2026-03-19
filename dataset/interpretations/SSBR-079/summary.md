@@ -2,23 +2,29 @@
 sample_id: SSBR-079
 doi: 10.1007/s13726-020-00843-3
 polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 轮胎胎面胶
-functionalization_agent: 羧基化 EVA 改性白炭黑
-research_focus: EVA 改性纳米白炭黑的轮胎应用
 data_completeness:
-  mechanical: partial
-  thermal: limited
-  nmr: none
-  morphology: limited
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - EVA 改性
-  - 白炭黑表面改性
-  - 轮胎胎面胶
-  - 分散性改善
-  - 界面增强
-extraction_date: 2026-03-18
+- EVA 改性
+- 白炭黑表面改性
+- 轮胎胎面胶
+- 分散性改善
+- 界面增强
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-079 综合档案
 
 ## 样本概述

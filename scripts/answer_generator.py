@@ -319,9 +319,12 @@ class AnswerGenerator:
         # 单独出现的 SSBR-XXX（带编号格式）
         answer_text = re.sub(r'(?<!\w)SSBR-\d{3}(?!\w)', '该方案', answer_text)
         
-        # 清理可能产生的多余空格
-        answer_text = re.sub(r'\s+', ' ', answer_text)
+        # 清理行内多余空格（保留换行符，只处理同一行内的多个连续空格）
+        answer_text = re.sub(r'[^\S\n]+', ' ', answer_text)  # 只替换非换行的空白字符
         answer_text = re.sub(r' ([，。、；：])', r'\1', answer_text)
+        
+        # 清理多余的空行（超过2个连续空行变成2个）
+        answer_text = re.sub(r'\n{3,}', '\n\n', answer_text)
         
         # For REFERENCE type, ensure disclaimer is present
         if answer_type == AnswerType.REFERENCE:

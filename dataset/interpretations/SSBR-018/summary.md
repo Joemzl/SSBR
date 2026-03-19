@@ -1,17 +1,25 @@
 ---
 sample_id: SSBR-018
-interpretation_type: summary
-skill_used: ssbr-summary-generator
+doi: 10.1021/acs.iecr.8b05738
+polymer_type: 二甲氨基 (-NMe₂)官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 1,1-双(4-二甲氨基苯基)乙烯 (DPE-(NMe₂)₂)
+  functional_group: 二甲氨基 (-NMe₂)
+  degree: 0.09 wt%（DPE 单元含量）
+  method: 活性阴离子聚合，DPE 衍生物作为引发剂
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-interpretations_included:
-  - mechanical
-  - dsc
-  - nmr
-  - tem
-interpretations_missing: []
+updated_at: '2026-03-19'
 ---
-
 # SSBR-018 综合档案
 
 ## 一句话总结

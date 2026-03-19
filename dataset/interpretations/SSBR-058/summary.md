@@ -1,39 +1,25 @@
 ---
-sample_id: "SSBR-058"
-literature_doi: "10.1016/j.polymer.2018.04.039"
-functionalization_agent: "2-巯基乙醇 (ME)"
-functionalization_type: "链中官能化"
-reaction_mechanism: "巯基-烯点击化学 + oxa-Michael 加成交联"
-grafting_group_smiles: "OCCS"
-
-polymer_fingerprint:
-  backbone_smiles: "[CH2-CH=CH-CH2]n-[CH2-CH(C6H5)]m"
-  functional_group_smiles: "OCCS"
-  crosslink_type: "醚键交联 (oxa-Michael)"
-
-key_metrics:
-  functionalization_degree_percent: 20
-  Tg_C: -25.8
-  tensile_strength_MPa: 22.2
-  elongation_percent: 530
-  modulus_100_MPa: 2.1
-  modulus_300_MPa: 7.0
-  hardness_shore_A: 64
-
-filler_system: "白炭黑 40 phr"
-dispersion_rating: "良"
-
-application_domain: "绿色轮胎"
-performance_highlights:
-  - "巯基-烯点击化学高效引入羟基官能团"
-  - "oxa-Michael 反应实现无硫交联"
-  - "羟基-硅羟基氢键改善白炭黑分散"
-  - "拉伸强度 22.2 MPa，伸长率 530%"
-  - "环保无 VOC 工艺"
-
-research_focus: "无硫交联体系"
+sample_id: SSBR-058
+doi: 10.1016/j.polymer.2018.04.039
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 2-巯基乙醇 (ME)
+  functional_group: null
+  degree: null
+  method: 链中官能化
+filler_system: 白炭黑 40 phr
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-058 综合档案
 
 ## 样本概述

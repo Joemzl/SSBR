@@ -1,111 +1,25 @@
 ---
-# SSBR-046 综合档案
 sample_id: SSBR-046
-version: "1.0"
-created: "2026-03-18"
-data_source: "10.1002/app.32372"
-
-# 样本基本信息
-sample_info:
-  name: "SSBR (YL950)"
-  type: "未官能化工业级 SSBR"
-  modifier: "Si-75 硅烷偶联剂"
-  application: "绿色轮胎胎面材料"
-  target_scenario: "低滚动阻力、高湿抓地力、高耐磨性"
-
-# 高分子结构
-polymer_structure:
-  base_polymer: "溶聚丁苯橡胶 (SSBR)"
-  trade_name: "YL950"
-  styrene_content:
-    value: 27.5
-    unit: "wt%"
-  vinyl_content:
-    value: 25.4
-    unit: "mol%"
-  Mn:
-    value: 123000
-    unit: "g/mol"
-  Mw:
-    value: 258000
-    unit: "g/mol"
-  MWD: 2.1
-  supplier: "燕山石化研究院 (Beijing Yanshan Petrochemical)"
-
-# 复合材料体系
-composite_system:
-  filler_system: "SiO₂/CB 双相填料"
-  total_loading: "70 phr"
-  optimal_ratio: "SiO₂/CB = 20/50"
-  coupling_agent:
-    name: "Si-75"
-    full_name: "Bis[γ-(triethoxysilyl)propyl]disulfide"
-    SMILES: "CCO[Si](CCCSSCCC[Si](OCC)(OCC)OCC)(OCC)OCC"
-    dosage: "7% of SiO₂ mass"
-  CB_grade: "N234 (ISAF)"
-  SiO2_grade: "Tixosil 383 (Rhodia)"
-  processing:
-    method: "反应共混"
-    equipment: "Haake PolyLab"
-    temperature: "150°C"
-    time: "4 min"
-
-# 关键性能指标 (最佳配方 20/50)
-key_properties:
-  tensile_strength: "22.8 MPa"
-  modulus_300: "18.3 MPa"
-  elongation_at_break: "378%"
-  tear_strength: "48.1 kN/m"
-  hardness: "68 Shore A"
-  abrasion: "0.256 cm³/1.61km (最低)"
-  heat_buildup: "16.9°C"
-  rolling_power_loss: "2.62 J/r (最低)"
-  Tg: "-29.1°C"
-  tan_delta_0C: "0.23 (最高)"
-  tan_delta_60C: "0.11 (最低)"
-
-# 形态学特征
-morphology:
-  characterization: "TEM"
-  optimal_dispersion: "SiO₂/CB = 20/50"
-  observation: "SiO₂ 嵌入 CB 网络，协同分散"
-  filler_size:
-    CB: "~30 nm 球形"
-    SiO2: "20-40 nm 不规则"
-
-# 抗静电特性
-antistatic:
-  percolation_threshold: "SiO₂/CB = 35/35"
-  mechanism: "隧道导电理论"
-  requirement: "SiO₂/CB < 1/1 以保持抗静电性"
-
-# 文献信息
-literature:
-  title: "Study on the Structure-Mechanical Properties Relationship and Antistatic Characteristics of SSBR Composites Filled with SiO2/CB"
-  authors: "Wang L, Zhao SH"
-  journal: "Journal of Applied Polymer Science"
-  year: 2010
-  volume: 118
-  issue: 1
-  pages: "338-345"
-  doi: "10.1002/app.32372"
-
-# RAG 检索关键词
-rag_keywords:
-  - "绿色轮胎"
-  - "魔三角"
-  - "滚动阻力"
-  - "湿抓地力"
-  - "耐磨性"
-  - "SiO₂/CB 双相填料"
-  - "Si-75 硅烷偶联剂"
-  - "反应共混"
-  - "Payne 效应"
-  - "抗静电"
-  - "渗滤阈值"
-  - "纳米复合材料"
+doi: 10.1002/app.32372
+polymer_type: 未官能化工业 SSBR
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-18'
+updated_at: '2026-03-19'
 ---
-
 ## 样本概述
 
 SSBR-046 是燕山石化 YL950 型溶聚丁苯橡胶，用于研究 SiO₂/CB 双相填料体系对绿色轮胎胎面材料"魔三角"性能的平衡优化。

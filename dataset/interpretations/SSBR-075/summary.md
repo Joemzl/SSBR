@@ -1,22 +1,30 @@
 ---
-sample_id: "SSBR-075"
-polymer_type: "TESPT 官能化 SSBR"
-functionalization: "TESPT"
-application: "轮胎胎面胶硅烷化研究"
-doi: "10.3390/polym12010209"
+sample_id: SSBR-075
+doi: 10.3390/polym12010209
+polymer_type: TESPT 官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 轮胎胎面胶硅烷化研究
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: false
-  morphology: false
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "TESPT"
-  - "硅烷化"
-  - "白炭黑"
-  - "界面改性"
-  - "轮胎胎面胶"
+- TESPT
+- 硅烷化
+- 白炭黑
+- 界面改性
+- 轮胎胎面胶
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-075 综合档案
 
 ## 基本信息

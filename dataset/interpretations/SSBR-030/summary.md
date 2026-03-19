@@ -1,34 +1,25 @@
 ---
 sample_id: SSBR-030
-interpretation_type: summary
-source_doi: "10.1039/c4ra09492a"
+doi: 10.1039/c4ra09492a
+polymer_type: 羧基官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 3-巯基丙酸
+  functional_group: 羧基
+  degree: 9.6 wt%
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-functionalizing_agent:
-  name: "3-MPA"
-  full_name: "3-巯基丙酸"
-  smiles: "OC(=O)CCS"
-  core_functional_group: "羧基"
-  
-key_metrics:
-  functionalization_degree: "9.6 wt%"
-  tg_dsc: "-23.9℃"
-  tg_dma: "0.1℃"
-  tan_delta_max: "1.30"
-  activation_energy: "17.7 kJ/mol"
-  adhesion_energy: "62.1 mJ/m²"
-  dispersion_quality: "优"
-
-interface_mechanism: "氢键（羧基与白炭黑硅羟基）"
-
-performance_highlights:
-  - "活化能提升 56.6%"
-  - "tan δ max 提升 21.5%"
-  - "粘附能提升 21.3%"
-  - "絮凝驱动力降低 64.6%"
+updated_at: '2026-03-19'
 ---
-
 # SSBR-030 综合档案
 
 ## 样本概述

@@ -1,21 +1,30 @@
 ---
 sample_id: SSBR-047
+doi: 10.1002/app.36677
 polymer_type: SSBR
-filler_system: "硅烷改性白炭黑 (TESPT/TESPD)"
-modification_strategy: "硅烷偶联剂改性"
-literature_doi: "10.1002/app.36677"
-performance_highlights:
-  - "系统研究硅烷改性效果"
-  - "拉伸强度 ~18 MPa"
-  - "低滚动阻力 tan δ(60°C)~0.09"
+functionalization:
+  is_functionalized: true
+  type: filler_modification
+  reagent: 硅烷偶联剂改性
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 硅烷改性白炭黑 (TESPT/TESPD)
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "TESPT"
-  - "TESPD"
-  - "硅烷偶联剂"
-  - "Payne 效应"
-  - "非线性粘弹性"
+- TESPT
+- TESPD
+- 硅烷偶联剂
+- Payne 效应
+- 非线性粘弹性
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-047 综合档案
 
 ## 样本概述

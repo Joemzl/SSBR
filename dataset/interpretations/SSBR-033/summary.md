@@ -1,24 +1,31 @@
 ---
-sample_id: "SSBR-033"
-polymer_type: "官能化 SSBR"
-functionalization: "NDI (1,5-萘二异氰酸酯)"
-functionalization_smiles: "O=C=Nc1ccc2c(N=C=O)ccc12"
-application: "高性能轮胎、节能环保轮胎"
-doi: "10.3389/fchem.2018.00240"
+sample_id: SSBR-033
+doi: 10.3389/fchem.2018.00240
+polymer_type: 官能化 SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: 高性能轮胎、节能环保轮胎
 data_completeness:
   mechanical: true
-  thermal: false
-  nmr: partial
-  morphology: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "NDI 官能化"
-  - "异氰酸酯"
-  - "高性能轮胎"
-  - "节能环保"
-  - "界面增强"
-  - "填料分散"
+- NDI 官能化
+- 异氰酸酯
+- 高性能轮胎
+- 节能环保
+- 界面增强
+- 填料分散
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-033 综合档案
 
 ## 基本信息

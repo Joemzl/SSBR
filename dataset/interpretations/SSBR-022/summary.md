@@ -2,27 +2,29 @@
 sample_id: SSBR-022
 doi: 10.1002/app.44923
 polymer_type: TPES 链中官能化 SSBR
-styrene_content: 24.0 wt%
-Mn: 168000 g/mol
-functionalization_agent: TPES (三苯基乙基苯乙烯)
-functionalization_degree: 0.9 wt%
-application: 石墨烯/橡胶复合材料
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: TPES (三苯基乙基苯乙烯)
+  functional_group: null
+  degree: null
+  method: null
 filler_system: 原生石墨烯
-research_focus: 共价键增强石墨烯-橡胶界面
+application: 石墨烯/橡胶复合材料
 data_completeness:
-  mechanical: none
-  thermal: none
-  nmr: partial
-  morphology: none
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - TPES 改性
-  - 石墨烯复合材料
-  - 共价键界面
-  - 原位增强
-  - 碳材料分散
-extraction_date: 2026-03-18
+- TPES 改性
+- 石墨烯复合材料
+- 共价键界面
+- 原位增强
+- 碳材料分散
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-022 综合档案
 
 ## 样本概述

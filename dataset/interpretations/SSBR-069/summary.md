@@ -2,23 +2,29 @@
 sample_id: SSBR-069
 doi: 10.1002/pen.25110
 polymer_type: 未官能化工业 SSBR/BR 并用胶
+functionalization:
+  is_functionalized: false
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 纳米白炭黑分散改性
-functionalization_agent: 二苯胍 (DPG) 功能化白炭黑
-research_focus: 硫化促进剂功能化白炭黑的增强效果
 data_completeness:
-  mechanical: limited
-  thermal: limited
-  nmr: none
-  morphology: limited
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - DPG 功能化
-  - 白炭黑分散
-  - 表面改性
-  - SSBR/BR 并用
-  - 硫化促进剂
-extraction_date: 2026-03-18
+- DPG 功能化
+- 白炭黑分散
+- 表面改性
+- SSBR/BR 并用
+- 硫化促进剂
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-069 综合档案
 
 ## 样本概述

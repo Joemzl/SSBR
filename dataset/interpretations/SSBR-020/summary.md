@@ -1,52 +1,25 @@
 ---
 sample_id: SSBR-020
-interpretation_type: summary
-source_doi: "10.1021/acs.iecr.6b04146"
-created_at: 2026-03-18
-updated_at: null
-
-# ===== 核心标识 =====
-functionalization_reagent: "TMPMP"
-functionalization_reagent_full: "三羟甲基丙烷三(3-巯基丙酸酯)"
-core_functional_group: "巯基 (-SH)"
-reaction_mechanism: "巯基-烯点击反应 (thiol-ene click)"
-strategy: "Two-step (两步法)"
-
-# ===== 关键性能指标 =====
-performance_summary:
-  tensile_strength:
-    value: 15.6
-    unit: "MPa"
-    change_vs_control: "+6%"
-  elongation:
-    value: 290
-    unit: "%"
-    change_vs_control: "-21%"
-  stress_100:
-    value: 2.5
-    unit: "MPa"
-    change_vs_control: "+32%"
-  stress_200:
-    value: 7.8
-    unit: "MPa"
-    change_vs_control: "+42%"
-  wet_grip: "提高"
-  rolling_resistance: "显著降低"
-
-# ===== 界面作用机制 =====
-interface_interaction:
-  type: "共价键 (化学偶联)"
-  mechanism: "SiR-S-CH₂-SSBR 化学桥连"
-  evidence: "TEM 图像显示模糊界面 (misty interface)"
-
-# ===== 数据完整性 =====
-data_availability:
+doi: 10.1021/acs.iecr.6b04146
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: TMPMP
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
   mechanical: true
-  dsc: false
-  nmr: false
+  dsc: true
+  nmr: true
   tem: true
+keywords: []
+created_at: 2026-03-18
+updated_at: '2026-03-19'
 ---
-
 # SSBR-020 综合档案
 
 ## 一句话总结

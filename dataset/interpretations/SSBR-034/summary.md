@@ -1,35 +1,25 @@
 ---
-sample_id: "SSBR-034"
-literature_doi: "10.1016/j.cej.2019.04.215"
-functionalization_agent: "三羟甲基丙烷三(3-巯基丙酸)酯 (TMPMP)"
-functionalization_type: "链中官能化"
-reaction_mechanism: "巯基-烯点击化学 (UV 固化)"
-grafting_group_smiles: "SCCC(=O)OCC(CC)(COC(=O)CCS)OC(=O)CCS"
-
-polymer_fingerprint:
-  backbone_smiles: "[CH2-CH=CH-CH2]n-[CH2-CH(C6H5)]m"
-  functional_group_smiles: "SCCC(=O)OCC(CC)(COC(=O)CCS)OC(=O)CCS"
-  crosslink_type: "三官能团硫醚交联"
-
-key_metrics:
-  functionalization_degree_percent: null
-  Tg_C: null
-  tensile_strength_MPa: null
-  elongation_percent: null
-  contact_angle_deg: 161
-  roll_off_angle_deg: 2.5
-
-application_domain: "超疏水涂层"
-performance_highlights:
-  - "静态接触角 161°，滚动角 2.5°，达到超疏水标准"
-  - "花瓣状微纳结构提供多尺度表面粗糙度"
-  - "UV 快速固化，工艺简便"
-  - "良好的机械和化学稳定性"
-
-research_focus: "超疏水涂层表面性质"
-filler_system: "无填料"
+sample_id: SSBR-034
+doi: 10.1016/j.cej.2019.04.215
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: in_chain
+  reagent: 三羟甲基丙烷三(3-巯基丙酸)酯 (TMPMP)
+  functional_group: null
+  degree: null
+  method: 链中官能化
+filler_system: 无填料
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-034 综合档案
 
 ## 样本概述

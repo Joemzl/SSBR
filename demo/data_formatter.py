@@ -7,9 +7,14 @@
 - 转换相似度为匹配度（高/中/低）
 - 简化文献来源格式
 - 提取核心性能指标
+
+支持的 summary.md 格式：
+- 标准格式 v2.0: 统一的 YAML front matter (functionalization 嵌套结构)
+- 兼容旧格式：正文中提取或其他 YAML 结构
 """
 
 import re
+import yaml
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
@@ -35,9 +40,30 @@ class FriendlyResult:
     _similarity: float = 0.0
 
 
+def _extract_yaml_front_matter(content: str) -> Optional[Dict[str, Any]]:
+    """
+    从 Markdown 内容中提取 YAML front matter
+    
+    Args:
+        content: Markdown 原始内容
+        
+    Returns:
+        解析后的 YAML 字典，如果没有 front matter 则返回 None
+    """
+    yaml_match = re.match(r'^---\s*\n(.+?)\n---', content, re.DOTALL)
+    if yaml_match:
+        try:
+            return yaml.safe_load(yaml_match.group(1))
+        except yaml.YAMLError:
+            return None
+    return None
+
+
 def parse_summary_content(content: str) -> Dict[str, Any]:
     """
     解析 summary.md 内容，提取关键信息
+    
+    支持标准格式 v2.0 (functionalization 嵌套结构) 和旧格式兼容
     
     Args:
         content: summary.md 的原始内容
@@ -56,60 +82,167 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
         "source": "未知来源"
     }
     
-    # 提取官能化信息
-    # 支持两种格式：
-    # 1. **核心官能团**: 羧基 (-COOH)
-    # 2. - **核心官能团**: 羧基（-COOH）
-    fg_match = re.search(r'[-\s]*\*\*核心官能团\*\*:\s*(.+?)(?:\s*[（(]|$|\n)', content)
-    if fg_match:
-        fg_name = fg_match.group(1).strip()
-        if fg_name and fg_name != '-' and fg_name != '- (-)':
-            result["functional_group"] = fg_name + "官能化"
+    # ========== 第一步：尝试从 YAML front matter 提取 ==========
+    yaml_data = _extract_yaml_front_matter(content)
+    yaml_extracted = False
+    
+    if yaml_data:
+        # ===== 标准格式 v2.0: functionalization 嵌套结构 =====
+        func_info = yaml_data.get("functionalization", {})
+        if isinstance(func_info, dict) and "is_functionalized" in func_info:
+            # 这是标准格式 v2.0
+            is_functionalized = func_info.get("is_functionalized", True)
+            func_type = func_info.get("type", "unknown")
+            
+            if not is_functionalized or func_type == "none":
+                # 未官能化样本
+                result["functional_group"] = "未官能化（工业SSBR）"
+                result["reagent"] = "无"
+                result["degree"] = "N/A"
+            elif func_type == "filler_modification":
+                # 填料改性
+                reagent = func_info.get("reagent") or "填料改性"
+                result["functional_group"] = f"填料改性"
+                result["reagent"] = reagent
+                result["degree"] = "N/A"
+            else:
+                # 官能化样本
+                fg = func_info.get("functional_group")
+                if fg:
+                    # 清理官能团名称，确保有 "官能化" 后缀
+                    fg_clean = re.sub(r'\s*[（(].+?[）)]', '', fg).strip()
+                    if "官能化" not in fg_clean:
+                        result["functional_group"] = fg_clean + "官能化"
+                    else:
+                        result["functional_group"] = fg_clean
+                
+                reagent = func_info.get("reagent")
+                if reagent:
+                    result["reagent"] = reagent
+                
+                degree = func_info.get("degree")
+                if degree:
+                    result["degree"] = degree
+            
+            yaml_extracted = True
+        
+        # ===== 兼容旧格式 =====
+        if not yaml_extracted:
+            # polymer_type 包含 "未官能化"
+            polymer_type = yaml_data.get("polymer_type", "")
+            if "未官能化" in polymer_type:
+                result["functional_group"] = "未官能化（工业SSBR）"
+                result["reagent"] = "无"
+                result["degree"] = "N/A"
+                yaml_extracted = True
+            
+            # functionalizing_agent 格式 (旧)
+            func_agent = yaml_data.get("functionalizing_agent", {})
+            if isinstance(func_agent, dict) and func_agent:
+                core_fg = func_agent.get("core_functional_group", "")
+                if core_fg:
+                    result["functional_group"] = core_fg + "官能化"
+                    yaml_extracted = True
+                
+                reagent_name = func_agent.get("name", "")
+                reagent_full = func_agent.get("full_name", "")
+                if reagent_full:
+                    result["reagent"] = f"{reagent_name} ({reagent_full})" if reagent_name else reagent_full
+                    yaml_extracted = True
+                elif reagent_name:
+                    result["reagent"] = reagent_name
+                    yaml_extracted = True
+        
+        # DOI 来源
+        doi = yaml_data.get("doi") or yaml_data.get("source_doi") or yaml_data.get("literature_doi", "")
+        if doi:
+            result["source"] = f"DOI: {doi}"
+            yaml_extracted = True
+    
+    # ========== 第二步：从正文提取（作为补充或 fallback）==========
+    
+    # 提取官能化信息（格式 A）
+    # 支持多种格式：
+    # 1. - **核心官能团**: 羧基（-COOH）
+    # 2. **核心官能团**: 羧基 (-COOH)
+    # 3. | 核心官能团 | 羧基 (-COOH) |  (表格格式)
+    if result["functional_group"] == "未知官能化":
+        # 尝试 Markdown 格式
+        fg_match = re.search(r'[-\s]*\*\*核心官能团\*\*:\s*(.+?)(?:\s*[（(]|$|\n)', content)
+        if fg_match:
+            fg_name = fg_match.group(1).strip()
+            if fg_name and fg_name != '-' and fg_name != '- (-)':
+                result["functional_group"] = fg_name + "官能化"
+            else:
+                result["functional_group"] = "未官能化（空白对照）"
         else:
-            result["functional_group"] = "未官能化（空白对照）"
+            # 尝试表格格式: | 核心官能团 | 羧基 (-COOH) |
+            fg_table_match = re.search(r'\|\s*核心官能团\s*\|\s*(.+?)\s*\|', content)
+            if fg_table_match:
+                fg_name = fg_table_match.group(1).strip()
+                # 提取括号前的部分作为官能团名称
+                fg_clean = re.sub(r'\s*[（(].+?[）)]', '', fg_name).strip()
+                if fg_clean and fg_clean != '-':
+                    result["functional_group"] = fg_clean + "官能化"
     
     # 官能化试剂
-    # 支持 "- **官能化试剂**: ..." 格式
-    reagent_match = re.search(r'[-\s]*\*\*官能化试剂\*\*:\s*(.+?)(?:\n|$)', content)
-    if reagent_match:
-        reagent = reagent_match.group(1).strip()
-        if "无" in reagent or "空白" in reagent:
-            result["reagent"] = "无（空白对照）"
+    if result["reagent"] == "未知":
+        # 尝试 Markdown 格式
+        reagent_match = re.search(r'[-\s]*\*\*官能化试剂\*\*:\s*(.+?)(?:\n|$)', content)
+        if reagent_match:
+            reagent = reagent_match.group(1).strip()
+            if "无" in reagent or "空白" in reagent:
+                result["reagent"] = "无（空白对照）"
+            else:
+                result["reagent"] = reagent
         else:
-            result["reagent"] = reagent
+            # 尝试表格格式: | 官能化试剂 | 3-MPA (3-巯基丙酸) |
+            reagent_table_match = re.search(r'\|\s*官能化试剂\s*\|\s*(.+?)\s*\|', content)
+            if reagent_table_match:
+                result["reagent"] = reagent_table_match.group(1).strip()
     
     # 官能化程度
-    # 支持 "- **官能化程度**: 8.7 wt%" 格式
-    degree_match = re.search(r'[-\s]*\*\*官能化程度\*\*:\s*([\d.]+)\s*wt%', content)
-    if degree_match:
-        result["degree"] = f"{degree_match.group(1)} wt%"
-    else:
-        result["degree"] = "N/A"
+    if result["degree"] == "未知":
+        # 尝试 Markdown 格式
+        degree_match = re.search(r'[-\s]*\*\*官能化程度\*\*:\s*([\d.]+)\s*wt%', content)
+        if degree_match:
+            result["degree"] = f"{degree_match.group(1)} wt%"
+        else:
+            # 尝试表格格式: | 改性剂含量 | 9.6 wt% |
+            degree_table_match = re.search(r'\|\s*(?:改性剂含量|官能化程度)\s*\|\s*([\d.]+\s*wt%)\s*\|', content)
+            if degree_table_match:
+                result["degree"] = degree_table_match.group(1).strip()
+            else:
+                result["degree"] = "N/A"
     
     # 一句话总结
-    summary_match = re.search(r'## 一句话总结\s*\n+(.+?)(?:\n---|\n##)', content, re.DOTALL)
-    if summary_match:
-        summary = summary_match.group(1).strip()
-        # 移除可能的样本 ID
-        summary = re.sub(r'SSBR-\d+', '', summary).strip()
-        result["summary"] = summary if summary else "高性能官能化 SSBR 材料"
+    if not result["summary"]:
+        summary_match = re.search(r'## 一句话总结\s*\n+(.+?)(?:\n---|\n##)', content, re.DOTALL)
+        if summary_match:
+            summary = summary_match.group(1).strip()
+            # 移除可能的 Markdown 加粗标记
+            summary = re.sub(r'\*\*(.+?)\*\*', r'\1', summary)
+            # 移除可能的样本 ID
+            summary = re.sub(r'SSBR-\d+', '', summary).strip()
+            result["summary"] = summary if summary else "高性能官能化 SSBR 材料"
     
-    # 核心性能特点
-    features_section = re.search(r'## 核心性能特点\s*\n(.+?)(?:\n---|\n## 适用场景)', content, re.DOTALL)
-    if features_section:
-        features_text = features_section.group(1)
-        # 提取每个特点标题和评价
-        feature_matches = re.findall(r'###\s*(.+?)\s*【(.+?)】\s*\n+(.+?)(?=\n###|\n---|\Z)', features_text, re.DOTALL)
-        for title, rating, desc in feature_matches:
-            desc_clean = desc.strip()
-            if desc_clean and "暂无" not in desc_clean:
-                result["key_features"].append({
-                    "title": title.strip(),
-                    "rating": rating.strip(),
-                    "description": desc_clean
-                })
+    # 核心性能特点（仅当 YAML 没有提取到时）
+    if not result["key_features"]:
+        features_section = re.search(r'## 核心性能特点\s*\n(.+?)(?:\n---|\n## 适用场景)', content, re.DOTALL)
+        if features_section:
+            features_text = features_section.group(1)
+            # 提取每个特点标题和评价
+            feature_matches = re.findall(r'###\s*(.+?)\s*【(.+?)】\s*\n+(.+?)(?=\n###|\n---|\Z)', features_text, re.DOTALL)
+            for title, rating, desc in feature_matches:
+                desc_clean = desc.strip()
+                if desc_clean and "暂无" not in desc_clean:
+                    result["key_features"].append({
+                        "title": title.strip(),
+                        "rating": rating.strip(),
+                        "description": desc_clean
+                    })
     
-    # 关键性能指标（从表格提取）
+    # 关键性能指标（从表格提取，补充 YAML 中没有的）
     metrics_section = re.search(r'## 关键性能指标\s*\n(.+?)(?:\n---|\n##)', content, re.DOTALL)
     if metrics_section:
         table_text = metrics_section.group(1)
@@ -122,33 +255,47 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
                 if metric in ['指标', '---'] or value in ['-', '---', '']:
                     continue
                 if value.strip() and value.strip() != '-':
-                    result["metrics"][metric.strip()] = f"{value.strip()} {unit.strip()}".strip()
+                    metric_key = metric.strip()
+                    if metric_key not in result["metrics"]:
+                        result["metrics"][metric_key] = f"{value.strip()} {unit.strip()}".strip()
     
     # 适用场景
-    app_section = re.search(r'## 适用场景\s*\n(.+?)(?:\n---|\n##)', content, re.DOTALL)
-    if app_section:
-        app_text = app_section.group(1)
-        # 提取 ✅ 开头的场景
-        apps = re.findall(r'[✅⚠️]\s*(.+)', app_text)
-        result["application"] = [app.strip() for app in apps if app.strip()]
+    if not result["application"]:
+        app_section = re.search(r'## 适用场景\s*\n(.+?)(?:\n---|\n##|\Z)', content, re.DOTALL)
+        if app_section:
+            app_text = app_section.group(1)
+            # 提取 ✅ 或 ⚠️ 开头的场景
+            apps = re.findall(r'[✅⚠️]\s*(.+)', app_text)
+            if apps:
+                result["application"] = [app.strip() for app in apps if app.strip()]
+            else:
+                # 尝试提取 - 开头的列表项
+                apps = re.findall(r'^-\s*(.+)', app_text, re.MULTILINE)
+                result["application"] = [app.strip() for app in apps if app.strip()]
     
-    # 文献来源
-    # 从 DOI 和引文中提取
-    doi_match = re.search(r'\*\*DOI\*\*:\s*(.+?)(?:\n|$)', content)
-    cite_match = re.search(r'\*\*引文\*\*:\s*(.+?)(?:\n|$)', content)
-    
-    if cite_match:
-        cite_text = cite_match.group(1).strip()
-        # 尝试提取期刊和年份，格式如 "RSC Adv., 2019, 9, 18888-18897"
-        journal_year_match = re.search(r'([A-Za-z\s\.]+),\s*(\d{4})', cite_text)
-        if journal_year_match:
-            journal = journal_year_match.group(1).strip().rstrip(',.')
-            year = journal_year_match.group(2)
-            result["source"] = f"{journal}, {year}"
-        else:
-            result["source"] = cite_text[:50]  # 截取前50字符
-    elif doi_match:
-        result["source"] = f"DOI: {doi_match.group(1).strip()}"
+    # 文献来源（补充）
+    if result["source"] == "未知来源":
+        # 从正文 DOI 和引文中提取
+        doi_match = re.search(r'\*\*DOI\*\*:\s*(.+?)(?:\n|$)', content)
+        cite_match = re.search(r'\*\*引文\*\*:\s*(.+?)(?:\n|$)', content)
+        
+        # 也支持表格格式: | 文献来源 | DOI: xxx |
+        doi_table_match = re.search(r'\|\s*文献来源\s*\|\s*DOI:\s*(.+?)\s*\|', content)
+        
+        if cite_match:
+            cite_text = cite_match.group(1).strip()
+            # 尝试提取期刊和年份，格式如 "RSC Adv., 2019, 9, 18888-18897"
+            journal_year_match = re.search(r'([A-Za-z\s\.]+),\s*(\d{4})', cite_text)
+            if journal_year_match:
+                journal = journal_year_match.group(1).strip().rstrip(',.')
+                year = journal_year_match.group(2)
+                result["source"] = f"{journal}, {year}"
+            else:
+                result["source"] = cite_text[:50]  # 截取前50字符
+        elif doi_match:
+            result["source"] = f"DOI: {doi_match.group(1).strip()}"
+        elif doi_table_match:
+            result["source"] = f"DOI: {doi_table_match.group(1).strip()}"
     
     return result
 

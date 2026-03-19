@@ -1,34 +1,30 @@
 ---
 sample_id: SSBR-032
 doi: 10.1039/C6RA08417F
-title: "Graphene/Silica Hybrid Filler for Enhanced Dynamic Properties of SSBR"
-functionalization_type: grafting
-functional_group: 氨丙基三甲氧基硅烷 (APTMS)
-functional_group_smiles: CO[Si](OC)(OC)CCCN
-functionalization_position: 侧链接枝
-filler_type: 石墨烯/白炭黑杂化
-filler_loading: 60 phr (总量)
 polymer_type: SSBR
-styrene_content: 25 wt%
-vinyl_content: 63%
-mn: 180 kg/mol
-pdi: 1.8
-tg_dsc: -48°C
-tg_dma: -18°C
-tensile_strength: 18.5 MPa
-elongation_at_break: 485%
-modulus_100: 2.1 MPa
-modulus_300: 9.8 MPa
-tan_delta_0c: 0.45
-tan_delta_60c: 0.09
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: 氨丙基三甲氧基硅烷
+  degree: null
+  method: grafting
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 石墨烯
-  - 杂化填料
-  - 胺基官能化
-  - APTMS接枝
-  - 界面增强
+- 石墨烯
+- 杂化填料
+- 胺基官能化
+- APTMS接枝
+- 界面增强
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-032 综合档案
 
 ## 研究亮点

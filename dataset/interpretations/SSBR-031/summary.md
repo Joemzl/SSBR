@@ -1,48 +1,25 @@
 ---
 sample_id: SSBR-031
-interpretation_type: summary
-source_doi: "10.1039/c5ra24965a"
-skill_used: ssbr-summary-generator
+doi: 10.1039/c5ra24965a
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-sample_overview:
-  functionalization_reagent: "3-巯基丙酸 (3-MPA)"
-  functionalization_reagent_smiles: "SCCC(=O)O"
-  functionalization_degree: "9.6 wt%"
-  core_functional_group: "羧基 (-COOH)"
-  interface_mechanism: "氢键"
-  reference: "RSC Adv., 2016, 6, 14643-14650"
-
-key_metrics:
-  mechanical:
-    tg_dma: "0.1℃"
-    tan_delta_max: "1.30"
-    activation_energy: "17.7 kJ/mol"
-  thermal:
-    tg_dsc: "-23.8℃ (249.3 K)"
-    tg_simulated: "-20℃ (253 K)"
-  dispersion:
-    quality: "良"
-    gr_peak_position: "15.5 Å"
-    binding_energy: "257.5 kcal/mol"
-    adhesion_energy: "62.1 mJ/m²"
-
-performance_changes:
-  vs_control:
-    tg_increase: "+6.0℃"
-    tan_delta_increase: "+21.5%"
-    activation_energy_increase: "+56.6%"
-    adhesion_energy_increase: "+21.3%"
-
-application_scenarios:
-  - "需要改善白炭黑分散性的轮胎胎面配方"
-  - "追求湿地抓地力提升的高性能轮胎"
-  - "分子设计指导的官能化 SSBR 开发"
-
-research_highlight: "MD模拟与实验验证相结合，揭示最优接枝量 (14.2 wt%)"
+updated_at: '2026-03-19'
 ---
-
 # SSBR-031 综合档案
 
 ## 一句话总结

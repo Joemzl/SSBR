@@ -1,20 +1,29 @@
 ---
 sample_id: SSBR-052
-polymer_type: "端基官能化 SSBR (烷氧基硅烷)"
-filler_system: "沉淀法白炭黑"
-modification_strategy: "橡胶端基官能化"
-literature_doi: "10.1016/j.polymer.2014.02.067"
-performance_highlights:
-  - "端基烷氧基硅烷官能化"
-  - "拉伸强度 ~17 MPa"
-  - "减少硅烷偶联剂用量"
+doi: 10.1016/j.polymer.2014.02.067
+polymer_type: 端基官能化 SSBR (烷氧基硅烷)
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 沉淀法白炭黑
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "端基官能化"
-  - "烷氧基硅烷"
-  - "白炭黑"
-  - "界面增强"
+- 端基官能化
+- 烷氧基硅烷
+- 白炭黑
+- 界面增强
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-052 综合档案
 
 ## 样本概述

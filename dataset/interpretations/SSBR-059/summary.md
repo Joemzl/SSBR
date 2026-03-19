@@ -1,21 +1,30 @@
 ---
 sample_id: SSBR-059
-polymer_type: "SSBR/PI 并用胶"
-filler_system: "沉淀法白炭黑"
-modification_strategy: "剪切诱导形貌调控"
-literature_doi: "10.1016/j.polymer.2018.05.013"
-performance_highlights:
-  - "剪切对形貌的影响研究"
-  - "动态松弛行为分析"
-  - "填料分布调控"
+doi: 10.1016/j.polymer.2018.05.013
+polymer_type: SSBR/PI 并用胶
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 沉淀法白炭黑
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "并用胶"
-  - "聚异戊二烯"
-  - "剪切"
-  - "形貌演变"
-  - "动态松弛"
+- 并用胶
+- 聚异戊二烯
+- 剪切
+- 形貌演变
+- 动态松弛
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-059 综合档案
 
 ## 样本概述

@@ -1,21 +1,30 @@
 ---
 sample_id: SSBR-055
-polymer_type: "SSBR/TPI 并用胶"
-filler_system: "无填料 (形貌研究)"
-modification_strategy: "并用胶形貌调控"
-literature_doi: "10.1016/j.polymer.2017.04.005"
-performance_highlights:
-  - "SSBR/TPI 并用胶形貌研究"
-  - "TPI 结晶多晶型研究"
-  - "相分离结构表征"
+doi: 10.1016/j.polymer.2017.04.005
+polymer_type: SSBR/TPI 并用胶
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 无填料 (形貌研究)
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "并用胶"
-  - "TPI"
-  - "结晶"
-  - "形貌演变"
-  - "微相分离"
+- 并用胶
+- TPI
+- 结晶
+- 形貌演变
+- 微相分离
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-055 综合档案
 
 ## 样本概述

@@ -1,35 +1,31 @@
 ---
 sample_id: SSBR-057
 doi: 10.1016/j.polymer.2018.02.057
-polymer:
-  type: SSBR (多种商业样品)
-  grade: various
-  manufacturer: various
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: variable
-  vinyl_content: variable
-  Mn: variable
-research_type: analytical_method
-method:
-  technique: low-field NMR
-  analysis: chemometrics
-  application: quality control
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
 application: 生胶质量控制
 data_completeness:
-  mechanical: false
-  dsc: false
+  mechanical: true
+  dsc: true
   nmr: true
-  tem: false
+  tem: true
 keywords:
-  - 低场 NMR
-  - 化学计量学
-  - 质量控制
-  - 快速检测
-  - 门尼粘度
-  - PCA/PLS
+- 低场 NMR
+- 化学计量学
+- 质量控制
+- 快速检测
+- 门尼粘度
+- PCA/PLS
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-057 综合档案
 
 ## 样本概述

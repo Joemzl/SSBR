@@ -1,37 +1,31 @@
 ---
-sample_id: "SSBR-071"
-title: "Si747 硅烷偶联剂/白炭黑/SSBR 界面化学研究"
-application: "白炭黑/SSBR 混炼界面偶联"
-doi: "10.5254/rct.16.84812"
-citation: "Tao Y C, Dong B, Zhang L Q, et al. REACTIONS OF SILICA-SILANE RUBBER AND PROPERTIES OF SILANE-SILICA/SOLUTION-POLYMERIZED STYRENE-BUTADIENE RUBBER COMPOSITE[J]. Rubber Chemistry and Technology, 2016, 89(3): 526-539."
-
-polymer:
-  type: "SSBR"
+sample_id: SSBR-071
+doi: 10.5254/rct.16.84812
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-
-coupling_agent:
-  type: "Si747"
-  role: "界面偶联"
-
-filler:
-  type: "白炭黑 (SiO2)"
-
-key_properties:
-  tensile_strength_MPa: 21.5
-  elongation_at_break_percent: 450
-  modulus_300_MPa: 11.0
-  shore_A_hardness: 66
-  tg_celsius: -28
-
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑 (SiO2)
+application: 白炭黑/SSBR 混炼界面偶联
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "Si747"
-  - "硅烷偶联剂"
-  - "界面化学"
-  - "白炭黑-硅烷反应"
-  - "偶联效率"
-  - "绿色轮胎"
+- Si747
+- 硅烷偶联剂
+- 界面化学
+- 白炭黑-硅烷反应
+- 偶联效率
+- 绿色轮胎
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-071 综合档案
 
 ## 研究概述

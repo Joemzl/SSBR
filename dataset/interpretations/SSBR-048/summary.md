@@ -1,21 +1,30 @@
 ---
 sample_id: SSBR-048
-polymer_type: "星形 N-SSBR (氨基官能化)"
-filler_system: "白炭黑/炭黑复合填料"
-modification_strategy: "端基氨基官能化 + 星形结构"
-literature_doi: "10.1002/app.40348"
-performance_highlights:
-  - "氨基官能化改善白炭黑分散"
-  - "星形结构提供独特流变特性"
-  - "复合填料体系平衡性能"
+doi: 10.1002/app.40348
+polymer_type: 星形 N-SSBR (氨基官能化)
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: 白炭黑/炭黑复合填料
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - "星形 SSBR"
-  - "氨基官能化"
-  - "复合填料"
-  - "动态性能"
-  - "共沉淀"
+- 星形 SSBR
+- 氨基官能化
+- 复合填料
+- 动态性能
+- 共沉淀
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-048 综合档案
 
 ## 样本概述

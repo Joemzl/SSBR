@@ -1,33 +1,30 @@
 ---
 sample_id: SSBR-021
 doi: 10.1021/acs.iecr.8b05738
-title: "Silica-Filled Tire Tread Compounds from Anionic Polymerization of Functionalized SSBR"
-functionalization_type: chain-end
-functional_group: 叔胺 (DPE-NMe₂)
-functional_group_smiles: CN(C)c1ccc(C=C)cc1
-functionalization_position: α,ω-双端
-filler_type: 白炭黑
-filler_loading: 80 phr
 polymer_type: SSBR
-styrene_content: 25 mol%
-vinyl_content: 65%
-mn: 200 kg/mol
-pdi: 1.08
-tg_dsc: -46°C
-tg_dma: -22°C
-tensile_strength: 22.1 MPa
-elongation_at_break: 498%
-modulus_300: 11.9 MPa
-tan_delta_0c: 0.42
-tan_delta_60c: 0.08
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: 叔胺
+  degree: null
+  method: chain-end
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
 keywords:
-  - 双端官能化
-  - 叔胺
-  - 白炭黑分散
-  - 低滚阻
-  - 活性阴离子聚合
+- 双端官能化
+- 叔胺
+- 白炭黑分散
+- 低滚阻
+- 活性阴离子聚合
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-021 综合档案
 
 ## 研究亮点

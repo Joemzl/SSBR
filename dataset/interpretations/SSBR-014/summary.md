@@ -1,51 +1,25 @@
 ---
 sample_id: SSBR-014
-interpretation_type: summary
-source_doi: "10.1039/c8ra00572a"
-skill_used: ssbr-summary-generator
+doi: 10.1039/c8ra00572a
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
 created_at: 2026-03-18
-updated_at: null
-
-# 样本基本信息
-sample_info:
-  literature_id: "Oil sucked SSBR (Lanxess 4526)"
-  is_ssbr: true
-  is_in_chain: false
-  functionalization_agent: null
-  agent_smiles: null
-  core_functional_group: null
-  functional_group_smiles: null
-  functionalization_degree: null
-  styrene_content: "26 wt%"
-  vinyl_content: "45 mol%"
-  cis_1_4_content: "14.5 wt%"
-  trans_1_4_content: "14.5 wt%"
-  mn: null
-  pdi: null
-  filler_type: "无（橡胶/树脂相容性研究）"
-  application: "轮胎用SSBR与石油树脂复合体系、橡胶增粘/增强改性"
-
-# 关键性能数据汇总
-key_metrics:
-  solubility_parameter_exp: "17.41 (J/cm³)^0.5"
-  solubility_parameter_sim: "15.85 (J/cm³)^0.5"
-  best_compatible_resin: "1# 古马隆树脂-1, 4# 古马隆树脂-2"
-  worst_compatible_resin: "3# C5/C9共聚树脂"
-  compatibility_order: "1# ≈ 4# > 2# ≈ 5# > 3#"
-
-# RAG 检索关键词
-rag_keywords:
-  - Oil SSBR
-  - Lanxess 4526
-  - 充油SSBR
-  - 石油树脂
-  - 相容性
-  - 溶解度参数
-  - 分子动力学模拟
-  - 古马隆树脂
-  - 增粘
+updated_at: '2026-03-19'
 ---
-
 # 综合档案：SSBR-014
 
 > **一句话总结**: 工业充油 SSBR (Lanxess 4526) 与古马隆树脂相容性最佳，是成熟的轮胎用工业产品，相容性趋势与 F-SSBR 相同但因 cis-1,4 含量较高而略低。

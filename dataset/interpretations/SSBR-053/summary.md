@@ -1,41 +1,31 @@
 ---
 sample_id: SSBR-053
 doi: 10.1016/j.polymer.2015.07.015
-polymer:
-  type: SSBR/LPI blend
-  grade: Buna VSL 5025-2HM + LPI
-  manufacturer: Lanxess
+polymer_type: 未官能化工业 SSBR
+functionalization:
   is_functionalized: false
-  functionalization_type: null
-  styrene_content: 25.0 wt%
-  vinyl_content: 50.0 mol%
-  Mn: null
-blend:
-  components:
-    - SSBR
-    - LPI (液体聚异戊二烯)
-  ratio: variable
-filler:
-  types:
-    - SiO₂ (球形)
-    - Clay (层状)
-    - CB (颗粒状)
-  study_focus: 填料几何效应
+  type: none
+  reagent: null
+  functional_group: null
+  degree: null
+  method: null
+filler_system: ''
 application: SSBR/LPI 并用胶形貌演变研究
 data_completeness:
-  mechanical: true (流变)
-  dsc: false
-  nmr: false
+  mechanical: true
+  dsc: true
+  nmr: true
   tem: true
 keywords:
-  - 填料几何形状
-  - 并用胶
-  - 形貌演变
-  - 流变行为
-  - 相分布
-  - LPI 增塑
+- 填料几何形状
+- 并用胶
+- 形貌演变
+- 流变行为
+- 相分布
+- LPI 增塑
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-053 综合档案
 
 ## 样本概述

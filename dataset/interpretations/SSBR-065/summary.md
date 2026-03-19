@@ -1,16 +1,25 @@
 ---
-sample_id: "SSBR-065"
-functionalization_type: "TAD 点击化学"
-reagent: "三唑啉二酮 (TAD)"
-reagent_smiles: "O=C1N=NC(=O)N1c1ccccc1"
-target_performance:
-  - "牺牲氢键构建"
-  - "力学性能增强"
-  - "形状记忆功能"
-data_quality: "高"
-literature_doi: "10.1002/marc.201600678"
+sample_id: SSBR-065
+doi: 10.1002/marc.201600678
+polymer_type: SSBR
+functionalization:
+  is_functionalized: true
+  type: unknown
+  reagent: null
+  functional_group: null
+  degree: null
+  method: TAD 点击化学
+filler_system: null
+application: null
+data_completeness:
+  mechanical: true
+  dsc: true
+  nmr: true
+  tem: true
+keywords: []
+created_at: '2026-03-19'
+updated_at: '2026-03-19'
 ---
-
 # SSBR-065 综合档案
 
 ## 基本信息
