@@ -25,7 +25,8 @@ from utils.yaml_parser import read_interpretation_file, extract_markdown_body
 from utils.embedding import EmbeddingService, EmbeddingError, get_embedding_service
 from utils.similarity import cosine_similarity, classify_relevance, format_search_result
 from utils.query_preprocessor import preprocess_query, QueryPreprocessor
-from utils.vector_cache import VectorCache, get_vector_cache
+# 使用 ChromaDB 向量存储（兼容旧接口）
+from utils.vector_store import VectorStoreAdapter, get_vector_cache
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -94,10 +95,10 @@ class RAGSearchEngine:
         self.embedding_service = embedding_service or get_embedding_service()
         self.query_preprocessor = QueryPreprocessor()
         self.use_cache = use_cache
-        self._vector_cache: Optional[VectorCache] = None
+        self._vector_cache: Optional[VectorStoreAdapter] = None
         self._cache_initialized = False
     
-    def _get_vector_cache(self) -> VectorCache:
+    def _get_vector_cache(self) -> VectorStoreAdapter:
         """获取或初始化向量缓存"""
         if self._vector_cache is None:
             self._vector_cache = get_vector_cache()
@@ -252,9 +253,9 @@ class RAGSearchEngine:
         threshold: float
     ) -> List[SearchResult]:
         """
-        使用向量缓存进行检索（优化路径）
+        使用 ChromaDB 向量存储进行检索（优化路径）
         
-        性能: O(n) 向量比较，无 API 调用
+        性能: 毫秒级 HNSW 近似最近邻搜索
         """
         cache = self._get_vector_cache()
         
@@ -272,43 +273,34 @@ class RAGSearchEngine:
             
             self._cache_initialized = True
         
-        results = []
-        cached_embeddings = cache.get_all_embeddings()
-        cache_hits = 0
-        cache_misses = 0
+        # 使用 ChromaDB 原生搜索（返回所有文档，后续再筛选）
+        # ChromaDB 内置了 HNSW 索引，比遍历快得多
+        search_results = cache.store.search(
+            query_embedding=query_embedding,
+            top_k=len(summaries)  # 获取所有结果，后续按阈值过滤
+        )
         
-        for summary in summaries:
-            sample_id = summary['sample_id']
-            
-            # 从缓存获取文档向量
-            doc_embedding = cached_embeddings.get(sample_id)
-            
-            if doc_embedding is None:
-                # 缓存未命中，实时计算
-                cache_misses += 1
-                try:
-                    doc_embedding = self.embedding_service.embed(summary['content'])
-                except EmbeddingError as e:
-                    logger.warning(f"样本 {sample_id} 向量化失败: {e}")
-                    continue
-            else:
-                cache_hits += 1
-            
-            # 计算余弦相似度
-            sim = cosine_similarity(query_embedding, doc_embedding)
-            
+        results = []
+        for doc_id, similarity, content, metadata in search_results:
             # 应用阈值
-            if sim >= threshold:
+            if similarity >= threshold:
+                # 找到对应的 summary 路径
+                summary_path = ""
+                for s in summaries:
+                    if s['sample_id'] == doc_id:
+                        summary_path = s['path']
+                        break
+                
                 result = SearchResult(
-                    sample_id=sample_id,
-                    similarity=sim,
-                    summary_path=summary['path'],
-                    relevance=classify_relevance(sim)
+                    sample_id=doc_id,
+                    similarity=similarity,
+                    summary_path=summary_path,
+                    relevance=classify_relevance(similarity)
                 )
                 results.append(result)
-                logger.debug(f"  {sample_id}: {sim:.3f}")
+                logger.debug(f"  {doc_id}: {similarity:.3f}")
         
-        logger.info(f"缓存命中: {cache_hits}, 缓存未命中: {cache_misses}")
+        logger.info(f"ChromaDB 搜索返回 {len(search_results)} 个结果，阈值过滤后 {len(results)} 个")
         return results
     
     def _search_realtime(

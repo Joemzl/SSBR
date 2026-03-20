@@ -4,14 +4,14 @@ Auto-generated from all feature plans. Last updated: 2026-03-19
 
 ## Active Technologies
 - Python 3.10+ (003-rag-qa-enhancement)
-- JSON 向量缓存 + Markdown 文档 + Excel 元数据 (003-rag-qa-enhancement)
+- ChromaDB 向量数据库 + Markdown 文档 + Excel 元数据 (003-rag-qa-enhancement)
 
 - **数据格式**: Markdown + YAML front matter
 - **脚本语言**: Python 3.x
 - **AI Skills**: CodeBuddy IDE Skills
 - **Embedding API**: OpenAI text-embedding-3-small (1536 维)
 - **数据存储**: Excel (元数据 A-X 列) + Markdown (解读文档)
-- **向量缓存**: 本地 JSON 文件 (`.cache/vector_cache.json`)
+- **向量存储**: ChromaDB 持久化数据库 (`.cache/chroma_db/`)
 - **文献管理**: Zotero + MCP 集成（literature/ 目录作为 fallback）
 
 ## Project Structure
@@ -29,7 +29,7 @@ dataset/
     └── TEMPLATE_*.md            # 模板文件
 
 .cache/
-└── vector_cache.json            # 向量缓存文件 (3.8 MB, 82 个文档)
+└── chroma_db/                   # ChromaDB 向量数据库（不提交 Git，跨设备需重建）
 
 skills/
 ├── ssbr-recommender/            # RAG 推荐 Skill
@@ -63,7 +63,7 @@ scripts/
     ├── similarity.py
     ├── validators.py
     ├── query_preprocessor.py
-    ├── vector_cache.py          # 向量缓存模块
+    ├── vector_store.py          # ChromaDB 向量存储模块
     ├── prompt_templates.py      # Prompt 模板 (新增)
     └── exceptions.py            # 异常类定义 (新增)
 
@@ -174,7 +174,7 @@ python scripts/zotero_bridge.py list --with-pdf
 ## Key Concepts
 
 - **RAG 检索**: 基于 summary.md 内容的语义检索
-- **向量缓存**: 预计算文档向量存储于 `.cache/vector_cache.json`，支持增量更新
+- **向量存储**: ChromaDB 持久化数据库，支持毫秒级 HNSW 近似最近邻搜索（⚠️ 不通过 Git 同步，跨设备需 `python scripts/build_vector_cache.py --force` 重建）
 - **解读文档**: YAML front matter (结构化数据) + Markdown 正文 (自然语言)
 - **数据来源层级**: L1 (表格) > L2 (图面标注) > L3 (曲线估读)
 - **零幻觉原则**: 所有数值必须来自文献，禁止编造

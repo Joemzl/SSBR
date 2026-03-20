@@ -25,7 +25,8 @@ if sys.stderr.encoding != 'utf-8':
 # 添加脚本目录到路径
 sys.path.insert(0, str(Path(__file__).parent))
 
-from utils.vector_cache import VectorCache, get_vector_cache
+# 使用 ChromaDB 向量存储（兼容旧接口）
+from utils.vector_store import get_vector_cache
 from utils.embedding import get_embedding_service
 
 
