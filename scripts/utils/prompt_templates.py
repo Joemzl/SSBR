@@ -236,6 +236,10 @@ def _extract_functional_group(content: str) -> str:
     """从样本内容中提取官能团名称。"""
     import re
     
+    # 防御 None 输入
+    if not content:
+        return "官能化方案"
+    
     # 尝试从 YAML 或 Markdown 格式中提取
     patterns = [
         r'[-\s]*\*\*核心官能团\*\*:\s*(.+?)(?:\s*[（(]|$|\n)',

@@ -58,6 +58,10 @@ class Reranker:
         start_time = time.time()
         
         try:
+            # Enable offline mode to avoid network requests when model is cached
+            os.environ.setdefault('HF_HUB_OFFLINE', '1')
+            os.environ.setdefault('TRANSFORMERS_OFFLINE', '1')
+            
             from sentence_transformers import CrossEncoder
             
             # Determine device
@@ -336,7 +340,7 @@ if __name__ == "__main__":
             print(f"  {r.sample_id}: rerank={r.rerank_score:.4f}, "
                   f"orig_rank={r.original_rank} → final_rank={r.final_rank}")
         
-        print("\n✅ Test passed!")
+        print("\n[OK] Test passed!")
     
     else:
         parser.print_help()

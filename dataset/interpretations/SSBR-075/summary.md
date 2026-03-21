@@ -1,75 +1,64 @@
 ---
 sample_id: SSBR-075
 doi: 10.3390/polym12010209
-polymer_type: TESPT 官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: unknown
-  reagent: null
-  functional_group: null
-  degree: null
-  method: null
-filler_system: null
-application: 轮胎胎面胶硅烷化研究
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- TESPT
-- 硅烷化
-- 白炭黑
-- 界面改性
-- 轮胎胎面胶
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-075 综合档案
 
-## 基本信息
+## 一句话总结
 
-| 属性 | 值 |
-|------|-----|
-| 样本编号 | SSBR-075 |
-| 高分子类型 | TESPT 官能化 SSBR |
-| 官能化类型 | TESPT 硅烷偶联剂 |
-| 应用场景 | 轮胎胎面胶硅烷化研究 |
-| 文献 DOI | 10.3390/polym12010209 |
+采用硅烷基官能化，适用于轮胎胎面胶硅烷化研究。
 
-## 研究主题
+---
 
-本文献研究 TESPT 硅烷偶联剂在轮胎胎面胶中的应用，重点关注：
-- 硅烷化反应机理
-- 白炭黑分散改善
-- 力学性能优化
+## 核心性能特点
 
-## 关键发现
+*暂无足够数据生成性能特点分析*
 
-### 硅烷化效果
+---
 
-1. **界面改性**: TESPT 改善白炭黑-橡胶界面
-2. **力学性能**: Fig.3 展示了力学性能数据
-3. **分散改善**: 降低 Payne 效应
+## 适用场景
 
-## 性能-结构关系
+- ✅ 轮胎胎面胶硅烷化研究
 
-| 结构特征 | 性能影响 |
-|----------|----------|
-| TESPT 偶联 | 界面增强 |
-| 硅烷化程度 | 影响分散和力学 |
-| 反应条件 | 影响偶联效率 |
+---
 
-## 数据可用性
+## 关键性能指标
 
-| 测试类型 | 可用性 | 数据来源 |
-|----------|--------|----------|
-| 力学测试 | ✓ | L2 (图面读取) |
-| 热学测试 | ✗ | - |
-| NMR 分析 | ✗ | - |
-| 形貌表征 | ✗ | - |
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
 
-## 参考文献
+---
 
-- DOI: 10.3390/polym12010209
-- 主要图表: Fig.3 (力学性能)
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.3390/polym12010209
+- **引文**: Jin J, Noordermeer J W M, Dierkes W K, et al. The Effect of Silanization Temperature and Time on the Marching Modulus of Silica-Filled Tire Tread Compounds[J]. Polymers, 2020, 12(1): 209.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

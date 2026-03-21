@@ -1,41 +1,21 @@
 ---
 sample_id: SSBR-002
 doi: 10.1039/c9ra02783a
-polymer_type: 羧基（-COOH）官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 11-巯基十一烷酸（MUA, 11-Mercaptoundecanoic acid）
-  functional_group: 羧基（-COOH）
-  degree: 8.7 wt%
-  method: 巯基-烯点击化学（thiol-ene click reaction）
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-17
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-002 综合档案
 
 ## 一句话总结
 
-**综合性能最优的官能化SSBR**：通过羧基双重界面作用（氢键+共价键）实现高强度（26 MPa）、良好延展性（340%）和优异湿地抓地力（tan δ 0℃ = 1.233）的完美平衡。
-
----
-
-## 官能化信息
-
-- **官能化试剂**: 11-巯基十一烷酸（MUA, 11-Mercaptoundecanoic acid）
-- **核心官能团**: 羧基（-COOH）
-- **官能化程度**: 8.7 wt%
-- **改性方法**: 巯基-烯点击化学（thiol-ene click reaction）
-- **接枝位点**: SSBR 主链 1,2-乙烯基双键
-- **SMILES**: OC(=O)CCCCCCCCCCS
+综合性能最优的官能化SSBR：通过羧基双重界面作用（氢键+共价键）实现高强度（26 MPa）、良好延展性（340%）和优异湿地抓地力（tan δ 0℃ = 1.233）的完美平衡。
 
 ---
 
@@ -73,50 +53,11 @@ TEM 观察（Fig. 5D）显示白炭黑分散非常均匀，团聚和空隙很少
 - **分散性排名**: MPTES > **MUA** > MPL > 空白
 - **结合橡胶含量**: 67.82%（MPL: 55.28%）
 
-### 【湿地抓地力】评价：优秀 ⭐
-
-- **tan δ (0℃) = 1.233**: 较空白组提升 161.2%
-- **湿地抓地力提升**: 161.2%（最优样品 MPTES 为 184.3%）
-
 ---
 
 ## 适用场景
 
-- ✅ **高性能轮胎胎面**: 同时需要高强度和湿地抓地力
-- ✅ **绿色轮胎**: 滚动阻力降低 27.3%
-- ✅ **全天候轮胎**: 优异的低温性能（Tg = -2.1℃）
-- ✅ **需要综合平衡的应用**: 强度、延展性、动态性能均优
-- 💡 **推荐**: 文献明确指出 MUA 样品"综合性能最优"
-
----
-
-## 关键性能指标
-
-| 类别 | 指标 | 数值 | 单位 | 评价 |
-|------|------|------|------|------|
-| 力学性能 | 100%定伸应力 | 6.3 | MPa | 优秀 |
-| 力学性能 | 300%定伸应力 | 23.3 | MPa | 优秀 |
-| 力学性能 | 拉伸强度 | 26.0 | MPa | **最优** |
-| 力学性能 | 断裂伸长率 | 340 | % | 良好 |
-| 热学性能 | Tg (复合材料) | -2.1 | ℃ | - |
-| 动态性能 | tan δ (0℃) | 1.233 | - | 优秀 |
-| 动态性能 | tan δ (7% strain) | 0.096 | - | 优秀 |
-| 界面特性 | 结合橡胶含量 | 67.82 | % | 优秀 |
-| 官能化 | 官能化程度 | 8.7 | wt% | - |
-| 形貌 | 分散质量 | 优 | - | 优秀 |
-| 轮胎性能 | 滚动阻力降低 | 27.3 | % | 良好 |
-| 轮胎性能 | 湿地抓地力提升 | 161.2 | % | 优秀 |
-
----
-
-## 解读文档完整性
-
-| 文档类型 | 状态 | 主要数据来源 |
-|----------|------|--------------|
-| mechanical.md | ✓ | SI Table S4, S5, S6; Table 1 |
-| dsc.md | ✓ | Fig. 2, SI Table S6 |
-| nmr.md | ✓ | Fig. 1(B), Table S2 |
-| tem.md | ✓ | Fig. 5(D) |
+- ✅ 绿色轮胎胎面胶
 
 ---
 
@@ -142,12 +83,37 @@ TEM 观察（Fig. 5D）显示白炭黑分散非常均匀，团聚和空隙很少
 
 ---
 
-## 文献来源
+---
 
-- **DOI**: 10.1039/c9ra02783a
-- **引文**: RSC Adv., 2019, 9, 18888-18897
-- **SI**: 有补充材料（Table S2-S6, Fig. S1）
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | 6.3 | MPa | - |
+| 力学性能 | 300%定伸应力 | 23.3 | MPa | - |
+| 力学性能 | 拉伸强度 | 26.0 | MPa | - |
+| 力学性能 | 断裂伸长率 | 340 | % | - |
+| 热学性能 | Tg | -2.1 | ℃ | - |
+| 界面性能 | 结合橡胶含量 | 67.82 | % | - |
 
 ---
 
-*本综合档案由 `ssbr-summary-generator` Skill 生成，用于 RAG 语义检索。*
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1039/c9ra02783a
+- **引文**: Gao W, Lu J, Song W, et al. Interfacial interaction modes construction of various functional SSBR–silica towards high filler dispersion and excellent composites performances[J]. RSC Advances, 2019, 9(31): 18888-18897.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

@@ -4,10 +4,24 @@
 
 ---
 
+> ## ⚠️ 新设备 / 首次使用必读
+>
+> 本项目有两个**必须在本地构建**的组件，不会通过 Git 同步：
+>
+> | 组件 | 存储位置 | 首次下载大小 | 构建命令 |
+> |------|----------|--------------|----------|
+> | **向量数据库** | `.cache/chroma_db/` | ~50 MB (生成) | `python scripts/build_vector_cache.py --force` |
+> | **重排模型** | `~/.cache/huggingface/` | **~1.1 GB** | 首次运行时自动下载 |
+>
+> **请在克隆后按照 [快速开始](#快速开始) 完成初始化！**
+
+---
+
 ## 目录
 
 - [快速开始](#快速开始)
 - [环境配置](#环境配置)
+- [模型下载说明](#模型下载说明)
 - [常用命令](#常用命令)
 - [项目结构](#项目结构)
 - [核心功能](#核心功能)
@@ -34,17 +48,22 @@ cd SSBR
 pip install -r requirements.txt
 ```
 
-<details>
-<summary>主要依赖说明</summary>
+> ⏱️ **安装时间**: 首次安装约需 5-10 分钟，主要取决于 `sentence-transformers` 和 `chromadb` 的下载速度。
 
-| 依赖 | 版本 | 用途 |
-|------|------|------|
-| `openai` | ≥1.0.0 | Embedding API (text-embedding-3-small) |
-| `chromadb` | ≥0.4.0 | 向量数据库 |
-| `sentence-transformers` | ≥2.2.0 | 交叉编码器重排 (bge-reranker-base) |
-| `gradio` | ≥4.0.0 | Web Demo 界面 |
-| `openpyxl` | ≥3.1.0 | Excel 读写 |
-| `anthropic` | ≥0.18.0 | Claude API (问答生成，可选) |
+<details>
+<summary>📦 主要依赖说明（点击展开）</summary>
+
+| 依赖 | 版本 | 用途 | 大小 |
+|------|------|------|------|
+| `openai` | ≥1.0.0 | Embedding API (text-embedding-3-small) | ~1 MB |
+| `chromadb` | ≥0.4.0 | 向量数据库 | ~50 MB |
+| `sentence-transformers` | ==2.7.0 | 交叉编码器重排 (bge-reranker-base) | ~200 MB |
+| `transformers` | ==4.40.0 | Hugging Face 模型库 | ~300 MB |
+| `gradio` | ≥4.0.0 | Web Demo 界面 | ~50 MB |
+| `openpyxl` | ≥3.1.0 | Excel 读写 | ~5 MB |
+| `anthropic` | ≥0.18.0 | Claude API (问答生成，可选) | ~5 MB |
+
+**⚠️ 注意**: `sentence-transformers` 和 `transformers` 版本必须严格匹配，否则模型加载会失败。
 
 </details>
 
@@ -74,7 +93,9 @@ $env:ANTHROPIC_API_KEY = "sk-ant-xxx"
 
 ### 4. ⚠️ 构建向量缓存（首次使用/跨设备必需）
 
-> **重要**：向量缓存（`.cache/chroma_db/`）不会通过 Git 同步，每台设备首次使用时必须重建。
+> **🔴 重要**：向量缓存（`.cache/chroma_db/`）**不会通过 Git 同步**，每台设备首次使用时必须重建。
+>
+> **此步骤会调用 OpenAI API**，请确保已配置 `OPENAI_API_KEY` 环境变量。
 
 ```bash
 python scripts/build_vector_cache.py --force
@@ -87,18 +108,53 @@ SSBR 向量缓存构建工具
 ============================================================
 
 正在扫描 summary.md 文件...
-  发现 71 个 summary.md 文件
+  发现 68 个 summary.md 文件
 
 正在构建向量缓存 (使用 ChromaDB)...
-  处理进度: 100%|████████████████████████| 71/71 [00:03<00:00]
+  处理进度: 100%|████████████████████████| 68/68 [00:45<00:00]
 
 构建完成:
-  总文档数: 71
-  新增: 71
-  耗时: 3.2 秒
+  总文档数: 68
+  新增: 68
+  耗时: 45.2 秒
+  API 调用: ~68 次
+  预估费用: < $0.01
 ```
 
-### 5. 启动 Web Demo
+**⏱️ 耗时**: 约 30-60 秒（取决于网络和 API 速度）
+
+### 5. 🤖 预下载重排模型（推荐）
+
+> **📦 模型大小**: `BAAI/bge-reranker-base` 约 **1.1 GB**
+>
+> 首次运行问答或检索功能时会自动下载。为避免首次使用时卡顿，建议提前下载：
+
+```bash
+python scripts/reranker.py --warmup
+```
+
+预期输出：
+```
+============================================================
+Reranker 交叉编码器模块
+============================================================
+
+正在加载模型 BAAI/bge-reranker-base...
+Downloading model.safetensors: 100%|██████████| 1.11G/1.11G [02:30<00:00]
+模型加载完成！
+
+设备: cuda (NVIDIA GeForce RTX 3060)  # 或 cpu
+模型: BAAI/bge-reranker-base
+预热完成，模型已就绪
+```
+
+**⏱️ 耗时**: 首次下载约 2-5 分钟（取决于网速），之后约 5-10 秒
+
+**📁 模型存储位置**:
+- Windows: `C:\Users\<用户名>\.cache\huggingface\hub\`
+- Linux/Mac: `~/.cache/huggingface/hub/`
+
+### 6. 启动 Web Demo
 
 ```bash
 python demo/app.py
@@ -126,6 +182,56 @@ python demo/app.py
 
 ```bash
 export OPENAI_API_KEY="sk-xxx"
+```
+
+---
+
+## 模型下载说明
+
+本项目使用两个远程资源，首次运行时需要下载：
+
+### 1. OpenAI Embedding API（在线调用）
+
+- **模型**: `text-embedding-3-small`
+- **维度**: 1536
+- **调用方式**: 在线 API（需要 `OPENAI_API_KEY`）
+- **费用**: ~$0.00002 / 1K tokens（非常便宜）
+- **网络要求**: 需要能访问 `api.openai.com`（或配置 `OPENAI_BASE_URL` 代理）
+
+### 2. 重排模型（本地下载）
+
+- **模型**: `BAAI/bge-reranker-base`
+- **大小**: **~1.1 GB**
+- **存储位置**: `~/.cache/huggingface/hub/models--BAAI--bge-reranker-base/`
+- **下载方式**: 首次调用时自动从 Hugging Face Hub 下载
+- **网络要求**: 需要能访问 `huggingface.co`
+
+#### 国内用户加速下载
+
+如果下载速度慢，可以配置 Hugging Face 镜像：
+
+```bash
+# Windows (PowerShell)
+$env:HF_ENDPOINT = "https://hf-mirror.com"
+
+# Linux/Mac
+export HF_ENDPOINT="https://hf-mirror.com"
+
+# 然后运行
+python scripts/reranker.py --warmup
+```
+
+#### 手动下载（离线环境）
+
+```bash
+# 安装 huggingface-cli
+pip install huggingface_hub
+
+# 下载模型到本地
+huggingface-cli download BAAI/bge-reranker-base --local-dir ./models/bge-reranker-base
+
+# 然后修改 scripts/reranker.py 中的模型路径
+# model_name = "./models/bge-reranker-base"
 ```
 
 ---
@@ -197,11 +303,14 @@ python scripts/import_metadata.py --file dataset/extracted_data.md
 
 ```
 SSBR/
-├── .cache/                          # 缓存目录（不提交到 Git）
+├── .cache/                          # ⚠️ 缓存目录（不提交到 Git，需本地构建）
 │   └── chroma_db/                   # ChromaDB 向量数据库
 │       ├── chroma.sqlite3           # 元数据
 │       └── [uuid]/                  # HNSW 索引文件
 │
+├── .gitignore                       # Git 忽略规则
+├── CODEBUDDY.md                     # 开发指南（AI 生成）
+├── README.md                        # 本文档
 ├── dataset/
 │   ├── 数据.xlsx                    # 元数据 (A-X 列，24 列)
 │   └── interpretations/             # 解读文档库
@@ -240,8 +349,6 @@ SSBR/
 │   └── 003-rag-qa-enhancement/
 │
 ├── literature/                      # 原始文献 PDF
-├── CODEBUDDY.md                     # 开发指南（AI 生成）
-├── README.md                        # 本文档
 └── requirements.txt                 # Python 依赖
 ```
 
@@ -251,7 +358,7 @@ SSBR/
 
 ### 1. 语义检索推荐
 
-基于 OpenAI Embedding API 的 RAG 检索系统，从 71 个官能化样本中智能匹配最相关的方案。
+基于 OpenAI Embedding API 的 RAG 检索系统，从 68 个官能化样本中智能匹配最相关的方案。
 
 **示例查询**：
 - "改善白炭黑分散性"
@@ -283,15 +390,55 @@ SSBR/
 
 ---
 
+## 新设备一键初始化
+
+如果你是在**新设备**上首次使用本项目，可以按以下顺序执行：
+
+```bash
+# 1. 克隆项目
+git clone <repository-url>
+cd SSBR
+
+# 2. 创建虚拟环境（推荐）
+python -m venv venv
+# Windows:
+.\venv\Scripts\activate
+# Linux/Mac:
+source venv/bin/activate
+
+# 3. 安装依赖 (约 5-10 分钟)
+pip install -r requirements.txt
+
+# 4. 配置环境变量 (必须)
+# Windows PowerShell:
+$env:OPENAI_API_KEY = "sk-xxx"
+# 可选：如果使用 Claude 进行问答生成
+$env:ANTHROPIC_API_KEY = "sk-ant-xxx"
+
+# 5. 构建向量缓存 (约 1 分钟)
+python scripts/build_vector_cache.py --force
+
+# 6. 预下载重排模型 (约 2-5 分钟，1.1GB)
+python scripts/reranker.py --warmup
+
+# 7. 启动 Web Demo
+python demo/app.py
+```
+
+**完成后访问**: http://localhost:7861
+
+---
+
 ## 数据规模
 
 | 指标 | 数值 |
 |------|------|
-| 官能化样本数 | 71 |
-| 解读文档数 | ~355 (每样本 5 个) |
+| 官能化样本数 | 68 |
+| 解读文档数 | ~340 (每样本 5 个) |
 | 文献来源 | 多篇 SCI 论文 |
-| 覆盖官能团 | 羟基、羧基、硅氧烷、oxa-Michael 等 |
+| 覆盖官能团 | 羟基、羧基、氨基、环氧基、硅烷、胍基等 |
 | 向量维度 | 1536 (text-embedding-3-small) |
+| 向量数据库 | ChromaDB (HNSW 索引) |
 
 ---
 

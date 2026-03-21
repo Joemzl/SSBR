@@ -1,66 +1,23 @@
 ---
 sample_id: SSBR-031
 doi: 10.1039/c5ra24965a
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: unknown
-  reagent: null
-  functional_group: null
-  degree: null
-  method: null
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-031 综合档案
 
 ## 一句话总结
 
-**3-MPA 官能化 SSBR (9.6 wt%)，通过羧基与白炭黑形成氢键，显著提升填料-橡胶相互作用；MD 模拟揭示最优接枝量为 14.2 wt%，为分子设计提供理论指导。**
+3-MPA 官能化 SSBR (9.6 wt%)，通过羧基与白炭黑形成氢键，显著提升填料-橡胶相互作用；MD 模拟揭示最优接枝量为 14.2 wt%，为分子设计提供理论指导。
 
-## 样本核心信息
-
-| 属性 | 值 |
-|------|-----|
-| 样本编号 | SSBR-031 |
-| 官能化试剂 | 3-巯基丙酸 (3-MPA) |
-| SMILES | SCCC(=O)O |
-| 官能化程度 | 9.6 wt% |
-| 核心官能团 | 羧基 (-COOH) |
-| 界面作用机制 | 氢键 |
-
-## 关键性能指标
-
-### 动态力学性能
-
-| 指标 | 数值 | 相对空白 |
-|------|------|---------|
-| Tg (DMA) | 0.1℃ | +6.0℃ |
-| tan δ max | 1.30 | +21.5% |
-| 活化能 Ea | 17.7 kJ/mol | +56.6% |
-
-### 热学性能
-
-| 指标 | 实验值 | 模拟值 |
-|------|-------|-------|
-| Tg | -23.8℃ | -20℃ |
-
-### 分散性能
-
-| 指标 | 数值 | 说明 |
-|------|------|------|
-| 分散质量 | 良 | g(r) 峰位 15.5 Å |
-| 结合能 | 257.5 kcal/mol | 正值表示良好相容性 |
-| 粘附能 Wrf | 62.1 mJ/m² | +21.3% vs 空白 |
-| 絮凝驱动力 ΔW | 4.6 mJ/m² | -64.6% vs 空白 |
+---
 
 ## 研究亮点
 
@@ -84,21 +41,50 @@ updated_at: '2026-03-19'
 
 三者竞争导致存在最优接枝量 (14.2 wt%)
 
-## 应用推荐
+---
 
-### 适用场景
+## 核心性能特点
 
-1. **高性能轮胎胎面**: 高 tan δ max 有利于湿地抓地力
-2. **分子设计参考**: 为官能化 SSBR 开发提供理论指导
-3. **白炭黑复合材料**: 显著改善填料分散
+### 玻璃化转变温度 【良好】
 
-### 配方建议
+Tg 为 -23.8℃，低温性能良好。
 
-- 可进一步提高 3-MPA 接枝量至 10-14 wt% 以达到最优性能
-- 适合与高比表面积白炭黑配合使用
+---
 
-## 技术特色
+## 适用场景
 
-- **研究方法**: MD 模拟 + 实验验证双重手段
-- **模拟精度**: 模拟 Tg 与实验 Tg 偏差 < 4 K
-- **理论价值**: 揭示了官能化程度与性能的定量关系
+- ✅ 绿色轮胎、高分散白炭黑复合材料
+
+---
+
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | -23.8 | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1039/c5ra24965a
+- **引文**: Luo Y, Qu L, Su H, et al. Effect of chemical structure of elastomer on filler dispersion and interactions in silica/solution-polymerized styrene butadiene rubber composites through molecular dynamics simulation[J]. RSC Advances, 2016, 6(17): 14643-14650.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

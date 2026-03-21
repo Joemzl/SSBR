@@ -1,45 +1,23 @@
 ---
 sample_id: SSBR-022
 doi: 10.1002/app.44923
-polymer_type: TPES 链中官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: TPES (三苯基乙基苯乙烯)
-  functional_group: null
-  degree: null
-  method: null
-filler_system: 原生石墨烯
-application: 石墨烯/橡胶复合材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- TPES 改性
-- 石墨烯复合材料
-- 共价键界面
-- 原位增强
-- 碳材料分散
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-022 综合档案
 
-## 样本概述
+## 一句话总结
 
-SSBR-022 是一种 TPES（p-(2,2,2-三苯基乙基)苯乙烯）链中改性的 SSBR，用于研究与原生石墨烯的共价键增强界面。本研究来自北京化工大学韩宝航团队。
+采用三苯基乙基官能化，适用于石墨烯/橡胶复合材料。
 
-## 材料信息
-
-| 属性 | 数值 | 来源 |
-|------|------|------|
-| 苯乙烯含量 | 24.0 wt% | Excel |
-| Mn | 168,000 g/mol | Excel |
-| 官能化试剂 | TPES | Excel |
-| 官能化程度 | 0.9 wt% | Excel |
-| 核心官能团 | 三苯基乙基 | Excel |
+---
 
 ## 研究亮点
 
@@ -71,30 +49,54 @@ TPES 单体结构特点：
 - 改性程度可定量
 - 分子结构符合设计
 
-## 应用价值
+---
 
-### 高性能复合材料
-- 共价界面显著优于物理吸附
-- 可实现低填料用量高增强效果
+## 样本概述
 
-### 轮胎材料潜力
-- 石墨烯增强可改善导电性
-- 界面优化有助于耐磨性提升
+SSBR-022 是一种 TPES（p-(2,2,2-三苯基乙基)苯乙烯）链中改性的 SSBR，用于研究与原生石墨烯的共价键增强界面。本研究来自北京化工大学韩宝航团队。
 
-## 数据完整性评估
+---
 
-| 测试类型 | 数据状态 | 图谱引用 |
-|----------|----------|----------|
-| 力学性能 | 无 | - |
-| 热学性能 | 无 | - |
-| NMR 分析 | 部分 | Fig.1 |
-| 形貌分析 | 无 | - |
+## 核心性能特点
 
-## 文献引用
+*暂无足够数据生成性能特点分析*
 
-Huang M, Lu J, Han B, et al. Covalent approach for in situ enhancement of interaction between pristine graphene and styrene-butadiene-p-(2,2,2-triphenylethyl)styrene rubber[J]. Journal of Applied Polymer Science, 2017, 134(28): 44923.
+---
 
-## 相关样本
+## 适用场景
 
-- SSBR-015/016/019: DPES 改性 SSBR（类似链中改性策略）
-- SSBR-035: RGO/SiO₂ 石墨烯复合材料
+- ✅ 石墨烯/橡胶复合材料
+
+---
+
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1002/app.44923
+- **引文**: Huang M, Lu J, Han B, et al. Covalent approach for in situ enhancement of interaction between pristine graphene and styrene-butadiene-p-(2,2,2-triphenylethyl)styrene rubber[J]. Journal of Applied Polymer Science, 2017, 134(28): 44923.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

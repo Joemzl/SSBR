@@ -1,35 +1,29 @@
 ---
 sample_id: SSBR-026
 doi: 10.1002/app.48159
-polymer_type: S-SMBR
-functionalization:
-  is_functionalized: true
-  type: unknown
-  reagent: null
-  functional_group: β-月桂烯
-  degree: null
-  method: copolymerization
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- 生物基橡胶
-- β-月桂烯
-- 萜烯共聚
-- 炭黑分散
-- 可持续材料
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-026 综合档案
+
+## 一句话总结
+
+采用异亚丙基侧链官能化，适用于炭黑分散改性。
+
+---
 
 ## 研究亮点
 
 本样本采用 **β-月桂烯共聚** 策略，将生物基萜烯单体引入 SBR 主链，开发出环保型高性能溶聚橡胶 (S-SMBR)。
+
+---
 
 ## 核心发现
 
@@ -53,6 +47,8 @@ updated_at: '2026-03-19'
 - tanδ@60°C = 0.15，与纯 SBR 相当
 - 未牺牲轮胎动态性能
 
+---
+
 ## 改性机理
 
 β-月桂烯的作用机制：
@@ -61,12 +57,68 @@ updated_at: '2026-03-19'
 3. **加工优化**: 长支链改善混炼流动性
 4. **交联参与**: 侧链双键可作为额外交联位点
 
+---
+
+## 核心性能特点
+
+### 拉伸强度 【良好】
+
+拉伸强度达到 24.7 MPa，良好的力学强度。
+
+### 断裂伸长率 【优秀】
+
+断裂伸长率为 420.0%，展现出优秀的延展性。
+
+### 玻璃化转变温度 【良好】
+
+Tg 为 -32.0℃，低温性能良好。
+
+---
+
+## 适用场景
+
+- ✅ 炭黑分散改性
+- ✅ 需要高延展性的应用场景
+- ✅ 低温环境应用
+
+---
+
 ## 应用前景
 
 S-SMBR-026 代表了轮胎橡胶的绿色化发展方向，在保持甚至提升性能的同时，引入可再生的生物基成分，符合可持续发展理念。
 
-## 参考文献
+---
 
-- DOI: 10.1002/app.48159
-- 期刊: Journal of Applied Polymer Science
-- 年份: 2019
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | 2.8 | MPa | - |
+| 力学性能 | 300%定伸应力 | 15.2 | MPa | - |
+| 力学性能 | 拉伸强度 | 24.7 | MPa | - |
+| 力学性能 | 断裂伸长率 | 420.0 | % | - |
+| 热学性能 | Tg | -32.0 | ℃ | - |
+| 动态性能 | tanδ@0°C | 0.38 | - | 湿抓 |
+| 动态性能 | tanδ@60°C | 0.15 | - | 滚阻 |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1002/app.48159
+- **引文**: Zhang J, Lu J, Su K, et al. Bio-based β-myrcene-modiﬁed solution-polymerized styrene-butadiene rubber for improving carbon black dispersion and wet skid resistance[J]. Journal of Applied Polymer Science, 2019, 136(30): 48159.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

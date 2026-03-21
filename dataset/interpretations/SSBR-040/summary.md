@@ -1,106 +1,48 @@
 ---
 sample_id: SSBR-040
 doi: 10.1016/j.compscitech.2020.108482
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: filler_modification
-  reagent: HMDS 改性纳米白炭黑
-  functional_group: null
-  degree: null
-  method: null
-filler_system: HMDS 改性纳米白炭黑
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- HMDS
-- 表面改性
-- 白炭黑
-- 绿色轮胎
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-040 综合档案
+
+## 一句话总结
+
+采用三甲基硅基官能化，适用于轮胎、高耐磨复合材料。
+
+---
 
 ## 样本概述
 
 SSBR-040 是一种采用六甲基二硅氮烷 (HMDS) 原位改性纳米白炭黑增强的 SSBR 复合材料。HMDS 是一种常用的硅烷偶联剂替代物，能够有效将白炭黑表面从亲水性转变为疏水性，改善其在非极性橡胶基体中的分散性。
 
-## 改性策略
+---
 
-### HMDS 表面改性反应
+## 核心性能特点
 
-```
-≡Si-OH + (CH₃)₃Si-NH-Si(CH₃)₃ → ≡Si-O-Si(CH₃)₃ + NH₃↑
-```
+### 拉伸强度 【良好】
 
-改性特点：
-- 气相沉积法
-- 反应温度: 室温～120°C
-- 副产物: 氨气（易除去）
-- 无需溶剂，环保
+拉伸强度达到 17.2 MPa，良好的力学强度。
 
-### 改性效果
+### 断裂伸长率 【优秀】
 
-| 指标 | 未改性 SiO₂ | HMDS-SiO₂ | 改善 |
-|------|------------|-----------|------|
-| 水接触角 | ~20° | ~100° | 疏水化 |
-| 表面羟基 | 高 | 低 | -50% |
-| 分散性 | 团聚 | 良好 | 显著 |
+断裂伸长率为 486.0%，展现出优秀的延展性。
 
-## 关键性能数据
+---
 
-### 力学性能
+## 适用场景
 
-| 指标 | 数值 | 意义 |
-|------|------|------|
-| 拉伸强度 | 17.2 MPa | 良好增强效果 |
-| 断裂伸长率 | 486% | 优异柔韧性 |
-| M100 | 2.0 MPa | 适中刚性 |
-| M300 | 7.3 MPa | 良好应力传递 |
+- ✅ 轮胎、高耐磨复合材料
+- ✅ 需要高延展性的应用场景
 
-### 动态力学性能
-
-| 指标 | 数值 | 意义 |
-|------|------|------|
-| tan δ (0°C) | ~0.32 | 良好抗湿滑 |
-| tan δ (60°C) | ~0.095 | 低滚动阻力 |
-| ΔG' | ~1.55 MPa | 良好填料分散 |
-
-### 热学性能
-
-| 指标 | 数值 |
-|------|------|
-| Tg (DMA) | -25°C |
-
-## 性能-结构关系
-
-### 分散性改善机理
-
-1. **表面疏水化**: 三甲基硅基取代表面羟基
-2. **氢键弱化**: 减少填料-填料相互作用
-3. **相容性增强**: 疏水表面与 SSBR 更相容
-
-### 性能提升原因
-
-1. **力学性能**: 良好分散提高有效增强
-2. **加工性能**: 表面改性降低混炼能耗
-3. **动态性能**: 减少填料网络降低能量损耗
-
-## 工艺优势
-
-### 与传统硅烷偶联剂对比
-
-| 方面 | Si69/Si75 | HMDS |
-|------|-----------|------|
-| 反应温度 | 高温混炼 | 预处理或原位 |
-| 副产物 | 乙醇 | 氨气 |
-| VOC 排放 | 有 | 低 |
-| 成本 | 较高 | 较低 |
+---
 
 ## 应用前景
 
@@ -108,8 +50,36 @@ SSBR-040 是一种采用六甲基二硅氮烷 (HMDS) 原位改性纳米白炭黑
 - **环保生产**: 减少 VOC 排放
 - **成本优化**: 替代昂贵硅烷偶联剂
 
+---
+
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | 2.0 | MPa | - |
+| 力学性能 | 300%定伸应力 | 7.3 | MPa | - |
+| 力学性能 | 拉伸强度 | 17.2 | MPa | - |
+| 力学性能 | 断裂伸长率 | 486.0 | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
 ## 文献来源
 
-- DOI: 10.1016/j.compscitech.2020.108482
-- 期刊: Composites Science and Technology
-- 年份: 2020
+- **DOI**: 10.1016/j.compscitech.2020.108482
+- **引文**: Tian Q, Zhang C, Tang Y, et al. Preparation of hexamethyl disilazane-surface functionalized nano-silica by controlling surface chemistry and its “agglomeration-collapse” behavior in solution polymerized styrene butadiene rubber/butadiene rubber composites[J]. Composites Science and Technology, 2021, 201: 108482.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

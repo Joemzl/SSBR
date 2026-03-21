@@ -1,88 +1,64 @@
 ---
 sample_id: SSBR-033
 doi: 10.3389/fchem.2018.00240
-polymer_type: 官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: unknown
-  reagent: null
-  functional_group: null
-  degree: null
-  method: null
-filler_system: null
-application: 高性能轮胎、节能环保轮胎
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- NDI 官能化
-- 异氰酸酯
-- 高性能轮胎
-- 节能环保
-- 界面增强
-- 填料分散
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-033 综合档案
 
-## 基本信息
+## 一句话总结
 
-| 属性 | 值 |
-|------|-----|
-| 样本编号 | SSBR-033 |
-| 高分子类型 | 官能化 SSBR |
-| 官能化类型 | NDI (1,5-萘二异氰酸酯) |
-| 官能化试剂 SMILES | O=C=Nc1ccc2c(N=C=O)ccc12 |
-| 应用场景 | 高性能轮胎、节能环保轮胎 |
-| 文献 DOI | 10.3389/fchem.2018.00240 |
+采用聚氨酯硬段官能化，适用于高性能轮胎、节能环保轮胎。
 
-## 研究主题
+---
 
-本文献研究 NDI 官能化 SSBR 在高性能轮胎中的应用，重点关注：
-- NDI 官能化对力学性能的影响
-- 填料分散和界面结合的改善
-- 节能环保轮胎性能
+## 核心性能特点
 
-## 关键发现
+*暂无足够数据生成性能特点分析*
 
-### NDI 官能化效果
+---
 
-1. **界面增强**: NDI 官能团改善橡胶与填料的界面结合
-2. **力学性能**: Table 1 报道了系统的力学性能数据
-3. **填料分散**: Fig.2 和 Fig.7 展示了改善的填料分散
+## 适用场景
 
-### 高性能轮胎应用
+- ✅ 高性能轮胎、节能环保轮胎
 
-- 低滚动阻力：节能环保
-- 优异抓地力：安全性能
-- 高耐磨性：使用寿命
+---
 
-## 性能-结构关系
+## 关键性能指标
 
-| 结构特征 | 性能影响 |
-|----------|----------|
-| NDI 官能化 | 界面增强、力学提升 |
-| 双异氰酸酯 | 交联作用 |
-| 萘环结构 | 刚性增强 |
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
 
-## 数据可用性
+---
 
-| 测试类型 | 可用性 | 数据来源 |
-|----------|--------|----------|
-| 力学测试 | ✓ | L1 (表格数据) |
-| 热学测试 | ✗ | - |
-| NMR 分析 | 部分 | L1 (官能化程度) |
-| 形貌表征 | ✓ | L2 (TEM/SEM) |
+## 解读文档完整性
 
-## 相关样本
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
-- 本样本为 NDI 官能化 SSBR
-- 适用于高性能轮胎界面改性研究参考
+---
 
-## 参考文献
+## 文献来源
 
-- DOI: 10.3389/fchem.2018.00240
-- 主要图表: Table 1 (力学性能), Fig.2 (TEM), Fig.7 (SEM)
+- **DOI**: 10.3389/fchem.2018.00240
+- **引文**: Qin X, Wang J, Han B, et al. Novel Design of Eco-Friendly Super Elastomer Materials With Optimized Hard Segments Micro-Structure: Toward Next-Generation High-Performance Tires[J]. Frontiers in Chemistry, 2018, 6: 240.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

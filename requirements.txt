@@ -39,7 +39,10 @@ gradio>=4.0.0
 # =============================================================================
 
 # 交叉编码器重排 (bge-reranker-base)
-sentence-transformers>=2.2.0
+# 注意: 必须使用以下版本组合，否则模型加载会失败
+sentence-transformers==2.7.0
+transformers==4.40.0
+huggingface-hub>=0.19.3,<1.0
 
 # ChromaDB 向量数据库 (替代 JSON 缓存)
 chromadb>=0.4.0

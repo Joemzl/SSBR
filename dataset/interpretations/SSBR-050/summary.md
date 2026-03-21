@@ -1,48 +1,29 @@
 ---
 sample_id: SSBR-050
 doi: 10.1016/j.nanoen.2018.03.038
-polymer_type: 羟基 (-OH)官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 环氧乙烷
-  functional_group: 羟基 (-OH)
-  degree: null
-  method: null
-filler_system: SiO₂ (~60 phr)
-application: 极低滚阻节能轮胎
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- 大分子组装
-- 极低滚动阻力
-- 羟基官能化
-- 节能轮胎
-- Nano Energy
-- 界面设计
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-050 综合档案
+
+## 一句话总结
+
+采用羟基官能化，适用于极低滚阻节能轮胎。
+
+---
 
 ## 样本概述
 
 SSBR-050 来自 Qin 等人发表在 Nano Energy (2018) 的高水平研究，提出基于"大分子组装策略"的先进弹性体纳米复合材料理性设计，实现了突破性的极低滚动阻力性能。
 
-## 材料体系
-
-### 基础聚合物
-- **类型**: 羟基官能化 SSBR
-- **官能化试剂**: 环氧乙烷
-- **官能团**: 链端羟基 (-OH)
-
-### 填料体系
-- **填料**: SiO₂（沉淀法白炭黑）
-- **填充量**: ~60 phr
-- **界面改性**: 大分子组装策略
+---
 
 ## 核心发现
 
@@ -69,22 +50,19 @@ SSBR-050 来自 Qin 等人发表在 Nano Energy (2018) 的高水平研究，提�
 - 降低界面摩擦能耗
 - 实现极低能量损失
 
-## 技术亮点
+---
 
-| 维度 | 策略 | 效果 |
-|------|------|------|
-| 分子设计 | 链端羟基官能化 | 界面亲和↑ |
-| 界面组装 | 大分子定向排列 | 界面层↑ |
-| 滚阻优化 | 消除能耗热点 | **-67%** |
-| 湿抓地力 | 保持 Tg 区损耗 | 不损失 |
+## 核心性能特点
 
-## 科学意义
+*暂无足够数据生成性能特点分析*
 
-本研究发表于 Nano Energy（影响因子 >17），代表了：
-- 轮胎材料设计理念的革新
-- "大分子组装"概念的首次系统阐述
-- 理性设计取代经验优化
-- 为极低滚阻轮胎提供理论指导
+---
+
+## 适用场景
+
+- ✅ 极低滚阻节能轮胎
+
+---
 
 ## 应用前景
 
@@ -95,6 +73,36 @@ SSBR-050 来自 Qin 等人发表在 Nano Energy (2018) 的高水平研究，提�
 | 电动汽车 | 续航里程增加 |
 | 环保法规 | 满足最严格标准 |
 
-## 参考文献
+---
 
-Qin X, Han B, Lu J, et al. Rational Design of Advanced Elastomer Nanocomposites Towards Extremely Energy-saving Tires Based on Macromolecular Assembly Strategy[J]. Nano Energy, 2018, 48: 180-188.
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1016/j.nanoen.2018.03.038
+- **引文**: Qin X, Han B, Lu J, et al. Rational Design of Advanced Elastomer Nanocomposites Towards Extremely Energy-saving Tires Based on Macromolecular Assembly Strategy[J]. Nano Energy, 2018, 48: 180-188.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

@@ -1,41 +1,21 @@
 ---
 sample_id: SSBR-001
 doi: 10.1039/c9ra02783a
-polymer_type: 羟基（-OH）官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 3-巯基丙醇（MPL, 3-Mercapto-1-propanol）
-  functional_group: 羟基（-OH）
-  degree: 3.6 wt%
-  method: 巯基-烯点击化学（thiol-ene click reaction）
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-17
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-001 综合档案
 
 ## 一句话总结
 
 适用于需要改善白炭黑分散性、提升力学强度和湿地抓地力的轮胎胎面配方，采用羟基官能化实现界面氢键增强。
-
----
-
-## 官能化信息
-
-- **官能化试剂**: 3-巯基丙醇（MPL, 3-Mercapto-1-propanol）
-- **核心官能团**: 羟基（-OH）
-- **官能化程度**: 3.6 wt%
-- **改性方法**: 巯基-烯点击化学（thiol-ene click reaction）
-- **接枝位点**: SSBR 主链 1,2-乙烯基双键
-- **SMILES**: OCCCS
 
 ---
 
@@ -82,40 +62,11 @@ TEM 观察（Fig. 5C）显示白炭黑在 SSBR-g-MPL70 复合材料中分散相�
 
 ---
 
+---
+
 ## 适用场景
 
-- ✅ **轮胎胎面配方**: 需要良好湿地抓地力（tan δ @ 0℃ = 1.004）
-- ✅ **白炭黑填充体系**: 改善分散性，减少团聚和界面空隙
-- ✅ **绿色轮胎应用**: 通过改善界面相互作用提升综合性能
-- ⚠️ **注意事项**: 分散性改善效果弱于 MPTES（硅烷偶联）和 MUA（羧基）官能化
-
----
-
-## 关键性能指标
-
-| 类别 | 指标 | 数值 | 单位 | 评价 |
-|------|------|------|------|------|
-| 力学性能 | 100%定伸应力 | 4.2 | MPa | 良好 |
-| 力学性能 | 拉伸强度 | 14.2 | MPa | 良好 |
-| 力学性能 | 断裂伸长率 | 200 | % | 良好 |
-| 热学性能 | Tg (纯聚合物) | -24.8 | ℃ | - |
-| 热学性能 | Tg (复合材料) | -0.9 | ℃ | - |
-| 动态性能 | tan δ (0℃) | 1.004 | - | 优秀 |
-| 动态性能 | tan δ (7% strain) | 0.104 | - | - |
-| 界面特性 | 结合橡胶含量 | 55.28 | % | 良好 |
-| 官能化 | 官能化程度 | 3.6 | wt% | - |
-| 形貌 | 分散质量 | 良 | - | 良好 |
-
----
-
-## 解读文档完整性
-
-| 文档类型 | 状态 | 主要数据来源 |
-|----------|------|--------------|
-| mechanical.md | ✓ | SI Table S4, S5, S6; Table 1 |
-| dsc.md | ✓ | Fig. 2, SI Table S6 |
-| nmr.md | ✓ | Fig. 1, Table 1 |
-| tem.md | ✓ | Fig. 5(C) |
+- ✅ 绿色轮胎胎面胶
 
 ---
 
@@ -141,12 +92,37 @@ TEM 观察（Fig. 5C）显示白炭黑在 SSBR-g-MPL70 复合材料中分散相�
 
 ---
 
-## 文献来源
+---
 
-- **DOI**: 10.1039/c9ra02783a
-- **引文**: RSC Adv., 2019, 9, 18178-18185
-- **SI**: 有补充材料（Table S4-S6）
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | 4.2 | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | 14.2 | MPa | - |
+| 力学性能 | 断裂伸长率 | 200 | % | - |
+| 热学性能 | Tg | -0.9 | ℃ | - |
+| 界面性能 | 结合橡胶含量 | 55.28 | % | - |
 
 ---
 
-*本综合档案由 `ssbr-summary-generator` Skill 生成，用于 RAG 语义检索。*
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1039/c9ra02783a
+- **引文**: Gao W, Lu J, Song W, et al. Interfacial interaction modes construction of various functional SSBR–silica towards high filler dispersion and excellent composites performances[J]. RSC Advances, 2019, 9(31): 18888-18897.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

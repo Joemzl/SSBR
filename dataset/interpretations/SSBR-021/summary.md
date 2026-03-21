@@ -1,35 +1,29 @@
 ---
 sample_id: SSBR-021
 doi: 10.1021/acs.iecr.8b05738
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: unknown
-  reagent: null
-  functional_group: 叔胺
-  degree: null
-  method: chain-end
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- 双端官能化
-- 叔胺
-- 白炭黑分散
-- 低滚阻
-- 活性阴离子聚合
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-021 综合档案
+
+## 一句话总结
+
+采用氨基官能化，适用于二氧化硅分散。
+
+---
 
 ## 研究亮点
 
 本样本采用 **α,ω-双端 DPE-NMe₂ 官能化** 策略，通过双官能团引发剂实现分子链两端对称修饰，是该文献中性能最优的样本。
+
+---
 
 ## 核心发现
 
@@ -53,6 +47,8 @@ updated_at: '2026-03-19'
 - tanδ@0°C = 0.42，湿抓性能保持
 - 实现更优的滚阻/湿抓平衡
 
+---
+
 ## 改性机理
 
 α,ω-双端官能化的优势：
@@ -60,12 +56,67 @@ updated_at: '2026-03-19'
 2. **网络结构优化**: 橡胶分子链可"桥接"不同填料颗粒
 3. **能量耗散降低**: 更紧密的界面结合减少 60°C 下的滞后损耗
 
+---
+
+## 核心性能特点
+
+### 拉伸强度 【良好】
+
+拉伸强度达到 22.1 MPa，良好的力学强度。
+
+### 断裂伸长率 【优秀】
+
+断裂伸长率为 498.0%，展现出优秀的延展性。
+
+### 玻璃化转变温度 【良好】
+
+Tg 为 -22.0℃，低温性能良好。
+
+---
+
+## 适用场景
+
+- ✅ 二氧化硅分散
+- ✅ 需要高延展性的应用场景
+
+---
+
 ## 应用前景
 
 α,ω-SSBR-021 展现了双端官能化策略在绿色轮胎用 SSBR/白炭黑复合材料中的显著优势，是实现低滚阻、高湿抓绿色轮胎的有效途径。
 
-## 参考文献
+---
 
-- DOI: 10.1021/acs.iecr.8b05738
-- 期刊: Industrial & Engineering Chemistry Research
-- 年份: 2019
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | 11.9 | MPa | - |
+| 力学性能 | 拉伸强度 | 22.1 | MPa | - |
+| 力学性能 | 断裂伸长率 | 498.0 | % | - |
+| 热学性能 | Tg | -22.0 | ℃ | - |
+| 动态性能 | tanδ@0°C | 0.42 | - | 湿抓 |
+| 动态性能 | tanδ@60°C | 0.08 | - | 滚阻 |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1021/acs.iecr.8b05738
+- **引文**: Sun C, Shipeng W, Ma H, et al. Improvement of silica dispersion in solution polymerized styrene-butadiene rubber via introducing amino functional groups[J]. Industrial & Engineering Chemistry Research, 2019, 58(2): 586-592.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

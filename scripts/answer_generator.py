@@ -204,6 +204,10 @@ class AnswerGenerator:
         citations = []
         seen_ids = set()
         
+        # 防御 None 输入
+        if not answer_text:
+            return citations
+        
         # Pattern to match sample ID citations: [SSBR-XXX]
         pattern = r'\[SSBR-(\d+)\]'
         matches = re.findall(pattern, answer_text)
@@ -240,6 +244,9 @@ class AnswerGenerator:
     
     def _extract_doi(self, content: str) -> Optional[str]:
         """Extract DOI from sample content."""
+        if not content:
+            return None
+        
         # Pattern for DOI
         doi_pattern = r'(?:DOI|doi)[：:]\s*(10\.\d{4,}/[^\s\n]+)'
         match = re.search(doi_pattern, content)
@@ -256,6 +263,9 @@ class AnswerGenerator:
     
     def _extract_citation_text(self, content: str) -> Optional[str]:
         """Extract citation text from sample content."""
+        if not content:
+            return None
+        
         # Look for citation in YAML front matter or text
         citation_pattern = r'(?:引文|citation|cite)[：:]\s*([^\n]+)'
         match = re.search(citation_pattern, content, re.IGNORECASE)
@@ -310,6 +320,10 @@ class AnswerGenerator:
         Returns:
             Processed answer text
         """
+        # 防御 None 输入
+        if not answer_text:
+            return "无法生成回答，请稍后重试。"
+        
         # Clean up whitespace
         answer_text = answer_text.strip()
         

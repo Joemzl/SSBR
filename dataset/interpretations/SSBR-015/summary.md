@@ -1,30 +1,25 @@
 ---
 sample_id: SSBR-015
 doi: 10.1021/acs.iecr.6b02259
-polymer_type: DPES官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: p-(2,2'-二苯基乙基)苯乙烯 (DPES)
-  functional_group: DPES
-  degree: 5.1 wt%
-  method: 热可分解基团共聚
-filler_system: 炭黑
-application: 绿色轮胎胎面材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
-# 综合档案：SSBR-015
 
-> **一句话总结**: 通过共价接枝机制实现炭黑优异分散的 DPES 官能化 SSBR 复合材料，力学性能和轮胎动态性能全面提升。
+# SSBR-015 综合档案
 
-## 一、样本概述
+## 一句话总结
+
+通过共价接枝机制实现炭黑优异分散的 DPES 官能化 SSBR 复合材料，力学性能和轮胎动态性能全面提升。
+
+---
+
+## 样本概述
 
 | 属性 | 内容 |
 |------|------|
@@ -38,7 +33,9 @@ updated_at: '2026-03-19'
 | **制备工艺** | 密炼机混合 (120°C, 30min) + 硫化 |
 | **DOI** | 10.1021/acs.iecr.6b02259 |
 
-## 二、聚合物结构
+---
+
+## 聚合物结构
 
 ### 组成参数 (Table 1)
 
@@ -64,7 +61,9 @@ updated_at: '2026-03-19'
 3. 自由基被炭黑表面的多环芳烃捕获
 4. 形成 SBDR-炭黑共价键
 
-## 三、关键性能数据
+---
+
+## 关键性能数据
 
 ### 力学性能
 
@@ -90,7 +89,9 @@ updated_at: '2026-03-19'
 | Rg (SAXS) | **18.16 nm** | 24.15 nm |
 | Rg 改善 | **-25%** | 基准 |
 
-## 四、核心技术创新
+---
+
+## 核心技术创新
 
 ### 共价接枝方法
 
@@ -115,7 +116,9 @@ updated_at: '2026-03-19'
 - 碳纳米管 (CNT)
 - 石墨烯
 
-## 五、性能优势总结
+---
+
+## 性能优势总结
 
 1. ✅ **力学性能全面提升**: 拉伸强度 +43.8%，伸长率 +11.6% 同时提升
 2. ✅ **轮胎性能优化**: 湿地抓地力提高，滚动阻力降低 30.8%
@@ -124,7 +127,21 @@ updated_at: '2026-03-19'
 5. ✅ **工艺简单**: 原位接枝，无需预处理炭黑
 6. ✅ **适用于低官能团炭黑**: 克服传统方法的局限
 
-## 六、应用前景
+---
+
+## 核心性能特点
+
+*暂无足够数据生成性能特点分析*
+
+---
+
+## 适用场景
+
+- ✅ 炭黑分散、橡胶复合材料
+
+---
+
+## 应用前景
 
 文献结论：
 > "In particular, the introduction of DPES into a rubber matrix will be favorable for higher wet skid resistance and lower rolling resistance, indicating great potential for application in the tread rubber of green tires."
@@ -133,21 +150,37 @@ updated_at: '2026-03-19'
 
 DPES 官能化 SSBR 同时实现了更高的湿地抓地力和更低的滚动阻力，是理想的绿色轮胎材料。
 
-## 七、数据完整性
+---
 
-| 解读类型 | 状态 | 数据来源 |
-|---------|------|----------|
-| 力学 (mechanical) | ✅ 完整 | Fig.10, 11; Table S3, S4 |
-| 热学 (dsc) | ✅ 完整 | Fig.3, 12; Table S5 |
-| 核磁 (nmr) | ✅ 完整 | Fig.1, 2; Table 1 |
-| 形貌 (tem) | ✅ 完整 | Fig.8, 9; Table 2 |
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | 相比 SBDR-0 提高 43.8% | 相对 | - |
+| 力学性能 | 断裂伸长率 | 相比 SBDR-0 提高 11.6% | 相对 | - |
+| 热学性能 | Tg | - | ℃ | - |
+| 界面性能 | 结合橡胶含量 | 26.9 | % | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
-- **标题**: A Covalent Grafting Approach for Improving the Dispersion of Carbon Black in Styrene-Butadiene Rubber Composites
-- **作者**: Minglu Huang, Jianmin Lu, Bingyong Han, Ming Qiu, Liqun Zhang
-- **期刊**: Industrial & Engineering Chemistry Research
-- **年份**: 2016
 - **DOI**: 10.1021/acs.iecr.6b02259
+- **引文**: Huang M, Lu J, Han B, et al. A covalent grafting approach for improving the dispersion of carbon black in styrene-butadiene rubber composites by copolymerizing p-(2,2’-diphenylethyl)styrene with a thermally decomposed triphenylethane pendant[J]. Industrial & Engineering Chemistry Research, 2016, 55(34): 9190-9198.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

@@ -1,46 +1,29 @@
 ---
 sample_id: SSBR-034
 doi: 10.1016/j.cej.2019.04.215
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 三羟甲基丙烷三(3-巯基丙酸)酯 (TMPMP)
-  functional_group: null
-  degree: null
-  method: 链中官能化
-filler_system: 无填料
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-034 综合档案
+
+## 一句话总结
+
+采用酯基官能化，适用于超疏水涂层、输送带。
+
+---
 
 ## 样本概述
 
 **SSBR-034** 采用**三羟甲基丙烷三(3-巯基丙酸)酯 (TMPMP)** 作为交联剂，通过巯基-烯点击化学与 SBR 进行 UV 固化反应，制备超疏水涂层。
 
-## 官能化策略
-
-### 反应机理
-TMPMP 是一种三官能团巯基化合物，其三个巯基可与 SBR 分子链上的乙烯基双键发生自由基加成反应：
-
-```
-3 × (R-SH) + 3 × (CH₂=CH-) → 交联网络
-```
-
-UV 光引发形成巯基自由基，随后与烯烃双键加成，形成稳定的硫醚键（C-S-C）。
-
-### 交联特点
-- **三官能团**: 每个 TMPMP 分子可连接三条 SBR 链
-- **高效交联**: UV 固化快速完成
-- **网络结构**: 形成三维交联网络
+---
 
 ## 核心发现
 
@@ -59,36 +42,48 @@ SEM 观察显示涂层表面具有**花瓣状微纳结构**：
 - 机械摩擦后仍保持超疏水性
 - 对酸碱环境有一定耐受性
 
-## 创新亮点
+---
 
-1. **简便工艺**: UV 快速固化，室温操作
-2. **环保**: 无需高温处理，能耗低
-3. **通用性**: 可应用于多种基材
+## 核心性能特点
 
-## 应用方向
+*暂无足够数据生成性能特点分析*
 
-| 应用领域 | 优势 |
-|---------|------|
-| 自清洁表面 | 水滴滚落带走污染物 |
-| 防腐蚀涂层 | 阻隔水分渗透 |
-| 油水分离 | 选择性润湿 |
-| 防冰涂层 | 降低冰附着力 |
+---
 
-## 研究特色
+## 适用场景
 
-本样本的研究方向是**超疏水涂层技术**，与传统的 SSBR 橡胶复合材料改性研究有所不同：
-- 不涉及填料分散
-- 不关注传统力学性能
-- 重点研究表面润湿性和涂层耐久性
+- ✅ 超疏水涂层、输送带
 
-## 相关技术
+---
 
-巯基-烯点击化学在橡胶改性中的应用：
-- 高效、选择性好
-- 可在室温/UV 条件下进行
-- 产物结构明确
+## 关键性能指标
 
-## 参考文献
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
 
-- DOI: 10.1016/j.cej.2019.04.215
-- 期刊: Chemical Engineering Journal
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1016/j.cej.2019.04.215
+- **引文**: Ning N, Wang S, Zhang Z, et al. Superhydrophobic coating with Ultrahigh Adhesive Force and Good Anti-scratching on Elastomeric Substrate by Thiol-ene Click Chemistry[J]. Chemical Engineering Journal, 2019, 370: 1100-1108.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

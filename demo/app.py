@@ -204,8 +204,20 @@ def search_and_answer(query: str, top_k: int = 3) -> tuple:
         
     except Exception as e:
         current_results = []
+        error_msg = str(e)
+        
+        # 提供更友好的错误消息
+        if "额度不足" in error_msg or "quota" in error_msg.lower():
+            user_error = "❌ API 额度不足，请联系管理员充值"
+        elif "网络" in error_msg or "timeout" in error_msg.lower():
+            user_error = "❌ 网络连接超时，请稍后重试"
+        elif "API" in error_msg:
+            user_error = "❌ API 服务暂时不可用，请稍后重试"
+        else:
+            user_error = f"❌ 生成回答出错: {error_msg[:100]}"
+        
         return (
-            f"❌ 生成回答出错: {str(e)[:100]}",
+            user_error,
             "",
             gr.update(choices=[], value=None),
             ""

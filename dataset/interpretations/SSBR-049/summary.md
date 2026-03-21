@@ -1,48 +1,23 @@
 ---
 sample_id: SSBR-049
 doi: 10.1002/app.43342
-polymer_type: 未官能化工业 SSBR
-functionalization:
-  is_functionalized: false
-  type: none
-  reagent: null
-  functional_group: null
-  degree: null
-  method: null
-filler_system: 沉淀法白炭黑 + TESPT
-application: 乘用车轮胎胎面胶
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- 硅烷化温度
-- TESPT 偶联剂
-- 白炭黑分散
-- Payne 效应
-- 乘用车轮胎
-- 湿地抓地力
-- 滚动阻力
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-049 综合档案
 
-## 样本概述
+## 一句话总结
 
-SSBR-049 来自泰国研究团队关于硅烷化温度对 SSBR/SiO₂ 复合材料性能影响的研究。本文献系统研究了 140°C、150°C、160°C 三种硅烷化温度下的复合材料性能差异。
+采用三乙氧基硅烷基/四硫化物官能化，适用于乘用车轮胎胎面胶。
 
-## 材料信息
-
-| 属性 | 数值 | 来源 |
-|------|------|------|
-| SSBR 型号 | 工业级 SSBR | 文献 |
-| 苯乙烯含量 | 34.6 wt% | Excel |
-| 乙烯基含量 | 40.1 mol% | Excel |
-| 填料 | 沉淀法白炭黑 | 文献 |
-| 偶联剂 | TESPT (Si-69) | 文献 |
-| 官能化类型 | 无 | 文献 |
+---
 
 ## 研究亮点
 
@@ -70,6 +45,26 @@ SSBR-049 来自泰国研究团队关于硅烷化温度对 SSBR/SiO₂ 复合材�
 - 过低温度导致反应不完全，团聚明显
 - 过高温度可能导致预硫化和交联不均
 
+---
+
+## 样本概述
+
+SSBR-049 来自泰国研究团队关于硅烷化温度对 SSBR/SiO₂ 复合材料性能影响的研究。本文献系统研究了 140°C、150°C、160°C 三种硅烷化温度下的复合材料性能差异。
+
+---
+
+## 核心性能特点
+
+*暂无足够数据生成性能特点分析*
+
+---
+
+## 适用场景
+
+- ✅ 乘用车轮胎胎面胶
+
+---
+
 ## 轮胎应用价值
 
 ### 工艺指导
@@ -84,21 +79,36 @@ SSBR-049 来自泰国研究团队关于硅烷化温度对 SSBR/SiO₂ 复合材�
 - 苯乙烯/乙烯基配比影响基础性能
 - 硅烷化工艺影响填料-橡胶界面
 
-## 数据完整性评估
+---
 
-| 测试类型 | 数据状态 | 图谱引用 |
-|----------|----------|----------|
-| 力学性能 | 部分 | Fig.7, Fig.8 |
-| 热学性能 | 部分 | Fig.6 |
-| NMR 分析 | 无 | - |
-| 形貌分析 | 部分 | Fig.4 |
+## 关键性能指标
 
-## 文献引用
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
 
-Thaptong P, Sae-Oui P, Sirisinha C. Effects of silanization temperature and silica type on properties of silica-filled solution styrene butadiene rubber (SSBR) for passenger car tire tread compounds[J]. Journal of Applied Polymer Science, 2016, 133(17): 43342.
+---
 
-## 相关样本
+## 解读文档完整性
 
-- SSBR-046: SiO₂/CB 双相填料体系
-- SSBR-075: TESPT 偶联白炭黑体系
-- SSBR-011: 白炭黑填充 SSBR/ESBR 胶料
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1002/app.43342
+- **引文**: Thaptong P, Sae-Oui P, Sirisinha C. Effects of silanization temperature and silica type on properties of silica-filled solution styrene butadiene rubber (SSBR) for passenger car tire tread compounds[J]. Journal of Applied Polymer Science, 2016, 133(17): 43342.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

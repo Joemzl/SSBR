@@ -1,46 +1,31 @@
 ---
 sample_id: SSBR-047
 doi: 10.1002/app.36677
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: filler_modification
-  reagent: 硅烷偶联剂改性
-  functional_group: null
-  degree: null
-  method: null
-filler_system: 硅烷改性白炭黑 (TESPT/TESPD)
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- TESPT
-- TESPD
-- 硅烷偶联剂
-- Payne 效应
-- 非线性粘弹性
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-047 综合档案
+
+## 一句话总结
+
+采用三乙氧基硅烷基/多硫化物官能化，适用于绿色轮胎胎面。
+
+---
 
 ## 样本概述
 
 SSBR-047 是一种系统研究硅烷偶联剂（TESPT 和 TESPD）改性白炭黑对 SSBR 复合材料性能影响的研究样本。该研究重点关注了填料-橡胶相互作用对力学性能和非线性粘弹性行为的影响，为绿色轮胎配方优化提供了重要参考。
 
-## 改性策略
+---
 
-### 硅烷偶联剂
-
-| 偶联剂 | 全称 | 特点 |
-|--------|------|------|
-| TESPT | 双-(三乙氧基硅基丙基)-四硫化物 | 四硫键，反应活性高 |
-| TESPD | 双-(三乙氧基硅基丙基)-二硫化物 | 二硫键，可控性好 |
-
-### 改性机理
+## 改性机理
 
 ```
 1. 水解: Si-OEt + H₂O → Si-OH + EtOH
@@ -48,61 +33,19 @@ SSBR-047 是一种系统研究硅烷偶联剂（TESPT 和 TESPD）改性白炭�
 3. 偶联: -S-S- + 橡胶链 → 硫化键合
 ```
 
-## SSBR 基体特性
+---
 
-| 参数 | 数值 | 意义 |
-|------|------|------|
-| 苯乙烯含量 | 24.8 wt% | 适中刚性 |
-| 乙烯基含量 | 9.7 mol% | 低 Tg |
-| Mn | 167,000 | 中等分子量 |
+## 核心性能特点
 
-### 低乙烯基特点
+*暂无足够数据生成性能特点分析*
 
-- Tg 较低 (~-35°C)
-- 有利于低温性能
-- 主链以 1,4-结构为主
+---
 
-## 关键性能数据
+## 适用场景
 
-### 力学性能
+- ✅ 绿色轮胎胎面
 
-| 指标 | 数值 | 意义 |
-|------|------|------|
-| 拉伸强度 | ~18 MPa | 良好增强效果 |
-| 断裂伸长率 | ~450% | 良好柔韧性 |
-| M300/M100 | ~4 | 强填料作用 |
-
-### Payne 效应
-
-| 参数 | 未改性 | TESPT 改性 | TESPD 改性 |
-|------|--------|-----------|-----------|
-| ΔG' | 高 | 中 | 中 |
-| 分散性 | 差 | 好 | 好 |
-
-### 动态性能
-
-| 指标 | 数值 | 意义 |
-|------|------|------|
-| tan δ (0°C) | ~0.25 | 良好抗湿滑 |
-| tan δ (60°C) | ~0.09 | 低滚动阻力 |
-| Tg (DMA) | ~-35°C | 良好低温性能 |
-
-## 科学发现
-
-### 填料-橡胶相互作用
-
-研究系统分析了不同硅烷偶联剂对填料-橡胶相互作用的影响：
-
-1. **化学键合**: 硫化过程中形成 Si-O-Si 和 S-C 键
-2. **物理吸附**: 橡胶链在改性表面的吸附
-3. **约束效应**: 界面层橡胶链运动受限
-
-### 非线性粘弹性
-
-Payne 效应研究揭示了：
-- 填料网络对应变响应的非线性
-- 硅烷改性降低了填料-填料相互作用
-- 改善了加工性和最终性能
+---
 
 ## 应用前景
 
@@ -110,8 +53,36 @@ Payne 效应研究揭示了：
 - **配方优化参考**: 硅烷偶联剂选择指南
 - **基础研究**: 填料-橡胶相互作用机理
 
+---
+
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
 ## 文献来源
 
-- DOI: 10.1002/app.36677
-- 期刊: Journal of Applied Polymer Science
-- 年份: 2012
+- **DOI**: 10.1002/app.36677
+- **引文**: Qu L L, Yu G Z, Wang L L, et al. Effect of Filler–Elastomer Interactions on the Mechanical and Nonlinear Viscoelastic Behaviors of Chemically Modified Silica-Reinforced Solution-Polymerized Styrene Butadiene Rubber[J]. Journal of Applied Polymer Science, 2012, 125(2): 1174-1184.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

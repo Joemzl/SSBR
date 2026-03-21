@@ -1,43 +1,23 @@
 ---
 sample_id: SSBR-079
 doi: 10.1007/s13726-020-00843-3
-polymer_type: 未官能化工业 SSBR
-functionalization:
-  is_functionalized: false
-  type: none
-  reagent: null
-  functional_group: null
-  degree: null
-  method: null
-filler_system: null
-application: 轮胎胎面胶
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- EVA 改性
-- 白炭黑表面改性
-- 轮胎胎面胶
-- 分散性改善
-- 界面增强
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-079 综合档案
 
-## 样本概述
+## 一句话总结
 
-SSBR-079 来自中国研究团队关于羧基化乙烯/醋酸乙烯酯共聚物 (EVA) 改性纳米白炭黑在轮胎胎面胶中应用的研究。
+采用酯基/乙烯基官能化，适用于轮胎胎面胶。
 
-## 材料信息
-
-| 属性 | 数值 | 来源 |
-|------|------|------|
-| SSBR 型号 | 工业级 SSBR | 文献 |
-| 填料 | 纳米白炭黑 | 文献 |
-| 改性剂 | 羧基化 EVA | 文献 |
+---
 
 ## 研究亮点
 
@@ -61,6 +41,26 @@ EVA 改性效果：
 - 撕裂强度增加
 - 耐磨性改善
 
+---
+
+## 样本概述
+
+SSBR-079 来自中国研究团队关于羧基化乙烯/醋酸乙烯酯共聚物 (EVA) 改性纳米白炭黑在轮胎胎面胶中应用的研究。
+
+---
+
+## 核心性能特点
+
+*暂无足够数据生成性能特点分析*
+
+---
+
+## 适用场景
+
+- ✅ 轮胎胎面胶
+
+---
+
 ## 轮胎应用价值
 
 ### 绿色轮胎
@@ -71,20 +71,36 @@ EVA 改性效果：
 - EVA 改性工艺简单
 - 可在混炼过程中原位进行
 
-## 数据完整性评估
+---
 
-| 测试类型 | 数据状态 | 图谱引用 |
-|----------|----------|----------|
-| 力学性能 | 部分 | Fig.4 |
-| 热学性能 | 有限 | 需查阅原文 |
-| NMR 分析 | 无 | - |
-| 形貌分析 | 有限 | 需查阅原文 |
+## 关键性能指标
 
-## 文献引用
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
 
-Tang Y, Tian Q F, Liu Y L, et al. Application of carboxylated ethylene/vinyl acetate copolymer-modified nanosilica in tire tread rubber[J]. Iranian Polymer Journal, 2020.
+---
 
-## 相关样本
+## 解读文档完整性
 
-- SSBR-069: DPG 功能化白炭黑
-- SSBR-075: TESPT 偶联白炭黑
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1007/s13726-020-00843-3
+- **引文**: Tang Y, Tian Q F, Liu Y L, et al. Application of carboxylated ethylene/vinyl acetate copolymer-modified nanosilica in tire tread rubber[J]. Iranian Polymer Journal, 2020.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

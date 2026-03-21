@@ -46,15 +46,153 @@ def get_interpretation_status(sample_id: str) -> Dict[str, bool]:
     return status
 
 
+import re
+
+
+def extract_from_markdown_table(body: str) -> Dict[str, Any]:
+    """
+    从 Markdown 正文表格中提取数值数据
+    
+    支持的表格格式：
+    | 参数 | 数值 | ... |
+    | 拉伸强度 | 24.7 MPa | ... |
+    
+    Args:
+        body: Markdown 正文内容
+        
+    Returns:
+        提取的数据字典
+    """
+    result = {}
+    
+    # 匹配模式：提取表格行中的数值
+    patterns = [
+        # 拉伸强度
+        (r'拉伸强度[^|]*\|\s*([\d.]+)\s*(?:MPa)?', 'tensile_strength'),
+        (r'tensile\s*strength[^|]*\|\s*([\d.]+)', 'tensile_strength'),
+        # 断裂伸长率
+        (r'断裂伸长率[^|]*\|\s*([\d.]+)\s*%?', 'elongation'),
+        (r'elongation[^|]*\|\s*([\d.]+)', 'elongation'),
+        # 100% 定伸应力
+        (r'100%?\s*(?:定伸应力|模量)[^|]*\|\s*([\d.]+)', 'stress_100'),
+        (r'M100[^|]*\|\s*([\d.]+)', 'stress_100'),
+        # 200% 定伸应力
+        (r'200%?\s*(?:定伸应力|模量)[^|]*\|\s*([\d.]+)', 'stress_200'),
+        (r'M200[^|]*\|\s*([\d.]+)', 'stress_200'),
+        # 300% 定伸应力
+        (r'300%?\s*(?:定伸应力|模量)[^|]*\|\s*([\d.]+)', 'stress_300'),
+        (r'M300[^|]*\|\s*([\d.]+)', 'stress_300'),
+        # 结合橡胶含量
+        (r'结合橡胶[^|]*\|\s*([\d.]+)', 'bound_rubber'),
+        (r'bound\s*rubber[^|]*\|\s*([\d.]+)', 'bound_rubber'),
+        # tanδ 相关
+        (r'tanδ@0°?C[^|]*\|\s*([\d.]+)', 'tan_delta_0'),
+        (r'tanδ@60°?C[^|]*\|\s*([\d.]+)', 'tan_delta_60'),
+        # Tg
+        (r'Tg[^|]*\|\s*(-?[\d.]+)\s*°?C?', 'tg_from_mech'),
+    ]
+    
+    for pattern, field in patterns:
+        match = re.search(pattern, body, re.IGNORECASE)
+        if match and field not in result:
+            try:
+                result[field] = float(match.group(1))
+            except ValueError:
+                pass
+    
+    return result
+
+
+def extract_qualitative_features(body: str) -> Dict[str, str]:
+    """
+    从 Markdown 正文描述中提取定性特征
+    
+    匹配关键词：提高、降低、改善、增强等
+    
+    Args:
+        body: Markdown 正文内容
+        
+    Returns:
+        提取的定性描述字典
+    """
+    result = {}
+    
+    # 定性描述模式
+    qualitative_patterns = [
+        # 拉伸强度
+        (r'拉伸强度[^。，\n]*?(提高|提升|增加|增强|改善)[^。，\n]*?(\d+(?:\.\d+)?%)?', 
+         'tensile_strength_qual', '拉伸强度提升'),
+        (r'拉伸强度[^。，\n]*?(降低|下降|减少)', 
+         'tensile_strength_qual', '拉伸强度下降'),
+        # 断裂伸长率
+        (r'(?:断裂)?伸长率[^。，\n]*?(提高|提升|增加|改善)[^。，\n]*?(\d+(?:\.\d+)?%)?', 
+         'elongation_qual', '断裂伸长率提升'),
+        (r'(?:断裂)?伸长率[^。，\n]*?(保持|维持)', 
+         'elongation_qual', '断裂伸长率保持'),
+        # 模量/定伸应力
+        (r'(?:模量|定伸应力)[^。，\n]*?(提高|提升|增加)[^。，\n]*?(\d+(?:\.\d+)?%)?', 
+         'modulus_qual', '模量提升'),
+        # 分散性
+        (r'分散[^。，\n]*?(改善|提高|提升|良好|优异)', 
+         'dispersion_qual', '填料分散性改善'),
+        (r'(?:白炭黑|炭黑|填料)[^。，\n]*?分散[^。，\n]*?(改善|提高|良好)', 
+         'dispersion_qual', '填料分散性改善'),
+        # Payne 效应
+        (r'Payne\s*效应[^。，\n]*?(降低|减小|下降)', 
+         'payne_qual', 'Payne 效应降低（分散性改善）'),
+        (r'Payne\s*效应[^。，\n]*?(明显|显著)', 
+         'payne_qual', 'Payne 效应明显'),
+        # 界面
+        (r'界面[^。，\n]*?(增强|改善|提高|强)', 
+         'interface_qual', '填料-橡胶界面作用增强'),
+        (r'交联密度[^。，\n]*?(提高|增加|增强)', 
+         'interface_qual', '交联密度提高'),
+        # 耐磨性
+        (r'耐磨[^。，\n]*?(改善|提高|提升|优异|良好)', 
+         'wear_qual', '耐磨性改善'),
+        # 湿抓
+        (r'湿[^。，\n]*?抓[^。，\n]*?(提高|改善|良好|优异)', 
+         'wet_grip_qual', '湿地抓地力改善'),
+        (r'湿滑[^。，\n]*?(制动|抓地)[^。，\n]*?(提高|改善)', 
+         'wet_grip_qual', '湿地抓地力改善'),
+        # 滚阻
+        (r'滚动阻力[^。，\n]*?(降低|减小|改善)', 
+         'rolling_resistance_qual', '滚动阻力降低'),
+        (r'滚阻[^。，\n]*?(降低|减小)', 
+         'rolling_resistance_qual', '滚动阻力降低'),
+        # 强度与韧性同时提升
+        (r'强度[^。，\n]*韧性[^。，\n]*?(同时|兼顾|平衡)', 
+         'strength_toughness_qual', '强度与韧性同时提升'),
+    ]
+    
+    for pattern, field, default_desc in qualitative_patterns:
+        match = re.search(pattern, body, re.IGNORECASE)
+        if match and field not in result:
+            # 尝试提取百分比
+            groups = match.groups()
+            if len(groups) >= 2 and groups[1]:
+                result[field] = f"{default_desc} {groups[1]}"
+            else:
+                result[field] = default_desc
+    
+    return result
+
+
 def extract_mechanical_data(sample_id: str) -> Dict[str, Any]:
     """
-    从 mechanical.md 提取关键数据
+    从 mechanical.md 提取关键数据（增强版）
+    
+    数据来源优先级：
+    1. YAML data: 字段中的绝对值
+    2. YAML data: 字段中的相对描述
+    3. 正文 Markdown 表格中的数值
+    4. 正文描述中的定性特征
     
     Args:
         sample_id: 样本 ID
         
     Returns:
-        提取的数据字典
+        提取的数据字典，包含绝对值、相对数据和定性描述
     """
     mech_path = INTERPRETATIONS_DIR / sample_id / "mechanical.md"
     
@@ -64,23 +202,67 @@ def extract_mechanical_data(sample_id: str) -> Dict[str, Any]:
     try:
         doc = read_interpretation_file(mech_path)
         yaml_data = doc['yaml'].get('data', {})
+        body = doc['body'] or ""
         
         result = {}
         
-        # 提取数值
+        # ========== 第一优先级：从 YAML 提取 ==========
         for field in ['stress_100', 'stress_200', 'stress_300', 'tensile_strength', 'elongation']:
             if field in yaml_data:
                 entry = yaml_data[field]
                 if isinstance(entry, dict):
-                    result[field] = entry.get('value')
+                    # 优先使用绝对值
+                    if entry.get('value') is not None:
+                        result[field] = entry.get('value')
+                    # 其次使用相对描述
+                    elif entry.get('description'):
+                        result[f'{field}_desc'] = entry.get('description')
                 else:
                     result[field] = entry
+        
+        # 结合橡胶含量
+        if 'bound_rubber' in yaml_data:
+            br_entry = yaml_data['bound_rubber']
+            if isinstance(br_entry, dict) and br_entry.get('value') is not None:
+                result['bound_rubber'] = br_entry.get('value')
+                result['bound_rubber_unit'] = br_entry.get('unit', '%')
+        
+        # Payne 效应
+        if 'payne_effect' in yaml_data:
+            payne_entry = yaml_data['payne_effect']
+            if isinstance(payne_entry, dict) and payne_entry.get('description'):
+                result['payne_effect_desc'] = payne_entry.get('description')
         
         # 提取来源
         result['mechanical_source'] = yaml_data.get('mechanical_source')
         
+        # ========== 第二优先级：从正文表格提取 ==========
+        table_data = extract_from_markdown_table(body)
+        for field, value in table_data.items():
+            # 只填补缺失的字段
+            if field not in result and f'{field}_desc' not in result:
+                result[field] = value
+        
+        # ========== 第三优先级：从正文描述提取定性特征 ==========
+        qualitative_data = extract_qualitative_features(body)
+        
+        # 如果没有定量数据，使用定性描述
+        if 'tensile_strength' not in result and 'tensile_strength_desc' not in result:
+            if 'tensile_strength_qual' in qualitative_data:
+                result['tensile_strength_qual'] = qualitative_data['tensile_strength_qual']
+        
+        if 'elongation' not in result and 'elongation_desc' not in result:
+            if 'elongation_qual' in qualitative_data:
+                result['elongation_qual'] = qualitative_data['elongation_qual']
+        
+        # 添加其他定性特征（用于核心性能特点）
+        for qual_field in ['dispersion_qual', 'payne_qual', 'interface_qual', 
+                           'wear_qual', 'wet_grip_qual', 'rolling_resistance_qual',
+                           'modulus_qual', 'strength_toughness_qual']:
+            if qual_field in qualitative_data:
+                result[qual_field] = qualitative_data[qual_field]
+        
         # 提取正文摘要（核心发现部分）
-        body = doc['body']
         result['body_excerpt'] = body[:500] if body else None
         
         return result
@@ -170,7 +352,12 @@ def generate_performance_features(
     dsc_data: Dict[str, Any]
 ) -> List[Dict[str, str]]:
     """
-    生成核心性能特点列表
+    生成核心性能特点列表（增强版）
+    
+    数据来源优先级：
+    1. 绝对数值 → 生成定量评价
+    2. 相对描述 → 生成相对评价
+    3. 定性特征 → 生成定性评价
     
     Args:
         mech_data: 力学数据
@@ -181,28 +368,72 @@ def generate_performance_features(
     """
     features = []
     
-    # 力学性能特点
-    if mech_data.get('tensile_strength'):
-        ts = mech_data['tensile_strength']
+    def safe_float(val, default=None):
+        """安全转换为浮点数"""
+        if val is None:
+            return default
+        try:
+            return float(val)
+        except (ValueError, TypeError):
+            return default
+    
+    # ========== 拉伸强度 ==========
+    ts = safe_float(mech_data.get('tensile_strength'))
+    ts_desc = mech_data.get('tensile_strength_desc')
+    ts_qual = mech_data.get('tensile_strength_qual')
+    
+    if ts is not None:
         rating = "良好" if ts > 10 else "一般"
         features.append({
             'title': '拉伸强度',
             'rating': rating,
             'description': f"拉伸强度达到 {ts} MPa，{rating}的力学强度。"
         })
+    elif ts_desc:
+        features.append({
+            'title': '拉伸强度',
+            'rating': '改善',
+            'description': f"拉伸强度{ts_desc}。"
+        })
+    elif ts_qual:
+        features.append({
+            'title': '拉伸强度',
+            'rating': '改善',
+            'description': f"{ts_qual}。"
+        })
     
-    if mech_data.get('elongation'):
-        el = mech_data['elongation']
+    # ========== 断裂伸长率 ==========
+    el = safe_float(mech_data.get('elongation'))
+    el_desc = mech_data.get('elongation_desc')
+    el_qual = mech_data.get('elongation_qual')
+    
+    if el is not None:
         rating = "优秀" if el > 400 else ("良好" if el > 300 else "一般")
         features.append({
             'title': '断裂伸长率',
             'rating': rating,
             'description': f"断裂伸长率为 {el}%，展现出{rating}的延展性。"
         })
+    elif el_desc:
+        features.append({
+            'title': '断裂伸长率',
+            'rating': '改善',
+            'description': f"断裂伸长率{el_desc}。"
+        })
+    elif el_qual:
+        features.append({
+            'title': '断裂伸长率',
+            'rating': '改善',
+            'description': f"{el_qual}。"
+        })
     
-    # 热学性能特点
-    if dsc_data.get('tg'):
-        tg = dsc_data['tg']
+    # ========== 玻璃化转变温度 ==========
+    tg = safe_float(dsc_data.get('tg'))
+    # 也检查从 mechanical 提取的 Tg
+    if tg is None:
+        tg = safe_float(mech_data.get('tg_from_mech'))
+    
+    if tg is not None:
         if tg < -40:
             rating = "优秀"
             desc = "低温性能优异"
@@ -217,6 +448,111 @@ def generate_performance_features(
             'title': '玻璃化转变温度',
             'rating': rating,
             'description': f"Tg 为 {tg}℃，{desc}。"
+        })
+    
+    # ========== 结合橡胶含量 ==========
+    br = safe_float(mech_data.get('bound_rubber'))
+    if br is not None:
+        if br > 50:
+            rating = "优秀"
+            desc = "界面结合能力强"
+        elif br > 30:
+            rating = "良好"
+            desc = "界面结合良好"
+        else:
+            rating = "一般"
+            desc = "界面结合一般"
+        
+        features.append({
+            'title': '结合橡胶含量',
+            'rating': rating,
+            'description': f"结合橡胶含量为 {br}%，{desc}。"
+        })
+    
+    # ========== 定性特征（从正文描述提取） ==========
+    
+    # 填料分散性
+    disp_qual = mech_data.get('dispersion_qual')
+    payne_qual = mech_data.get('payne_qual')
+    if disp_qual:
+        features.append({
+            'title': '填料分散性',
+            'rating': '改善',
+            'description': f"{disp_qual}。"
+        })
+    elif payne_qual and 'Payne 效应降低' in payne_qual:
+        features.append({
+            'title': '填料分散性',
+            'rating': '改善',
+            'description': f"{payne_qual}。"
+        })
+    
+    # 界面作用
+    interface_qual = mech_data.get('interface_qual')
+    if interface_qual:
+        features.append({
+            'title': '界面性能',
+            'rating': '增强',
+            'description': f"{interface_qual}。"
+        })
+    
+    # 耐磨性
+    wear_qual = mech_data.get('wear_qual')
+    if wear_qual:
+        features.append({
+            'title': '耐磨性',
+            'rating': '改善',
+            'description': f"{wear_qual}。"
+        })
+    
+    # 湿地抓地力
+    wet_qual = mech_data.get('wet_grip_qual')
+    tan_0 = safe_float(mech_data.get('tan_delta_0'))
+    if wet_qual:
+        features.append({
+            'title': '湿地抓地力',
+            'rating': '改善',
+            'description': f"{wet_qual}。"
+        })
+    elif tan_0 is not None and tan_0 > 0.3:
+        features.append({
+            'title': '湿地抓地力',
+            'rating': '良好',
+            'description': f"tanδ@0°C = {tan_0}，有利于湿滑路面制动。"
+        })
+    
+    # 滚动阻力
+    rr_qual = mech_data.get('rolling_resistance_qual')
+    tan_60 = safe_float(mech_data.get('tan_delta_60'))
+    if rr_qual:
+        features.append({
+            'title': '滚动阻力',
+            'rating': '降低',
+            'description': f"{rr_qual}。"
+        })
+    elif tan_60 is not None and tan_60 < 0.15:
+        features.append({
+            'title': '滚动阻力',
+            'rating': '良好',
+            'description': f"tanδ@60°C = {tan_60}，滚动阻力较低，有利于节能。"
+        })
+    
+    # 模量
+    mod_qual = mech_data.get('modulus_qual')
+    if mod_qual and not any(f['title'] == '拉伸强度' for f in features):
+        features.append({
+            'title': '模量',
+            'rating': '提升',
+            'description': f"{mod_qual}。"
+        })
+    
+    # 强度-韧性平衡
+    st_qual = mech_data.get('strength_toughness_qual')
+    if st_qual:
+        features.append({
+            'title': '综合性能',
+            'rating': '优秀',
+            'description': f"{st_qual}，在提升力学强度的同时保持良好韧性。"
         })
     
     return features
@@ -238,6 +574,15 @@ def generate_suitable_scenarios(
     Returns:
         适用场景列表
     """
+    def safe_float(val, default=None):
+        """安全转换为浮点数"""
+        if val is None:
+            return default
+        try:
+            return float(val)
+        except (ValueError, TypeError):
+            return default
+    
     scenarios = []
     
     # 根据应用场景
@@ -246,17 +591,19 @@ def generate_suitable_scenarios(
         scenarios.append(f"✅ {application}")
     
     # 根据性能数据推断
-    if mech_data.get('elongation') and mech_data['elongation'] > 400:
+    el = safe_float(mech_data.get('elongation'))
+    if el is not None and el > 400:
         scenarios.append("✅ 需要高延展性的应用场景")
     
-    if dsc_data.get('tg') and dsc_data['tg'] < -30:
+    tg = safe_float(dsc_data.get('tg'))
+    if tg is not None and tg < -30:
         scenarios.append("✅ 低温环境应用")
     
     if not scenarios:
         scenarios.append("✅ 通用橡胶制品")
     
     # 添加注意事项
-    if dsc_data.get('tg') and dsc_data['tg'] > -20:
+    if tg is not None and tg > -20:
         scenarios.append("⚠️ 注意：Tg 较高，低温性能可能受限")
     
     return scenarios
@@ -369,7 +716,7 @@ def build_summary_body(
         "|------|------|------|------|------|",
     ])
     
-    # 力学数据
+    # 力学数据 - 支持绝对值、相对描述和定性描述
     for field, label in [
         ('stress_100', '100%定伸应力'),
         ('stress_200', '200%定伸应力'),
@@ -378,12 +725,37 @@ def build_summary_body(
         ('elongation', '断裂伸长率'),
     ]:
         val = mech_data.get(field)
+        desc = mech_data.get(f'{field}_desc')  # 相对描述（如"相比基准提高 43.8%"）
+        qual = mech_data.get(f'{field}_qual')  # 定性描述（如"拉伸强度提升"）
         unit = '%' if field == 'elongation' else 'MPa'
-        lines.append(f"| 力学性能 | {label} | {val or '-'} | {unit} | - |")
+        
+        if val is not None:
+            # 有绝对值
+            lines.append(f"| 力学性能 | {label} | {val} | {unit} | - |")
+        elif desc:
+            # 有相对描述
+            lines.append(f"| 力学性能 | {label} | {desc} | 相对 | - |")
+        elif qual:
+            # 有定性描述
+            lines.append(f"| 力学性能 | {label} | {qual} | 定性 | - |")
+        else:
+            lines.append(f"| 力学性能 | {label} | - | {unit} | - |")
     
     # 热学数据
-    tg_val = dsc_data.get('tg') or dsc_data.get('tg_range') or '-'
+    tg_val = dsc_data.get('tg') or dsc_data.get('tg_range') or mech_data.get('tg_from_mech') or '-'
     lines.append(f"| 热学性能 | Tg | {tg_val} | ℃ | - |")
+    
+    # 额外指标：结合橡胶含量
+    if mech_data.get('bound_rubber') is not None:
+        br_val = mech_data.get('bound_rubber')
+        br_unit = mech_data.get('bound_rubber_unit', '%')
+        lines.append(f"| 界面性能 | 结合橡胶含量 | {br_val} | {br_unit} | - |")
+    
+    # 动态力学指标（从正文表格提取）
+    if mech_data.get('tan_delta_0') is not None:
+        lines.append(f"| 动态性能 | tanδ@0°C | {mech_data.get('tan_delta_0')} | - | 湿抓 |")
+    if mech_data.get('tan_delta_60') is not None:
+        lines.append(f"| 动态性能 | tanδ@60°C | {mech_data.get('tan_delta_60')} | - | 滚阻 |")
     
     lines.extend(["", "---", ""])
     

@@ -148,6 +148,10 @@ class QualityScorer:
         Returns:
             True if field exists with valid value
         """
+        # 防御 None 输入
+        if not content:
+            return False
+            
         # Build pattern to match field name and aliases
         names_to_check = [field_name] + self.FIELD_ALIASES.get(field_name, [])
         

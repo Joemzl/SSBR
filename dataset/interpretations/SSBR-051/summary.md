@@ -1,47 +1,29 @@
 ---
 sample_id: SSBR-051
 doi: 10.1016/j.polymer.2010.03.006
-polymer_type: 硅基官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 叔丁基氯二苯基硅烷 (TBCSi)
-  functional_group: 硅基
-  degree: null
-  method: null
-filler_system: Carbon Black (50 phr)
-application: 炭黑填充 SSBR 复合材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords:
-- 大体积官能团
-- 链端官能化
-- TBCSi
-- 硅基
-- 炭黑填充
-- 分子动力学
-created_at: '2026-03-19'
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-051 综合档案
+
+## 一句话总结
+
+采用硅基官能化，适用于炭黑填充 SSBR 复合材料。
+
+---
 
 ## 样本概述
 
 SSBR-051 来自 Wang 等人 (Polymer, 2010) 的研究，探索链端大体积官能团对 SSBR 结构与性能的影响，使用叔丁基氯二苯基硅烷 (TBCSi) 引入大体积硅基末端。
 
-## 材料体系
-
-### 基础聚合物
-- **类型**: 链端官能化 SSBR
-- **官能化试剂**: TBCSi (叔丁基氯二苯基硅烷)
-- **官能团**: 二苯基叔丁基硅基
-
-### 填料体系
-- **填料**: 炭黑
-- **填充量**: 50 phr
+---
 
 ## 核心发现
 
@@ -67,21 +49,48 @@ SSBR-051 来自 Wang 等人 (Polymer, 2010) 的研究，探索链端大体积官
 | Tg 峰宽 | ↑ | 松弛分布变宽 |
 | 高温 tan δ | ↓ | 能量损耗↓ |
 
-## 技术亮点
+---
 
-| 维度 | 设计思路 | 效果 |
-|------|----------|------|
-| 官能化 | 大体积末端基团 | 链端固定 |
-| 界面 | 硅基-炭黑相互作用 | 增强 |
-| 动力学 | 限制链端运动 | tan δ↓ |
+## 核心性能特点
 
-## 科学意义
+*暂无足够数据生成性能特点分析*
 
-本研究提供了链端大体积官能团设计的系统研究：
-- 阐明空间位阻对分子动力学的影响
-- 为链端官能化设计提供理论指导
-- 扩展了 SSBR 官能化的设计空间
+---
 
-## 参考文献
+## 适用场景
 
-Wang L, Zhao S, Li A, et al. Study on the structure and properties of SSBR with large-volume functional groups at the end of chains[J]. Polymer, 2010, 51(10): 2084-2090.
+- ✅ 炭黑填充 SSBR 复合材料
+
+---
+
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | - | MPa | - |
+| 力学性能 | 断裂伸长率 | - | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
+
+---
+
+## 文献来源
+
+- **DOI**: 10.1016/j.polymer.2010.03.006
+- **引文**: Wang L, Zhao S, Li A, et al. Study on the structure and properties of SSBR with large-volume functional groups at the end of chains[J]. Polymer, 2010, 51(10): 2084-2090.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

@@ -153,7 +153,7 @@ python scripts/zotero_bridge.py list --with-pdf
   - 新增 `scripts/build_vector_cache.py` 缓存构建脚本
   - 更新 `rag_search.py` 支持缓存模式
   - 更新 Web Demo 启动时预加载缓存
-  - 可检索样本数增至 82 个
+  - 可检索样本数增至 68 个
 
   - 新增「接枝反应基团SMILES」列（K列），Excel 扩展为 24 列
   - 更新高分子指纹描述符格式：使用 SMILES 替代中文名

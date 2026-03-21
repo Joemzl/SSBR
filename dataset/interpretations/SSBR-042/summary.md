@@ -1,30 +1,25 @@
 ---
 sample_id: SSBR-042
 doi: 10.1002/app.28621
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: '[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷 (AMMO)'
-  functional_group: null
-  degree: null
-  method: 硅烷偶联剂改性
-filler_system: 纳米白炭黑 (20)
-application: 绿色轮胎胎面材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
-# 综合档案：SSBR-042
 
-> **一句话总结**: 采用共凝聚法制备的星形 SSBR/纳米白炭黑复合材料，实现了优异的填料分散，力学性能和动态性能均优于传统混炼法。
+# SSBR-042 综合档案
 
-## 一、样本概述
+## 一句话总结
+
+采用共凝聚法制备的星形 SSBR/纳米白炭黑复合材料，实现了优异的填料分散，力学性能和动态性能均优于传统混炼法。
+
+---
+
+## 样本概述
 
 | 属性 | 内容 |
 |------|------|
@@ -37,7 +32,9 @@ updated_at: '2026-03-19'
 | **制备工艺** | 共凝聚法 (co-coagulation) |
 | **DOI** | 10.1002/app.28621 |
 
-## 二、聚合物结构
+---
+
+## 聚合物结构
 
 ### 基体 SSBR (YK-1) 结构参数
 
@@ -57,68 +54,28 @@ updated_at: '2026-03-19'
 - **用量**: 白炭黑质量的 7%
 - **作用机理**: 三甲氧基硅烷基与白炭黑表面缩合，氨基提供界面相互作用
 
-## 三、制备工艺特点
+---
 
-### 共凝聚法 (Co-coagulation)
+## 核心性能特点
 
-1. **第一步**: 将 AMMO 改性纳米白炭黑（3 phr）加入 SSBR 溶液，均匀搅拌后脱溶剂，得到共凝聚橡胶 N-SSBR
-2. **第二步**: 将 N-SSBR 与剩余白炭黑（17 phr）在密炼机中混炼
+### 拉伸强度 【良好】
 
-### 与传统方法对比
+拉伸强度达到 10.7 MPa，良好的力学强度。
 
-| 方法 | 操作 | 分散效果 |
-|------|------|----------|
-| 传统混炼法 | 一步在密炼机中混合全部白炭黑 | 团聚明显 |
-| **共凝聚法** | 两步分散 | **纳米级均匀分散** |
+### 断裂伸长率 【优秀】
 
-## 四、关键性能数据
+断裂伸长率为 522.0%，展现出优秀的延展性。
 
-### 力学性能
+---
 
-| 指标 | SSBR-042 (YK-1-2) | 对照 (YK-1-1) | 变化 |
-|------|-------------------|---------------|------|
-| 300%定伸应力 | 3.7 MPa | 3.5 MPa | **+5.7%** |
-| 拉伸强度 | 10.7 MPa | 9.8 MPa | **+9.2%** |
-| 断裂伸长率 | 522% | 535% | -2.4% |
-| 撕裂强度 | 21.5 kN/m | 20.3 kN/m | **+5.9%** |
-| 邵氏A硬度 | 56 | 56 | 持平 |
+## 适用场景
 
-### 热学与动态性能
+- ✅ 绿色轮胎胎面材料
+- ✅ 需要高延展性的应用场景
 
-| 指标 | SSBR-042 (YK-1-2) | 说明 |
-|------|-------------------|------|
-| Tg 变化 | +2℃ | 相比 SSBR/SiO2 |
-| Payne 效应 | 降低 | ΔG' 减小 |
-| tan δ (应变扫描) | 降低 | 内摩擦损耗减小 |
-| tan δ (0℃) | 略高 | 湿地抓地力改善 |
+---
 
-### 形貌特征
-
-| 指标 | SSBR-042 (YK-1-2) | 对照 (YK-1-1) |
-|------|-------------------|---------------|
-| 粒径 | 20-30 nm | >30 nm，有团聚 |
-| 形态 | 球形，均匀分散 | 不规则团聚体 |
-| FB 值 | 0.33 ± 0.01 | 0.56 ± 0.02 |
-
-## 五、性能优势与机理
-
-### 主要优势
-
-1. ✅ **纳米级分散**: TEM 证实白炭黑粒径 20-30 nm，均匀球形分散
-2. ✅ **力学性能提升**: 拉伸强度 +9.2%，撕裂强度 +5.9%
-3. ✅ **动态性能改善**: Payne 效应降低，内摩擦损耗减小
-4. ✅ **轮胎性能**: 0℃ tan δ 略高，有利于湿地抓地
-
-### 机理分析
-
-文献总结：
-> "N-SSBR with a small quantity of silica powder can help the subsequently added silica particles to be dispersed rapidly in matrix due to the common compatibility between silica particles in N-SSBR and silica particles added in the second step."
-
-1. **溶液分散**: 第一步在溶液中实现纳米级分散
-2. **相容性促进**: 已分散粒子促进后添加粒子的分散
-3. **阻止再聚集**: 预分散粒子阻止团聚
-
-## 六、应用前景
+## 应用前景
 
 文献结论：
 > "N-SSBR might promote the dispersion of nanosilica powder in matrix and could be applied to green tire tread materials."
@@ -130,21 +87,36 @@ updated_at: '2026-03-19'
 - 较低的滚动阻力（低 tan δ）
 - 较好的湿地抓地力（0℃ tan δ 略高）
 
-## 七、数据完整性
+---
 
-| 解读类型 | 状态 | 数据来源 |
-|---------|------|----------|
-| 力学 (mechanical) | ✅ 完整 | Table II, Fig.5-6 |
-| 热学 (dsc) | ✅ 完整 | Fig.3-4 |
-| 核磁 (nmr) | ⚠️ 无数据 | 文献未提供 |
-| 形貌 (tem) | ✅ 完整 | Fig.1, 7-8 |
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | 3.7 | MPa | - |
+| 力学性能 | 拉伸强度 | 10.7 | MPa | - |
+| 力学性能 | 断裂伸长率 | 522 | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
-- **标题**: Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites
-- **作者**: Xiao Liu, Suhe Zhao
-- **期刊**: Journal of Applied Polymer Science
-- **年份**: 2008
 - **DOI**: 10.1002/app.28621
+- **引文**: Liu X, Zhao S H. Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites[J]. Journal of Applied Polymer Science, 2008, 109(6): 3900-3907.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

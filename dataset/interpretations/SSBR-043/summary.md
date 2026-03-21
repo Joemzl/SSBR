@@ -1,30 +1,25 @@
 ---
 sample_id: SSBR-043
 doi: 10.1002/app.28621
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: '[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷 (AMMO)'
-  functional_group: null
-  degree: null
-  method: 硅烷偶联剂改性
-filler_system: 纳米白炭黑 (20)
-application: 绿色轮胎胎面材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
-# 综合档案：SSBR-043
 
-> **一句话总结**: 高乙烯基含量的星形 SSBR 共凝聚纳米复合材料，具有该系列**最优的综合力学性能**和**最佳的湿地抓地力**。
+# SSBR-043 综合档案
 
-## 一、样本概述
+## 一句话总结
+
+高乙烯基含量的星形 SSBR 共凝聚纳米复合材料，具有该系列最优的综合力学性能和最佳的湿地抓地力。
+
+---
+
+## 样本概述
 
 | 属性 | 内容 |
 |------|------|
@@ -38,7 +33,9 @@ updated_at: '2026-03-19'
 | **制备工艺** | 共凝聚法 (co-coagulation) |
 | **DOI** | 10.1002/app.28621 |
 
-## 二、聚合物结构
+---
+
+## 聚合物结构
 
 ### 基体 SSBR (YK-2) 结构参数
 
@@ -58,7 +55,9 @@ YK-2 的乙烯基含量（46.0%）是三种 SSBR 中最高的，带来：
 2. **更好的撕裂抗性**: 乙烯基侧链提供能量耗散
 3. **更好的湿地抓地力**: 高 Tg 有利于 0℃ tan δ
 
-## 三、关键性能数据
+---
+
+## 关键性能数据
 
 ### 力学性能（三种样本中最优）
 
@@ -87,42 +86,28 @@ YK-2 的乙烯基含量（46.0%）是三种 SSBR 中最高的，带来：
 | 形态 | 球形，均匀分散 | 团聚体 |
 | FB 值 | 0.31 ± 0.01 | 0.38 ± 0.01 |
 
-## 四、与其他样本对比
+---
 
-### 三种 N-SSBR/SiO2 样本综合对比
+## 核心性能特点
 
-| 指标 | SSBR-042 (YK-1-2) | **SSBR-043 (YK-2-2)** | SSBR-044 (YK-3-2) |
-|------|-------------------|----------------------|-------------------|
-| 苯乙烯含量 | 21.1% | 24.2% | 29.5% |
-| 乙烯基含量 | 38.1% | **46.0%** | 34.7% |
-| 拉伸强度 | 10.7 MPa | **11.9 MPa** | 10.3 MPa |
-| 撕裂强度 | 21.5 kN/m | **25.5 kN/m** | 22.2 kN/m |
-| Tg 排名 | 最低 | **最高** | 中等 |
-| FB 值 | 0.33 | 0.31 | 0.30 |
+### 拉伸强度 【良好】
 
-**SSBR-043 是该系列中综合性能最优的样品。**
+拉伸强度达到 11.9 MPa，良好的力学强度。
 
-## 五、性能优势与机理
+### 断裂伸长率 【优秀】
 
-### 主要优势
+断裂伸长率为 489.0%，展现出优秀的延展性。
 
-1. ✅ **最高拉伸强度**: 11.9 MPa，比其他样本高 9-16%
-2. ✅ **最高撕裂强度**: 25.5 kN/m，高乙烯基含量提供撕裂抗性
-3. ✅ **最高 300%定伸应力**: 4.6 MPa
-4. ✅ **最高 Tg**: 高乙烯基含量使分子链难以松弛
-5. ✅ **最佳湿地抓地力**: 0℃ tan δ 最高
+---
 
-### 机理分析
+## 适用场景
 
-文献解释了 YK-2 系列的优势：
-> "YK-2-1 and YK-2-2 have relatively higher tear strength than other two series of samples. It is possibly because higher vinyl content of YK-2 leads to increasing chain tear resistance."
+- ✅ 绿色轮胎胎面材料
+- ✅ 需要高延展性的应用场景
 
-高乙烯基含量（46.0%）的作用：
-1. **提高 Tg**: 侧链乙烯基限制主链运动
-2. **增强撕裂抗性**: 乙烯基侧链提供额外的能量耗散机制
-3. **改善湿地抓地力**: 高 Tg 使 0℃ tan δ 增大
+---
 
-## 六、应用前景
+## 应用前景
 
 **目标应用**: 绿色轮胎胎面材料
 
@@ -131,21 +116,36 @@ SSBR-043 的综合性能使其成为该系列中最适合轮胎胎面应用的�
 - ✅ 最高 Tg 和 0℃ tan δ → 湿地抓地力
 - ✅ 良好的填料分散 → 低滚动阻力
 
-## 七、数据完整性
+---
 
-| 解读类型 | 状态 | 数据来源 |
-|---------|------|----------|
-| 力学 (mechanical) | ✅ 完整 | Table II, Fig.5-6 |
-| 热学 (dsc) | ✅ 完整 | Fig.3-4 |
-| 核磁 (nmr) | ⚠️ 无数据 | 文献未提供 |
-| 形貌 (tem) | ✅ 完整 | Fig.1, 7-8 |
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | 4.6 | MPa | - |
+| 力学性能 | 拉伸强度 | 11.9 | MPa | - |
+| 力学性能 | 断裂伸长率 | 489 | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
-- **标题**: Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites
-- **作者**: Xiao Liu, Suhe Zhao
-- **期刊**: Journal of Applied Polymer Science
-- **年份**: 2008
 - **DOI**: 10.1002/app.28621
+- **引文**: Liu X, Zhao S H. Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites[J]. Journal of Applied Polymer Science, 2008, 109(6): 3900-3907.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

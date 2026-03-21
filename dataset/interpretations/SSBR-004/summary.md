@@ -1,41 +1,21 @@
 ---
 sample_id: SSBR-004
 doi: 10.1039/c9ra02783a
-polymer_type: 三乙氧基硅烷基（-Si(OC₂H₅)₃）官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 3-巯基丙基三乙氧基硅烷（MPTES）
-  functional_group: 三乙氧基硅烷基（-Si(OC₂H₅)₃）
-  degree: 5.8 wt%（约42个MPTES分子/链）
-  method: 巯基-烯点击化学
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-17
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-004 综合档案
 
 ## 一句话总结
 
-**中等接枝量硅烷偶联SSBR**：MPTES官能化程度中等（5.8 wt%，约42个接枝分子），界面作用强度介于MPTES13和MPTES70之间，展现出良好的综合性能。
-
----
-
-## 官能化信息
-
-- **官能化试剂**: 3-巯基丙基三乙氧基硅烷（MPTES）
-- **核心官能团**: 三乙氧基硅烷基（-Si(OC₂H₅)₃）
-- **官能化程度**: 5.8 wt%（约42个MPTES分子/链）
-- **改性方法**: 巯基-烯点击化学
-- **接枝位点**: SSBR 主链 1,2-乙烯基双键
-- **SMILES**: CCO[Si](OCC)(OCC)CCCS
+中等接枝量硅烷偶联SSBR：MPTES官能化程度中等（5.8 wt%，约42个接枝分子），界面作用强度介于MPTES13和MPTES70之间，展现出良好的综合性能。
 
 ---
 
@@ -61,44 +41,43 @@ updated_at: '2026-03-19'
 
 ---
 
-## 关键性能指标
-
-| 类别 | 指标 | 数值 | 单位 | 评价 |
-|------|------|------|------|------|
-| 力学性能 | 100%定伸应力 | 3.2 | MPa | 良好 |
-| 力学性能 | 拉伸强度 | 12.8 | MPa | 中等 |
-| 力学性能 | 断裂伸长率 | 248 | % | 中等 |
-| 热学性能 | Tg (DMA) | -3.9 | ℃ | - |
-| 动态性能 | tan δ (0℃) | 1.210 | - | 优秀 |
-| 动态性能 | tan δ (7% strain) | 0.086 | - | 优秀 |
-| 界面特性 | 结合橡胶含量 | 57.61 | % | 良好 |
-| 官能化 | 官能化程度 | 5.8 | wt% | 中等 |
-
 ---
 
 ## 适用场景
 
-- ✅ **平衡型应用**: 需要在界面强度和延展性之间取得平衡
-- ✅ **良好湿地抓地力**: tan δ (0℃) = 1.210
-- ⚠️ **注意事项**: 拉伸强度不如低接枝样品
+- ✅ 绿色轮胎胎面胶
 
 ---
 
-## 与系列其他样品对比
+## 关键性能指标
 
-| 样本 | MPTES数量 | 官能化程度 | 结合橡胶 | Tg |
-|------|----------|-----------|---------|-----|
-| SSBR-003 | 13 | 1.7% | 46.23% | -8.9℃ |
-| **SSBR-004** | **42** | **5.8%** | **57.61%** | **-3.9℃** |
-| SSBR-005 | 70 | 9.5% | 80.20% | -1.1℃ |
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | 3.2 | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | 12.8 | MPa | - |
+| 力学性能 | 断裂伸长率 | 248 | % | - |
+| 热学性能 | Tg | -3.9 | ℃ | - |
+| 界面性能 | 结合橡胶含量 | 57.61 | % | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
 - **DOI**: 10.1039/c9ra02783a
-- **引文**: RSC Adv., 2019, 9, 18888-18897
+- **引文**: Gao W, Lu J, Song W, et al. Interfacial interaction modes construction of various functional SSBR–silica towards high filler dispersion and excellent composites performances[J]. RSC Advances, 2019, 9(31): 18888-18897.
 
 ---
 
-*本综合档案由 `ssbr-summary-generator` Skill 生成，用于 RAG 语义检索。*
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

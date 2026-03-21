@@ -1,40 +1,21 @@
 ---
 sample_id: SSBR-018
 doi: 10.1021/acs.iecr.8b05738
-polymer_type: 二甲氨基 (-NMe₂)官能化 SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: 1,1-双(4-二甲氨基苯基)乙烯 (DPE-(NMe₂)₂)
-  functional_group: 二甲氨基 (-NMe₂)
-  degree: 0.09 wt%（DPE 单元含量）
-  method: 活性阴离子聚合，DPE 衍生物作为引发剂
-filler_system: null
-application: null
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
+
 # SSBR-018 综合档案
 
 ## 一句话总结
 
 链端氨基官能化 SSBR（α-SSBR），通过氨基-羟基氢键作用显著改善白炭黑分散性，在四种官能化策略中展现出最佳的综合轮胎性能平衡（高抓地力 + 低滚阻）。
-
----
-
-## 官能化信息
-
-- **官能化试剂**: 1,1-双(4-二甲氨基苯基)乙烯 (DPE-(NMe₂)₂)
-- **核心官能团**: 二甲氨基 (-NMe₂)
-- **官能化程度**: 0.09 wt%（DPE 单元含量）
-- **端基封装效率**: 83%
-- **改性方法**: 活性阴离子聚合，DPE 衍生物作为引发剂
 
 ---
 
@@ -65,12 +46,12 @@ AFM 表征确认界面改善：
 
 ---
 
+
+---
+
 ## 适用场景
 
-- ✅ **高性能绿色轮胎胎面**：最佳的抓地力-滚阻平衡
-- ✅ **白炭黑填充体系**：氨基-羟基氢键改善分散
-- ✅ **需要高力学性能的应用**：增强的界面相互作用
-- ⚠️ 官能化程度较低（0.09 wt%），可能限制某些极端应用
+- ✅ 二氧化硅分散
 
 ---
 
@@ -78,15 +59,11 @@ AFM 表征确认界面改善：
 
 | 类别 | 指标 | 数值 | 单位 | 评价 |
 |------|------|------|------|------|
-| 结构参数 | DPE 含量 | 0.09 | wt% | 低含量高效 |
-| 结构参数 | 端基封装效率 | 83 | % | 良好 |
-| 结构参数 | 乙烯基含量 | 64.3 | wt% | 高 |
-| 热学性能 | Tg | -17.4 | ℃ | 与原始相近 |
-| 形貌特征 | 团聚体尺寸 | 90-125 | nm | 显著减小 |
-| 界面性能 | TBR 厚度 | 10.8 | nm | +42% vs 原始 |
-| 动态性能 | Payne 效应 | 最小 | - | 最优分散 |
-| 动态性能 | tan δ(0°C) | 较高 | - | 好抓地力 |
-| 动态性能 | tan δ(60°C) | 较低 | - | 低滚阻 |
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | - | MPa | - |
+| 力学性能 | 拉伸强度 | 优于原始SSBR | MPa | - |
+| 力学性能 | 断裂伸长率 | 优于原始SSBR | % | - |
+| 热学性能 | Tg | -17.4 | ℃ | - |
 
 ---
 
@@ -94,19 +71,18 @@ AFM 表征确认界面改善：
 
 | 文档类型 | 状态 | 备注 |
 |----------|------|------|
-| mechanical.md | ✓ | 应力-应变 + Payne + DMA |
-| dsc.md | ✓ | Tg 数据 |
-| nmr.md | ✓ | 官能化确认 + 微观结构 |
-| tem.md | ✓ | SEM + TXM 3D 分布 |
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
 - **DOI**: 10.1021/acs.iecr.8b05738
-- **引文**: Sun C, Wen S, Ma H, et al. Improvement of silica dispersion in solution polymerized styrene-butadiene rubber via introducing amino functional groups[J]. Industrial & Engineering Chemistry Research, 2019, 58(2): 586-592.
-- **SI**: 有（Fig.S1, S2, Table S1-S4）
+- **引文**: Sun C, et al. [J]. Ind. Eng. Chem. Res. 2019, 58.
 
 ---
 
-*本综合档案由 `ssbr-summary-generator` Skill 自动生成，用于 RAG 语义检索。*
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*

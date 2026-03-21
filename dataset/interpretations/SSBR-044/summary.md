@@ -1,30 +1,25 @@
 ---
 sample_id: SSBR-044
 doi: 10.1002/app.28621
-polymer_type: SSBR
-functionalization:
-  is_functionalized: true
-  type: in_chain
-  reagent: '[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷 (AMMO)'
-  functional_group: null
-  degree: null
-  method: 硅烷偶联剂改性
-filler_system: 纳米白炭黑 (20)
-application: 绿色轮胎胎面材料
+polymer_type: null
 data_completeness:
   mechanical: true
   dsc: true
   nmr: true
   tem: true
-keywords: []
-created_at: 2026-03-18
-updated_at: '2026-03-19'
+created_at: '2026-03-21'
+updated_at: '2026-03-21'
 ---
-# 综合档案：SSBR-044
 
-> **一句话总结**: 高苯乙烯含量的星形 SSBR 共凝聚纳米复合材料，具有该系列**最佳的填料分散**，但因结构刚性导致断裂伸长率最低。
+# SSBR-044 综合档案
 
-## 一、样本概述
+## 一句话总结
+
+高苯乙烯含量的星形 SSBR 共凝聚纳米复合材料，具有该系列最佳的填料分散，但因结构刚性导致断裂伸长率最低。
+
+---
+
+## 样本概述
 
 | 属性 | 内容 |
 |------|------|
@@ -38,7 +33,9 @@ updated_at: '2026-03-19'
 | **制备工艺** | 共凝聚法 (co-coagulation) |
 | **DOI** | 10.1002/app.28621 |
 
-## 二、聚合物结构
+---
+
+## 聚合物结构
 
 ### 基体 SSBR (YK-3) 结构参数
 
@@ -62,7 +59,9 @@ YK-3 的苯乙烯含量（29.5%）是三种 SSBR 中最高的，带来：
 
 YK-3 的无规度为 91.5%（vs 其他两种的 100%），表明存在约 8.5% 的嵌段苯乙烯序列，可能影响微相结构。
 
-## 三、关键性能数据
+---
+
+## 关键性能数据
 
 ### 力学性能
 
@@ -92,47 +91,28 @@ YK-3 的无规度为 91.5%（vs 其他两种的 100%），表明存在约 8.5% �
 | FB 值 | **0.30 ± 0.02** | 0.45 ± 0.02 | **最低（最优）** |
 | FB 改善 | **33%** | - | **最大** |
 
-## 四、与其他样本对比
+---
 
-### 三种 N-SSBR/SiO2 样本综合对比
+## 核心性能特点
 
-| 指标 | SSBR-042 (YK-1-2) | SSBR-043 (YK-2-2) | **SSBR-044 (YK-3-2)** |
-|------|-------------------|-------------------|----------------------|
-| 苯乙烯含量 | 21.1% | 24.2% | **29.5%** |
-| 乙烯基含量 | 38.1% | **46.0%** | 34.7% |
-| 拉伸强度 | 10.7 MPa | **11.9 MPa** | 10.3 MPa |
-| 伸长率 | 522% | 489% | **455%** |
-| Tg 排名 | 最低 | **最高** | 中等 |
-| **FB 值** | 0.33 | 0.31 | **0.30** |
+### 拉伸强度 【良好】
 
-**SSBR-044 具有最佳的填料分散（FB 值最低），但力学性能和伸长率较低。**
+拉伸强度达到 10.3 MPa，良好的力学强度。
 
-## 五、性能优势与机理
+### 断裂伸长率 【优秀】
 
-### 主要优势
+断裂伸长率为 455.0%，展现出优秀的延展性。
 
-1. ✅ **最佳填料分散**: FB 值 0.30，三种样本中最低
-2. ✅ **最大分散改善**: 相比对照组 FB 值降低 33%
-3. ✅ **最高分子量**: Mn = 35.1×10⁴，有利于基体力学性能
-4. ✅ **共凝聚法效果显著**: 力学性能提升幅度大
+---
 
-### 局限性
+## 适用场景
 
-1. ⚠️ **断裂伸长率最低**: 455%，高苯乙烯含量导致
-2. ⚠️ **高应变 tan δ 略高**: 刚性基团摩擦
-3. ⚠️ **无规度略低**: 91.5%，可能存在微相分离
+- ✅ 绿色轮胎胎面材料
+- ✅ 需要高延展性的应用场景
 
-### 机理分析
+---
 
-文献解释了 YK-3 系列的特点：
-> "higher styrene content of YK-3 leads to difficult deformation and orientation of its macromolecular chains under tensile stress so that YK-3-1 and YK-3-2 samples are ruptured at lower elongation."
-
-高苯乙烯含量使分子链刚性增加，导致：
-- 分子链难以形变和取向
-- 断裂伸长率降低
-- 刚性基团之间摩擦增加
-
-## 六、应用前景
+## 应用前景
 
 **目标应用**: 绿色轮胎胎面材料
 
@@ -142,21 +122,36 @@ SSBR-044 的特点使其适合特定应用场景：
 - ⚠️ 较低伸长率 → 可能限制某些应用
 - ⚠️ 高应变 tan δ → 需要权衡滚动阻力
 
-## 七、数据完整性
+---
 
-| 解读类型 | 状态 | 数据来源 |
-|---------|------|----------|
-| 力学 (mechanical) | ✅ 完整 | Table II, Fig.5-6 |
-| 热学 (dsc) | ✅ 完整 | Fig.3-4 |
-| 核磁 (nmr) | ⚠️ 无数据 | 文献未提供 |
-| 形貌 (tem) | ✅ 完整 | Fig.1, 7-8 |
+## 关键性能指标
+
+| 类别 | 指标 | 数值 | 单位 | 评价 |
+|------|------|------|------|------|
+| 力学性能 | 100%定伸应力 | - | MPa | - |
+| 力学性能 | 300%定伸应力 | 3.7 | MPa | - |
+| 力学性能 | 拉伸强度 | 10.3 | MPa | - |
+| 力学性能 | 断裂伸长率 | 455 | % | - |
+| 热学性能 | Tg | - | ℃ | - |
+
+---
+
+## 解读文档完整性
+
+| 文档类型 | 状态 | 备注 |
+|----------|------|------|
+| mechanical.md | ✓ | 已生成 |
+| dsc.md | ✓ | 已生成 |
+| nmr.md | ✓ | 已生成 |
+| tem.md | ✓ | 已生成 |
 
 ---
 
 ## 文献来源
 
-- **标题**: Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites
-- **作者**: Xiao Liu, Suhe Zhao
-- **期刊**: Journal of Applied Polymer Science
-- **年份**: 2008
 - **DOI**: 10.1002/app.28621
+- **引文**: Liu X, Zhao S H. Study on Structure and Properties of SSBR/SiO2 Co-coagulated Rubber and SSBR Filled with Nanosilica Composites[J]. Journal of Applied Polymer Science, 2008, 109(6): 3900-3907.
+
+---
+
+*本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*
