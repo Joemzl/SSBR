@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 二苯胍 (DPG)
+  grafting_group: 胍基（促进剂）
+  grafting_group_smiles: NC(=N)N
+  core_functional_group_smiles: NC(=Nc1ccccc1)Nc2ccccc2
+  core_functional_group_name: 胍基
+  degree: 135.25 mmol/kg (vs SiO2)
+polymer_fingerprint: '--------NC(=N)N---135.25mmol/kg'
 ---
 
 # SSBR-069 综合档案

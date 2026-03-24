@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 环氧化 SSBR (ESSBR)
+  grafting_group: 环氧基（环氧化橡胶）
+  grafting_group_smiles: C1OC1
+  core_functional_group_smiles: C1OC1
+  core_functional_group_name: 环氧基
+  degree: 2.5-10 % (vs SiO2)
+polymer_fingerprint: '--------C1OC1---2.5-10%'
 ---
 
 # SSBR-101 综合档案

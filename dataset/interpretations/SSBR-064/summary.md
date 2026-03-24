@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 对苯二胺 (PPD) 改性氧化石墨烯
+  grafting_group: 氨基（填料表面改性）
+  grafting_group_smiles: N
+  core_functional_group_smiles: N
+  core_functional_group_name: 氨基
+  degree: 1-5 phr
+polymer_fingerprint: '--------N---1-5phr'
 ---
 
 # SSBR-064 综合档案

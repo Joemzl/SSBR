@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: UPy-NCO
+  grafting_group: 羟基 (接枝于后修饰后的HSBR)
+  grafting_group_smiles: O
+  core_functional_group_smiles: '[nH]1c(NC(=O)N)nc(C)cc1=O'
+  core_functional_group_name: 脲基嘧啶酮
+  degree: 1-3 mol% (vs Bd units)
+polymer_fingerprint: '--------O---1-3mol%'
 ---
 
 # SSBR-090 综合档案

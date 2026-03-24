@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 3-(氨基丙基)三乙氧基硅烷 (APTES)
+  grafting_group: 烷氧基硅烷基
+  grafting_group_smiles: '[Si](OC)(OC)OC'
+  core_functional_group_smiles: N
+  core_functional_group_name: 氨基
+  degree: 86 % (封端效率)
+polymer_fingerprint: '----25.0---[Si](OC)(OC)OC---86%'
 ---
 
 # SSBR-061 综合档案

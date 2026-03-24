@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 丙胺, 二甲氧基硅烷
+  grafting_group: 氨基丙基二甲氧基硅烷基
+  grafting_group_smiles: NCCC[Si](OC)OC
+  core_functional_group_smiles: N.[Si](O)(O)O
+  core_functional_group_name: 氨基/硅烷基
+polymer_fingerprint: '----36.0-26.0-NCCC[Si](OC)OC---未公开'
 ---
 
 # SSBR-025 综合档案

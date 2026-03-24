@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 硫醇官能化氧化石墨烯
+  grafting_group: 巯基（填料表面改性）
+  grafting_group_smiles: S
+  core_functional_group_smiles: S
+  core_functional_group_name: 硫醇基
+  degree: 2 phr
+polymer_fingerprint: '--------S---2phr'
 ---
 
 # SSBR-093 综合档案

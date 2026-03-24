@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 三乙氧基硅烷 (TES)
+  grafting_group: 碳碳双键 (硅氢加成)
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_name: 硅烷基
+  degree: 10 mol %
+polymer_fingerprint: '--------C=C---10mol %'
 ---
 
 # SSBR-111 综合档案

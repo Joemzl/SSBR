@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 烷氧基硅烷
+  grafting_group: 三甲氧基硅烷基
+  grafting_group_smiles: '[Si](OC)(OC)OC'
+  core_functional_group_smiles: '[Si](OC)(OC)OC'
+  core_functional_group_name: 烷氧基硅烷基
+  degree: 71-76 % (端基官能化效率)
+polymer_fingerprint: --140000.0-19.4-48.5-[Si](OC)(OC)OC---71-76%
 ---
 
 # SSBR-052 综合档案

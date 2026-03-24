@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: EVA 改性白炭黑
+  grafting_group: 乙酸酯基（填料改性）
+  grafting_group_smiles: CC(=O)O
+  core_functional_group_smiles: CC(=O)OC=C
+  core_functional_group_name: 酯基/乙烯基
+  degree: 40 % (EVA固含量)
+polymer_fingerprint: '--------CC(=O)O---40%'
 ---
 
 # SSBR-079 综合档案

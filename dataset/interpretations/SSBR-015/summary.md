@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: p-(2,2'-二苯基乙基)苯乙烯 (DPES)
+  grafting_group: 二苯基甲基（侧链自由基接枝）
+  grafting_group_smiles: C(c1ccccc1)c2ccccc2
+  core_functional_group_smiles: c1ccc(C(CCc2ccccc2)c3ccccc3)cc1
+  core_functional_group_name: 二苯基乙基
+  degree: 5.1 wt%
+polymer_fingerprint: --196000.0-20.1---C(c1ccccc1)c2ccccc2---5.1wt%
 ---
 
 # SSBR-015 综合档案

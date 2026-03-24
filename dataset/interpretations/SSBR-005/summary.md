@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 3-巯基丙基三乙氧基硅烷（MPTES）
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_name: 三乙氧基硅烷基
+  degree: 9.5 wt%
+polymer_fingerprint: --196000.0-21.1-38.7-S---9.5wt%
 ---
 
 # SSBR-005 综合档案

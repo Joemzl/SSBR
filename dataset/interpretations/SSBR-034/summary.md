@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 三羟甲基丙烷三(3-巯基丙酸)酯 (TMPMP)
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: C(=O)OCC
+  core_functional_group_name: 酯基
+  degree: 10 wt%
+polymer_fingerprint: --160200.0-----S---10wt%
 ---
 
 # SSBR-034 综合档案

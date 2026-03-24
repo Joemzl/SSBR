@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 3-氨基丙基三乙氧基硅烷 (APTES)
+  grafting_group: 环氧基 (接枝于ESSBR)
+  grafting_group_smiles: C1OC1
+  core_functional_group_smiles: N
+  core_functional_group_name: 氨基
+  degree: 12 % (ESSBR)
+polymer_fingerprint: '----25.0-57.0-C1OC1---12%'
 ---
 
 # SSBR-109 综合档案

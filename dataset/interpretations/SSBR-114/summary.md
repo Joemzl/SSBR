@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 乙烯基三甲氧基硅烷 (VTMS)
+  grafting_group: 碳碳双键 (烯烃复分解)
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: '[Si](OC)(OC)OC'
+  core_functional_group_name: 三甲氧基硅烷基
+polymer_fingerprint: '----19.0-10.0-C=C---等摩尔'
 ---
 
 # SSBR-114 综合档案

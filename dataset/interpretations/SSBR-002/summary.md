@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 11-巯基十一烷酸（MUA）
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: C(=O)O
+  core_functional_group_name: 羧基
+  degree: 8.7 wt%
+polymer_fingerprint: --186000.0-20.9-39.5-S---8.7wt%
 ---
 
 # SSBR-002 综合档案

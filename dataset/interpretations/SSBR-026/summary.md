@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: β-月桂烯
+  grafting_group: 异丙烯基（侧链共聚）
+  grafting_group_smiles: CC(C)=C
+  core_functional_group_smiles: CC(C)
+  core_functional_group_name: 异亚丙基侧链
+  degree: 30.1 wt%
+polymer_fingerprint: --150000.0-----CC(C)=C---30.1wt%
 ---
 
 # SSBR-026 综合档案

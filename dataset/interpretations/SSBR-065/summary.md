@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 三唑啉二酮 (TAD)
+  grafting_group: 碳碳双键
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: NC(=O)N
+  core_functional_group_name: 脲唑基
+  degree: 最高5.32 mol% (vs 双键)
+polymer_fingerprint: '--------C=C---最高5.32mol%'
 ---
 
 # SSBR-065 综合档案

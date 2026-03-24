@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 液体聚丁二烯 (LPB)
+  grafting_group: 乙烯基（低聚物）
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: C=CC=C
+  core_functional_group_name: 聚丁二烯
+  degree: 12 wt%
+polymer_fingerprint: '--------C=C---12wt%'
 ---
 
 # SSBR-112 综合档案

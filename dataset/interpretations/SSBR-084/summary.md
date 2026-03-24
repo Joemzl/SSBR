@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 腈氧化物 (CNO-py/CNO-COOH)
+  grafting_group: 碳碳双键
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: c1ccncc1.C(=O)O
+  core_functional_group_name: 吡啶基/羧基
+  degree: 1.9-16.8 %
+polymer_fingerprint: --161000.0-10.0-41.0-C=C---1.9-16.8%
 ---
 
 # SSBR-084 综合档案

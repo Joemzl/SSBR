@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 1,5-萘二异氰酸酯 (NDI)
+  grafting_group: 异氰酸根
+  grafting_group_smiles: N=C=O
+  core_functional_group_smiles: NC(=O)O
+  core_functional_group_name: 聚氨酯硬段
+polymer_fingerprint: '--------N=C=O---未公开'
 ---
 
 # SSBR-033 综合档案

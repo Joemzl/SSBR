@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 1-庚硫醇、1-十八烷硫醇
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: CCCCCC
+  core_functional_group_name: 烷基链
+  degree: 14.0 wt% (on GO)
+polymer_fingerprint: '----25.0-50.0-S---14.0wt%'
 ---
 
 # SSBR-038 综合档案

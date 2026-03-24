@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 脂肪酸苄酯
+  grafting_group: 苄酯基（增塑剂）
+  grafting_group_smiles: c1ccccc1COC(=O)
+  core_functional_group_smiles: C(=O)OCc1ccccc1
+  core_functional_group_name: 酯基
+  degree: 20 phr
+polymer_fingerprint: '--------c1ccccc1COC(=O)---20phr'
 ---
 
 # SSBR-081 综合档案

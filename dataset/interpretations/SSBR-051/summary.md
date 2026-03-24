@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 叔丁基氯二苯基硅烷 (TBCSi)
+  grafting_group: 叔丁基二苯基硅基（链端）
+  grafting_group_smiles: '[Si](c1ccccc1)(c2ccccc2)C(C)(C)C'
+  core_functional_group_smiles: '[Si]'
+  core_functional_group_name: 硅基
+  degree: 51-71 % (封端效率)
+polymer_fingerprint: '--------[Si](c1ccccc1)(c2ccccc2)C(C)(C)C---51-71%'
 ---
 
 # SSBR-051 综合档案

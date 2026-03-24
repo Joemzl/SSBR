@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: TPES
+  grafting_group: 三苯基甲基（侧链自由基接枝）
+  grafting_group_smiles: C(c1ccccc1)(c2ccccc2)c3ccccc3
+  core_functional_group_smiles: c1ccc(C(c2ccccc2)(c3ccccc3)c4ccccc4)cc1
+  core_functional_group_name: 三苯基乙基
+  degree: 0.9 wt%
+polymer_fingerprint: --168000.0-24.0---C(c1ccccc1)(c2ccccc2)c3ccccc3---0.9wt%
 ---
 
 # SSBR-022 综合档案

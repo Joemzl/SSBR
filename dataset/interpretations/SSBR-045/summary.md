@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 3-辛酰硫基-1-丙基三乙氧基硅烷
+  grafting_group: 三乙氧基硅烷基
+  grafting_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_name: 三乙氧基硅烷基
+polymer_fingerprint: '----25.0---[Si](OCC)(OCC)OCC---未公开'
 ---
 
 # SSBR-045 综合档案

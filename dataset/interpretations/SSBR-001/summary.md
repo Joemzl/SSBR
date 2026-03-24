@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 3-巯基丙醇（MPL）
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: O
+  core_functional_group_name: 羟基
+  degree: 3.6 wt%
+polymer_fingerprint: --185000.0-23.0-40.1-S---3.6wt%
 ---
 
 # SSBR-001 综合档案

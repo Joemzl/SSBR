@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: TESPT
+  grafting_group: 三乙氧基硅烷基
+  grafting_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_name: 硅烷基
+  degree: 8.1 phr
+polymer_fingerprint: '--------[Si](OCC)(OCC)OCC---8.1phr'
 ---
 
 # SSBR-075 综合档案

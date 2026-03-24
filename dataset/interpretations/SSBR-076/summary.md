@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 间氯过氧苯甲酸 (m-CPBA)
+  grafting_group: 环氧基（环氧化橡胶）
+  grafting_group_smiles: C1OC1
+  core_functional_group_smiles: C1OC1
+  core_functional_group_name: 环氧基
+  degree: 7 %
+polymer_fingerprint: --100000.0-21.0-63.0-C1OC1---7%
 ---
 
 # SSBR-076 综合档案

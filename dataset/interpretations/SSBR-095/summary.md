@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 三苯基硅烷 (TPS)
+  grafting_group: 硅氢基
+  grafting_group_smiles: '[SiH]'
+  core_functional_group_smiles: '[Si](c1ccccc1)(c2ccccc2)c3ccccc3'
+  core_functional_group_name: 三苯基硅基
+  degree: 3.6-11.2 %
+polymer_fingerprint: --100000.0-21.0-63.0-[SiH]---3.6-11.2%
 ---
 
 # SSBR-095 综合档案

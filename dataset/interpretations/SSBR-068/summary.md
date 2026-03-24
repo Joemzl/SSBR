@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 羧基化丁苯橡胶 (XSBR) 作为增容剂
+  grafting_group: 羧基（增容剂）
+  grafting_group_smiles: C(=O)O
+  core_functional_group_smiles: C(=O)O
+  core_functional_group_name: 羧基
+  degree: 3 wt%
+polymer_fingerprint: '--------C(=O)O---3wt%'
 ---
 
 # SSBR-068 综合档案

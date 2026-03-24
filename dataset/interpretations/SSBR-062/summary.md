@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 甲酸、过氧化氢（原位生成过氧甲酸）
+  grafting_group: 过氧羧基
+  grafting_group_smiles: C(=O)OO
+  core_functional_group_smiles: C1OC1
+  core_functional_group_name: 环氧基
+  degree: 7 mol%
+polymer_fingerprint: --396000.0-27.0-56.0-C(=O)OO---7mol%
 ---
 
 # SSBR-062 综合档案

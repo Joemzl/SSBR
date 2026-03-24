@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 双-(三乙氧基硅基丙基)-四硫化物（TESPT）、双-(三乙氧基硅基丙基)-二硫化物（TESPD）
+  grafting_group: 三乙氧基硅烷基
+  grafting_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC.SSSS'
+  core_functional_group_name: 三乙氧基硅烷基/多硫化物
+  degree: 10 wt% (vs SiO2)
+polymer_fingerprint: --167000.0-24.8-9.7-[Si](OCC)(OCC)OCC---10wt%
 ---
 
 # SSBR-047 综合档案

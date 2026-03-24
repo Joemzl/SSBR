@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: '[3-(2-氨基乙基)氨基丙基]三甲氧基硅烷'
+  grafting_group: 三甲氧基硅烷基
+  grafting_group_smiles: '[Si](OC)(OC)OC'
+  core_functional_group_smiles: N.[Si](OC)(OC)OC
+  core_functional_group_name: 氨基/三甲氧基硅烷基
+  degree: 7 wt% (vs SiO2)
+polymer_fingerprint: --351000.0-29.5-34.7-[Si](OC)(OC)OC---7wt%
 ---
 
 # SSBR-048 综合档案

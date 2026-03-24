@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 3-巯基丙酸(3-MPA)
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: C(=O)O
+  core_functional_group_name: 羧基
+  degree: 1.7 mol %
+polymer_fingerprint: --223900.0-23.4-47.3-S---1.7mol %
 ---
 
 # SSBR-023 综合档案

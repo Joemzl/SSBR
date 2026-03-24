@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: 2-巯基乙醇 (ME)
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: '[OH]'
+  core_functional_group_name: 羟基
+  degree: 7.8 mol %
+polymer_fingerprint: --395000.0-20.2-44.6-S---7.8mol %
 ---
 
 # SSBR-058 综合档案

@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 烃类树脂
+  grafting_group: 无（增粘树脂）
+  core_functional_group_smiles: C
+  core_functional_group_name: 烃基
+  degree: 30 phr
+polymer_fingerprint: '------------30phr'
 ---
 
 # SSBR-097 综合档案

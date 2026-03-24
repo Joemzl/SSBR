@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: m-氯过氧苯甲酸 (mCPBA)
+  grafting_group: 碳碳双键
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: C1OC1
+  core_functional_group_name: 环氧基
+  degree: 5-30 % (环氧化双键摩尔比)
+polymer_fingerprint: '----25.0---C=C---5-30%'
 ---
 
 # SSBR-116 综合档案

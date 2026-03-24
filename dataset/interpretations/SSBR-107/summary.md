@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: C3N4/SiO2 纳米杂化材料
+  grafting_group: 氨基（氮化碳表面）
+  grafting_group_smiles: N
+  core_functional_group_smiles: '-'
+  core_functional_group_name: 纳米材料
+  degree: 5 wt% (C3N4 in hybrid)
+polymer_fingerprint: '--------N---5wt%'
 ---
 
 # SSBR-107 综合档案

@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 硅氧烷改性氧化石墨烯 (rGO-g-SiO2)
+  grafting_group: 硅氧烷基（填料改性）
+  grafting_group_smiles: '[Si](O)(O)O'
+  core_functional_group_smiles: '[Si].c1ccccc1'
+  core_functional_group_name: 硅基/石墨烯
+  degree: 1.5 wt% (rGO)
+polymer_fingerprint: '--------[Si](O)(O)O---1.5wt%'
 ---
 
 # SSBR-108 综合档案

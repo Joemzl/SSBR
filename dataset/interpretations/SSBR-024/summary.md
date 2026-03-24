@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: MMP
+  grafting_group: 巯基
+  grafting_group_smiles: S
+  core_functional_group_smiles: C[n+]1ccn(C)c1
+  core_functional_group_name: 咪唑鎓
+  degree: 14.8 mol %
+polymer_fingerprint: '----27.0---S---14.8mol %'
 ---
 
 # SSBR-024 综合档案

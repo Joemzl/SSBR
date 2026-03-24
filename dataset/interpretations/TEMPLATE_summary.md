@@ -1,6 +1,6 @@
 ---
 # ============================================================
-# SSBR 综合档案标准模板 v3.0
+# SSBR 综合档案标准模板 v3.1
 # ============================================================
 # 本模板定义了 summary.md 的统一格式，同时包含：
 #   - 丰富的叙事性内容（研究亮点、核心发现、改性机理等）
@@ -16,6 +16,15 @@
 #   - doi: 文献 DOI (必填)
 #   - polymer_type: 聚合物类型描述 (可选)
 #   - functionalization: 官能化信息 (可选，结构化)
+#       - type: 官能化类型 (in_chain / chain_end_or_additive)
+#       - reagent: 官能化试剂全称
+#       - grafting_group: 接枝反应基团
+#       - grafting_group_smiles: 接枝反应基团 SMILES
+#       - core_functional_group_name: 核心官能团名称
+#       - core_functional_group_smiles: 核心官能团 SMILES
+#       - degree: 官能化程度 (数值 + 单位)
+#       - method: 官能化方法/反应类型 (如: 巯基-烯点击化学、环氧化等)
+#   - polymer_fingerprint: 高分子指纹描述符 (可选)
 #   - filler_system: 填料体系 (可选)
 #   - application: 应用场景 (可选)
 #   - data_completeness: 数据完整性 (必填)
@@ -28,12 +37,16 @@ doi: "10.xxxx/xxxxx"
 polymer_type: "羟基官能化 SSBR"
 
 functionalization:
-  is_functionalized: true
   type: "in_chain"
   reagent: "官能化试剂全称"
-  functional_group: "羟基"
+  grafting_group: "接枝反应基团名称"
+  grafting_group_smiles: "S"
+  core_functional_group_name: "核心官能团名称"
+  core_functional_group_smiles: "O"
   degree: "3.6 wt%"
   method: "巯基-烯点击化学"
+
+polymer_fingerprint: "--Mn-苯乙烯%-乙烯基%-接枝基团SMILES---官能化程度"
 
 filler_system: "白炭黑 (60 phr)"
 application: "绿色轮胎胎面配方"
@@ -170,4 +183,4 @@ updated_at: 2026-03-21
 ---
 
 *本综合档案由 `ssbr-summary-generator` 脚本合并生成，保留了人工撰写的解读内容，用于 RAG 语义检索。*
-*格式版本: v3.0 (2026-03-21)*
+*格式版本: v3.1 (2026-03-24)*

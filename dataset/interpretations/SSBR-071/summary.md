@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: Si747 (硅烷偶联剂)
+  grafting_group: 乙氧基硅烷基
+  grafting_group_smiles: '[Si](OCC)'
+  core_functional_group_smiles: '[Si](OCC)(OCC)OCC'
+  core_functional_group_name: 三乙氧基硅烷基
+  degree: 9 phr
+polymer_fingerprint: '--------[Si](OCC)---9phr'
 ---
 
 # SSBR-071 综合档案

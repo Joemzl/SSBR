@@ -8,7 +8,15 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 环氧乙烷
+  grafting_group: 羟基（链端）
+  grafting_group_smiles: O
+  core_functional_group_smiles: '[OH]'
+  core_functional_group_name: 羟基
+polymer_fingerprint: '--------O---双官能度'
 ---
 
 # SSBR-104 综合档案

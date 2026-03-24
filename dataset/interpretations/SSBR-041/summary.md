@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: N-(4-苯胺基苯基)马来酰亚胺 (MC)
+  grafting_group: 马来酰亚胺基
+  grafting_group_smiles: N1C(=O)C=CC1=O
+  core_functional_group_smiles: Nc1ccc(N)cc1
+  core_functional_group_name: 对苯二胺衍生物
+  degree: 9.4 wt% (on silica)
+polymer_fingerprint: '----25.0-50.0-N1C(=O)C=CC1=O---9.4wt%'
 ---
 
 # SSBR-041 综合档案

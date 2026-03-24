@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 三嗪基石墨炔 (TGDY)
+  grafting_group: 三嗪基（填料添加剂）
+  grafting_group_smiles: c1nc(nc(n1))
+  core_functional_group_smiles: c1ncncn1
+  core_functional_group_name: 三嗪基
+  degree: 1 phr
+polymer_fingerprint: '--------c1nc(nc(n1))---1phr'
 ---
 
 # SSBR-092 综合档案

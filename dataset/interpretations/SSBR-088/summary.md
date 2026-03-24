@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: in_chain
+  reagent: H2O2 + 催化剂 CPC-PW4O16
+  grafting_group: 碳碳双键
+  grafting_group_smiles: C=C
+  core_functional_group_smiles: C1OC1
+  core_functional_group_name: 环氧基
+  degree: 8 %
+polymer_fingerprint: '----25.0-57.0-C=C---8%'
 ---
 
 # SSBR-088 综合档案

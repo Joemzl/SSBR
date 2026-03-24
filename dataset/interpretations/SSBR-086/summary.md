@@ -8,7 +8,16 @@ data_completeness:
   nmr: true
   tem: true
 created_at: '2026-03-21'
-updated_at: '2026-03-21'
+updated_at: '2026-03-24'
+functionalization:
+  type: chain_end_or_additive
+  reagent: 胺封端 TBIR
+  grafting_group: 二环己基氨基（链端）
+  grafting_group_smiles: N(C1CCCCC1)C2CCCCC2
+  core_functional_group_smiles: N
+  core_functional_group_name: 氨基
+  degree: 10 phr (封端效率10-60 mol%)
+polymer_fingerprint: '----24.6-47.9-N(C1CCCCC1)C2CCCCC2---10phr'
 ---
 
 # SSBR-086 综合档案
