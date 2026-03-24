@@ -2,24 +2,24 @@
 ================================================================================
 SYNC IMPACT REPORT
 ================================================================================
-Version Change: 0.0.0 → 1.0.0 (Initial)
-Bump Rationale: Initial constitution adoption for SSBR Functionalization Knowledge Base project
+Version Change: 1.0.0 → 1.1.0 (Minor)
+Bump Rationale: Add Controlled Synthesis Exception (I-A) to support multi-literature extrapolation in 004-multi-literature-synthesis feature
 
-Modified Principles: N/A (Initial adoption)
+Modified Principles:
+  - I. 真实性第一: Added sub-principle I-A (受控综合推理例外)
+
 Added Sections:
-  - 8 Core Principles (I-VIII)
-  - Data Quality Standards
-  - Recommendation System Rules
-  - Governance Rules
+  - I-A. 受控综合推理例外 (Controlled Synthesis Exception)
+    - Allows trend analysis and conservative extrapolation with ≥3 data points
+    - Requires explicit labeling, confidence tags, and boundary limits
+    - Does NOT apply to single-point estimation or data entry scenarios
 
-Removed Sections: N/A (Initial adoption)
+Removed Sections: None
 
-Templates Requiring Updates:
-  - .specify/templates/plan-template.md       ✅ No update needed (generic)
-  - .specify/templates/spec-template.md       ✅ No update needed (generic)
-  - .specify/templates/tasks-template.md      ✅ No update needed (generic)
+Templates Requiring Updates: None
 
-Follow-up TODOs: None
+Follow-up TODOs:
+  - Ensure 004-multi-literature-synthesis implementation enforces I-A conditions via code
 ================================================================================
 -->
 
@@ -37,6 +37,23 @@ Follow-up TODOs: None
 - **可追溯**：每项数据必须标注来源（文献DOI、Table/Figure编号、页码）
 
 **执行标准**：若无法从文献正文、表格、图片标注中直接获取信息，该字段必须填写「-」或明确标注「文献未提供」，绝不允许填充推测值。
+
+#### I-A. 受控综合推理例外 (Controlled Synthesis Exception)
+
+基于多文献（≥3 个独立数据点）的趋势分析和保守外推，在满足以下**全部条件**时允许：
+
+1. **多源支撑**：推理必须基于至少 3 个来自不同文献的数据点
+2. **显式标注**：输出必须明确标注为「外推估计」或「综合推理」，与文献原始数据严格区分
+3. **置信度声明**：必须附带三级置信度标签（高/中/低）及数据支撑点数说明
+4. **边界限制**：外推范围限于数据覆盖范围外 50%（如数据覆盖 1%-15%，可外推到 0.5%-22.5%），超出则必须拒绝
+5. **用户可识别**：输出内容必须使用 `ContentType.EXTRAPOLATION` 或等效标记，确保用户理解其推测性质
+
+**此例外不适用于**：
+- 单点估算或肉眼估读（仍禁止）
+- 无多文献数据支撑的预测（仍禁止）
+- 数据录入场景（仍遵循主原则）
+
+**执行标准**：综合推理功能必须通过代码强制执行边界检查和标注要求，不得依赖 Prompt 软约束。
 
 ### II. 全流程自动化 (End-to-End Automation)
 
@@ -192,4 +209,4 @@ Follow-up TODOs: None
 - 智能推荐技能：`skills/ssbr-recommender/SKILL.md`
 - 项目说明：`other/ssbr项目.txt`
 
-**Version**: 1.0.0 | **Ratified**: 2026-02-28 | **Last Amended**: 2026-02-28
+**Version**: 1.1.0 | **Ratified**: 2026-02-28 | **Last Amended**: 2026-03-24

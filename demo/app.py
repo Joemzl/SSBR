@@ -17,12 +17,18 @@ Then open http://localhost:7861 in browser
 - 添加 AI 问答功能（自然语言回答生成）
 - 集成交叉编码器重排
 - 支持检索+回答和仅检索两种模式
+
+功能增强 (2026-03-25 - 004-multi-literature-synthesis):
+- 添加多文献综合分析模式
+- 添加对比分析功能
+- 添加配方设计功能
 """
 
 import sys
 import time
 import io
 from pathlib import Path
+from typing import Dict, List
 
 # 修复 Windows 控制台 Unicode 编码问题
 if sys.stdout.encoding != 'utf-8':
@@ -38,7 +44,7 @@ sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 import gradio as gr
 from scripts.rag_search import RAGSearchEngine
 from scripts.qa_engine import QAEngine, QAEngineConfig
-from scripts.models import AnswerType
+from scripts.models import AnswerType, SynthesisMode
 from demo.data_formatter import (
     format_result_for_display,
     format_results_as_markdown,
@@ -306,6 +312,196 @@ def get_system_status() -> str:
         return "⚠️ 系统维护中"
 
 
+# ==================== 综合分析功能 (004-multi-literature-synthesis) ====================
+
+def synthesize_answer(query: str, top_k: int = 5) -> tuple:
+    """
+    执行多文献综合分析（T050）
+    
+    Returns:
+        (answer_html, stats_text)
+    """
+    preload_cache()
+    
+    if not query.strip():
+        return "❌ 请输入您的研究问题", ""
+    
+    try:
+        response = qa_engine.synthesize(
+            query=query,
+            top_k=int(top_k),
+            min_samples=3,
+            enable_trend=True,
+            enable_extrapolation=True
+        )
+        
+        # 格式化回答
+        answer = response.answer
+        confidence_label = {
+            "high": "高",
+            "medium": "中等",
+            "low": "较低"
+        }.get(answer.confidence.value, answer.confidence.value)
+        
+        answer_html = f"""### 🔬 综合分析结果
+
+{answer.answer_text}
+
+---
+**分析模式**: 多文献综合
+**数据来源**: {response.sample_count} 个样本，{response.unique_literature_count} 篇文献
+**置信度**: {confidence_label}
+"""
+        
+        # 性能统计
+        total_time = response.total_time_ms
+        if total_time < 1000:
+            stats_text = f"⏱️ 响应时间: {total_time}ms"
+        else:
+            stats_text = f"⏱️ 响应时间: {total_time/1000:.1f}s"
+        
+        if not response.meets_performance_target():
+            stats_text += " ⚠️ (超时)"
+        
+        return answer_html, stats_text
+        
+    except Exception as e:
+        error_msg = str(e)
+        if "InsufficientData" in error_msg or "样本数" in error_msg:
+            user_error = "❌ 相关样本不足（需要至少 3 个样本进行综合分析）"
+        else:
+            user_error = f"❌ 综合分析出错: {error_msg[:100]}"
+        return user_error, ""
+
+
+def compare_schemes(scheme_a: str, scheme_b: str) -> tuple:
+    """
+    对比分析两种官能化方案（T051）
+    
+    Returns:
+        (comparison_html, table_html)
+    """
+    preload_cache()
+    
+    if not scheme_a.strip() or not scheme_b.strip():
+        return "❌ 请输入两种待对比的方案", ""
+    
+    try:
+        response = qa_engine.compare(
+            scheme_names=[scheme_a.strip(), scheme_b.strip()],
+            comparison_description=f"对比 {scheme_a} 和 {scheme_b} 的区别"
+        )
+        
+        # 格式化对比结果
+        answer = response.answer
+        comparison_html = f"""### 📊 对比分析
+
+{answer.answer_text}
+"""
+        
+        # 生成表格
+        table_html = ""
+        if answer.comparison:
+            table_html = f"""### 📋 对比表格
+
+{answer.comparison.to_markdown()}
+
+---
+**数据来源**: {response.sample_count} 个样本
+"""
+        
+        return comparison_html, table_html
+        
+    except Exception as e:
+        return f"❌ 对比分析出错: {str(e)[:100]}", ""
+
+
+def design_formula(target_desc: str, prop_tensile: str, prop_wet: str, prop_rr: str) -> tuple:
+    """
+    配方设计建议（T052）
+    
+    Returns:
+        (formula_html, details_html)
+    """
+    preload_cache()
+    
+    if not target_desc.strip():
+        return "❌ 请描述您的目标性能需求", ""
+    
+    # 构建目标属性
+    target_props = {}
+    if prop_tensile.strip():
+        target_props["拉伸强度"] = prop_tensile.strip()
+    if prop_wet.strip():
+        target_props["湿地抓地力"] = prop_wet.strip()
+    if prop_rr.strip():
+        target_props["滚动阻力"] = prop_rr.strip()
+    
+    try:
+        response = qa_engine.design_formula(
+            target_description=target_desc,
+            target_properties=target_props,
+            top_k=8,
+            min_samples=2
+        )
+        
+        # 格式化配方建议
+        answer = response.answer
+        formula_html = f"""### 🧪 配方设计建议
+
+{answer.answer_text}
+"""
+        
+        # 详情
+        details_html = ""
+        if answer.formula:
+            f = answer.formula
+            
+            # 预期性能表格
+            perf_rows = "\n".join([
+                f"| {k} | {v} |" for k, v in f.expected_performance.items()
+            ]) if f.expected_performance else "| - | 数据不足 |"
+            
+            details_html = f"""### 📋 配方详情
+
+**推荐参数**：
+| 参数 | 推荐值 |
+|------|--------|
+| 官能团类型 | {f.recommended_functional_group} |
+| 官能化程度 | {f.recommended_degree} |
+| 填料体系 | {f.recommended_filler or '需进一步确定'} |
+
+**预期性能**：
+| 指标 | 预期值 |
+|------|--------|
+{perf_rows}
+
+**置信度**: {f.confidence.value}
+"""
+            
+            if f.trade_offs:
+                details_html += "\n**性能取舍**：\n"
+                for t in f.trade_offs:
+                    details_html += f"- ⚠️ {t}\n"
+            
+            if f.warnings:
+                details_html += "\n**注意事项**：\n"
+                for w in f.warnings:
+                    details_html += f"- ⚠️ {w}\n"
+        
+        return formula_html, details_html
+        
+    except Exception as e:
+        error_msg = str(e)
+        if "InsufficientData" in error_msg:
+            user_error = "❌ 相关样本不足（需要至少 2 个样本进行配方设计）"
+        elif "ConflictingTargets" in error_msg:
+            user_error = "❌ 目标性能存在冲突，请调整目标"
+        else:
+            user_error = f"❌ 配方设计出错: {error_msg[:100]}"
+        return user_error, ""
+
+
 # ==================== 示例查询 ====================
 
 EXAMPLE_QUERIES = [
@@ -482,111 +678,223 @@ def create_demo():
         gr.HTML("""
         <div class="main-header">
             <h1>SSBR 官能化方案智能推荐系统</h1>
-            <p>基于 RAG 语义检索与 AI 问答的绿色轮胎材料推荐</p>
+            <p>基于 RAG 语义检索与多文献综合分析的绿色轮胎材料推荐</p>
         </div>
         """)
         
-        with gr.Row():
-            # 左侧：查询面板
-            with gr.Column(scale=2):
-                gr.Markdown("### 描述您的研究需求")
-                
-                with gr.Group(elem_classes="query-section"):
-                    query_input = gr.Textbox(
-                        label="",
-                        placeholder="例如：改善白炭黑分散性、降低滚动阻力、提高湿地抓地力...",
-                        lines=2,
-                        show_label=False
-                    )
-                    
-                    with gr.Row():
-                        top_k_slider = gr.Slider(
-                            minimum=1,
-                            maximum=10,
-                            value=3,
-                            step=1,
-                            label="返回方案数"
-                        )
-                    
-                    with gr.Row():
-                        qa_btn = gr.Button("🤖 检索并生成回答", variant="primary", size="lg")
-                        search_btn = gr.Button("🔍 仅检索推荐", variant="secondary", size="lg")
-                
-                gr.Markdown("### 示例查询")
-                gr.Examples(
-                    examples=EXAMPLE_QUERIES,
-                    inputs=query_input,
-                    label="",
-                    examples_per_page=7
-                )
-                
-                # 系统状态和性能统计
+        # 使用 Tab 组织功能模块
+        with gr.Tabs():
+            # ==================== Tab 1: 智能问答 ====================
+            with gr.TabItem("🤖 智能问答", id="qa_tab"):
                 with gr.Row():
-                    status_text = gr.Markdown(get_system_status())
-                stats_output = gr.Markdown("", elem_id="stats-output")
-            
-            # 右侧：结果展示
-            with gr.Column(scale=3):
-                # AI 回答区域
-                gr.Markdown("### 📝 AI 回答")
-                answer_output = gr.Markdown(
-                    value="*输入研究需求后点击「检索并生成回答」获取 AI 分析*",
-                    elem_classes="result-card"
-                )
+                    # 左侧：查询面板
+                    with gr.Column(scale=2):
+                        gr.Markdown("### 描述您的研究需求")
+                        
+                        with gr.Group(elem_classes="query-section"):
+                            query_input = gr.Textbox(
+                                label="",
+                                placeholder="例如：改善白炭黑分散性、降低滚动阻力、提高湿地抓地力...",
+                                lines=2,
+                                show_label=False
+                            )
+                            
+                            with gr.Row():
+                                top_k_slider = gr.Slider(
+                                    minimum=1,
+                                    maximum=10,
+                                    value=3,
+                                    step=1,
+                                    label="返回方案数"
+                                )
+                            
+                            with gr.Row():
+                                qa_btn = gr.Button("🤖 检索并生成回答", variant="primary", size="lg")
+                                search_btn = gr.Button("🔍 仅检索推荐", variant="secondary", size="lg")
+                        
+                        gr.Markdown("### 示例查询")
+                        gr.Examples(
+                            examples=EXAMPLE_QUERIES,
+                            inputs=query_input,
+                            label="",
+                            examples_per_page=7
+                        )
+                        
+                        # 系统状态和性能统计
+                        with gr.Row():
+                            status_text = gr.Markdown(get_system_status())
+                        stats_output = gr.Markdown("", elem_id="stats-output")
+                    
+                    # 右侧：结果展示
+                    with gr.Column(scale=3):
+                        # AI 回答区域
+                        gr.Markdown("### 📝 AI 回答")
+                        answer_output = gr.Markdown(
+                            value="*输入研究需求后点击「检索并生成回答」获取 AI 分析*",
+                            elem_classes="result-card"
+                        )
+                        
+                        # 推荐列表区域
+                        gr.Markdown("### 📋 推荐方案")
+                        result_output = gr.Markdown(
+                            value="*输入研究需求后点击「仅检索推荐」查看推荐结果*",
+                            elem_classes="result-card"
+                        )
                 
-                # 推荐列表区域
-                gr.Markdown("### 📋 推荐方案")
-                result_output = gr.Markdown(
-                    value="*输入研究需求后点击「仅检索推荐」查看推荐结果*",
-                    elem_classes="result-card"
-                )
-        
-        # 详情区域
-        gr.Markdown("---")
-        gr.Markdown("### 方案详情")
-        
-        with gr.Row():
-            with gr.Column(scale=1):
-                sample_dropdown = gr.Dropdown(
-                    label="选择方案",
-                    choices=[],
-                    interactive=True
-                )
-            with gr.Column(scale=3):
-                detail_output = gr.Markdown(
-                    value="*从下拉列表选择方案查看详细信息*",
-                    elem_classes="detail-card"
-                )
+                # 详情区域
+                gr.Markdown("---")
+                gr.Markdown("### 方案详情")
+                
+                with gr.Row():
+                    with gr.Column(scale=1):
+                        sample_dropdown = gr.Dropdown(
+                            label="选择方案",
+                            choices=[],
+                            interactive=True
+                        )
+                    with gr.Column(scale=3):
+                        detail_output = gr.Markdown(
+                            value="*从下拉列表选择方案查看详细信息*",
+                            elem_classes="detail-card"
+                        )
+            
+            # ==================== Tab 2: 多文献综合分析 ====================
+            with gr.TabItem("🔬 综合分析", id="synthesis_tab"):
+                gr.Markdown("""### 多文献综合分析
+                
+综合多篇文献的数据和结论，生成整合性的回答。适合需要全面了解某一课题的研究问题。
+                """)
+                
+                with gr.Row():
+                    with gr.Column(scale=2):
+                        synthesis_query = gr.Textbox(
+                            label="综合分析问题",
+                            placeholder="例如：如何同时改善白炭黑分散性和湿地抓地力？",
+                            lines=2
+                        )
+                        
+                        synthesis_top_k = gr.Slider(
+                            minimum=3, maximum=10, value=5, step=1,
+                            label="参考样本数"
+                        )
+                        
+                        synthesis_btn = gr.Button("🔬 开始综合分析", variant="primary", size="lg")
+                        
+                        synthesis_stats = gr.Markdown("", elem_id="synthesis-stats")
+                    
+                    with gr.Column(scale=3):
+                        synthesis_output = gr.Markdown(
+                            value="*输入问题后点击「开始综合分析」，系统将综合多篇文献进行分析*",
+                            elem_classes="result-card"
+                        )
+            
+            # ==================== Tab 3: 对比分析 ====================
+            with gr.TabItem("📊 对比分析", id="comparison_tab"):
+                gr.Markdown("""### 官能化方案对比
+                
+对比不同官能化方案在力学性能、热学性能、动态性能等维度的差异。
+                """)
+                
+                with gr.Row():
+                    with gr.Column(scale=2):
+                        gr.Markdown("**待对比方案**")
+                        scheme_a = gr.Textbox(
+                            label="方案 A",
+                            placeholder="例如：羟基官能化",
+                            lines=1
+                        )
+                        scheme_b = gr.Textbox(
+                            label="方案 B",
+                            placeholder="例如：环氧官能化",
+                            lines=1
+                        )
+                        
+                        compare_btn = gr.Button("📊 生成对比分析", variant="primary", size="lg")
+                    
+                    with gr.Column(scale=3):
+                        comparison_output = gr.Markdown(
+                            value="*输入两种方案名称后点击「生成对比分析」*",
+                            elem_classes="result-card"
+                        )
+                        
+                        comparison_table = gr.Markdown(
+                            value="",
+                            elem_classes="result-card"
+                        )
+            
+            # ==================== Tab 4: 配方设计 ====================
+            with gr.TabItem("🧪 配方设计", id="formula_tab"):
+                gr.Markdown("""### 配方设计建议
+                
+根据目标性能需求，推荐合适的官能化参数（官能团类型、程度、填料体系）。
+                """)
+                
+                with gr.Row():
+                    with gr.Column(scale=2):
+                        formula_target = gr.Textbox(
+                            label="目标描述",
+                            placeholder="例如：设计一个高湿地抓地力、低滚动阻力的配方",
+                            lines=2
+                        )
+                        
+                        gr.Markdown("**目标性能（可选）**")
+                        with gr.Row():
+                            prop_tensile = gr.Textbox(
+                                label="拉伸强度",
+                                placeholder="高 / >20 MPa",
+                                lines=1
+                            )
+                            prop_wet = gr.Textbox(
+                                label="湿地抓地力",
+                                placeholder="高 / 优",
+                                lines=1
+                            )
+                            prop_rr = gr.Textbox(
+                                label="滚动阻力",
+                                placeholder="低 / 优",
+                                lines=1
+                            )
+                        
+                        formula_btn = gr.Button("🧪 生成配方建议", variant="primary", size="lg")
+                    
+                    with gr.Column(scale=3):
+                        formula_output = gr.Markdown(
+                            value="*描述目标性能后点击「生成配方建议」*",
+                            elem_classes="result-card"
+                        )
+                        
+                        formula_details = gr.Markdown(
+                            value="",
+                            elem_classes="result-card"
+                        )
         
         # 底部说明
         gr.Markdown("""
         ---
         ### 使用说明
         
-        | 模式 | 按钮 | 说明 |
-        |:----:|------|------|
-        | **问答模式** | 🤖 检索并生成回答 | 基于检索结果生成专业的 AI 回答，包含引用来源 |
-        | **推荐模式** | 🔍 仅检索推荐 | 传统语义检索，返回最相关的官能化方案列表 |
-        
-        **回答类型**:
-        - ✅ 高相关度回答：找到高度匹配的样本 (相似度 ≥ 0.7)
-        - ⚠️ 参考性回答：找到中等相关的样本 (相似度 0.5-0.7)，建议进一步验证
-        - 💡 引导性回答：未找到高相关样本，提供领域通用建议
+        | 功能 | 适用场景 |
+        |:----:|----------|
+        | **智能问答** | 快速检索和回答单一问题，适合简单查询 |
+        | **综合分析** | 综合多篇文献分析复杂课题，适合深度研究 |
+        | **对比分析** | 对比不同官能化方案的优劣 |
+        | **配方设计** | 根据性能目标推荐配方参数 |
         
         ---
         <p style="text-align: center; color: #64748b; font-size: 0.85rem;">
-        SSBR 官能化知识库 · RAG QA Enhancement v1.0
+        SSBR 官能化知识库 · Multi-Literature Synthesis v1.0
         </p>
         """)
         
-        # 绑定事件 - 问答模式
+        # ==================== 事件绑定 ====================
+        
+        # Tab 1: 问答模式
         qa_btn.click(
             search_and_answer,
             inputs=[query_input, top_k_slider],
             outputs=[answer_output, result_output, sample_dropdown, stats_output]
         )
         
-        # 绑定事件 - 仅检索模式
         def search_only_wrapper(query, top_k):
             result, detail, dropdown = search_samples(query, top_k)
             return "*使用「检索并生成回答」获取 AI 分析*", result, dropdown, ""
@@ -607,6 +915,33 @@ def create_demo():
             get_sample_detail,
             inputs=sample_dropdown,
             outputs=detail_output
+        )
+        
+        # Tab 2: 综合分析
+        synthesis_btn.click(
+            synthesize_answer,
+            inputs=[synthesis_query, synthesis_top_k],
+            outputs=[synthesis_output, synthesis_stats]
+        )
+        
+        synthesis_query.submit(
+            synthesize_answer,
+            inputs=[synthesis_query, synthesis_top_k],
+            outputs=[synthesis_output, synthesis_stats]
+        )
+        
+        # Tab 3: 对比分析
+        compare_btn.click(
+            compare_schemes,
+            inputs=[scheme_a, scheme_b],
+            outputs=[comparison_output, comparison_table]
+        )
+        
+        # Tab 4: 配方设计
+        formula_btn.click(
+            design_formula,
+            inputs=[formula_target, prop_tensile, prop_wet, prop_rr],
+            outputs=[formula_output, formula_details]
         )
     
     return demo

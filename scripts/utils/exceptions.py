@@ -86,6 +86,58 @@ class TimeoutError(QAError):
 
 
 # =============================================================================
+# Synthesis Module Exceptions (004-multi-literature-synthesis)
+# =============================================================================
+
+class InsufficientDataError(QAError):
+    """
+    数据不足错误（FR-005）。
+    
+    当相关样本数量不满足最小要求时抛出。
+    """
+    
+    def __init__(self, required: int, actual: int, operation: str):
+        self.required = required
+        self.actual = actual
+        self.operation = operation
+        message = f"{operation}需要至少 {required} 个相关样本，当前仅找到 {actual} 个"
+        super().__init__(message, code="QA010")
+
+
+class ExtrapolationBoundaryError(QAError):
+    """
+    外推边界错误（FR-005）。
+    
+    当查询值超出允许的外推范围时抛出。
+    """
+    
+    def __init__(self, query_value: float, allowed_range: tuple, unit: str):
+        self.query_value = query_value
+        self.allowed_range = allowed_range
+        self.unit = unit
+        message = (
+            f"查询值 {query_value} {unit} 超出允许的外推范围 "
+            f"[{allowed_range[0]:.1f}, {allowed_range[1]:.1f}] {unit}"
+        )
+        super().__init__(message, code="QA011")
+
+
+class ConflictingTargetsError(QAError):
+    """
+    目标冲突错误（FR-008）。
+    
+    当用户指定的目标性能存在内在矛盾时抛出。
+    """
+    
+    def __init__(self, conflicts: list, suggestion: str):
+        self.conflicts = conflicts
+        self.suggestion = suggestion
+        conflict_str = ", ".join(f"{a} vs {b}" for a, b in conflicts)
+        message = f"目标性能存在冲突: {conflict_str}。建议: {suggestion}"
+        super().__init__(message, code="QA012")
+
+
+# =============================================================================
 # Error Handling Utilities
 # =============================================================================
 

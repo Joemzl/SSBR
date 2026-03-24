@@ -1,10 +1,12 @@
 ﻿# SSBR Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-03-19
+Auto-generated from all feature plans. Last updated: 2026-03-25
 
 ## Active Technologies
 - Python 3.10+ (003-rag-qa-enhancement)
 - ChromaDB 向量数据库 + Markdown 文档 + Excel 元数据 (003-rag-qa-enhancement)
+- Python 3.10+ (与现有系统一致) (004-multi-literature-synthesis)
+- ChromaDB 向量数据库 (`.cache/chroma_db/`) (004-multi-literature-synthesis)
 
 - **数据格式**: Markdown + YAML front matter
 - **脚本语言**: Python 3.x
@@ -48,14 +50,22 @@ scripts/
 ├── import_metadata.py           # 元数据导入（从 AI 提取的 Markdown 表格）
 ├── zotero_bridge.py             # Zotero MCP 桥接工具
 ├── build_vector_cache.py        # 向量缓存构建脚本
-├── build_quality_cache.py       # 质量分数缓存构建脚本 (新增)
+├── build_quality_cache.py       # 质量分数缓存构建脚本
 ├── update_vector_index.py       # 向量索引更新
 ├── rag_search.py                # RAG 检索核心
-├── qa_engine.py                 # 问答引擎核心 (新增)
-├── answer_generator.py          # GPT 回答生成模块 (新增)
-├── reranker.py                  # 交叉编码器重排模块 (新增)
-├── quality_scorer.py            # 样本质量评估模块 (新增)
-├── models.py                    # 数据类定义 (新增)
+├── qa_engine.py                 # 问答引擎核心（支持综合模式）
+├── answer_generator.py          # GPT 回答生成模块
+├── reranker.py                  # 交叉编码器重排模块
+├── quality_scorer.py            # 样本质量评估模块
+├── models.py                    # 数据类定义
+├── synthesis/                   # 多文献综合模块 (004-multi-literature-synthesis)
+│   ├── __init__.py
+│   ├── aggregator.py            # 样本聚合器
+│   ├── citation_validator.py    # 引用验证器
+│   ├── trend_analyzer.py        # 趋势分析器
+│   ├── extrapolator.py          # 外推估计器
+│   ├── formula_designer.py      # 配方设计器
+│   └── comparison_table.py      # 对比表格生成器
 └── utils/                       # 工具函数
     ├── yaml_parser.py
     ├── excel_handler.py
@@ -64,8 +74,8 @@ scripts/
     ├── validators.py
     ├── query_preprocessor.py
     ├── vector_store.py          # ChromaDB 向量存储模块
-    ├── prompt_templates.py      # Prompt 模板 (新增)
-    └── exceptions.py            # 异常类定义 (新增)
+    ├── prompt_templates.py      # Prompt 模板
+    └── exceptions.py            # 异常类定义
 
 specs/002-rag-data-migration/    # 规范文档
 ├── spec.md
@@ -87,16 +97,22 @@ python scripts/build_vector_cache.py           # 增量更新缓存
 python scripts/build_vector_cache.py --force   # 强制重建缓存
 python scripts/build_vector_cache.py --stats   # 查看缓存状态
 
-# 质量分数缓存管理 (新增)
+# 质量分数缓存管理
 python scripts/build_quality_cache.py          # 构建质量分数缓存
 python scripts/build_quality_cache.py --stats  # 查看质量统计
 
-# 问答系统 (新增 - 003-rag-qa-enhancement)
+# 问答系统 (003-rag-qa-enhancement)
 python scripts/qa_engine.py --query "如何改善白炭黑分散性？"  # 问答测试
 python scripts/qa_engine.py --query "提高湿地抓地力" --search-only  # 仅检索
 python scripts/qa_engine.py --warmup           # 预热所有组件
 
-# 重排模块测试 (新增)
+# 多文献综合模式 (004-multi-literature-synthesis)
+python scripts/qa_engine.py --query "官能化程度如何影响性能？" --synthesize  # 综合问答
+python scripts/qa_engine.py --compare "羟基官能化" "氨基官能化"              # 对比分析
+python scripts/qa_engine.py --design "高湿地抓地力低滚阻" --target 湿地抓地力=高 滚动阻力=低  # 配方设计
+python scripts/qa_engine.py --query "5%官能化的拉伸强度" --no-extrapolation   # 禁用外推
+
+# 重排模块测试
 python scripts/reranker.py --warmup            # 加载重排模型
 python scripts/reranker.py --test              # 运行重排测试
 
@@ -131,6 +147,20 @@ python scripts/zotero_bridge.py list --with-pdf
 - Markdown: 标准 CommonMark
 
 ## Recent Changes
+
+- 004-multi-literature-synthesis (2026-03-25):
+  - **多文献综合**: 从"单样本检索"升级为"多文献综合推理"
+  - **趋势分析**: 从数据中提取规律和趋势
+  - **保守外推**: 基于数据趋势进行有限范围的预测（50% 边界）
+  - **对比分析**: 多方案结构化对比表格
+  - **配方设计**: 根据目标性能生成配方建议
+  - 新增 `scripts/synthesis/` 模块（aggregator, citation_validator, trend_analyzer, extrapolator, formula_designer, comparison_table）
+  - 扩展 `scripts/models.py` 新增数据类（SynthesisMode, SampleSummary, DataRange, SynthesizedAnswer, TrendAnalysis, ExtrapolationResult, FormulaRecommendation, ComparisonTable）
+  - 扩展 `scripts/qa_engine.py` 新增方法（synthesize, design_formula, compare）
+  - 更新 `scripts/utils/prompt_templates.py` 新增综合 Prompt 模板
+  - 扩展 `scripts/utils/exceptions.py` 新增异常类（InsufficientDataError, ExtrapolationBoundaryError, ConflictingTargetsError）
+  - 更新 `demo/app.py` 支持四个 Tab（智能问答、综合分析、对比分析、配方设计）
+  - 性能目标: 综合问答响应时间 ≤ 8 秒
 
 - 003-rag-qa-enhancement (2026-03-19):
   - **问答系统**: 实现基于 GPT 的自然语言问答生成
@@ -181,6 +211,8 @@ python scripts/zotero_bridge.py list --with-pdf
 - **样本编号规则**: 样本 ID (如 SSBR-002) 是稀疏非连续的，文档中禁止硬编码样本总数或使用范围描述 (如 SSBR-001~017)
 - **文献检索优先级**: Zotero MCP 优先 → literature/ 目录 fallback
 - **元数据导入流程**: AI 提取 Markdown 表格 → import_metadata.py 导入 Excel
+- **综合推理模式**: SINGLE (单样本) / SYNTHESIS (多文献综合) / COMPARISON (对比分析) / FORMULA (配方设计)
+- **外推边界规则**: 仅允许数据范围外 50% 的外推，外推结果必须标注置信度
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->
