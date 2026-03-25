@@ -23,7 +23,8 @@ from models import (
     Query, Candidate, RankedResult, QAResponse, GeneratedAnswer,
     AnswerType, ConfidenceLevel, determine_answer_type, determine_confidence,
     # Synthesis models (004-multi-literature-synthesis)
-    SynthesisMode, SynthesizedAnswer, SynthesisResponse, SampleSummary, DataRange
+    SynthesisMode, SynthesizedAnswer, SynthesisResponse, SampleSummary, DataRange,
+    RecommendationCard, ConfidenceTag
 )
 from quality_scorer import QualityScorer
 from reranker import Reranker, get_reranker
@@ -466,6 +467,140 @@ class QAEngine:
         return times
     
     # =========================================================================
+    # Recommendation Card Parsing (FR-014a)
+    # =========================================================================
+    
+    def _parse_recommendation_card(
+        self,
+        answer_text: str,
+        sample_summaries: List['SampleSummary']
+    ) -> Optional['RecommendationCard']:
+        """
+        从 GPT 回答中解析推荐卡片（FR-014a）。
+        
+        尝试从 Markdown 表格中提取推荐参数。
+        
+        Args:
+            answer_text: GPT 生成的回答文本
+            sample_summaries: 来源样本摘要列表
+        
+        Returns:
+            RecommendationCard 或 None（如解析失败）
+        """
+        import re
+        import logging
+        from models import RecommendationCard, ConfidenceTag
+        
+        logger = logging.getLogger(__name__)
+        
+        try:
+            # 尝试从表格中提取推荐参数
+            # 匹配形如 | **推荐官能团** | 羟基 (-OH) | 高 |
+            patterns = {
+                'functional_group': [
+                    r'\|\s*\*{0,2}推荐官能团\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                    r'推荐官能团[：:]\s*([^\n]+)',
+                ],
+                'reagent': [
+                    r'\|\s*\*{0,2}推荐试剂\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                    r'推荐试剂[：:]\s*([^\n]+)',
+                    r'\|\s*\*{0,2}官能化试剂\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                ],
+                'degree_range': [
+                    r'\|\s*\*{0,2}推荐官能化程度\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                    r'推荐官能化程度[：:]\s*([^\n]+)',
+                    r'\|\s*\*{0,2}官能化程度\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                ],
+                'expected_improvement': [
+                    r'\|\s*\*{0,2}预期改善效果\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                    r'预期改善效果[：:]\s*([^\n]+)',
+                    r'\|\s*\*{0,2}预期效果\*{0,2}\s*\|\s*([^|]+?)\s*\|',
+                ],
+            }
+            
+            extracted = {}
+            for field, field_patterns in patterns.items():
+                for pattern in field_patterns:
+                    match = re.search(pattern, answer_text, re.IGNORECASE)
+                    if match:
+                        value = match.group(1).strip()
+                        # 清理 Markdown 格式
+                        value = re.sub(r'\*{1,2}', '', value)
+                        value = value.strip()
+                        if value and value not in ['-', 'N/A', '未知']:
+                            extracted[field] = value
+                            break
+            
+            # 检查必填字段
+            required_fields = ['functional_group', 'reagent', 'degree_range', 'expected_improvement']
+            if not all(f in extracted for f in required_fields):
+                logger.debug(f"推荐卡片解析: 缺少必填字段, 已提取: {list(extracted.keys())}")
+                # 尝试从样本摘要中补充信息
+                if sample_summaries:
+                    best_sample = sample_summaries[0]  # 使用相关度最高的样本
+                    if 'functional_group' not in extracted and best_sample.functional_group:
+                        extracted['functional_group'] = best_sample.functional_group
+                    if 'reagent' not in extracted and best_sample.reagent:
+                        extracted['reagent'] = best_sample.reagent
+                    if 'degree_range' not in extracted and best_sample.functionalization_degree:
+                        extracted['degree_range'] = best_sample.functionalization_degree
+                    if 'expected_improvement' not in extracted:
+                        extracted['expected_improvement'] = "改善目标性能"
+            
+            # 再次检查必填字段
+            if not all(f in extracted for f in required_fields):
+                logger.warning(f"推荐卡片解析失败: 仍缺少必填字段")
+                return None
+            
+            # 解析置信度
+            confidence = ConfidenceTag.MEDIUM  # 默认中等
+            confidence_patterns = [
+                (r'高置信度|🟢\s*高|置信度.*高', ConfidenceTag.HIGH),
+                (r'低置信度|🔴\s*低|置信度.*低', ConfidenceTag.LOW),
+            ]
+            for pattern, tag in confidence_patterns:
+                if re.search(pattern, answer_text, re.IGNORECASE):
+                    confidence = tag
+                    break
+            
+            # 解析最佳参考样本
+            best_sample_ref = None
+            best_ref_match = re.search(r'最佳参考样本[：:]\s*方案\s*(\d+)', answer_text)
+            if best_ref_match:
+                idx = int(best_ref_match.group(1)) - 1
+                if 0 <= idx < len(sample_summaries):
+                    best_sample_ref = sample_summaries[idx].sample_id
+            
+            # 提取推荐理由
+            rationale = ""
+            rationale_match = re.search(
+                r'(?:推荐理由|##\s*推荐理由)\s*[：:]?\s*\n?\s*(.+?)(?=\n##|\n---|\Z)',
+                answer_text,
+                re.DOTALL | re.IGNORECASE
+            )
+            if rationale_match:
+                rationale = rationale_match.group(1).strip()[:200]  # 限制长度
+            
+            # 构建推荐卡片
+            card = RecommendationCard(
+                functional_group=extracted['functional_group'],
+                reagent=extracted['reagent'],
+                degree_range=extracted['degree_range'],
+                expected_improvement=extracted['expected_improvement'],
+                confidence=confidence,
+                best_sample_ref=best_sample_ref,
+                supporting_samples=[s.sample_id for s in sample_summaries[:5]],
+                rationale=rationale
+            )
+            
+            logger.info(f"推荐卡片解析成功: {card.functional_group}, {card.degree_range}")
+            return card
+            
+        except Exception as e:
+            logger.error(f"推荐卡片解析异常: {e}")
+            return None
+    
+    # =========================================================================
     # Input Validation (T054 - Phase 8)
     # =========================================================================
     
@@ -790,6 +925,9 @@ class QAEngine:
         # Convert to Citation models
         literature_citations = citation_validator.extract_citations_to_models(validated_citations)
         
+        # 8.5 Parse recommendation card from answer (FR-014a)
+        recommendation_card = self._parse_recommendation_card(answer_text, sample_summaries)
+        
         # 9. Build SynthesizedAnswer (T019, T021)
         from models import ConfidenceLevel
         avg_quality = sum(r.quality_score for r in ranked_results) / len(ranked_results) if ranked_results else 0
@@ -806,7 +944,8 @@ class QAEngine:
             model_used=model_used,
             synthesis_mode=SynthesisMode.SYNTHESIS,
             source_samples=sample_summaries,
-            literature_citations=literature_citations
+            literature_citations=literature_citations,
+            recommendation_card=recommendation_card  # FR-014a
         )
         
         # 10. Validate answer (T021)

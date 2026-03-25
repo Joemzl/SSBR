@@ -343,7 +343,36 @@ def synthesize_answer(query: str, top_k: int = 5) -> tuple:
             "low": "较低"
         }.get(answer.confidence.value, answer.confidence.value)
         
-        answer_html = f"""### 🔬 综合分析结果
+        # 构建推荐卡片（如果存在）
+        recommendation_card_html = ""
+        if hasattr(answer, 'recommendation_card') and answer.recommendation_card:
+            rc = answer.recommendation_card
+            rc_confidence = {
+                "high": "🟢 高",
+                "medium": "🟡 中等",
+                "low": "🔴 较低"
+            }.get(rc.confidence.value, rc.confidence.value)
+            
+            recommendation_card_html = f"""
+<div style="background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 2px solid #10b981;">
+<h3 style="color: #ecfdf5; margin: 0 0 16px 0; font-size: 1.25rem;">🎯 推荐方案</h3>
+
+| 参数 | 推荐值 | 置信度 |
+|------|--------|--------|
+| **推荐官能团** | {rc.functional_group} | {rc_confidence} |
+| **推荐试剂** | {rc.reagent} | {rc_confidence} |
+| **推荐官能化程度** | {rc.degree_range} | {rc_confidence} |
+| **预期改善效果** | {rc.expected_improvement} | {rc_confidence} |
+
+{f"> **最佳参考样本**: {rc.best_sample_ref}" if rc.best_sample_ref else ""}
+
+{f"**推荐理由**: {rc.rationale}" if rc.rationale else ""}
+</div>
+
+"""
+        
+        # 完整回答
+        answer_html = f"""{recommendation_card_html}### 🔬 综合分析结果
 
 {answer.answer_text}
 
@@ -665,6 +694,38 @@ ACADEMIC_CSS = """
 .examples-table button:hover {
     background: #475569 !important;
     border-color: #10b981 !important;
+}
+/* 推荐卡片样式 (FR-014b) */
+.recommendation-card {
+    background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #10b981;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+.recommendation-card h3 {
+    color: #ecfdf5 !important;
+    margin: 0 0 16px 0;
+    font-size: 1.25rem;
+}
+.recommendation-card table {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+.recommendation-card th {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ecfdf5 !important;
+}
+.recommendation-card td {
+    color: #d1fae5 !important;
+}
+.recommendation-card blockquote {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 3px solid #34d399;
+    padding: 8px 12px;
+    margin: 12px 0;
+    border-radius: 0 8px 8px 0;
 }
 """
 

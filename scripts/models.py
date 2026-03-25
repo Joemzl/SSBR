@@ -352,6 +352,53 @@ class QAResponse:
 # =============================================================================
 
 @dataclass
+class RecommendationCard:
+    """
+    推荐卡片数据结构（FR-014a）。
+    
+    综合分析的核心输出，在 UI 最顶部醒目展示。
+    """
+    # 核心推荐参数（必填）
+    functional_group: str           # 推荐官能团（如"羟基 (-OH)"）
+    reagent: str                    # 推荐官能化试剂
+    degree_range: str               # 推荐官能化程度范围（如"2.5-4.0 wt%"）
+    expected_improvement: str       # 预期改善效果
+    confidence: ConfidenceTag       # 推荐置信度
+    
+    # 可选字段
+    best_sample_ref: Optional[str] = None   # 最佳参考样本 ID
+    supporting_samples: List[str] = field(default_factory=list)  # 支撑样本列表
+    rationale: str = ""             # 推荐理由摘要
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for serialization."""
+        return {
+            "functional_group": self.functional_group,
+            "reagent": self.reagent,
+            "degree_range": self.degree_range,
+            "expected_improvement": self.expected_improvement,
+            "confidence": self.confidence.value,
+            "best_sample_ref": self.best_sample_ref,
+            "supporting_samples": self.supporting_samples,
+            "rationale": self.rationale
+        }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> "RecommendationCard":
+        """Create instance from dictionary (for GPT response parsing)."""
+        return cls(
+            functional_group=data.get("functional_group", "未知"),
+            reagent=data.get("reagent", "未知"),
+            degree_range=data.get("degree_range", "未知"),
+            expected_improvement=data.get("expected_improvement", "未知"),
+            confidence=ConfidenceTag(data.get("confidence", "medium")),
+            best_sample_ref=data.get("best_sample_ref"),
+            supporting_samples=data.get("supporting_samples", []),
+            rationale=data.get("rationale", "")
+        )
+
+
+@dataclass
 class SampleSummary:
     """
     样本结构化摘要，用于综合分析（T007）。
@@ -469,6 +516,9 @@ class SynthesizedAnswer:
     source_samples: List[SampleSummary]     # 来源样本摘要
     literature_citations: List['Citation']   # 文献引用
     
+    # 推荐卡片（FR-014a）- 综合分析核心输出
+    recommendation_card: Optional[RecommendationCard] = None
+    
     # 可选综合结果（后续 Phase 添加）
     trend_analysis: Optional[Any] = None          # TrendAnalysis
     extrapolation: Optional[Any] = None           # ExtrapolationResult
@@ -510,7 +560,7 @@ class SynthesizedAnswer:
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary for serialization."""
-        return {
+        result = {
             "answer_text": self.answer_text,
             "answer_type": self.answer_type.value,
             "confidence": self.confidence.value,
@@ -520,9 +570,11 @@ class SynthesizedAnswer:
             "synthesis_mode": self.synthesis_mode.value,
             "source_samples": [s.to_dict() for s in self.source_samples],
             "literature_citations": [c.to_dict() for c in self.literature_citations],
+            "recommendation_card": self.recommendation_card.to_dict() if self.recommendation_card else None,
             "citation_count": self.get_citation_count(),
             "unique_literature_count": self.get_unique_literature_count()
         }
+        return result
 
 
 @dataclass
