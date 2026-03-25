@@ -113,16 +113,40 @@ class AnswerGenerator:
         # Build prompts
         system_prompt = get_system_prompt(prompt_answer_type)
         
-        # Prepare samples for prompt
-        samples_for_prompt = [
-            {
+        # 使用 SampleAggregator 提取结构化元数据
+        from synthesis.aggregator import SampleAggregator
+        aggregator = SampleAggregator()
+        
+        # Prepare samples for prompt with structured metadata
+        samples_for_prompt = []
+        for r in ranked_results:
+            # 从 content 中提取结构化元数据
+            summary = aggregator.extract_summary(
+                sample_id=r.sample_id,
+                content=r.content,
+                similarity=r.similarity,
+                quality_score=r.quality_score
+            )
+            
+            # 合并结构化元数据和原始内容
+            sample_dict = {
                 'sample_id': r.sample_id,
                 'content': r.content,
                 'similarity': r.similarity,
-                'quality_score': r.quality_score
+                'quality_score': r.quality_score,
+                # 添加结构化元数据字段
+                'functional_group': summary.functional_group,
+                'functionalization_degree': summary.functionalization_degree,
+                'reagent': summary.reagent,
+                'method': summary.method,
+                'doi': summary.doi,
+                'first_author': summary.first_author,
+                'year': summary.year,
+                'tensile_strength': summary.tensile_strength,
+                'elongation': summary.elongation,
+                'tg': summary.tg,
             }
-            for r in ranked_results
-        ]
+            samples_for_prompt.append(sample_dict)
         
         user_prompt = build_user_prompt(query, samples_for_prompt, prompt_answer_type)
         

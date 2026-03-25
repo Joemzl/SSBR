@@ -205,7 +205,7 @@ def build_user_prompt_guidance(query: str) -> str:
 # =============================================================================
 
 def _format_samples(samples: List[Dict[str, Any]]) -> str:
-    """Format sample list for prompt inclusion."""
+    """Format sample list for prompt inclusion with structured metadata."""
     formatted = []
     
     for i, sample in enumerate(samples, 1):
@@ -213,20 +213,45 @@ def _format_samples(samples: List[Dict[str, Any]]) -> str:
         quality = sample.get('quality_score', 0)
         content = sample.get('content', '')
         
-        # 从内容中提取官能团名称
-        functional_group = _extract_functional_group(content)
+        # 优先使用结构化元数据字段（由 SampleAggregator 提取）
+        functional_group = sample.get('functional_group')
+        reagent = sample.get('reagent')
+        degree = sample.get('functionalization_degree')
+        doi = sample.get('doi')
+        first_author = sample.get('first_author')
+        
+        # 如果没有结构化数据，则从内容中提取
+        if not functional_group or functional_group == '未知官能团':
+            functional_group = _extract_functional_group(content)
+        else:
+            functional_group = f"{functional_group}官能化"
+        
+        # 格式化试剂和官能化程度
+        reagent_str = reagent if reagent and reagent != '-' else '未知'
+        degree_str = degree if degree and degree != '-' else 'N/A'
+        
+        # 格式化来源信息
+        source_info = ""
+        if doi:
+            author_part = f"{first_author} 等人 - " if first_author else ""
+            source_info = f"\n\n**数据来源**: {author_part}DOI: {doi}"
         
         # Truncate content if too long
-        max_content_length = 2000
+        max_content_length = 1500  # 减少内容长度，因为增加了结构化信息
         if len(content) > max_content_length:
             content = content[:max_content_length] + "\n...[内容已截断]"
         
-        # 使用官能团名称作为标题，不再显示样本 ID
+        # 使用官能团名称作为标题，添加结构化元数据表格
         formatted.append(f"""### 方案 {i}: {functional_group}
 
 **相关度**: {similarity:.2f} | **数据完整度**: {quality:.0%}
 
-{content}
+| 项目 | 内容 |
+|------|------|
+| 官能化试剂 | {reagent_str} |
+| 官能化程度 | {degree_str} |
+
+{content}{source_info}
 """)
     
     return "\n---\n".join(formatted)

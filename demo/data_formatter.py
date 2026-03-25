@@ -97,9 +97,10 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
     if yaml_data:
         # ===== 标准格式 v2.0: functionalization 嵌套结构 =====
         func_info = yaml_data.get("functionalization", {})
-        if isinstance(func_info, dict) and "is_functionalized" in func_info:
-            # 这是标准格式 v2.0
-            is_functionalized = func_info.get("is_functionalized", True)
+        # 放宽检查条件：只要有 functionalization 字典且非空即可
+        if isinstance(func_info, dict) and func_info:
+            # 检查是否官能化（兼容 is_functionalized 字段或通过 type 判断）
+            is_functionalized = func_info.get("is_functionalized", True)  # 默认为 True
             func_type = func_info.get("type", "unknown")
             
             if not is_functionalized or func_type == "none":
@@ -114,8 +115,8 @@ def parse_summary_content(content: str) -> Dict[str, Any]:
                 result["reagent"] = reagent
                 result["degree"] = "N/A"
             else:
-                # 官能化样本
-                fg = func_info.get("functional_group")
+                # 官能化样本 - 优先使用 core_functional_group_name，fallback 到 functional_group
+                fg = func_info.get("core_functional_group_name") or func_info.get("functional_group")
                 if fg:
                     # 清理官能团名称，确保有 "官能化" 后缀
                     fg_clean = re.sub(r'\s*[（(].+?[）)]', '', fg).strip()

@@ -175,7 +175,7 @@ class SampleAggregator:
         return ""
     
     def _parse_yaml_front_matter(self, content: str) -> Dict[str, Any]:
-        """解析 YAML front matter。"""
+        """解析 YAML front matter，包括嵌套的 functionalization 字段。"""
         if not content:
             return {}
         
@@ -193,6 +193,27 @@ class SampleAggregator:
             for key, value in data.items():
                 mapped_key = self.FIELD_MAPPINGS.get(key, key)
                 result[mapped_key] = value
+            
+            # 特殊处理 functionalization 嵌套对象
+            if 'functionalization' in data and isinstance(data['functionalization'], dict):
+                func_data = data['functionalization']
+                
+                # 映射 functionalization 子字段
+                func_mappings = {
+                    'core_functional_group_name': 'functional_group',
+                    'degree': 'functionalization_degree',
+                    'reagent': 'reagent',
+                    'type': 'method',
+                    'grafting_group': 'grafting_group',
+                    'core_functional_group_smiles': 'functional_group_smiles',
+                    'grafting_group_smiles': 'grafting_group_smiles',
+                }
+                
+                for yaml_key, summary_key in func_mappings.items():
+                    if yaml_key in func_data and func_data[yaml_key]:
+                        # 不覆盖已有的非空值
+                        if summary_key not in result or not result.get(summary_key):
+                            result[summary_key] = func_data[yaml_key]
             
             return result
         except yaml.YAMLError:
@@ -233,6 +254,12 @@ class SampleAggregator:
             'first_author': [
                 r'第一作者[:：]\s*(.+?)(?:\n|$)',
                 r'作者[:：]\s*(.+?)(?:等|et al|,|\n)',
+                # 从引文格式提取：- **引文**: Author A, Author B, et al.
+                r'\*\*引文\*\*[:：]\s*([A-Z][a-z]+ [A-Z])',
+            ],
+            'year': [
+                # 从引文提取年份：...[J]. Journal, 2022, ...
+                r'\*\*引文\*\*.*?,\s*(\d{4}),',
             ],
         }
         
