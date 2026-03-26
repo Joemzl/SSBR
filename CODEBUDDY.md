@@ -135,6 +135,11 @@ python scripts/rag_search.py --query "改善白炭黑分散" --top-k 3
 # Web Demo 启动
 python demo/app.py                             # 启动 http://localhost:7861
 
+# RAGAS 评测 (004-multi-literature-synthesis)
+python scripts/evaluation/ragas_evaluator.py --mode synthesis  # 评测综合分析
+python scripts/evaluation/ragas_evaluator.py --mode single     # 评测单样本问答
+python scripts/evaluation/ragas_evaluator.py --mode all        # 全部评测
+
 # Zotero 文献查询
 python scripts/zotero_bridge.py search "10.1039/xxx"
 python scripts/zotero_bridge.py list --with-pdf
