@@ -33,6 +33,20 @@ from datetime import datetime
 # 添加项目路径
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+# 加载 .env 文件
+try:
+    from dotenv import load_dotenv
+    # 查找项目根目录的 .env 文件
+    project_root = Path(__file__).parent.parent.parent
+    env_path = project_root / ".env"
+    if env_path.exists():
+        load_dotenv(env_path)
+        print(f"[INFO] 已加载环境变量: {env_path}")
+    else:
+        print(f"[WARNING] 未找到 .env 文件: {env_path}")
+except ImportError:
+    print("[WARNING] python-dotenv 未安装，无法加载 .env 文件")
+
 # 配置日志
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -214,9 +228,13 @@ class RAGASEvaluator:
     def _setup_ragas_llm(self):
         """配置 RAGAS 使用的 LLM 和 Embedding"""
         try:
-            # 获取 API 配置
+            # 获取 API 配置（支持两种环境变量名）
             api_key = os.environ.get("OPENAI_API_KEY", "")
-            api_base = os.environ.get("OPENAI_API_BASE", "https://sg.uiuiapi.com/v1")
+            api_base = os.environ.get("OPENAI_BASE_URL") or os.environ.get("OPENAI_API_BASE", "https://sg.uiuiapi.com/v1")
+            
+            # 调试输出
+            logger.info(f"API Key 配置: {'已设置' if api_key else '未设置'} (长度: {len(api_key)})")
+            logger.info(f"API Base URL: {api_base}")
             
             # 如果没有 API Key，使用备用评估
             if not api_key:
