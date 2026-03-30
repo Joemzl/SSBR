@@ -2,6 +2,8 @@
 
 基于 RAG 语义检索的绿色轮胎材料解决方案推荐系统。
 
+> 💡 **新用户？** 跳转到 [快速开始](#快速开始) 章节，**5 分钟**完成配置并运行！
+
 ---
 
 > ## ⚠️ 新设备 / 首次使用必读
@@ -161,6 +163,18 @@ python demo/app.py
 ```
 
 打开浏览器访问 http://localhost:7861
+
+### 7. 验证安装
+
+在 Web Demo 中尝试以下测试查询，验证系统是否正常工作：
+
+| 测试查询 | 预期结果 |
+|---------|----------|
+| "改善白炭黑分散性" | 返回含硅烷偶联剂相关的样本 |
+| "降低轮胎滚动阻力" | 返回低滞后损耗的官能化方案 |
+| "提高湿地抓地力" | 返回高 tan δ (0°C) 的样本 |
+
+如果能正常返回检索结果，说明安装成功！🎉
 
 ---
 
@@ -542,6 +556,7 @@ python scripts/build_vector_cache.py
 | YAML Schema | `specs/002-rag-data-migration/contracts/yaml-schema.md` |
 | 检索接口 | `specs/002-rag-data-migration/contracts/search-api.md` |
 | 问答系统设计 | `specs/003-rag-qa-enhancement/spec.md` |
+| 新样本录入 | `specs/002-rag-data-migration/new-sample-sop.md` |
 
 ---
 
