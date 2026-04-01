@@ -2,6 +2,7 @@
 
 **项目**: 基于检索增强生成的绿色轮胎材料配方设计系统  
 **生成日期**: 2026-04-01  
+**更新日期**: 2026-04-02 (根据修改建议优化)  
 **适用期刊**: 材料科学 / 计算机辅助材料设计 / 人工智能应用
 
 ---
@@ -10,19 +11,19 @@
 
 ### 英文标题
 
-1. **推荐**: "RAG-Based Intelligent Recommendation System for SSBR Functionalization: A Multi-Literature Synthesis Approach for Green Tire Material Design"
+1. **推荐**: "Accelerating Green Tire Material Design via Knowledge-Informed RAG: Multi-Literature Synthesis and Boundary-Constrained Recommendation for SSBR Functionalization"
 
-2. "Retrieval-Augmented Generation for Polymer Material Design: An Application to Functionalized Solution Styrene-Butadiene Rubber"
+2. "Knowledge-Driven Retrieval-Augmented Generation for Polymer Material Design: A Boundary-Constrained Approach to SSBR Functionalization"
 
-3. "Intelligent Material Design Assistant: Multi-Literature Knowledge Synthesis for SSBR Functionalization Optimization"
+3. "From Literature to Formulation: A Zero-Hallucination RAG System for Multi-Source SSBR Functionalization Knowledge Synthesis"
 
 ### 中文标题
 
-1. **推荐**: "基于检索增强生成的溶聚丁苯橡胶官能化智能推荐系统：面向绿色轮胎材料的多文献综合方法"
+1. **推荐**: "知识驱动的检索增强生成系统：面向绿色轮胎 SSBR 官能化方案的多源数据综合与边界约束研究"
 
-2. "基于 RAG 的高分子材料配方设计系统——以官能化 SSBR 为例"
+2. "加速绿色轮胎材料设计：基于边界约束 RAG 的多文献知识综合与 SSBR 官能化推荐"
 
-3. "多文献知识综合的智能材料设计：官能化溶聚丁苯橡胶研究"
+3. "从文献到配方：面向 SSBR 官能化的零幻觉检索增强生成系统"
 
 ---
 
@@ -55,6 +56,11 @@
    2.2 材料信息学与知识库构建
        2.2.1 材料科学数据库发展
        2.2.2 结构化知识表示方法
+       2.2.3 高分子材料数据的稀疏性与异构化挑战 ★ 新增
+             - 实验数据获取成本高、样本量小
+             - 不同文献测试标准不一致（拉伸速度、温度条件等）
+             - 结构化数据库难以覆盖配方细节与工艺参数
+             → 引出 RAG 在处理非结构化、小样本数据时的天然优势
    2.3 检索增强生成(RAG)技术
        2.3.1 RAG 基本原理
        2.3.2 向量数据库与语义检索
@@ -89,14 +95,33 @@
    4.3 趋势分析与规律发现
        4.3.1 官能化程度-性能关系建模
        4.3.2 数据趋势可视化
-   4.4 保守外推策略
-       4.4.1 外推边界规则（50%数据范围约束）
-       4.4.2 置信度分级（高/中/低）
-       4.4.3 不确定性量化
-   4.5 对比分析与表格生成
-   4.6 配方设计推荐
-       4.6.1 多目标优化策略
-       4.6.2 冲突目标的平衡处理
+   4.4 上下文外推边界控制策略 (CEBC) ★ 深化
+       4.4.1 理论动机：防止"数值幻觉"
+             - 材料性能的物理化学边界约束
+             - LLM 外推预测的风险与失控案例
+       4.4.2 50% 边界规则的设计逻辑
+             - 数据驱动的保守外推原则
+             - 与物理模型外推的对比
+       4.4.3 外推置信度评分模型
+             $$C_{ext} = C_{base} \cdot \exp\left(-\lambda \cdot \frac{d_{ext}}{r_{data}}\right)$$
+             其中 $C_{base}$ 为基础置信度，$d_{ext}$ 为外推距离，$r_{data}$ 为数据范围，$\lambda$ 为衰减系数
+       4.4.4 不确定性量化与置信区间
+   4.5 文献冲突解决机制 (Conflict Resolution) ★ 新增
+       4.5.1 冲突类型分类
+             - 数值差异（同一官能团的不同性能报道）
+             - 趋势矛盾（正相关 vs 负相关）
+             - 条件依赖（不同测试条件导致的差异）
+       4.5.2 加权融合策略
+             - 基于文献质量的权重分配
+             - 基于实验条件相似度的权重调整
+             - 基于数据新鲜度的时间衰减因子
+       4.5.3 冲突标注与透明化
+             - 向用户报告冲突存在
+             - 提供各文献原始数据供参考
+   4.6 对比分析与表格生成
+   4.7 配方设计推荐
+       4.7.1 多目标优化策略
+       4.7.2 冲突目标的平衡处理
 
 5. 数据集与实验设置 (Dataset and Experimental Setup)
    5.1 SSBR 官能化知识库
@@ -134,26 +159,49 @@
    6.4 系统可用性评估
        6.4.1 引用追溯性测试
        6.4.2 幻觉率分析
-   6.5 案例研究
-       6.5.1 案例1：白炭黑分散性改善方案
-       6.5.2 案例2：高湿地抓地力低滚阻配方设计
-       6.5.3 案例3：官能团类型对比分析
+   6.5 知识溯源路径分析 ★ 新增
+       - 案例图示：系统如何从多篇文献中聚合知识
+       - 展示从文献A提取官能团类型 → 文献B提取反应条件 → 文献C提取性能指标的完整链路
+       - 直观证明"多文献综合"能力而非简单搜索
+   6.6 专家验证与对比实验 (Human-in-the-loop Validation) ★ 新增 [待执行]
+       6.6.1 实验设计：3-5 个典型配方设计需求
+       6.6.2 对比方案：传统手动检索 vs 系统生成
+       6.6.3 评估维度（雷达图）：
+             - 方案完整性
+             - 引用准确性
+             - 时间效率
+             - 逻辑严密性
+       ⚠️ 注：此章节需实际执行专家盲测后填充数据
+   6.7 案例研究
+       6.7.1 案例1：白炭黑分散性改善方案（含知识溯源路径图）
+       6.7.2 案例2：高湿地抓地力低滚阻配方设计
+       6.7.3 案例3：官能团类型对比分析
 
 7. 讨论 (Discussion)
    7.1 系统优势总结
        7.1.1 知识综合能力
        7.1.2 引用可追溯性
        7.1.3 响应效率
-   7.2 当前局限性
-       7.2.1 忠实度指标的解读
-       7.2.2 知识库规模限制
-       7.2.3 外推能力的边界
-   7.3 与现有方法的对比
-   7.4 对材料科学研究的启示
-   7.5 未来改进方向
-       7.5.1 知识库扩展
-       7.5.2 多模态支持（图像、公式）
-       7.5.3 自适应检索策略
+   7.2 零幻觉机制对材料科学研究的意义 ★ 深化
+       7.2.1 材料科学对数据准确性的严苛要求
+             - 配方错误可能导致产品性能缺陷
+             - 安全关键应用（轮胎、航空材料）的零容错需求
+       7.2.2 100% 引用可追溯性的价值
+             - 每条建议均可回溯至原始文献
+             - 支持研究者独立验证和批判性评估
+       7.2.3 与通用 AI 助手的本质区别
+             - 拒绝编造数据，宁可承认"数据不足"
+             - 优先可靠性而非流畅性
+   7.3 当前局限性
+       7.3.1 忠实度指标的解读与改进空间
+       7.3.2 知识库规模限制（68 样本）
+       7.3.3 外推能力的边界
+   7.4 与现有方法的对比
+   7.5 对材料科学研究的启示
+   7.6 未来改进方向
+       7.6.1 知识库扩展
+       7.6.2 多模态支持（图像、公式）
+       7.6.3 自适应检索策略
 
 8. 结论 (Conclusion)
    8.1 主要贡献
@@ -181,7 +229,7 @@ Abstract
 
 Keywords: Retrieval-Augmented Generation (RAG); Solution Styrene-Butadiene Rubber (SSBR);
           Functionalization; Green Tire; Material Design; Large Language Model;
-          Knowledge Synthesis
+          Knowledge Synthesis; Zero-Hallucination; Boundary-Constrained Extrapolation
 
 1. Introduction
    1.1 Research Background
@@ -200,6 +248,9 @@ Keywords: Retrieval-Augmented Generation (RAG); Solution Styrene-Butadiene Rubbe
        2.1.2 Common Functional Groups and Their Effects
        2.1.3 Silica-Filled Systems and Filler Dispersion
    2.2 Materials Informatics and Knowledge Base Construction
+       2.2.1 Development of Materials Science Databases
+       2.2.2 Structured Knowledge Representation Methods
+       2.2.3 Data Sparsity and Heterogeneity Challenges in Polymer Materials ★ NEW
    2.3 Retrieval-Augmented Generation (RAG) Technology
        2.3.1 RAG Fundamentals
        2.3.2 Vector Databases and Semantic Retrieval
@@ -228,12 +279,17 @@ Keywords: Retrieval-Augmented Generation (RAG); Solution Styrene-Butadiene Rubbe
    4.1 Paradigm Shift from Single-Sample Retrieval to Knowledge Synthesis
    4.2 Sample Aggregation Algorithm
    4.3 Trend Analysis and Pattern Discovery
-   4.4 Conservative Extrapolation Strategy
-       4.4.1 Extrapolation Boundary Rules
-       4.4.2 Confidence Level Classification
-       4.4.3 Uncertainty Quantification
-   4.5 Comparative Analysis and Table Generation
-   4.6 Formula Design Recommendation
+   4.4 Contextual Extrapolation Boundary Control (CEBC) ★ ENHANCED
+       4.4.1 Theoretical Motivation: Preventing "Numerical Hallucination"
+       4.4.2 Design Logic of the 50% Boundary Rule
+       4.4.3 Extrapolation Confidence Scoring Model
+       4.4.4 Uncertainty Quantification and Confidence Intervals
+   4.5 Conflict Resolution Mechanism ★ NEW
+       4.5.1 Classification of Conflict Types
+       4.5.2 Weighted Fusion Strategy
+       4.5.3 Conflict Annotation and Transparency
+   4.6 Comparative Analysis and Table Generation
+   4.7 Formula Design Recommendation
 
 5. Dataset and Experimental Setup
    5.1 SSBR Functionalization Knowledge Base
@@ -254,14 +310,22 @@ Keywords: Retrieval-Augmented Generation (RAG); Solution Styrene-Butadiene Rubbe
        6.2.2 Performance Differences by Question Type
    6.3 Multi-Literature Synthesis Capability Evaluation
    6.4 System Usability Evaluation
-   6.5 Case Studies
+   6.5 Knowledge Provenance Path Analysis ★ NEW
+   6.6 Human-in-the-loop Validation ★ NEW [Pending Execution]
+       - Radar chart comparison: Manual retrieval vs System generation
+       - Dimensions: Completeness, Citation accuracy, Time efficiency, Logical rigor
+   6.7 Case Studies
 
 7. Discussion
    7.1 Summary of System Advantages
-   7.2 Current Limitations
-   7.3 Comparison with Existing Methods
-   7.4 Implications for Materials Science Research
-   7.5 Future Improvement Directions
+   7.2 Significance of Zero-Hallucination for Materials Science ★ ENHANCED
+       7.2.1 Strict Data Accuracy Requirements in Materials Science
+       7.2.2 Value of 100% Citation Traceability
+       7.2.3 Fundamental Difference from General AI Assistants
+   7.3 Current Limitations
+   7.4 Comparison with Existing Methods
+   7.5 Implications for Materials Science Research
+   7.6 Future Improvement Directions
 
 8. Conclusion
    8.1 Main Contributions
@@ -278,6 +342,7 @@ Appendices
    Appendix C: Complete Test Query List
    Appendix D: Detailed RAGAS Evaluation Data
    Appendix E: Web Interface Screenshots
+   Appendix F: CEBC Confidence Decay Curve ★ NEW
 ```
 
 ---
@@ -288,16 +353,16 @@ Appendices
 |------|---------|-------------|
 | 摘要 | 0.5 | 新撰写 |
 | 1. 引言 | 2-3 | 新撰写 + specs/ |
-| 2. 相关工作 | 3-4 | 文献综述 + specs/ |
+| 2. 相关工作 | 3-4 | 文献综述 + specs/ (含数据挑战论述) |
 | 3. 系统设计 | 4-5 | CODEBUDDY.md + README.md + scripts/ |
-| 4. 多文献综合方法 | 3-4 | specs/004-multi-literature-synthesis/ |
+| 4. 多文献综合方法 | 4-5 | specs/004-multi-literature-synthesis/ (含 CEBC + 冲突解决) |
 | 5. 数据集与实验 | 2-3 | evaluation/ + dataset/ |
-| 6. 实验结果 | 4-5 | evaluation/RAGAS_Evaluation_Analysis.md |
-| 7. 讨论 | 2-3 | 综合分析 |
+| 6. 实验结果 | 5-6 | evaluation/ (含知识溯源 + 专家验证) |
+| 7. 讨论 | 3-4 | 综合分析 (含零幻觉意义) |
 | 8. 结论 | 1 | 新撰写 |
 | 参考文献 | 2 | ~30-40 篇文献 |
 | 附录 | 3-5 | specs/contracts/ + 截图 |
-| **总计** | **26-35** | - |
+| **总计** | **30-40** | - |
 
 ---
 
@@ -307,13 +372,15 @@ Appendices
 
 1. **多文献知识综合框架**: 提出从"单样本检索"到"多文献综合推理"的范式升级，系统能够整合多篇文献的数据和结论，生成超越单一文献的综合性见解。
 
-2. **保守外推策略**: 设计基于数据范围约束的外推机制（50%边界规则），在提供预测价值的同时避免过度外推，确保可靠性。
+2. **上下文外推边界控制策略 (CEBC)**: 提出基于物理化学约束的保守外推机制，通过指数衰减置信度模型和 50% 边界规则，在提供预测价值的同时防止"数值幻觉"，确保材料科学应用的可靠性。
 
-3. **领域知识库构建方法**: 提出 YAML front matter + Markdown 正文的混合结构化方法，实现元数据与自然语言解读的有效分离和统一检索。
+3. **多源冲突解决机制**: 设计基于文献质量、实验条件相似度和时间新鲜度的加权融合策略，系统化处理不同文献间的数值差异和趋势矛盾，并向用户透明报告冲突存在。
 
-4. **零幻觉引用机制**: 实现 100% 引用准确性（Citation Accuracy = 1.000），确保所有推荐内容可追溯到原始文献。
+4. **领域知识库构建方法**: 提出 YAML front matter + Markdown 正文的混合结构化方法，实现元数据与自然语言解读的有效分离和统一检索。
 
-5. **交叉编码器重排序优化**: 集成 BGE-Reranker 模型，将上下文精度提升至 0.787，接近优秀水平。
+5. **零幻觉引用机制**: 实现 100% 引用准确性（Citation Accuracy = 1.000），确保所有推荐内容可追溯到原始文献，满足材料科学对数据准确性的严苛要求。
+
+6. **交叉编码器重排序优化**: 集成 BGE-Reranker 模型，将上下文精度提升至 0.787，接近优秀水平。
 
 ### 适合投稿的期刊/会议
 
@@ -337,9 +404,16 @@ Appendices
 4. **RAGAS 雷达图** - 多维度性能展示 (已有: `evaluation/ragas_radar.png`)
 5. **热力图** - 各查询性能分布 (已有: `evaluation/ragas_heatmap.png`)
 6. **响应时间柱状图** - 系统效率展示 (已有: `evaluation/ragas_response_time.png`)
-7. **案例输出截图** - Web Demo 界面
-8. **趋势分析图** - 官能化程度与性能关系
-9. **对比表格** - 不同官能团方案比较
+7. **知识溯源路径图** ★ 新增 - 展示多文献知识聚合的完整链路
+   - 案例：改善白炭黑分散性的官能化方案
+   - 清晰标注各信息片段的来源文献
+8. **专家盲测对比雷达图** ★ 新增 [待制作]
+   - 对比"传统手动检索" vs "系统生成"
+   - 四维度：方案完整性、引用准确性、时间效率、逻辑严密性
+9. **CEBC 外推置信度衰减曲线** ★ 新增 - 可视化 50% 边界规则
+10. **案例输出截图** - Web Demo 界面
+11. **趋势分析图** - 官能化程度与性能关系
+12. **对比表格** - 不同官能团方案比较
 
 ### 可复用的项目资源
 
@@ -366,3 +440,27 @@ Appendices
 ---
 
 *本文档由 CodeBuddy 根据 SSBR 项目结构自动生成，供论文写作参考。*
+
+---
+
+## 修改记录 (2026-04-02)
+
+根据 `other/修改论文建议.txt` 中的建议进行了以下优化：
+
+| 建议 | 采纳情况 | 具体修改 |
+|------|---------|---------|
+| 1. 标题升华 | ✅ 采纳 | 引入 "Knowledge-Informed" 和 "Boundary-Constrained"，强调系统理解物理边界 |
+| 2. 补充数据挑战论述 | ✅ 采纳 | 新增 2.2.3 节，解释 SSBR 数据稀疏性与 RAG 优势 |
+| 3. 深化 CEBC 策略 | ✅ 采纳 | 重命名为"上下文外推边界控制策略"，新增指数衰减公式 |
+| 4. 冲突解决机制 | ✅ 采纳 | 新增 4.5 节，详述冲突分类、加权融合、透明化 |
+| 5. 专家盲测 | ⚠️ 预留 | 新增 6.6 节框架，标注"待执行" |
+| 6. 知识溯源路径图 | ✅ 采纳 | 新增 6.5 节 + 图表清单第 7 项 |
+| 7. 强调零幻觉意义 | ✅ 采纳 | 深化 7.2 节，阐述材料科学的特殊要求 |
+
+### 关于数学公式的说明
+
+原建议中的公式 $C = \sum_{i=1}^{n} (w_i \cdot s_i)$ 描述的是加权语义得分，而非外推置信度。本次修改采用了更贴合实际机制的指数衰减模型：
+
+$$C_{ext} = C_{base} \cdot \exp\left(-\lambda \cdot \frac{d_{ext}}{r_{data}}\right)$$
+
+此公式直观反映了"外推距离越远，置信度下降越快"的设计理念，与 50% 边界规则在数学上保持一致。
