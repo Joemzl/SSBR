@@ -1,57 +1,186 @@
 ---
 sample_id: SSBR-018
 interpretation_type: mechanical
-source_figure: "Fig.5, Table S3, Table S4"
-source_doi: "10.1021/acs.iecr.8b05738"
+source_figure: Fig.5, Table S3, Table S4
+source_doi: 10.1021/acs.iecr.8b05738
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-  - payne
-  - dma
-
+- stress-strain
+- payne
+- dma
 data:
-  # ========== 应力-应变数据 (α-SSBR/silica composite) ==========
   tensile_strength:
-    value: "优于原始SSBR"
+    value: 优于原始SSBR
     range: null
     unit: MPa
-    source: "Table S3"
+    source: Table S3
   elongation:
-    value: "优于原始SSBR"
+    value: 优于原始SSBR
     range: null
-    unit: "%"
-    source: "Table S3"
+    unit: '%'
+    source: Table S3
   tear_strength:
-    value: "优于原始SSBR"
+    value: 优于原始SSBR
     range: null
-    unit: "kN/m"
-    source: "Table S3"
+    unit: kN/m
+    source: Table S3
   hardness:
-    value: "低于原始SSBR"
-    unit: "Shore A"
-    source: "Table S3"
-  mechanical_source: "Table S3"
-  
-  # ========== Payne 效应数据 ==========
+    value: 低于原始SSBR
+    unit: Shore A
+    source: Table S3
+  mechanical_source: Table S3
   delta_g_prime:
-    value: "最小"
+    value: 最小
     unit: kPa
-    source: "Table S2"
-  
-  # ========== DMA 数据 ==========
+    source: Table S2
   tan_delta_0c:
-    value: "较高"
-    unit: "-"
-    source: "Table S4"
+    value: 较高
+    unit: '-'
+    source: Table S4
   tan_delta_60c:
-    value: "较低"
-    unit: "-"
-    source: "Table S4"
----
+    value: 较低
+    unit: '-'
+    source: Table S4
+skill_version: '2.0'
+curves:
+  # ---------- 应力-应变曲线 (Fig. 5b) ----------
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: "文献未提供绝对数值"
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: "文献未提供绝对数值"
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: "Table S3"
+        confidence: null
+        note: "优于原始 SSBR"
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: "Table S3"
+        confidence: null
+        note: "优于原始 SSBR"
+      tear_strength:
+        value: null
+        unit: kN/m
+        source: "Table S3"
+        note: "优于原始 SSBR"
+      yield_point:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献仅提供相对比较（优于/劣于），无绝对数值"
+    metadata:
+      point_count: 0
+      x_range: [0, 0]
+      y_range: [0, 0]
+      avg_confidence: 0
 
+  # ---------- DMA tan δ-温度曲线 (Fig. 7) ----------
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: 无量纲
+    data_points: []
+    curve_features:
+      tan_delta_0C:
+        value: null
+        unit: "-"
+        source: "Table S4"
+        confidence: null
+        note: "较高 (相比原始 SSBR)，有利于湿地抓地力"
+      tan_delta_60C:
+        value: null
+        unit: "-"
+        source: "Table S4"
+        confidence: null
+        note: "较低 (相比原始 SSBR)，有利于滚动阻力"
+      tan_delta_max:
+        value: null
+        unit: "-"
+        source: "Fig. 7"
+        confidence: null
+      Tg:
+        value: -17.4
+        unit: °C
+        method: "DSC (Table 1)"
+        source: "L1"
+        confidence: 0.95
+        note: "α-SSBR 纯聚合物 Tg"
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献仅提供相对比较，无绝对 tan δ 数值"
+    metadata:
+      point_count: 0
+      x_range: [-80, 80]
+      y_range: [0, 1]
+      avg_confidence: 0
+
+  # ---------- Payne 效应 G'-应变曲线 (Fig. 4) ----------
+  payne_storage_modulus:
+    x_axis:
+      label: 应变
+      unit: '%'
+      scale: logarithmic
+    y_axis:
+      label: 储能模量 G'
+      unit: MPa
+    data_points: []
+    curve_features:
+      G_prime_0:
+        value: null
+        unit: MPa
+        strain_at: 0.28
+        source: "Fig. 4"
+        confidence: null
+      G_prime_inf:
+        value: null
+        unit: MPa
+        strain_at: 42
+        source: "Fig. 4"
+        confidence: null
+      delta_G_prime:
+        value: null
+        unit: kPa
+        source: "Table S2"
+        confidence: null
+        note: "α-SSBR 的 ΔG' 最小，分散性最好"
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献仅提供相对比较和趋势描述，无绝对数值"
+    metadata:
+      point_count: 0
+      x_range: [0.1, 100]
+      y_range: [0, 3]
+      avg_confidence: 0
+---
 # 力学性能解读：SSBR-018
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、样本说明
 

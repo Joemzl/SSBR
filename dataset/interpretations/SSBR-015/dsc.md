@@ -1,28 +1,65 @@
 ---
 sample_id: SSBR-015
 interpretation_type: dsc
-source_figure: "Fig.3, Fig.12"
-source_doi: "10.1021/acs.iecr.6b02259"
+source_figure: Fig.3, Fig.12
+source_doi: 10.1021/acs.iecr.6b02259
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-18
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg_dsc:
     value: null
-    unit: "℃"
-    source: "Fig.3 显示 Tg 曲线但未给出具体数值"
+    unit: ℃
+    source: Fig.3 显示 Tg 曲线但未给出具体数值
   tan_delta_0c:
-    description: "随 DPES 含量增加而增大"
-    source: "Fig.12, Table S5"
+    description: 随 DPES 含量增加而增大
+    source: Fig.12, Table S5
   tan_delta_60c:
-    description: "相比 SBDR-0 降低 30.8%"
-    source: "Fig.12, Table S5"
+    description: 相比 SBDR-0 降低 30.8%
+    source: Fig.12, Table S5
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: null
+        midpoint: null
+        endpoint: null
+        unit: °C
+        source: "Fig. 3 (仅有曲线图，无具体数值)"
+        confidence: null
+        note: "三种 SBDR 样品 Tg 曲线位置相近，无显著差异"
+      glass_transition_width:
+        value: null
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献 Fig.3 提供 DSC 曲线图但未标注具体 Tg 数值"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # 热学性能解读：SSBR-015
 
 > **样本性质**: DPES 官能化 SSBR/炭黑复合材料（SBDR-5），5.1 wt% DPES 含量
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

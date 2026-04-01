@@ -1,24 +1,107 @@
 ---
 sample_id: SSBR-084
 interpretation_type: dsc
-source_figure: "Fig.5"
-source_doi: "10.1016/j.europolj.2024.113653"
+source_figure: Fig.5
+source_doi: 10.1016/j.europolj.2024.113653
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-19
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg:
     value: null
     range: null
-    unit: "℃"
-    source: "Fig.5 DSC 曲线"
-  thermal_source: "Fig.5"
+    unit: ℃
+    source: Fig.5 DSC 曲线
+  thermal_source: Fig.5
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - x: -80
+        y: -0.30
+        confidence: 0.65
+        source: L2
+      - x: -60
+        y: -0.28
+        confidence: 0.65
+        source: L2
+      - x: -45
+        y: -0.24
+        confidence: 0.65
+        source: L2
+      - x: -35
+        y: -0.18
+        confidence: 0.70
+        source: L2
+        note: Tg onset
+      - x: -25
+        y: -0.05
+        confidence: 0.70
+        source: L2
+        note: Tg midpoint
+      - x: -15
+        y: 0.08
+        confidence: 0.70
+        source: L2
+        note: Tg endpoint
+      - x: 0
+        y: 0.10
+        confidence: 0.65
+        source: L2
+      - x: 30
+        y: 0.07
+        confidence: 0.65
+        source: L2
+      - x: 60
+        y: 0.05
+        confidence: 0.65
+        source: L2
+      - x: 100
+        y: 0.04
+        confidence: 0.65
+        source: L2
+    curve_features:
+      Tg:
+        onset: -35
+        midpoint: -25
+        endpoint: -15
+        unit: °C
+        source: L2
+      glass_transition_width:
+        value: 20
+        unit: °C
+        note: 官能化增加转变宽度
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: good
+      note: 吡啶基/羧基离子对作为物理交联点，限制链段运动，Tg升高
+    metadata:
+      point_count: 10
+      x_range:
+        - -80
+        - 100
+      y_range:
+        - -0.30
+        - 0.10
+      avg_confidence: 0.67
 ---
-
 # DSC 热分析解读：SSBR-084
 
 > **样本性质**: 腈氧化物 (CNO) 官能化 SSBR
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

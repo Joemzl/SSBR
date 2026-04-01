@@ -4,12 +4,64 @@ test_type: dsc
 data_source: L2
 doi: 10.1016/j.nanoen.2018.03.038
 figures:
-  - id: Fig.15
-    type: dsc
-    description: DSC 曲线
+- id: Fig.15
+  type: dsc
+  description: DSC 曲线
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - { x: -60, y: -0.40, confidence: 0.70, source: "L2 Fig.15 估读 (官能化SSBR)" }
+      - { x: -50, y: -0.40, confidence: 0.70, source: "L2 Fig.15 估读" }
+      - { x: -45, y: -0.41, confidence: 0.70, source: "L2 Fig.15 估读" }
+      - { x: -38, y: -0.43, confidence: 0.75, source: "L2 Fig.15 Tg onset" }
+      - { x: -33, y: -0.50, confidence: 0.75, source: "L2 Fig.15 Tg区间" }
+      - { x: -28, y: -0.58, confidence: 0.80, source: "L2 Fig.15 Tg midpoint ~-28°C" }
+      - { x: -23, y: -0.52, confidence: 0.75, source: "L2 Fig.15 Tg区间" }
+      - { x: -18, y: -0.46, confidence: 0.75, source: "L2 Fig.15 Tg endpoint" }
+      - { x: -10, y: -0.42, confidence: 0.70, source: "L2 Fig.15 估读" }
+      - { x: 0, y: -0.42, confidence: 0.70, source: "L2 Fig.15 估读" }
+      - { x: 20, y: -0.42, confidence: 0.70, source: "L2 Fig.15 估读" }
+      - { x: 50, y: -0.42, confidence: 0.70, source: "L2 Fig.15 估读" }
+    curve_features:
+      Tg:
+        onset: -38
+        midpoint: -28
+        endpoint: -18
+        unit: °C
+        source: Fig.15 官能化SSBR ~-28°C
+      glass_transition_width:
+        value: 20
+        unit: °C
+      delta_Cp_change:
+        description: ΔCp略降，界面层增厚
+        source: Fig.15
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { x: -28, y: -0.58, reference: "Tg ~-28°C (官能化)", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 12
+      x_range: [-60, 50]
+      y_range: [-0.58, -0.40]
+      avg_confidence: 0.72
 ---
-
 # SSBR-050 热学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## DSC 分析（Fig.15）
 

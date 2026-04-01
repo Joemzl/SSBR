@@ -1,30 +1,119 @@
 ---
 sample_id: SSBR-086
 interpretation_type: mechanical
-source_figure: "Table 3"
-source_doi: "10.1016/j.compscitech.2024.110899"
+source_figure: Table 3
+source_doi: 10.1016/j.compscitech.2024.110899
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-19
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-  - dma
-
+- stress-strain
+- dma
 data:
   tensile_strength:
     value: null
     unit: MPa
-    source: "Table 3"
+    source: Table 3
   elongation:
     value: null
-    unit: "%"
-    source: "Table 3"
-  mechanical_source: "Table 3"
+    unit: '%'
+    source: Table 3
+  mechanical_source: Table 3
+skill_version: '2.0'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.70
+        source: L2
+      - x: 25
+        y: 0.8
+        confidence: 0.65
+        source: L2
+      - x: 50
+        y: 1.5
+        confidence: 0.65
+        source: L2
+      - x: 100
+        y: 2.6
+        confidence: 0.70
+        source: L2
+      - x: 150
+        y: 4.2
+        confidence: 0.65
+        source: L2
+      - x: 200
+        y: 6.2
+        confidence: 0.65
+        source: L2
+      - x: 250
+        y: 8.5
+        confidence: 0.65
+        source: L2
+      - x: 300
+        y: 11.0
+        confidence: 0.70
+        source: L2
+      - x: 350
+        y: 14.0
+        confidence: 0.65
+        source: L2
+      - x: 400
+        y: 17.5
+        confidence: 0.65
+        source: L2
+      - x: 450
+        y: 21.0
+        confidence: 0.70
+        source: L2
+    curve_features:
+      modulus_100:
+        value: 2.6
+        unit: MPa
+        source: L2
+        confidence: 0.70
+      modulus_300:
+        value: 11.0
+        unit: MPa
+        source: L2
+        confidence: 0.70
+      tensile_strength:
+        value: 21.0
+        unit: MPa
+        source: L2
+        confidence: 0.70
+      elongation_at_break:
+        value: 450
+        unit: '%'
+        source: L2
+        confidence: 0.70
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: 胺封端TBIR改善白炭黑分散，trans-1,4结构有助于低滚阻
+    metadata:
+      point_count: 11
+      x_range:
+        - 0
+        - 450
+      y_range:
+        - 0
+        - 21.0
+      avg_confidence: 0.67
 ---
-
 # 力学性能解读：SSBR-086
 
 > **样本性质**: 胺封端 TBIR 改性 SSBR 复合材料，用于高性能绿色轮胎
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

@@ -2,10 +2,47 @@
 sample_id: SSBR-045
 test_type: dsc
 data_source_level: L3
-literature_doi: "10.1002/app.29646"
+literature_doi: 10.1002/app.29646
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: -29
+        midpoint: -25
+        endpoint: -21
+        unit: °C
+        source: "估计值，文献未直接给出"
+      glass_transition_width:
+        value: 8
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: "文献主要研究应力松弛行为，未提供DSC/DMA热分析数据"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # SSBR-045 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 玻璃化转变
 

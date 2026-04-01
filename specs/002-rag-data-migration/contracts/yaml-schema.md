@@ -301,6 +301,190 @@ stress_100:
 
 ---
 
+## curves Schema (全范围曲线数据) - v2.0 新增
+
+> **版本**: 2.0.0 | **日期**: 2026-03-31
+> 
+> 本节定义全范围曲线数据的存储格式，用于支持从图像中估读的连续数据点。
+> 详细规范见 `specs/005-full-range-data-capture/contracts/curve-data-schema.md`
+
+### 通用曲线结构
+
+```yaml
+curves:
+  <curve_type>:                    # 曲线类型标识符
+    x_axis:
+      label: string                # X 轴标签
+      unit: string                 # X 轴单位
+      scale: string | null         # "linear" | "logarithmic"
+    y_axis:
+      label: string                # Y 轴标签
+      unit: string                 # Y 轴单位
+    data_points:                   # 数据点数组（必填，至少 8-15 个点）
+      - x: number                  # X 值
+        y: number                  # Y 值
+        confidence: number         # 置信度 (0.0-1.0)
+        source: string             # 数据来源 (L1/L2/L3)
+    curve_features:                # 曲线特征（类型相关）
+      <feature_name>:
+        value: number
+        unit: string
+        source: string
+    validation:                    # 交叉验证信息
+      known_points:                # 用于校验的已知点
+        - x_field: number          # 如 strain: 100
+          y_expected: number
+          y_measured: number
+          deviation_percent: number
+      overall_quality: string      # "excellent" / "good" / "acceptable" / "poor"
+    metadata:
+      point_count: integer
+      x_range: [number, number]
+      y_range: [number, number]
+      avg_confidence: number
+```
+
+### 数据来源层级
+
+| 代码 | 含义 | 建议置信度 |
+|------|------|-----------|
+| `L1` | 文献表格/正文数值 | 0.90-0.95 |
+| `L2` | 图面标注数字 | 0.85 |
+| `L3` | 曲线视觉估读 | 0.50-0.75 |
+
+### 支持的曲线类型
+
+| curve_type | 描述 | 最小点数 | 必填特征 |
+|------------|------|----------|----------|
+| `stress_strain` | 应力-应变曲线 | 10 | modulus_100, tensile_strength, elongation_at_break |
+| `dma_tan_delta` | DMA tan δ-温度曲线 | 12 | tan_delta_0C, tan_delta_60C, Tg |
+| `payne_storage_modulus` | Payne G'-应变曲线 | 8 | G_prime_0, G_prime_inf, delta_G_prime |
+| `dsc_heat_flow` | DSC 热流曲线 | 10 | Tg |
+
+### 应力-应变曲线示例
+
+```yaml
+curves:
+  stress_strain:
+    x_axis:
+      label: "应变"
+      unit: "%"
+    y_axis:
+      label: "应力"
+      unit: "MPa"
+    data_points:
+      - {x: 0, y: 0, confidence: 1.0, source: "L1"}
+      - {x: 50, y: 1.2, confidence: 0.70, source: "L3"}
+      - {x: 100, y: 2.5, confidence: 0.95, source: "L1"}
+      - {x: 150, y: 4.1, confidence: 0.70, source: "L3"}
+      - {x: 200, y: 5.8, confidence: 0.70, source: "L3"}
+      - {x: 250, y: 7.0, confidence: 0.70, source: "L3"}
+      - {x: 300, y: 8.2, confidence: 0.95, source: "L1"}
+      - {x: 350, y: 10.5, confidence: 0.65, source: "L3"}
+      - {x: 400, y: 14.2, confidence: 0.65, source: "L3"}
+      - {x: 420, y: 16.8, confidence: 0.95, source: "L1"}
+    curve_features:
+      modulus_100:
+        value: 2.5
+        unit: "MPa"
+        source: "L1"
+      modulus_300:
+        value: 8.2
+        unit: "MPa"
+        source: "L1"
+      tensile_strength:
+        value: 16.8
+        unit: "MPa"
+        source: "L1"
+      elongation_at_break:
+        value: 420
+        unit: "%"
+        source: "L1"
+      strain_hardening_index:
+        value: 1.8
+        confidence: 0.70
+    validation:
+      known_points:
+        - {strain: 100, stress_expected: 2.5, stress_measured: 2.5, deviation_percent: 0}
+        - {strain: 300, stress_expected: 8.2, stress_measured: 8.2, deviation_percent: 0}
+      overall_quality: "good"
+    metadata:
+      point_count: 10
+      x_range: [0, 420]
+      y_range: [0, 16.8]
+      avg_confidence: 0.82
+```
+
+### DMA tan δ-温度曲线示例
+
+```yaml
+curves:
+  dma_tan_delta:
+    x_axis:
+      label: "温度"
+      unit: "°C"
+    y_axis:
+      label: "tan δ"
+      unit: "-"
+    data_points:
+      - {x: -60, y: 0.05, confidence: 0.70, source: "L3"}
+      - {x: -40, y: 0.45, confidence: 0.70, source: "L3"}
+      - {x: -30, y: 0.68, confidence: 0.70, source: "L3"}
+      - {x: -25, y: 0.72, confidence: 0.85, source: "L2"}
+      - {x: -20, y: 0.65, confidence: 0.70, source: "L3"}
+      - {x: -10, y: 0.48, confidence: 0.70, source: "L3"}
+      - {x: 0, y: 0.35, confidence: 0.95, source: "L1"}
+      - {x: 20, y: 0.22, confidence: 0.70, source: "L3"}
+      - {x: 40, y: 0.15, confidence: 0.70, source: "L3"}
+      - {x: 60, y: 0.10, confidence: 0.95, source: "L1"}
+      - {x: 80, y: 0.08, confidence: 0.70, source: "L3"}
+    curve_features:
+      tan_delta_0C:
+        value: 0.35
+        confidence: 0.95
+        source: "L1"
+      tan_delta_60C:
+        value: 0.10
+        confidence: 0.95
+        source: "L1"
+      tan_delta_max:
+        value: 0.72
+        temperature: -25
+        confidence: 0.85
+        source: "L2"
+      Tg:
+        value: -25
+        unit: "°C"
+        method: "peak"
+        source: "L2"
+      peak_width:
+        value: 35
+        unit: "°C"
+        confidence: 0.70
+    validation:
+      known_points:
+        - {temperature: 0, tan_delta_expected: 0.35, tan_delta_measured: 0.35, deviation_percent: 0}
+      overall_quality: "good"
+    metadata:
+      point_count: 11
+      x_range: [-60, 80]
+      y_range: [0.05, 0.72]
+      avg_confidence: 0.76
+```
+
+### curves 验证规则
+
+| 规则 | 描述 |
+|------|------|
+| 数据点数量 | 必须达到各类型的最小点数要求 |
+| X 单调性 | X 值必须单调递增 |
+| 置信度范围 | 必须在 [0, 1] 范围内 |
+| 数据来源 | 必须为 L1, L2, L3 之一 |
+| 必填特征 | 各曲线类型的必填特征必须存在 |
+| 交叉验证 | 若有已知点，偏差应 < 15% |
+
+---
+
 ## Compatibility Notes
 
 ### 与 001-ssbr-knowledge-recommender 的兼容性

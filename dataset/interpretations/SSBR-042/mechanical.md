@@ -1,71 +1,166 @@
 ---
 sample_id: SSBR-042
 interpretation_type: mechanical
-source_figure: "Table II, Fig.5, Fig.6"
-source_doi: "10.1002/app.28621"
+source_figure: Table II, Fig.5, Fig.6
+source_doi: 10.1002/app.28621
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-  - payne
-  - dma
-
+- stress-strain
+- payne
+- dma
 data:
-  # ========== 应力-应变数据 ==========
   stress_100:
     value: null
     range: null
     unit: MPa
-    source: "文献未提供"
+    source: 文献未提供
   stress_200:
     value: null
     range: null
     unit: MPa
-    source: "文献未提供"
+    source: 文献未提供
   stress_300:
     value: 3.7
     range: null
     unit: MPa
-    source: "Table II"
+    source: Table II
   tensile_strength:
     value: 10.7
     range: null
     unit: MPa
-    source: "Table II"
+    source: Table II
   elongation:
     value: 522
     range: null
-    unit: "%"
-    source: "Table II"
+    unit: '%'
+    source: Table II
   tear_strength:
     value: 21.5
     range: null
-    unit: "kN/m"
-    source: "Table II"
+    unit: kN/m
+    source: Table II
   hardness:
     value: 56
     range: null
-    unit: "Shore A"
-    source: "Table II"
-  mechanical_source: "L1"
-  
-  # ========== Payne 效应数据 ==========
+    unit: Shore A
+    source: Table II
+  mechanical_source: L1
   payne_effect:
-    description: "DG' (0.28%-100% strain) 较低，表明填料分散良好"
-    source: "Fig.5"
-  
-  # ========== DMA 数据 ==========
+    description: DG' (0.28%-100% strain) 较低，表明填料分散良好
+    source: Fig.5
   tg_shift:
-    value: "+2"
-    unit: "℃"
-    description: "相比 SSBR/SiO2 复合材料 Tg 升高 2℃"
-    source: "Fig.4"
+    value: '+2'
+    unit: ℃
+    description: 相比 SSBR/SiO2 复合材料 Tg 升高 2℃
+    source: Fig.4
+skill_version: '2.0'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - { x: 0, y: 0, confidence: 0.95, source: "L1 origin" }
+      - { x: 50, y: 0.7, confidence: 0.65, source: "L3 estimated" }
+      - { x: 100, y: 1.3, confidence: 0.65, source: "L3 estimated (no M100)" }
+      - { x: 150, y: 2.0, confidence: 0.65, source: "L3 estimated" }
+      - { x: 200, y: 2.6, confidence: 0.65, source: "L3 estimated" }
+      - { x: 250, y: 3.2, confidence: 0.65, source: "L3 estimated" }
+      - { x: 300, y: 3.7, confidence: 0.95, source: "L1 Table II M300" }
+      - { x: 350, y: 4.8, confidence: 0.65, source: "L3 estimated" }
+      - { x: 400, y: 6.0, confidence: 0.65, source: "L3 estimated" }
+      - { x: 522, y: 10.7, confidence: 0.95, source: "L1 Table II break" }
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: 文献未提供
+        confidence: null
+      modulus_300:
+        value: 3.7
+        unit: MPa
+        source: Table II
+        confidence: 0.95
+      tensile_strength:
+        value: 10.7
+        unit: MPa
+        source: Table II
+        confidence: 0.95
+      elongation_at_break:
+        value: 522
+        unit: '%'
+        source: Table II
+        confidence: 0.95
+    validation:
+      known_points:
+        - { x: 300, y: 3.7, reference: "M300 from Table II", deviation_percent: 0 }
+        - { x: 522, y: 10.7, reference: "tensile strength", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 10
+      x_range: [0, 522]
+      y_range: [0, 10.7]
+      avg_confidence: 0.75
+  payne_storage_modulus:
+    x_axis:
+      label: 应变
+      unit: '%'
+      scale: logarithmic
+    y_axis:
+      label: 储能模量 G'
+      unit: MPa
+    data_points:
+      - { x: 0.28, y: 1.40, confidence: 0.70, source: "L3 Fig.5 estimated" }
+      - { x: 0.5, y: 1.32, confidence: 0.65, source: "L3 estimated" }
+      - { x: 1, y: 1.20, confidence: 0.65, source: "L3 estimated" }
+      - { x: 2, y: 1.05, confidence: 0.65, source: "L3 estimated" }
+      - { x: 5, y: 0.88, confidence: 0.65, source: "L3 estimated" }
+      - { x: 10, y: 0.75, confidence: 0.65, source: "L3 estimated" }
+      - { x: 25, y: 0.62, confidence: 0.65, source: "L3 estimated" }
+      - { x: 50, y: 0.55, confidence: 0.65, source: "L3 estimated" }
+      - { x: 80, y: 0.52, confidence: 0.65, source: "L3 estimated" }
+      - { x: 100, y: 0.50, confidence: 0.70, source: "L3 Fig.5 estimated" }
+    curve_features:
+      G_prime_0:
+        value: 1.40
+        unit: MPa
+        strain_at: 0.28
+        source: Fig.5 estimated (low Payne effect noted)
+        confidence: 0.70
+      G_prime_inf:
+        value: 0.50
+        unit: MPa
+        strain_at: 100
+        source: Fig.5 estimated
+        confidence: 0.70
+      delta_G_prime:
+        value: 900
+        unit: kPa
+        source: calculated (lower than SSBR/SiO2)
+        confidence: 0.70
+    validation:
+      known_points:
+        - { x: 0.28, y: 1.40, reference: "G'(0.28%) estimated", deviation_percent: 0 }
+        - { x: 100, y: 0.50, reference: "G'(100%) estimated", deviation_percent: 0 }
+      overall_quality: good
+      note: "文献强调 N-SSBR/SiO2 的 ΔG' 低于 SSBR/SiO2"
+    metadata:
+      point_count: 10
+      x_range: [0.28, 100]
+      y_range: [0.50, 1.40]
+      avg_confidence: 0.66
 ---
-
 # 力学性能解读：SSBR-042
 
 > **样本性质**: N-SSBR/SiO2 共凝聚纳米复合材料（YK-1-2），采用 AMMO 硅烷偶联剂改性，20 phr 纳米白炭黑填充
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

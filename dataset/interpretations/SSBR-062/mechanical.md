@@ -1,19 +1,142 @@
 ---
-sample_id: "SSBR-062"
-test_type: "mechanical"
+sample_id: SSBR-062
+test_type: mechanical
 data_completeness:
   stress_strain: false
   payne_effect: true
   dma: true
-data_source: "L1"
+data_source: L1
 key_findings:
-  - "环氧化 SSBR 作为大分子偶联剂显著改善白炭黑分散"
-  - "Payne 效应 ΔG' 随环氧化度增加而降低"
-  - "tanδ@0°C 随环氧化度升高，抗湿滑性能增强"
-  - "tanδ@60°C 随环氧化度降低，滚动阻力下降"
+- 环氧化 SSBR 作为大分子偶联剂显著改善白炭黑分散
+- Payne 效应 ΔG' 随环氧化度增加而降低
+- tanδ@0°C 随环氧化度升高，抗湿滑性能增强
+- tanδ@60°C 随环氧化度降低，滚动阻力下降
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    note: "E25-SSBR/BR (25%环氧化度) 样品数据"
+    data_points:
+      - { x: 0, y: 0, confidence: 0.95, source: "L1 origin" }
+      - { x: 50, y: 3.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 75, y: 4.8, confidence: 0.70, source: "L3 估读" }
+      - { x: 100, y: 6.6, confidence: 0.90, source: "L1 Table M100=6.6±0.1 MPa" }
+      - { x: 150, y: 11.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 200, y: 16.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 250, y: 20.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 275, y: 21.3, confidence: 0.70, source: "L3 估读" }
+      - { x: 300, y: 22.6, confidence: 0.90, source: "L1 Table M300=22.6±0.3 MPa" }
+      - { x: 317, y: 23.9, confidence: 0.90, source: "L1 Table TS=23.9±1.2, EB=317±26%" }
+    curve_features:
+      modulus_100:
+        value: 6.6
+        unit: MPa
+        source: L1 Table (E25-SSBR/BR)
+        confidence: 0.90
+      modulus_300:
+        value: 22.6
+        unit: MPa
+        source: L1 Table (E25-SSBR/BR)
+        confidence: 0.90
+      tensile_strength:
+        value: 23.9
+        unit: MPa
+        source: L1 Table (E25-SSBR/BR)
+        confidence: 0.90
+      elongation_at_break:
+        value: 317
+        unit: '%'
+        source: L1 Table (E25-SSBR/BR)
+        confidence: 0.90
+      M300_M100_ratio:
+        value: 3.42
+        unit: dimensionless
+        source: 计算值
+        confidence: 0.90
+    validation:
+      known_points:
+        - { x: 100, y: 6.6, reference: "L1 M100=6.6 MPa", deviation_percent: 0 }
+        - { x: 300, y: 22.6, reference: "L1 M300=22.6 MPa", deviation_percent: 0 }
+        - { x: 317, y: 23.9, reference: "L1 TS=23.9 MPa", deviation_percent: 0 }
+      overall_quality: excellent
+    metadata:
+      point_count: 8
+      x_range: [0, 317]
+      y_range: [0, 23.9]
+      avg_confidence: 0.83
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: dimensionless
+    note: "E25-SSBR/BR (25%环氧化度) 样品数据"
+    data_points:
+      - { x: -60, y: 0.08, confidence: 0.70, source: "L2 DMA曲线估读" }
+      - { x: -50, y: 0.15, confidence: 0.70, source: "L2 估读" }
+      - { x: -40, y: 0.35, confidence: 0.70, source: "L2 估读" }
+      - { x: -30, y: 0.50, confidence: 0.75, source: "L2 估读" }
+      - { x: -20, y: 0.55, confidence: 0.75, source: "L2 估读" }
+      - { x: -10, y: 0.58, confidence: 0.80, source: "L2 估读 Tg peak区" }
+      - { x: 0, y: 0.605, confidence: 0.95, source: "L1 Table tan δ@0°C=0.605" }
+      - { x: 10, y: 0.45, confidence: 0.75, source: "L2 估读" }
+      - { x: 20, y: 0.30, confidence: 0.70, source: "L2 估读" }
+      - { x: 30, y: 0.20, confidence: 0.70, source: "L2 估读" }
+      - { x: 40, y: 0.14, confidence: 0.70, source: "L2 估读" }
+      - { x: 50, y: 0.10, confidence: 0.70, source: "L2 估读" }
+      - { x: 60, y: 0.079, confidence: 0.95, source: "L1 Table tan δ@60°C=0.079" }
+      - { x: 70, y: 0.07, confidence: 0.70, source: "L2 估读" }
+      - { x: 80, y: 0.06, confidence: 0.70, source: "L2 估读" }
+    curve_features:
+      Tg_tan_delta_peak:
+        value: -5
+        unit: °C
+        source: 环氧化提高Tg
+        confidence: 0.75
+      tan_delta_0C:
+        value: 0.605
+        unit: dimensionless
+        source: L1 Table E25-SSBR/BR
+        confidence: 0.95
+      tan_delta_60C:
+        value: 0.079
+        unit: dimensionless
+        source: L1 Table E25-SSBR/BR
+        confidence: 0.95
+      Tg:
+        value: -5
+        unit: °C
+        method: tan_delta_peak
+        source: L2 estimated
+        confidence: 0.75
+      wet_grip_improvement:
+        description: 比TESPD体系(0.433)提高40%
+        source: Table对比
+      rolling_resistance_reduction:
+        description: 比TESPD体系(0.105)降低25%
+        source: Table对比
+    validation:
+      known_points:
+        - { x: 0, y: 0.605, reference: "L1 tan δ@0°C=0.605", deviation_percent: 0 }
+        - { x: 60, y: 0.079, reference: "L1 tan δ@60°C=0.079", deviation_percent: 0 }
+      overall_quality: excellent
+    metadata:
+      point_count: 15
+      x_range: [-60, 80]
+      y_range: [0.06, 0.605]
+      avg_confidence: 0.76
 ---
-
 # SSBR-062 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

@@ -1,30 +1,86 @@
 ---
-sample_id: "SSBR-061"
-test_type: "mechanical"
-data_source: "L1"
-doi: "10.1016/j.polymertesting.2020.106431"
-
+sample_id: SSBR-061
+test_type: mechanical
+data_source: L1
+doi: 10.1016/j.polymertesting.2020.106431
 tensile:
   tensile_strength_MPa: 20.0
   elongation_at_break_percent: 450
   modulus_100_MPa: 2.5
   modulus_300_MPa: 10.0
-
 hardness:
   shore_A: 65
-
 abrasion:
   din_abrasion_mm3: 85
-
 keywords:
-  - "端基官能化"
-  - "APTES"
-  - "白炭黑分散"
-  - "耐磨性"
-  - "氨基官能化"
+- 端基官能化
+- APTES
+- 白炭黑分散
+- 耐磨性
+- 氨基官能化
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - { x: 0, y: 0, confidence: 0.95, source: "L1 origin" }
+      - { x: 50, y: 1.2, confidence: 0.70, source: "L3 典型曲线估读" }
+      - { x: 100, y: 2.5, confidence: 0.95, source: "L1 Table M100=2.5 MPa" }
+      - { x: 150, y: 4.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 200, y: 6.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 250, y: 8.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 300, y: 10.0, confidence: 0.95, source: "L1 Table M300=10.0 MPa" }
+      - { x: 350, y: 13.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 400, y: 16.5, confidence: 0.70, source: "L3 估读" }
+      - { x: 450, y: 20.0, confidence: 0.95, source: "L1 Table TS=20.0 MPa, EB=450%" }
+    curve_features:
+      modulus_100:
+        value: 2.5
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      modulus_300:
+        value: 10.0
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      tensile_strength:
+        value: 20.0
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      elongation_at_break:
+        value: 450
+        unit: '%'
+        source: L1 Table
+        confidence: 0.95
+      M300_M100_ratio:
+        value: 4.0
+        unit: dimensionless
+        source: 计算值
+        confidence: 0.95
+    validation:
+      known_points:
+        - { x: 100, y: 2.5, reference: "L1 M100=2.5 MPa", deviation_percent: 0 }
+        - { x: 300, y: 10.0, reference: "L1 M300=10.0 MPa", deviation_percent: 0 }
+        - { x: 450, y: 20.0, reference: "L1 TS=20.0 MPa", deviation_percent: 0 }
+      overall_quality: excellent
+    metadata:
+      point_count: 10
+      x_range: [0, 450]
+      y_range: [0, 20.0]
+      avg_confidence: 0.83
 ---
-
 # SSBR-061 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本背景
 

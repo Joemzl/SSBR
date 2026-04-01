@@ -1,31 +1,129 @@
 ---
 sample_id: SSBR-031
 interpretation_type: mechanical
-source_figure: "Fig. 2-4"
-source_doi: "10.1039/c5ra24965a"
+source_figure: Fig. 2-4
+source_doi: 10.1039/c5ra24965a
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - dma
-
+- dma
 data:
   tg_dma:
     value: 0.1
-    unit: "℃"
-    source: "Table 5"
+    unit: ℃
+    source: Table 5
   tan_delta_max:
-    value: 1.30
-    unit: "-"
-    source: "Table 5"
+    value: 1.3
+    unit: '-'
+    source: Table 5
   activation_energy:
     value: 17.7
-    unit: "kJ/mol"
-    source: "Table 5"
-  mechanical_source: "MD simulation + experimental validation"
+    unit: kJ/mol
+    source: Table 5
+  mechanical_source: MD simulation + experimental validation
+skill_version: '2.0'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: v1.0 data
+        confidence: null
+    validation:
+      known_points: []
+      overall_quality: pending
+    metadata:
+      point_count: 0
+      x_range:
+      - 0
+      - 0
+      y_range:
+      - 0
+      - 0
+      avg_confidence: 0
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: 无量纲
+    data_points:
+      - { x: -60, y: 0.03, confidence: 0.65, source: L3 }
+      - { x: -50, y: 0.04, confidence: 0.65, source: L3 }
+      - { x: -40, y: 0.06, confidence: 0.65, source: L3 }
+      - { x: -30, y: 0.10, confidence: 0.65, source: L3 }
+      - { x: -20, y: 0.20, confidence: 0.65, source: L3 }
+      - { x: -10, y: 0.55, confidence: 0.65, source: L3 }
+      - { x: 0, y: 1.20, confidence: 0.70, source: L3 }
+      - { x: 0.1, y: 1.30, confidence: 0.95, source: L1 }
+      - { x: 10, y: 0.75, confidence: 0.65, source: L3 }
+      - { x: 20, y: 0.40, confidence: 0.65, source: L3 }
+      - { x: 30, y: 0.25, confidence: 0.65, source: L3 }
+      - { x: 40, y: 0.18, confidence: 0.65, source: L3 }
+      - { x: 50, y: 0.14, confidence: 0.65, source: L3 }
+      - { x: 60, y: 0.11, confidence: 0.65, source: L3 }
+      - { x: 70, y: 0.09, confidence: 0.65, source: L3 }
+    curve_features:
+      tan_delta_0C:
+        value: 1.20
+        unit: '-'
+        source: L3 interpolated
+        confidence: 0.70
+      tan_delta_60C:
+        value: 0.11
+        unit: '-'
+        source: L3 interpolated
+        confidence: 0.65
+      tan_delta_max:
+        value: 1.30
+        unit: '-'
+        source: Table 5
+        confidence: 0.95
+      Tg:
+        value: 0.1
+        unit: °C
+        method: peak
+        source: Table 5
+        confidence: 0.95
+    validation:
+      known_points:
+        - { x: 0.1, y: 1.30, reference: "Table 5 tan δ max", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 15
+      x_range: [-60, 70]
+      y_range: [0.03, 1.30]
+      avg_confidence: 0.70
 ---
-
 # SSBR-031 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本基本信息
 

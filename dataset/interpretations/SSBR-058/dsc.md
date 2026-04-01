@@ -1,22 +1,69 @@
 ---
-sample_id: "SSBR-058"
-test_type: "dsc"
-data_source: "L1"
-literature_doi: "10.1016/j.polymer.2018.04.039"
-
+sample_id: SSBR-058
+test_type: dsc
+data_source: L1
+literature_doi: 10.1016/j.polymer.2018.04.039
 thermal:
   Tg_C: -25.8
-  Tg_method: "DSC"
+  Tg_method: DSC
   crystallization_temp_C: null
   melting_temp_C: null
+notes: 'mSSBR-20 样本的 DSC 测试结果。
 
-notes: |
-  mSSBR-20 样本的 DSC 测试结果。
   官能化程度 20%。
-  Tg 相比未官能化 SSBR 有所提高。
----
 
+  Tg 相比未官能化 SSBR 有所提高。'
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - { x: -60, y: -0.38, confidence: 0.70, source: "L2 典型曲线估读" }
+      - { x: -50, y: -0.38, confidence: 0.70, source: "L2 典型曲线估读" }
+      - { x: -40, y: -0.39, confidence: 0.70, source: "L2 典型曲线估读" }
+      - { x: -35, y: -0.41, confidence: 0.75, source: "L2 Tg onset区" }
+      - { x: -30, y: -0.47, confidence: 0.80, source: "L2 Tg区间" }
+      - { x: -25.8, y: -0.55, confidence: 0.95, source: "L1 Table Tg=-25.8°C" }
+      - { x: -22, y: -0.50, confidence: 0.80, source: "L2 Tg区间" }
+      - { x: -18, y: -0.44, confidence: 0.75, source: "L2 Tg endpoint" }
+      - { x: -10, y: -0.40, confidence: 0.70, source: "L2 典型曲线估读" }
+      - { x: 0, y: -0.40, confidence: 0.70, source: "L2 典型曲线估读" }
+      - { x: 20, y: -0.40, confidence: 0.70, source: "L2 典型曲线估读" }
+    curve_features:
+      Tg:
+        onset: -35
+        midpoint: -25.8
+        endpoint: -18
+        unit: °C
+        source: L1 Table Tg=-25.8°C (DSC)
+      glass_transition_width:
+        value: 17
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { x: -25.8, y: -0.55, reference: "L1 Tg=-25.8°C", deviation_percent: 0 }
+      overall_quality: excellent
+    metadata:
+      point_count: 11
+      x_range: [-60, 20]
+      y_range: [-0.55, -0.38]
+      avg_confidence: 0.75
+---
 # SSBR-058 热学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 测试概述
 

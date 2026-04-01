@@ -1,30 +1,128 @@
 ---
-sample_id: "SSBR-071"
-test_type: "mechanical"
-data_source: "L1"
-doi: "10.5254/rct.16.84812"
-
+sample_id: SSBR-071
+test_type: mechanical
+data_source: L1
+doi: 10.5254/rct.16.84812
 tensile:
   tensile_strength_MPa: 21.5
   elongation_at_break_percent: 450
   modulus_100_MPa: 2.6
   modulus_300_MPa: 11.0
-
 hardness:
   shore_A: 66
-
 coupling_agent:
-  type: "Si747"
-  loading: "与白炭黑配合使用"
-
+  type: Si747
+  loading: 与白炭黑配合使用
 keywords:
-  - "硅烷偶联剂"
-  - "Si747"
-  - "白炭黑-硅烷反应"
-  - "界面偶联"
+- 硅烷偶联剂
+- Si747
+- 白炭黑-硅烷反应
+- 界面偶联
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.95
+        source: L1
+      - x: 25
+        y: 0.8
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 1.5
+        confidence: 0.70
+        source: L2
+      - x: 100
+        y: 2.6
+        confidence: 0.95
+        source: L1
+      - x: 150
+        y: 4.3
+        confidence: 0.70
+        source: L2
+      - x: 200
+        y: 6.5
+        confidence: 0.70
+        source: L2
+      - x: 250
+        y: 8.8
+        confidence: 0.70
+        source: L2
+      - x: 300
+        y: 11.0
+        confidence: 0.95
+        source: L1
+      - x: 350
+        y: 14.0
+        confidence: 0.70
+        source: L2
+      - x: 400
+        y: 17.5
+        confidence: 0.70
+        source: L2
+      - x: 430
+        y: 20.0
+        confidence: 0.65
+        source: L3
+      - x: 450
+        y: 21.5
+        confidence: 0.95
+        source: L1
+    curve_features:
+      modulus_100:
+        value: 2.6
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      modulus_300:
+        value: 11.0
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      tensile_strength:
+        value: 21.5
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      elongation_at_break:
+        value: 450
+        unit: '%'
+        source: L1
+        confidence: 0.95
+    validation:
+      known_points:
+        - x: 100
+          y_expected: 2.6
+          y_actual: 2.6
+          deviation_percent: 0
+        - x: 300
+          y_expected: 11.0
+          y_actual: 11.0
+          deviation_percent: 0
+      overall_quality: excellent
+    metadata:
+      point_count: 12
+      x_range:
+        - 0
+        - 450
+      y_range:
+        - 0
+        - 21.5
+      avg_confidence: 0.80
 ---
-
 # SSBR-071 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本背景
 

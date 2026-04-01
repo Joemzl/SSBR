@@ -1,18 +1,109 @@
 ---
-sample_id: "SSBR-076"
-test_type: "mechanical"
+sample_id: SSBR-076
+test_type: mechanical
 data_completeness:
   stress_strain: true
   payne_effect: true
   dma: true
-data_source: "L1"
+data_source: L1
 key_findings:
-  - "m-CPBA 环氧化 SSBR 作为大分子偶联剂"
-  - "零 VOC 排放的白炭黑改性方案"
-  - "性能与甲酸/H2O2 体系相当"
+- m-CPBA 环氧化 SSBR 作为大分子偶联剂
+- 零 VOC 排放的白炭黑改性方案
+- 性能与甲酸/H2O2 体系相当
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.90
+        source: L1
+      - x: 25
+        y: 0.8
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 1.6
+        confidence: 0.70
+        source: L2
+      - x: 100
+        y: 2.8
+        confidence: 0.85
+        source: L2
+      - x: 150
+        y: 4.5
+        confidence: 0.70
+        source: L2
+      - x: 200
+        y: 6.5
+        confidence: 0.70
+        source: L2
+      - x: 250
+        y: 9.0
+        confidence: 0.70
+        source: L2
+      - x: 300
+        y: 12.0
+        confidence: 0.85
+        source: L2
+      - x: 350
+        y: 15.5
+        confidence: 0.70
+        source: L2
+      - x: 380
+        y: 18.0
+        confidence: 0.70
+        source: L2
+      - x: 400
+        y: 19.5
+        confidence: 0.85
+        source: L2
+    curve_features:
+      modulus_100:
+        value: 2.8
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      modulus_300:
+        value: 12.0
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      tensile_strength:
+        value: 19.5
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      elongation_at_break:
+        value: 400
+        unit: '%'
+        source: L2
+        confidence: 0.85
+    validation:
+      known_points: []
+      overall_quality: good
+      note: m-CPBA环氧化SSBR，与SSBR-062甲酸/H2O2体系对比
+    metadata:
+      point_count: 11
+      x_range:
+        - 0
+        - 400
+      y_range:
+        - 0
+        - 19.5
+      avg_confidence: 0.76
 ---
-
 # SSBR-076 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

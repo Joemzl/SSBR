@@ -1,12 +1,13 @@
 ﻿# SSBR Development Guidelines
 
-Auto-generated from all feature plans. Last updated: 2026-03-25
+Auto-generated from all feature plans. Last updated: 2026-03-31
 
 ## Active Technologies
 - Python 3.10+ (003-rag-qa-enhancement)
 - ChromaDB 向量数据库 + Markdown 文档 + Excel 元数据 (003-rag-qa-enhancement)
 - Python 3.10+ (与现有系统一致) (004-multi-literature-synthesis)
 - ChromaDB 向量数据库 (`.cache/chroma_db/`) (004-multi-literature-synthesis)
+- 全范围曲线数据捕捉 (005-full-range-data-capture)
 
 - **数据格式**: Markdown + YAML front matter
 - **脚本语言**: Python 3.x
@@ -75,7 +76,8 @@ scripts/
     ├── query_preprocessor.py
     ├── vector_store.py          # ChromaDB 向量存储模块
     ├── prompt_templates.py      # Prompt 模板
-    └── exceptions.py            # 异常类定义
+    ├── exceptions.py            # 异常类定义
+    └── curve_validator.py       # 曲线数据验证模块 (005-full-range-data-capture)
 
 specs/002-rag-data-migration/    # 规范文档
 ├── spec.md
@@ -85,8 +87,20 @@ specs/002-rag-data-migration/    # 规范文档
 ├── quickstart.md
 ├── new-sample-sop.md
 └── contracts/
-    ├── yaml-schema.md
+    ├── yaml-schema.md           # 已更新支持 curves 字段
     └── search-api.md
+
+specs/005-full-range-data-capture/  # 全范围数据捕捉规范 (新增)
+├── spec.md                      # 总体规范
+├── plan.md                      # 实施计划
+├── tasks.md                     # 任务清单
+├── quickstart.md                # 快速入门指南
+├── SKILL-stress-strain-v2.md    # 应力-应变 Skill v2
+├── SKILL-dma-v2.md              # DMA Skill v2
+├── SKILL-payne-v2.md            # Payne Skill v2
+├── SKILL-dsc-v2.md              # DSC Skill v2
+└── contracts/
+    └── curve-data-schema.md     # 曲线数据 JSON Schema
 ```
 
 ## Commands
@@ -143,6 +157,11 @@ python scripts/evaluation/ragas_evaluator.py --mode all        # 全部评测
 # Zotero 文献查询
 python scripts/zotero_bridge.py search "10.1039/xxx"
 python scripts/zotero_bridge.py list --with-pdf
+
+# 曲线数据验证 (005-full-range-data-capture)
+python scripts/utils/curve_validator.py --file dataset/interpretations/SSBR-001/mechanical.md  # 单文件验证
+python scripts/utils/curve_validator.py --dir dataset/interpretations/  # 批量验证
+python scripts/utils/curve_validator.py --dir dataset/interpretations/ --quiet  # 静默模式
 ```
 
 ## Code Style
@@ -152,6 +171,17 @@ python scripts/zotero_bridge.py list --with-pdf
 - Markdown: 标准 CommonMark
 
 ## Recent Changes
+
+- 005-full-range-data-capture (2026-03-31):
+  - **全范围数据捕捉**: 从"离散点提取"升级为"全范围曲线数据捕捉"
+  - **曲线数据 Schema**: 定义 stress_strain, dma_tan_delta, payne_storage_modulus, dsc_heat_flow 四种曲线格式
+  - **置信度分级**: L1 (表格 0.95) > L2 (标注 0.85) > L3 (估读 0.50-0.75)
+  - **交叉验证**: 已知点偏差检查，质量分级 (excellent/good/acceptable/poor)
+  - 新增 `specs/005-full-range-data-capture/` 规范目录
+  - 新增 `scripts/utils/curve_validator.py` 曲线数据验证模块
+  - 新增 v2.0 增强版 Skill 模板 (SKILL-stress-strain-v2.md, SKILL-dma-v2.md, SKILL-payne-v2.md, SKILL-dsc-v2.md)
+  - 更新 `specs/002-rag-data-migration/contracts/yaml-schema.md` 支持 curves 字段
+  - 数据丰富度目标: 应力-应变 5→15-20 点, DMA 3→15-20 点, Payne 4→10-15 点, DSC 1→10-15 点
 
 - 004-multi-literature-synthesis (2026-03-25):
   - **多文献综合**: 从"单样本检索"升级为"多文献综合推理"
@@ -218,6 +248,8 @@ python scripts/zotero_bridge.py list --with-pdf
 - **元数据导入流程**: AI 提取 Markdown 表格 → import_metadata.py 导入 Excel
 - **综合推理模式**: SINGLE (单样本) / SYNTHESIS (多文献综合) / COMPARISON (对比分析) / FORMULA (配方设计)
 - **外推边界规则**: 仅允许数据范围外 50% 的外推，外推结果必须标注置信度
+- **全范围曲线数据**: 从图像中估读连续数据点（10-20个），存储在 YAML `curves` 字段中，支持 stress_strain、dma_tan_delta、payne_storage_modulus、dsc_heat_flow 四种曲线类型
+- **曲线置信度规则**: L1 来源置信度 0.90-0.95，L2 来源 0.85，L3 估读 0.50-0.75；交叉验证偏差 <10% 为 good，<15% 为 acceptable
 
 <!-- MANUAL ADDITIONS START -->
 <!-- MANUAL ADDITIONS END -->

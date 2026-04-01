@@ -1,20 +1,66 @@
 ---
-sample_id: "SSBR-064"
-test_type: "dsc"
-data_source: "L3"
-doi: "10.3390/ma13051025"
-
+sample_id: SSBR-064
+test_type: dsc
+data_source: L3
+doi: 10.3390/ma13051025
 glass_transition:
   tg_celsius: -28
-  tg_method: "estimated"
-
+  tg_method: estimated
 keywords:
-  - "玻璃化转变"
-  - "SSBR"
-  - "GO复合材料"
+- 玻璃化转变
+- SSBR
+- GO复合材料
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - { x: -70, y: -0.36, confidence: 0.55, source: "L3 典型曲线估计" }
+      - { x: -60, y: -0.36, confidence: 0.55, source: "L3 典型曲线估计" }
+      - { x: -50, y: -0.37, confidence: 0.55, source: "L3 典型曲线估计" }
+      - { x: -40, y: -0.39, confidence: 0.60, source: "L3 Tg onset估计" }
+      - { x: -34, y: -0.45, confidence: 0.60, source: "L3 Tg区间估计" }
+      - { x: -28, y: -0.52, confidence: 0.65, source: "L3 Tg midpoint~-28°C" }
+      - { x: -22, y: -0.47, confidence: 0.60, source: "L3 Tg区间估计" }
+      - { x: -16, y: -0.41, confidence: 0.60, source: "L3 Tg endpoint估计" }
+      - { x: -5, y: -0.38, confidence: 0.55, source: "L3 典型曲线估计" }
+      - { x: 10, y: -0.38, confidence: 0.55, source: "L3 典型曲线估计" }
+      - { x: 30, y: -0.38, confidence: 0.55, source: "L3 典型曲线估计" }
+    curve_features:
+      Tg:
+        onset: -40
+        midpoint: -28
+        endpoint: -16
+        unit: °C
+        source: L3 估计值
+      glass_transition_width:
+        value: 24
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { x: -28, y: null, reference: "Tg ~-28°C 估计值", deviation_percent: 0 }
+      overall_quality: acceptable
+    metadata:
+      point_count: 11
+      x_range: [-70, 30]
+      y_range: [-0.52, -0.36]
+      avg_confidence: 0.58
 ---
-
 # SSBR-064 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本背景
 

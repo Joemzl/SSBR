@@ -1,67 +1,205 @@
 ---
 sample_id: SSBR-017
 interpretation_type: mechanical
-source_figure: "Table 4, Figure 7"
-source_doi: "10.1021/acs.iecr.6b04146"
+source_figure: Table 4, Figure 7
+source_doi: 10.1021/acs.iecr.6b04146
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-  - dma
-
+- stress-strain
+- dma
 data:
-  # ========== 应力-应变数据 ==========
   stress_100:
     value: 2.6
     range: null
     unit: MPa
-    source: "Table 4"
+    source: Table 4
   stress_200:
     value: 8.4
     range: null
     unit: MPa
-    source: "Table 4"
+    source: Table 4
   stress_300:
     value: null
     range: null
     unit: MPa
-    source: ""
+    source: ''
   tensile_strength:
     value: 14.1
     range: null
     unit: MPa
-    source: "Table 4"
+    source: Table 4
   elongation:
     value: 264
     range: null
-    unit: "%"
-    source: "Table 4"
-  mechanical_source: "Table 4"
+    unit: '%'
+    source: Table 4
+  mechanical_source: Table 4
   hardness:
     value: 63
-    unit: "Shore A"
-    source: "Table 4"
-  
-  # ========== DMA 数据 ==========
+    unit: Shore A
+    source: Table 4
   tg_dma:
     value: null
-    unit: "℃"
-    source: "Figure 7"
-    note: "从 Figure 7 曲线可见 SSBR 的 Tg 峰在约 -20℃ 附近"
+    unit: ℃
+    source: Figure 7
+    note: 从 Figure 7 曲线可见 SSBR 的 Tg 峰在约 -20℃ 附近
   tan_delta_0c:
     value: null
-    unit: "-"
-    source: "Figure 7"
-    note: "从曲线估读，高于 blank"
+    unit: '-'
+    source: Figure 7
+    note: 从曲线估读，高于 blank
   tan_delta_60c:
     value: null
-    unit: "-"
-    source: "Figure 7"
-    note: "从曲线估读，低于 blank"
----
+    unit: '-'
+    source: Figure 7
+    note: 从曲线估读，低于 blank
+skill_version: '2.0'
+curves:
+  # ---------- 应力-应变曲线 (基于 Table 4 数据点估读) ----------
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      # 已知: 100% → 2.6 MPa, 200% → 8.4 MPa, 断裂 264% → 14.1 MPa
+      # SiR/SSBR 共混体系，TMPMP 一步法交联
+      - {x: 0, y: 0, confidence: 1.0, source: "L1"}
+      - {x: 20, y: 0.3, confidence: 0.60, source: "L3"}
+      - {x: 40, y: 0.6, confidence: 0.60, source: "L3"}
+      - {x: 60, y: 1.1, confidence: 0.60, source: "L3"}
+      - {x: 80, y: 1.7, confidence: 0.60, source: "L3"}
+      - {x: 100, y: 2.6, confidence: 0.95, source: "L1"}  # Table 4 验证点
+      - {x: 130, y: 3.8, confidence: 0.65, source: "L3"}
+      - {x: 160, y: 5.5, confidence: 0.65, source: "L3"}
+      - {x: 200, y: 8.4, confidence: 0.95, source: "L1"}  # Table 4 验证点
+      - {x: 220, y: 10.0, confidence: 0.65, source: "L3"}
+      - {x: 240, y: 12.0, confidence: 0.65, source: "L3"}
+      - {x: 264, y: 14.1, confidence: 0.95, source: "L1"}  # Table 4 断裂点
+    curve_features:
+      modulus_100:
+        value: 2.6
+        unit: MPa
+        source: "L1"
+        confidence: 0.95
+      modulus_200:
+        value: 8.4
+        unit: MPa
+        source: "L1"
+        confidence: 0.95
+      modulus_300:
+        value: null
+        unit: MPa
+        source: "断裂伸长率264%，未达300%定伸"
+        confidence: null
+      tensile_strength:
+        value: 14.1
+        unit: MPa
+        source: "L1"
+        confidence: 0.95
+      elongation_at_break:
+        value: 264
+        unit: '%'
+        source: "L1"
+        confidence: 0.95
+      hardness:
+        value: 63
+        unit: Shore A
+        source: "L1"
+        confidence: 0.95
+      yield_point:
+        exists: false
+        note: "典型的橡胶应变硬化曲线"
+    validation:
+      known_points:
+        - strain: 100
+          stress_expected: 2.6
+          stress_estimated: 2.6
+          deviation_percent: 0.0
+        - strain: 200
+          stress_expected: 8.4
+          stress_estimated: 8.4
+          deviation_percent: 0.0
+        - strain: 264
+          stress_expected: 14.1
+          stress_estimated: 14.1
+          deviation_percent: 0.0
+      overall_quality: "good"
+    metadata:
+      point_count: 12
+      x_range: [0, 264]
+      y_range: [0, 14.1]
+      avg_confidence: 0.75
 
+  # ---------- DMA tan δ-温度曲线 (Figure 7) ----------
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: 无量纲
+    data_points:
+      # 基于 Figure 7 中 one-step 曲线估读
+      # Tg 峰在约 -20°C 附近（SSBR 2466 典型值）
+      - {x: -80, y: 0.02, confidence: 0.55, source: "L3"}
+      - {x: -60, y: 0.04, confidence: 0.55, source: "L3"}
+      - {x: -50, y: 0.06, confidence: 0.55, source: "L3"}
+      - {x: -40, y: 0.12, confidence: 0.60, source: "L3"}
+      - {x: -30, y: 0.35, confidence: 0.60, source: "L3"}
+      - {x: -20, y: 0.72, confidence: 0.65, source: "L3"}  # 峰值附近
+      - {x: -15, y: 0.60, confidence: 0.60, source: "L3"}
+      - {x: -10, y: 0.42, confidence: 0.60, source: "L3"}
+      - {x: 0, y: 0.25, confidence: 0.60, source: "L3"}
+      - {x: 10, y: 0.17, confidence: 0.55, source: "L3"}
+      - {x: 20, y: 0.12, confidence: 0.55, source: "L3"}
+      - {x: 40, y: 0.08, confidence: 0.55, source: "L3"}
+      - {x: 60, y: 0.06, confidence: 0.55, source: "L3"}
+      - {x: 80, y: 0.04, confidence: 0.55, source: "L3"}
+    curve_features:
+      tan_delta_0C:
+        value: 0.25
+        unit: "-"
+        source: "L3"
+        confidence: 0.60
+        note: "湿地抓地力指标（估读），略高于 blank"
+      tan_delta_60C:
+        value: 0.06
+        unit: "-"
+        source: "L3"
+        confidence: 0.55
+        note: "滚动阻力指标（估读），低于 blank"
+      tan_delta_max:
+        value: 0.72
+        temperature: -20
+        unit: "-"
+        source: "L3"
+        confidence: 0.60
+      Tg:
+        value: -20
+        unit: °C
+        method: peak
+        source: "L3"
+        confidence: 0.60
+        note: "从 Figure 7 估读，SSBR 2466 典型 Tg 约 -20°C"
+    validation:
+      known_points: []
+      overall_quality: "acceptable"
+      note: "DMA 数据全部来自曲线估读，无表格验证点"
+    metadata:
+      point_count: 14
+      x_range: [-80, 80]
+      y_range: [0.02, 0.72]
+      avg_confidence: 0.57
+---
 # SSBR-017 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本信息
 

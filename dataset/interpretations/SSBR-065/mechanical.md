@@ -1,19 +1,98 @@
 ---
-sample_id: "SSBR-065"
-test_type: "mechanical"
+sample_id: SSBR-065
+test_type: mechanical
 data_completeness:
   stress_strain: true
   payne_effect: false
   dma: true
-data_source: "L1"
+data_source: L1
 key_findings:
-  - "TAD 点击化学在预交联 SSBR 中构建牺牲氢键"
-  - "模量随 TAD 接枝比例增加显著提升"
-  - "氢键簇作为牺牲键促进能量耗散"
-  - "迟滞能随 TAD 接枝量增加"
+- TAD 点击化学在预交联 SSBR 中构建牺牲氢键
+- 模量随 TAD 接枝比例增加显著提升
+- 氢键簇作为牺牲键促进能量耗散
+- 迟滞能随 TAD 接枝量增加
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: dimensionless
+    note: "SSBR-TAD-5.32样品，双损耗峰特征"
+    data_points:
+      - { x: -80, y: 0.05, confidence: 0.75, source: "L2 DMA曲线估读" }
+      - { x: -70, y: 0.15, confidence: 0.75, source: "L2 估读" }
+      - { x: -65, y: 0.45, confidence: 0.80, source: "L2 估读 第一峰上升" }
+      - { x: -60, y: 0.75, confidence: 0.85, source: "L1 第一峰 Tg≈-60°C (SSBR基体)" }
+      - { x: -55, y: 0.50, confidence: 0.80, source: "L2 估读 第一峰下降" }
+      - { x: -50, y: 0.30, confidence: 0.75, source: "L2 估读" }
+      - { x: -40, y: 0.18, confidence: 0.70, source: "L2 估读" }
+      - { x: -20, y: 0.12, confidence: 0.70, source: "L2 估读" }
+      - { x: 0, y: 0.10, confidence: 0.70, source: "L2 估读" }
+      - { x: 20, y: 0.12, confidence: 0.70, source: "L2 估读 第二峰上升" }
+      - { x: 40, y: 0.18, confidence: 0.75, source: "L2 估读 第二峰区" }
+      - { x: 60, y: 0.22, confidence: 0.80, source: "L2 估读 第二峰 (氢键簇)" }
+      - { x: 80, y: 0.18, confidence: 0.75, source: "L2 估读 第二峰下降" }
+      - { x: 100, y: 0.12, confidence: 0.70, source: "L2 估读" }
+      - { x: 120, y: 0.08, confidence: 0.70, source: "L2 估读" }
+    curve_features:
+      Tg_first_peak:
+        value: -60
+        unit: °C
+        source: L1 DMA SSBR基体Tg
+        confidence: 0.85
+      second_transition_peak:
+        value: 60
+        unit: °C
+        source: L2 DMA 氢键簇热转变
+        confidence: 0.80
+      tan_delta_first_max:
+        value: 0.75
+        unit: dimensionless
+        source: L2 估读
+        confidence: 0.80
+      tan_delta_second_max:
+        value: 0.22
+        unit: dimensionless
+        source: L2 估读
+        confidence: 0.75
+      tan_delta_0C:
+        value: 0.10
+        unit: dimensionless
+        source: L2 estimated
+        confidence: 0.70
+      tan_delta_60C:
+        value: 0.22
+        unit: dimensionless
+        source: L2 第二峰值
+        confidence: 0.75
+      Tg:
+        value: -60
+        unit: °C
+        method: first_tan_delta_peak
+        source: L1 DMA
+        confidence: 0.85
+      dual_peak_behavior:
+        description: TAD接枝≥2.75%出现双损耗峰
+        source: 文献描述
+    validation:
+      known_points:
+        - { x: -60, y: 0.75, reference: "SSBR基体Tg≈-60°C", deviation_percent: 0 }
+        - { x: 60, y: 0.22, reference: "氢键簇第二转变", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 15
+      x_range: [-80, 120]
+      y_range: [0.05, 0.75]
+      avg_confidence: 0.74
 ---
-
 # SSBR-065 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

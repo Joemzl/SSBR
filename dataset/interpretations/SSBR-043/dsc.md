@@ -1,37 +1,79 @@
 ---
 sample_id: SSBR-043
 interpretation_type: dsc
-source_figure: "Fig.3, Fig.4"
-source_doi: "10.1002/app.28621"
+source_figure: Fig.3, Fig.4
+source_doi: 10.1002/app.28621
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-18
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg_dsc:
     value: null
-    unit: "℃"
-    source: "文献使用 DMTA 测定 Tg，未提供 DSC 数据"
+    unit: ℃
+    source: 文献使用 DMTA 测定 Tg，未提供 DSC 数据
   tg_dmta:
     value: null
-    unit: "℃"
-    source: "Fig.3, Fig.4 仅提供曲线图，未给出具体数值"
+    unit: ℃
+    source: Fig.3, Fig.4 仅提供曲线图，未给出具体数值
   tg_shift_vs_pure:
-    value: "+2"
-    unit: "℃"
-    description: "共凝聚橡胶 Tg 比纯 SSBR 高 2℃"
-    source: "文献正文"
+    value: '+2'
+    unit: ℃
+    description: 共凝聚橡胶 Tg 比纯 SSBR 高 2℃
+    source: 文献正文
   tg_shift_vs_blend:
-    value: "+2"
-    unit: "℃"
-    description: "N-SSBR/SiO2 复合材料 Tg 比 SSBR/SiO2 高 2℃"
-    source: "文献正文"
-  vinyl_effect: "高乙烯基含量导致 Tg 相对较高"
+    value: '+2'
+    unit: ℃
+    description: N-SSBR/SiO2 复合材料 Tg 比 SSBR/SiO2 高 2℃
+    source: 文献正文
+  vinyl_effect: 高乙烯基含量导致 Tg 相对较高
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: null
+        midpoint: null
+        endpoint: null
+        unit: °C
+        source: "文献使用DMTA测定，未给出具体Tg值，仅提供相对变化"
+      Tg_shift:
+        value: +2
+        unit: °C
+        reference: "vs SSBR/SiO2"
+        source: 文献正文
+      vinyl_effect:
+        note: "YK-2高乙烯基含量(46%)导致Tg最高"
+      glass_transition_width:
+        value: null
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: "无独立DSC曲线，Tg来自DMTA，YK-2系列因高乙烯基含量Tg最高"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # 热学性能解读：SSBR-043
 
 > **样本性质**: N-SSBR/SiO2 共凝聚纳米复合材料（YK-2-2），采用 AMMO 硅烷偶联剂改性
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

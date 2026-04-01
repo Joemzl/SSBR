@@ -2,30 +2,69 @@
 sample_id: SSBR-018
 interpretation_type: dsc
 source_figure: null
-source_doi: "10.1021/acs.iecr.8b05738"
+source_doi: 10.1021/acs.iecr.8b05738
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-18
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg:
     value: -17.4
     range: null
-    unit: "℃"
-    source: "Table 1"
+    unit: ℃
+    source: Table 1
   tg_pure_polymer:
     value: -17.4
     range: null
-    unit: "℃"
-    source: "Table 1"
-  thermal_source: "Table 1"
+    unit: ℃
+    source: Table 1
+  thermal_source: Table 1
   working_temp_window:
     value: null
-    unit: "℃"
-    source: ""
+    unit: ℃
+    source: ''
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: null
+        midpoint: -17.4
+        endpoint: null
+        unit: °C
+        source: "Table 1"
+        confidence: 0.95
+        note: "α-SSBR 纯聚合物 Tg，文献未提供 DSC 曲线图"
+      glass_transition_width:
+        value: null
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - temperature: -17.4
+          note: "Tg from Table 1 (L1 数据)"
+      overall_quality: "acceptable"
+      note: "有 Tg 数值 (Table 1) 但无 DSC 曲线图可供估读"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # DSC 热分析解读：SSBR-018
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、玻璃化转变
 

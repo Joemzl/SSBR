@@ -1,44 +1,35 @@
 ---
-# SSBR-046 热学性能解读
 sample_id: SSBR-046
 test_type: dsc_dma
-data_source: "10.1002/app.32372"
+data_source: 10.1002/app.32372
 data_quality: L1
-
-# 测试方法
 test_method:
-  instrument: "VA3000 DMTA (Rheometric Scientific)"
-  mode: "拉伸模式"
-  temperature_range: "-100°C to 100°C"
-  heating_rate: "3°C/min"
-  frequency: "10 Hz"
-  strain_amplitude: "0.1%"
-
-# DSC 数据状态
+  instrument: VA3000 DMTA (Rheometric Scientific)
+  mode: 拉伸模式
+  temperature_range: -100°C to 100°C
+  heating_rate: 3°C/min
+  frequency: 10 Hz
+  strain_amplitude: 0.1%
 dsc_data:
   traditional_dsc: false
   dmta_temperature_sweep: true
-
-# 玻璃化转变温度 (Table III)
 glass_transition:
   SiO2_CB_0_70:
     Tg: -30.1
-    unit: "°C"
+    unit: °C
   SiO2_CB_20_50:
     Tg: -29.1
-    unit: "°C"
+    unit: °C
   SiO2_CB_35_35:
     Tg: -30.5
-    unit: "°C"
+    unit: °C
   SiO2_CB_50_20:
     Tg: -29.6
-    unit: "°C"
+    unit: °C
   SiO2_CB_70_0:
     Tg: -28.0
-    unit: "°C"
-  Tg_shift_observation: "添加 SiO₂ 使 Tg 峰右移并展宽"
-
-# tan δ 温度扫描数据 (Table III)
+    unit: °C
+  Tg_shift_observation: 添加 SiO₂ 使 Tg 峰右移并展宽
 tan_delta_temperature:
   at_0C:
     SiO2_CB_0_70: 0.18
@@ -46,31 +37,67 @@ tan_delta_temperature:
     SiO2_CB_35_35: 0.22
     SiO2_CB_50_20: 0.22
     SiO2_CB_70_0: 0.21
-    significance: "湿抓地力指标"
+    significance: 湿抓地力指标
   at_60C:
     SiO2_CB_0_70: 0.12
     SiO2_CB_20_50: 0.11
     SiO2_CB_35_35: 0.11
     SiO2_CB_50_20: 0.13
     SiO2_CB_70_0: 0.12
-    significance: "滚动阻力指标"
-
-# 动态压缩生热 (Table II)
+    significance: 滚动阻力指标
 compression_heat_buildup:
   test_conditions:
-    preheating_time: "20 min"
-    compression_time: "25 min"
-    frequency: "1800 min⁻¹"
-    stroke: "4.45 mm"
-    load: "1 MPa"
+    preheating_time: 20 min
+    compression_time: 25 min
+    frequency: 1800 min⁻¹
+    stroke: 4.45 mm
+    load: 1 MPa
   results:
     SiO2_CB_0_70: 20.1
     SiO2_CB_20_50: 16.9
     SiO2_CB_35_35: 16.7
     SiO2_CB_50_20: 15.5
     SiO2_CB_70_0: 10.7
-    unit: "°C"
+    unit: °C
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: -33
+        midpoint: -29.1
+        endpoint: -25
+        unit: °C
+        source: DMTA Table III (SiO2/CB=20/50)
+      glass_transition_width:
+        value: 8
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { temperature: -29.1, source: "Table III Tg (20/50)", deviation_percent: 0 }
+      overall_quality: good
+      note: "使用DMTA温度扫描数据，SiO2/CB=20/50实现魔三角性能平衡"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0.95
 ---
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 热学性能解读
 

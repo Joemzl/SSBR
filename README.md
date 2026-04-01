@@ -340,17 +340,34 @@ SSBR/
 │   └── app.py                       # Gradio Web 应用
 │
 ├── scripts/
-│   ├── rag_search.py                # RAG 检索引擎
-│   ├── qa_engine.py                 # 问答引擎
+│   ├── qa_engine.py                 # 问答引擎主入口
+│   ├── rag_search.py                # RAG 检索核心
+│   ├── answer_generator.py          # GPT 回答生成
+│   ├── reranker.py                  # 交叉编码器重排
+│   ├── quality_scorer.py            # 样本质量评估
+│   ├── models.py                    # 数据类定义
 │   ├── build_vector_cache.py        # 向量缓存构建
+│   ├── build_quality_cache.py       # 质量缓存构建
 │   ├── generate_summaries.py        # 批量生成 summary.md
 │   ├── init_new_sample.py           # 新样本初始化
 │   ├── import_metadata.py           # 元数据导入
-│   ├── reranker.py                  # 交叉编码器重排
-│   └── utils/                       # 工具函数库
-│       ├── vector_store.py          # ChromaDB 向量存储
-│       ├── embedding.py             # Embedding 服务
-│       └── ...
+│   ├── zotero_bridge.py             # Zotero 桥接工具
+│   ├── utils/                       # 工具函数库
+│   │   ├── vector_store.py          # ChromaDB 向量存储
+│   │   ├── embedding.py             # Embedding 服务
+│   │   ├── yaml_parser.py           # YAML 解析
+│   │   ├── excel_handler.py         # Excel 读写
+│   │   ├── prompt_templates.py      # Prompt 模板
+│   │   └── ...
+│   ├── synthesis/                   # 多文献综合模块
+│   │   ├── aggregator.py            # 样本聚合
+│   │   ├── trend_analyzer.py        # 趋势分析
+│   │   ├── extrapolator.py          # 外推估计
+│   │   ├── formula_designer.py      # 配方设计
+│   │   └── ...
+│   ├── evaluation/                  # 评测模块
+│   │   └── ragas_evaluator.py       # RAGAS 评测
+│   └── archive/                     # 归档的临时脚本
 │
 ├── skills/                          # CodeBuddy AI Skills
 │   ├── ssbr-recommender/            # RAG 推荐 Skill
@@ -401,6 +418,79 @@ SSBR/
 ### 4. 交叉编码器重排
 
 使用 `bge-reranker-base` 模型对检索结果进行精排，提升检索精度。
+
+---
+
+## Scripts 模块详解
+
+### 核心模块依赖关系
+
+```
+qa_engine.py (主入口)
+├── rag_search.py (检索)
+│   └── utils/vector_store.py (ChromaDB)
+│   └── utils/embedding.py (OpenAI Embedding)
+├── reranker.py (重排)
+├── quality_scorer.py (质量评估)
+├── answer_generator.py (GPT生成)
+│   └── utils/prompt_templates.py
+└── synthesis/ (多文献综合)
+    ├── aggregator.py
+    ├── trend_analyzer.py
+    └── extrapolator.py
+```
+
+### utils/ - 工具函数库
+
+| 文件 | 用途 |
+|------|------|
+| `yaml_parser.py` | YAML front matter 解析 |
+| `excel_handler.py` | Excel 数据读写 (数据.xlsx) |
+| `embedding.py` | OpenAI Embedding API 封装 |
+| `similarity.py` | 余弦相似度计算、相关性分类 |
+| `validators.py` | 数据验证（样本ID、YAML字段） |
+| `query_preprocessor.py` | 查询预处理（分词、同义词扩展） |
+| `vector_store.py` | ChromaDB 向量存储封装 |
+| `vector_cache.py` | 向量缓存管理（性能优化） |
+| `prompt_templates.py` | GPT Prompt 模板 |
+| `exceptions.py` | 自定义异常类 |
+| `llm_client.py` | LLM API 客户端封装 |
+| `curve_validator.py` | 曲线数据验证 |
+
+### synthesis/ - 多文献综合模块
+
+实现多文献综合推理功能 (Feature 004)。
+
+| 文件 | 用途 |
+|------|------|
+| `aggregator.py` | 样本聚合器 - 提取和聚合多个样本摘要 |
+| `trend_analyzer.py` | 趋势分析器 - 识别数据趋势和规律 |
+| `extrapolator.py` | 外推估计器 - 保守外推（50%边界） |
+| `formula_designer.py` | 配方设计器 - 根据目标性能生成配方建议 |
+| `comparison_table.py` | 对比表格生成器 - 多方案结构化对比 |
+| `citation_validator.py` | 引用验证器 - 验证和格式化引用 |
+| `hallucination_validator.py` | 幻觉验证器 - 确保数据可追溯 |
+
+### evaluation/ - 评测模块
+
+| 文件 | 用途 |
+|------|------|
+| `ragas_evaluator.py` | RAGAS 评测框架 - 评估检索和生成质量 |
+
+### 批处理脚本
+
+| 文件 | 用途 |
+|------|------|
+| `batch_generate_docs.py` | 批量生成解读文档 |
+| `batch_interpret.py` | 批量调用解读 Skill |
+| `batch_migrate_v2.py` | 批量迁移到 v2 格式 |
+| `standardize_summaries.py` | 标准化 summary 格式 |
+| `migrate_excel_data.py` | Excel 数据迁移 |
+| `validate_migration.py` | 验证迁移结果 |
+
+### archive/ - 归档脚本
+
+包含 57 个已归档的临时脚本（一次性数据检查、修复脚本），不再日常使用。
 
 ---
 

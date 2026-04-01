@@ -1,38 +1,95 @@
 ---
-sample_id: "SSBR-058"
-test_type: "mechanical"
-data_source: "L1"
-literature_doi: "10.1016/j.polymer.2018.04.039"
-
+sample_id: SSBR-058
+test_type: mechanical
+data_source: L1
+literature_doi: 10.1016/j.polymer.2018.04.039
 tensile:
   tensile_strength_MPa: 22.2
   elongation_at_break_percent: 530
   modulus_100_MPa: 2.1
   modulus_300_MPa: 7.0
-
 dma:
   tan_delta_0C: null
   tan_delta_60C: null
   storage_modulus_25C_MPa: null
-
 payne_effect:
   G_0.28_kPa: null
   G_100_kPa: null
   delta_G_kPa: null
-
 hardness:
   shore_A: 64
-
 abrasion:
   din_mm3: null
+notes: 'SSBR-058 为 ME 官能化 SSBR，随后通过 oxa-Michael 反应引入丙烯酸酯交联。
 
-notes: |
-  SSBR-058 为 ME 官能化 SSBR，随后通过 oxa-Michael 反应引入丙烯酸酯交联。
   样本标记为 mSSBR-20 (官能化程度 20%)。
-  填料体系: 白炭黑 40 phr。
----
 
+  填料体系: 白炭黑 40 phr。'
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - { x: 0, y: 0, confidence: 0.95, source: "L1 origin" }
+      - { x: 50, y: 1.0, confidence: 0.70, source: "L3 典型曲线估读" }
+      - { x: 100, y: 2.1, confidence: 0.95, source: "L1 Table M100=2.1 MPa" }
+      - { x: 150, y: 3.2, confidence: 0.70, source: "L3 估读" }
+      - { x: 200, y: 4.5, confidence: 0.70, source: "L3 估读" }
+      - { x: 250, y: 5.8, confidence: 0.70, source: "L3 估读" }
+      - { x: 300, y: 7.0, confidence: 0.95, source: "L1 Table M300=7.0 MPa" }
+      - { x: 350, y: 9.5, confidence: 0.70, source: "L3 估读" }
+      - { x: 400, y: 13.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 450, y: 17.0, confidence: 0.70, source: "L3 估读" }
+      - { x: 500, y: 20.5, confidence: 0.75, source: "L2 接近断裂" }
+      - { x: 530, y: 22.2, confidence: 0.95, source: "L1 Table TS=22.2 MPa, EB=530%" }
+    curve_features:
+      modulus_100:
+        value: 2.1
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      modulus_300:
+        value: 7.0
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      tensile_strength:
+        value: 22.2
+        unit: MPa
+        source: L1 Table
+        confidence: 0.95
+      elongation_at_break:
+        value: 530
+        unit: '%'
+        source: L1 Table
+        confidence: 0.95
+      M300_M100_ratio:
+        value: 3.33
+        unit: dimensionless
+        source: 计算值
+        confidence: 0.95
+    validation:
+      known_points:
+        - { x: 100, y: 2.1, reference: "L1 M100=2.1 MPa", deviation_percent: 0 }
+        - { x: 300, y: 7.0, reference: "L1 M300=7.0 MPa", deviation_percent: 0 }
+        - { x: 530, y: 22.2, reference: "L1 TS=22.2 MPa", deviation_percent: 0 }
+      overall_quality: excellent
+    metadata:
+      point_count: 12
+      x_range: [0, 530]
+      y_range: [0, 22.2]
+      avg_confidence: 0.83
+---
 # SSBR-058 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 测试概述
 

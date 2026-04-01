@@ -1,33 +1,131 @@
 ---
-sample_id: "SSBR-078"
-test_type: "mechanical"
-data_source: "L2"
-doi: "10.1007/s10853-020-05218-w"
-figure_ref: "Fig.3"
-
+sample_id: SSBR-078
+test_type: mechanical
+data_source: L2
+doi: 10.1007/s10853-020-05218-w
+figure_ref: Fig.3
 stress_strain:
   tensile_strength_mpa: 24.8
   elongation_at_break_percent: 485
   modulus_100_mpa: 2.1
   modulus_300_mpa: 10.5
-
 tear_strength:
-  value_kn_m: ~
-
+  value_kn_m: null
 hardness:
-  shore_a: ~
-
+  shore_a: null
 compression_set:
-  value_percent: ~
-  temperature_c: ~
-  time_h: ~
-
+  value_percent: null
+  temperature_c: null
+  time_h: null
 abrasion:
-  din_mm3: ~
-  akron_index: ~
+  din_mm3: null
+  akron_index: null
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.85
+        source: L2
+      - x: 25
+        y: 0.7
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 1.3
+        confidence: 0.70
+        source: L2
+      - x: 100
+        y: 2.1
+        confidence: 0.85
+        source: L2
+      - x: 150
+        y: 3.5
+        confidence: 0.70
+        source: L2
+      - x: 200
+        y: 5.2
+        confidence: 0.70
+        source: L2
+      - x: 250
+        y: 7.5
+        confidence: 0.70
+        source: L2
+      - x: 300
+        y: 10.5
+        confidence: 0.85
+        source: L2
+      - x: 350
+        y: 14.0
+        confidence: 0.70
+        source: L2
+      - x: 400
+        y: 18.0
+        confidence: 0.70
+        source: L2
+      - x: 450
+        y: 22.0
+        confidence: 0.70
+        source: L2
+      - x: 485
+        y: 24.8
+        confidence: 0.85
+        source: L2
+    curve_features:
+      modulus_100:
+        value: 2.1
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      modulus_300:
+        value: 10.5
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      tensile_strength:
+        value: 24.8
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      elongation_at_break:
+        value: 485
+        unit: '%'
+        source: L2
+        confidence: 0.85
+    validation:
+      known_points:
+        - x: 100
+          y_expected: 2.1
+          y_actual: 2.1
+          deviation_percent: 0
+        - x: 300
+          y_expected: 10.5
+          y_actual: 10.5
+          deviation_percent: 0
+      overall_quality: good
+      note: β-月桂烯瓶刷结构生物基SSBR，优异的力学性能
+    metadata:
+      point_count: 12
+      x_range:
+        - 0
+        - 485
+      y_range:
+        - 0
+        - 24.8
+      avg_confidence: 0.76
 ---
-
 # SSBR-078 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

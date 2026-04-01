@@ -4,12 +4,81 @@ test_type: mechanical
 data_source: L2
 doi: 10.1016/j.polymer.2010.03.006
 figures:
-  - id: Fig.5
-    type: tan_delta
-    description: 损耗因子温度扫描
+- id: Fig.5
+  type: tan_delta
+  description: 损耗因子温度扫描
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: dimensionless
+    data_points:
+      - { x: -80, y: 0.03, confidence: 0.70, source: "L2 Fig.5 估读 (TBCSi-SSBR)" }
+      - { x: -60, y: 0.06, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: -50, y: 0.12, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: -40, y: 0.30, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: -35, y: 0.55, confidence: 0.75, source: "L2 Fig.5 估读" }
+      - { x: -30, y: 0.78, confidence: 0.75, source: "L2 Fig.5 估读" }
+      - { x: -25, y: 0.90, confidence: 0.80, source: "L2 Fig.5 peak ~0.9" }
+      - { x: -20, y: 0.82, confidence: 0.75, source: "L2 Fig.5 估读" }
+      - { x: -15, y: 0.60, confidence: 0.75, source: "L2 Fig.5 估读" }
+      - { x: -10, y: 0.40, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 0, y: 0.22, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 10, y: 0.15, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 20, y: 0.12, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 30, y: 0.10, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 40, y: 0.09, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 50, y: 0.08, confidence: 0.70, source: "L2 Fig.5 估读" }
+      - { x: 60, y: 0.07, confidence: 0.70, source: "L2 Fig.5 估读" }
+    curve_features:
+      Tg_tan_delta_peak:
+        value: -25
+        unit: °C
+        source: Fig.5 TBCSi-SSBR peak
+        confidence: 0.80
+      tan_delta_max:
+        value: 0.90
+        unit: dimensionless
+        source: Fig.5 ~0.9 (比对照~1.2低)
+        confidence: 0.80
+      tan_delta_0C:
+        value: 0.22
+        unit: dimensionless
+        source: L3 estimated from Fig.5
+        confidence: 0.70
+      tan_delta_60C:
+        value: 0.07
+        unit: dimensionless
+        source: L3 estimated from Fig.5
+        confidence: 0.70
+      Tg:
+        value: -25
+        unit: °C
+        method: tan_delta_peak
+        source: Fig.5
+        confidence: 0.80
+      peak_broadening:
+        description: TBCSi官能化导致峰变宽
+        source: Fig.5
+    validation:
+      known_points:
+        - { x: -25, y: 0.90, reference: "tan δ max ~0.9", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 17
+      x_range: [-80, 60]
+      y_range: [0.03, 0.90]
+      avg_confidence: 0.72
 ---
-
 # SSBR-051 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本信息
 

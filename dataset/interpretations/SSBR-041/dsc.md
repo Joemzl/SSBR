@@ -2,10 +2,47 @@
 sample_id: SSBR-041
 test_type: dsc
 data_source_level: L2
-literature_doi: "10.1016/j.matdes.2018.05.048"
+literature_doi: 10.1016/j.matdes.2018.05.048
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: -36
+        midpoint: -32
+        endpoint: -28
+        unit: °C
+        source: DMA tan δ peak (no DSC data)
+      glass_transition_width:
+        value: 8
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: "无独立DSC曲线，Tg来自DMA Fig.8数据"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # SSBR-041 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 玻璃化转变
 

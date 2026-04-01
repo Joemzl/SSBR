@@ -1,37 +1,74 @@
 ---
-sample_id: "SSBR-034"
-test_type: "mechanical"
-data_source: "L2"
-literature_doi: "10.1016/j.cej.2019.04.215"
-
+sample_id: SSBR-034
+test_type: mechanical
+data_source: L2
+literature_doi: 10.1016/j.cej.2019.04.215
 tensile:
   tensile_strength_MPa: null
   elongation_at_break_percent: null
   modulus_100_MPa: null
   modulus_300_MPa: null
-
 dma:
   tan_delta_0C: null
   tan_delta_60C: null
   storage_modulus_25C_MPa: null
-
 payne_effect:
   G_0.28_kPa: null
   G_100_kPa: null
   delta_G_kPa: null
-
 hardness:
   shore_A: null
-
 abrasion:
   din_mm3: null
+notes: '本文献主要研究 TMPMP/SBR 超疏水涂层的表面性质，非传统力学性能测试。
 
-notes: |
-  本文献主要研究 TMPMP/SBR 超疏水涂层的表面性质，非传统力学性能测试。
-  涂层厚度约 5μm，应用于纸张基材。
+  涂层厚度约 5μm，应用于纸张基材。'
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: "超疏水涂层研究，无传统力学测试"
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: "超疏水涂层研究，无传统力学测试"
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: "超疏水涂层研究，无传统力学测试"
+        confidence: null
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: "超疏水涂层研究，无传统力学测试"
+        confidence: null
+    validation:
+      known_points: []
+      overall_quality: poor
+      quality_note: "文献 10.1016/j.cej.2019.04.215 研究超疏水涂层技术，未进行传统拉伸、DMA等力学性能测试"
+    metadata:
+      point_count: 0
+      x_range: [0, 0]
+      y_range: [0, 0]
+      avg_confidence: 0
 ---
-
 # SSBR-034 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 测试概述
 

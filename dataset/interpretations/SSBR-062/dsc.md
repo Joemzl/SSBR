@@ -1,17 +1,69 @@
 ---
-sample_id: "SSBR-062"
-test_type: "dsc"
+sample_id: SSBR-062
+test_type: dsc
 data_completeness:
   tg: true
   crystallization: false
   melting: false
-data_source: "L2"
+data_source: L2
 key_findings:
-  - "环氧化度增加导致 Tg 升高"
-  - "分子链极性增强，内旋转位阻增大"
+- 环氧化度增加导致 Tg 升高
+- 分子链极性增强，内旋转位阻增大
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    note: "E25-SSBR (25%环氧化度) 样品，环氧化使Tg升高"
+    data_points:
+      - { x: -60, y: -0.35, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: -50, y: -0.35, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: -40, y: -0.36, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: -30, y: -0.38, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: -22, y: -0.42, confidence: 0.75, source: "L2 Fig.3c Tg onset" }
+      - { x: -15, y: -0.52, confidence: 0.80, source: "L2 Fig.3c Tg区间 (环氧化升高)" }
+      - { x: -8, y: -0.48, confidence: 0.75, source: "L2 Fig.3c Tg区间" }
+      - { x: 0, y: -0.42, confidence: 0.75, source: "L2 Fig.3c Tg endpoint" }
+      - { x: 10, y: -0.38, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: 30, y: -0.38, confidence: 0.70, source: "L2 Fig.3c 估读" }
+      - { x: 50, y: -0.38, confidence: 0.70, source: "L2 Fig.3c 估读" }
+    curve_features:
+      Tg:
+        onset: -22
+        midpoint: -15
+        endpoint: 0
+        unit: °C
+        source: L2 Fig.3c E25-SSBR (比未改性高约15°C)
+      glass_transition_width:
+        value: 22
+        unit: °C
+      Tg_shift_vs_unmodified:
+        description: 环氧化25%使Tg升高约15°C
+        source: Fig.3c对比
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { x: -15, y: -0.52, reference: "Tg升高，环氧化效应", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 11
+      x_range: [-60, 50]
+      y_range: [-0.52, -0.35]
+      avg_confidence: 0.72
 ---
-
 # SSBR-062 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

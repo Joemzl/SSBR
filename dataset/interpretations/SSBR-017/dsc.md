@@ -2,27 +2,64 @@
 sample_id: SSBR-017
 interpretation_type: dsc
 source_figure: null
-source_doi: "10.1021/acs.iecr.6b04146"
+source_doi: 10.1021/acs.iecr.6b04146
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-18
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg:
     value: null
     range: null
-    unit: "℃"
-    source: ""
-    note: "文献未提供 DSC 数据"
+    unit: ℃
+    source: ''
+    note: 文献未提供 DSC 数据
   tg_pure_polymer:
     value: null
     range: null
-    unit: "℃"
-    source: ""
-  thermal_source: "N/A - 文献未包含 DSC 测试"
+    unit: ℃
+    source: ''
+  thermal_source: N/A - 文献未包含 DSC 测试
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: null
+        midpoint: null
+        endpoint: null
+        unit: °C
+        source: "文献未包含 DSC 测试"
+        confidence: null
+        note: "DMA 数据见 mechanical.md，Tg 约 -20°C (SSBR 2466)"
+      glass_transition_width:
+        value: null
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献 (10.1021/acs.iecr.6b04146) 未进行 DSC 测试"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # SSBR-017 热学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 数据可用性
 

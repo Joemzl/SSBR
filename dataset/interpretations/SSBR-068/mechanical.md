@@ -1,28 +1,127 @@
 ---
-sample_id: "SSBR-068"
-test_type: "mechanical"
-data_source: "L1"
-doi: "10.1002/pen.23533"
-
+sample_id: SSBR-068
+test_type: mechanical
+data_source: L1
+doi: 10.1002/pen.23533
 tensile:
   tensile_strength_MPa: 16.5
   elongation_at_break_percent: 380
   modulus_100_MPa: 2.0
   modulus_300_MPa: 7.5
-
 filler_system:
-  primary_filler: "膨胀石墨 (EG)"
-  modifier: "羧基化丁苯橡胶 (XSBR)"
-  carbon_black: "有/无对比"
-
+  primary_filler: 膨胀石墨 (EG)
+  modifier: 羧基化丁苯橡胶 (XSBR)
+  carbon_black: 有/无对比
 keywords:
-  - "膨胀石墨"
-  - "XSBR增容"
-  - "纳米复合材料"
-  - "羧基官能化"
+- 膨胀石墨
+- XSBR增容
+- 纳米复合材料
+- 羧基官能化
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.95
+        source: L1
+      - x: 20
+        y: 0.6
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 1.2
+        confidence: 0.70
+        source: L2
+      - x: 100
+        y: 2.0
+        confidence: 0.95
+        source: L1
+      - x: 150
+        y: 3.2
+        confidence: 0.70
+        source: L2
+      - x: 200
+        y: 4.6
+        confidence: 0.70
+        source: L2
+      - x: 250
+        y: 6.0
+        confidence: 0.70
+        source: L2
+      - x: 300
+        y: 7.5
+        confidence: 0.95
+        source: L1
+      - x: 330
+        y: 9.5
+        confidence: 0.65
+        source: L3
+      - x: 355
+        y: 12.5
+        confidence: 0.65
+        source: L3
+      - x: 370
+        y: 15.0
+        confidence: 0.65
+        source: L3
+      - x: 380
+        y: 16.5
+        confidence: 0.95
+        source: L1
+    curve_features:
+      modulus_100:
+        value: 2.0
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      modulus_300:
+        value: 7.5
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      tensile_strength:
+        value: 16.5
+        unit: MPa
+        source: L1
+        confidence: 0.95
+      elongation_at_break:
+        value: 380
+        unit: '%'
+        source: L1
+        confidence: 0.95
+    validation:
+      known_points:
+        - x: 100
+          y_expected: 2.0
+          y_actual: 2.0
+          deviation_percent: 0
+        - x: 300
+          y_expected: 7.5
+          y_actual: 7.5
+          deviation_percent: 0
+      overall_quality: good
+    metadata:
+      point_count: 12
+      x_range:
+        - 0
+        - 380
+      y_range:
+        - 0
+        - 16.5
+      avg_confidence: 0.80
 ---
-
 # SSBR-068 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本背景
 

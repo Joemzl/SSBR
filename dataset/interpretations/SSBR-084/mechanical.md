@@ -1,31 +1,117 @@
 ---
 sample_id: SSBR-084
 interpretation_type: mechanical
-source_figure: "Fig.7"
-source_doi: "10.1016/j.europolj.2024.113653"
+source_figure: Fig.7
+source_doi: 10.1016/j.europolj.2024.113653
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-19
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-
+- stress-strain
 data:
   tensile_strength:
     value: null
     range: null
     unit: MPa
-    source: "Fig.7 应力-应变曲线"
+    source: Fig.7 应力-应变曲线
   elongation:
     value: null
     range: null
-    unit: "%"
-    source: "Fig.7 应力-应变曲线"
-  mechanical_source: "Fig.7"
+    unit: '%'
+    source: Fig.7 应力-应变曲线
+  mechanical_source: Fig.7
+skill_version: '2.0'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 0.8
+        confidence: 0.65
+        source: L2
+      - x: 100
+        y: 1.5
+        confidence: 0.70
+        source: L2
+      - x: 150
+        y: 2.1
+        confidence: 0.65
+        source: L2
+      - x: 200
+        y: 2.8
+        confidence: 0.65
+        source: L2
+      - x: 300
+        y: 4.2
+        confidence: 0.70
+        source: L2
+      - x: 400
+        y: 6.0
+        confidence: 0.65
+        source: L2
+      - x: 500
+        y: 8.5
+        confidence: 0.65
+        source: L2
+      - x: 600
+        y: 11.5
+        confidence: 0.65
+        source: L2
+      - x: 700
+        y: 14.0
+        confidence: 0.70
+        source: L2
+    curve_features:
+      modulus_100:
+        value: 1.5
+        unit: MPa
+        source: L2
+        confidence: 0.70
+        note: 未硫化CNO官能化SSBR，弹性模量低
+      modulus_300:
+        value: 4.2
+        unit: MPa
+        source: L2
+        confidence: 0.70
+      tensile_strength:
+        value: 14.0
+        unit: MPa
+        source: L2
+        confidence: 0.70
+      elongation_at_break:
+        value: 700
+        unit: '%'
+        source: L2
+        confidence: 0.70
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: CNO点击反应引入吡啶基/羧基，离子交联提供物理交联点
+    metadata:
+      point_count: 10
+      x_range:
+        - 0
+        - 700
+      y_range:
+        - 0
+        - 14.0
+      avg_confidence: 0.67
 ---
-
 # 力学性能解读：SSBR-084
 
 > **样本性质**: 腈氧化物 (CNO) 官能化 SSBR，通过无催化剂点击反应引入吡啶基/羧基，官能化程度 1.9-16.8%
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

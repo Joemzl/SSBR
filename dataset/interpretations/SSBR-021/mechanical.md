@@ -7,9 +7,133 @@ data_confidence: high
 has_stress_strain: true
 has_payne_effect: false
 has_dma: true
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - {x: 0, y: 0, confidence: 0.95, source: "L1"}
+      - {x: 50, y: 2.5, confidence: 0.65, source: "L3"}
+      - {x: 100, y: 4.8, confidence: 0.65, source: "L3"}
+      - {x: 150, y: 6.5, confidence: 0.65, source: "L3"}
+      - {x: 200, y: 8.0, confidence: 0.65, source: "L3"}
+      - {x: 250, y: 9.8, confidence: 0.65, source: "L3"}
+      - {x: 300, y: 11.9, confidence: 0.95, source: "L1"}
+      - {x: 350, y: 14.5, confidence: 0.65, source: "L3"}
+      - {x: 400, y: 17.2, confidence: 0.65, source: "L3"}
+      - {x: 450, y: 19.8, confidence: 0.65, source: "L3"}
+      - {x: 498, y: 22.1, confidence: 0.95, source: "L1"}
+    curve_features:
+      modulus_100:
+        value: 4.8
+        unit: MPa
+        source: L3 estimated
+        confidence: 0.65
+      modulus_300:
+        value: 11.9
+        unit: MPa
+        source: Table 3
+        confidence: 0.95
+      tensile_strength:
+        value: 22.1
+        unit: MPa
+        source: Table 3
+        confidence: 0.95
+      elongation_at_break:
+        value: 498
+        unit: '%'
+        source: Table 3
+        confidence: 0.95
+    validation:
+      known_points:
+        - strain: 300
+          stress_expected: 11.9
+          stress_estimated: 11.9
+          deviation_percent: 0.0
+        - strain: 498
+          stress_expected: 22.1
+          stress_estimated: 22.1
+          deviation_percent: 0.0
+      overall_quality: good
+    metadata:
+      point_count: 11
+      x_range: [0, 498]
+      y_range: [0, 22.1]
+      avg_confidence: 0.77
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: 无量纲
+    data_points:
+      - {x: -60, y: 0.08, confidence: 0.60, source: "L3"}
+      - {x: -50, y: 0.15, confidence: 0.60, source: "L3"}
+      - {x: -40, y: 0.35, confidence: 0.60, source: "L3"}
+      - {x: -30, y: 0.55, confidence: 0.60, source: "L3"}
+      - {x: -25, y: 0.62, confidence: 0.60, source: "L3"}
+      - {x: -22, y: 0.65, confidence: 0.70, source: "L3"}
+      - {x: -20, y: 0.63, confidence: 0.60, source: "L3"}
+      - {x: -15, y: 0.58, confidence: 0.60, source: "L3"}
+      - {x: -10, y: 0.50, confidence: 0.60, source: "L3"}
+      - {x: 0, y: 0.42, confidence: 0.95, source: "L1"}
+      - {x: 10, y: 0.35, confidence: 0.60, source: "L3"}
+      - {x: 20, y: 0.28, confidence: 0.60, source: "L3"}
+      - {x: 30, y: 0.22, confidence: 0.60, source: "L3"}
+      - {x: 40, y: 0.16, confidence: 0.60, source: "L3"}
+      - {x: 50, y: 0.12, confidence: 0.60, source: "L3"}
+      - {x: 60, y: 0.08, confidence: 0.95, source: "L1"}
+      - {x: 70, y: 0.06, confidence: 0.60, source: "L3"}
+    curve_features:
+      tan_delta_0C:
+        value: 0.42
+        unit: '-'
+        source: Figure 6
+        confidence: 0.95
+      tan_delta_60C:
+        value: 0.08
+        unit: '-'
+        source: Figure 6
+        confidence: 0.95
+      tan_delta_max:
+        value: 0.65
+        unit: '-'
+        source: L3 estimated
+        confidence: 0.70
+      Tg:
+        value: -22
+        unit: °C
+        method: peak
+        source: Figure 6
+        confidence: 0.95
+    validation:
+      known_points:
+        - temperature: 0
+          tan_delta_expected: 0.42
+          tan_delta_estimated: 0.42
+          deviation_percent: 0.0
+        - temperature: 60
+          tan_delta_expected: 0.08
+          tan_delta_estimated: 0.08
+          deviation_percent: 0.0
+      overall_quality: good
+    metadata:
+      point_count: 17
+      x_range: [-60, 70]
+      y_range: [0.06, 0.65]
+      avg_confidence: 0.67
 ---
-
 # SSBR-021 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本信息
 

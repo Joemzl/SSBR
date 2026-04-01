@@ -1,31 +1,116 @@
 ---
-sample_id: "SSBR-081"
-test_type: "dsc"
-data_source: "L3"
-doi: "10.1002/vnl.21784"
-figure_ref: ~
-
+sample_id: SSBR-081
+test_type: dsc
+data_source: L3
+doi: 10.1002/vnl.21784
+figure_ref: null
 thermal_properties:
-  tg_onset_c: ~
+  tg_onset_c: null
   tg_midpoint_c: -50
-  tg_endpoint_c: ~
-  delta_cp_j_g_k: ~
-
+  tg_endpoint_c: null
+  delta_cp_j_g_k: null
 crystallization:
-  tc_c: ~
-  delta_hc_j_g: ~
-
+  tc_c: null
+  delta_hc_j_g: null
 melting:
-  tm_c: ~
-  delta_hm_j_g: ~
-
+  tm_c: null
+  delta_hm_j_g: null
 thermal_stability:
-  t5_percent_c: ~
-  t50_percent_c: ~
-  residue_percent: ~
+  t5_percent_c: null
+  t50_percent_c: null
+  residue_percent: null
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - x: -80
+        y: -0.38
+        confidence: 0.55
+        source: L3
+      - x: -70
+        y: -0.36
+        confidence: 0.55
+        source: L3
+      - x: -62
+        y: -0.32
+        confidence: 0.55
+        source: L3
+      - x: -57
+        y: -0.26
+        confidence: 0.60
+        source: L3
+        note: Tg onset
+      - x: -50
+        y: -0.10
+        confidence: 0.60
+        source: L3
+        note: Tg midpoint
+      - x: -43
+        y: 0.05
+        confidence: 0.60
+        source: L3
+        note: Tg endpoint
+      - x: -30
+        y: 0.08
+        confidence: 0.55
+        source: L3
+      - x: 0
+        y: 0.06
+        confidence: 0.55
+        source: L3
+      - x: 30
+        y: 0.04
+        confidence: 0.55
+        source: L3
+      - x: 60
+        y: 0.03
+        confidence: 0.55
+        source: L3
+    curve_features:
+      Tg:
+        onset: -57
+        midpoint: -50
+        endpoint: -43
+        unit: °C
+        source: L3
+      glass_transition_width:
+        value: 14
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - x: -50
+          parameter: Tg_midpoint
+          expected: -50
+          actual: -50
+          deviation_percent: 0
+      overall_quality: acceptable
+      note: 脂肪酸苄酯增塑作用和BR组分共同降低Tg
+    metadata:
+      point_count: 10
+      x_range:
+        - -80
+        - 60
+      y_range:
+        - -0.38
+        - 0.08
+      avg_confidence: 0.57
 ---
-
 # SSBR-081 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

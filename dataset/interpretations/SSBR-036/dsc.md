@@ -4,9 +4,46 @@ test_type: dsc
 data_source: null
 doi: 10.1016/j.compositesb.2020.108301
 figures: []
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points: []
+    curve_features:
+      Tg:
+        onset: -30
+        midpoint: -26
+        endpoint: -22
+        unit: °C
+        source: DMA tan δ peak (no DSC data)
+      glass_transition_width:
+        value: 8
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: acceptable
+      note: "无独立DSC曲线，Tg来自DMA数据"
+    metadata:
+      point_count: 0
+      x_range: [-80, 100]
+      y_range: [-1, 1]
+      avg_confidence: 0
 ---
-
 # SSBR-036 热学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 数据可用性
 

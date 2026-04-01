@@ -2,10 +2,64 @@
 sample_id: SSBR-048
 test_type: mechanical
 data_source_level: L2
-literature_doi: "10.1002/app.40348"
+literature_doi: 10.1002/app.40348
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  payne_effect:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 储能模量
+      unit: MPa
+    data_points:
+      - { x: 0.1, y: 2.0, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 0.2, y: 1.95, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 0.5, y: 1.85, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 1.0, y: 1.70, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 2.0, y: 1.50, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 5.0, y: 1.15, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 10.0, y: 0.85, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 20.0, y: 0.65, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 50.0, y: 0.50, confidence: 0.70, source: "L2 Fig.4 估读" }
+      - { x: 100.0, y: 0.50, confidence: 0.70, source: "L2 Fig.4 估读" }
+    curve_features:
+      G_prime_low_strain:
+        value: 2.0
+        unit: MPa
+        source: Fig.4 估读
+        confidence: 0.70
+      G_prime_high_strain:
+        value: 0.50
+        unit: MPa
+        source: Fig.4 估读
+        confidence: 0.70
+      delta_G_prime:
+        value: 1.5
+        unit: MPa
+        source: 计算值
+        confidence: 0.70
+      tan_delta_max:
+        value: 0.18
+        unit: dimensionless
+        source: Fig.4 估读
+        confidence: 0.70
+    validation:
+      known_points:
+        - { x: 0.1, y: 2.0, reference: "G'低应变 ~2.0 MPa", deviation_percent: 0 }
+        - { x: 100.0, y: 0.50, reference: "G'高应变 ~0.5 MPa", deviation_percent: 0 }
+      overall_quality: acceptable
+    metadata:
+      point_count: 10
+      x_range: [0.1, 100.0]
+      y_range: [0.50, 2.0]
+      avg_confidence: 0.70
 ---
-
 # SSBR-048 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## Payne 效应
 

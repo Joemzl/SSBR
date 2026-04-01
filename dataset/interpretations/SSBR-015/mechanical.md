@@ -1,53 +1,135 @@
 ---
 sample_id: SSBR-015
 interpretation_type: mechanical
-source_figure: "Fig.11, Table S4, Fig.10"
-source_doi: "10.1021/acs.iecr.6b02259"
+source_figure: Fig.11, Table S4, Fig.10
+source_doi: 10.1021/acs.iecr.6b02259
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - stress-strain
-  - payne
-
+- stress-strain
+- payne
 data:
-  # ========== 应力-应变数据 ==========
   stress_100:
     value: null
     range: null
     unit: MPa
-    source: "文献未提供"
+    source: 文献未提供
   stress_200:
     value: null
     range: null
     unit: MPa
-    source: "文献未提供"
+    source: 文献未提供
   stress_300:
     value: null
     range: null
     unit: MPa
-    source: "文献提供应力应变曲线但无具体数值"
+    source: 文献提供应力应变曲线但无具体数值
   tensile_strength:
-    description: "相比 SBDR-0 提高 43.8%"
-    source: "Table S4"
+    description: 相比 SBDR-0 提高 43.8%
+    source: Table S4
   elongation:
-    description: "相比 SBDR-0 提高 11.6%"
-    source: "Table S4"
-  mechanical_source: "L2"
-  
-  # ========== Payne 效应数据 ==========
+    description: 相比 SBDR-0 提高 11.6%
+    source: Table S4
+  mechanical_source: L2
   payne_effect:
-    description: "G∞'-G0' 随 DPES 含量增加而降低"
-    source: "Fig.10, Table S3"
+    description: G∞'-G0' 随 DPES 含量增加而降低
+    source: Fig.10, Table S3
   bound_rubber:
     value: 26.9
-    unit: "%"
-    source: "正文"
----
+    unit: '%'
+    source: 正文
+skill_version: '2.0'
+curves:
+  # ---------- 应力-应变曲线 (Fig. 11) ----------
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: "文献未提供绝对数值"
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: "文献仅提供图形曲线"
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: "Table S4"
+        confidence: null
+        note: "相比 SBDR-0 提高 43.8%"
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: "Table S4"
+        confidence: null
+        note: "相比 SBDR-0 提高 11.6%"
+      yield_point:
+        exists: false
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献仅提供百分比变化，无绝对数值，无法估读曲线"
+    metadata:
+      point_count: 0
+      x_range: [0, 0]
+      y_range: [0, 0]
+      avg_confidence: 0
 
+  # ---------- Payne 效应 G'-应变曲线 (Fig. 10) ----------
+  payne_storage_modulus:
+    x_axis:
+      label: 应变
+      unit: '%'
+      scale: logarithmic
+    y_axis:
+      label: 储能模量 G'
+      unit: MPa
+    data_points: []
+    curve_features:
+      G_prime_0:
+        value: null
+        unit: MPa
+        strain_at: 0.28
+        source: "Fig. 10"
+        confidence: null
+      G_prime_inf:
+        value: null
+        unit: MPa
+        strain_at: 42
+        source: "Fig. 10"
+        confidence: null
+      delta_G_prime:
+        value: null
+        unit: kPa
+        source: "Table S3"
+        confidence: null
+        note: "随 DPES 含量增加而降低"
+    validation:
+      known_points: []
+      overall_quality: "poor"
+      note: "文献仅提供趋势描述，无绝对数值"
+    metadata:
+      point_count: 0
+      x_range: [0.1, 100]
+      y_range: [0, 3]
+      avg_confidence: 0
+---
 # 力学性能解读：SSBR-015
 
 > **样本性质**: DPES 官能化 SSBR/炭黑复合材料（SBDR-5），5.1 wt% DPES 含量
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、基础信息
 

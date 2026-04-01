@@ -1,29 +1,76 @@
 ---
 sample_id: SSBR-030
 interpretation_type: dsc
-source_figure: "Table 6, Fig. 11"
-source_doi: "10.1039/c4ra09492a"
+source_figure: Table 6, Fig. 11
+source_doi: 10.1039/c4ra09492a
 skill_used: ssbr-dsc-interpretation
 created_at: 2026-03-18
-updated_at: null
-
+updated_at: '2026-03-31'
 data:
   tg:
     value: -23.9
-    unit: "℃"
-    source: "Table 6 (DSC)"
+    unit: ℃
+    source: Table 6 (DSC)
   tg_pure_polymer:
     value: -24.4
-    unit: "℃"
-    source: "Table 6"
+    unit: ℃
+    source: Table 6
   heat_capacity:
     value: 0.29
-    unit: "J/(g·K)"
-    source: "Table 7"
-  thermal_source: "DSC 测量"
+    unit: J/(g·K)
+    source: Table 7
+  thermal_source: DSC 测量
+skill_version: '2.0'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - { x: -60, y: -0.42, confidence: 0.60, source: L3 }
+      - { x: -50, y: -0.41, confidence: 0.60, source: L3 }
+      - { x: -40, y: -0.40, confidence: 0.60, source: L3 }
+      - { x: -32, y: -0.38, confidence: 0.65, source: L3 }
+      - { x: -28, y: -0.32, confidence: 0.70, source: L3 }
+      - { x: -25, y: -0.25, confidence: 0.75, source: L3 }
+      - { x: -23.9, y: -0.20, confidence: 0.95, source: L1 }
+      - { x: -22, y: -0.15, confidence: 0.75, source: L3 }
+      - { x: -18, y: -0.08, confidence: 0.70, source: L3 }
+      - { x: -10, y: -0.04, confidence: 0.60, source: L3 }
+      - { x: 0, y: -0.02, confidence: 0.60, source: L3 }
+      - { x: 20, y: 0.00, confidence: 0.60, source: L3 }
+    curve_features:
+      Tg:
+        onset: -28
+        midpoint: -23.9
+        endpoint: -18
+        unit: °C
+        source: Table 6 + L3 estimation
+      glass_transition_width:
+        value: 10
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - { x: -23.9, y: -0.20, reference: "Table 6 Tg midpoint", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 12
+      x_range: [-60, 20]
+      y_range: [-0.42, 0.00]
+      avg_confidence: 0.67
 ---
-
 # SSBR-030 热学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、玻璃化转变
 

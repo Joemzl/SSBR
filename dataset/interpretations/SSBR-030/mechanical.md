@@ -1,34 +1,166 @@
 ---
 sample_id: SSBR-030
 interpretation_type: mechanical
-source_figure: "Table 5, Table 6, Fig. 9"
-source_doi: "10.1039/c4ra09492a"
+source_figure: Table 5, Table 6, Fig. 9
+source_doi: 10.1039/c4ra09492a
 skill_used: ssbr-mechanical-interpretation
 created_at: 2026-03-18
-updated_at: null
+updated_at: '2026-03-31'
 mechanical_subtypes:
-  - payne
-  - dma
-
+- payne
+- dma
 data:
-  # ========== Payne 效应数据 ==========
   activation_energy:
     value: 17.7
-    unit: "kJ/mol"
-    source: "Table 5"
-  
-  # ========== DMA 数据 ==========
+    unit: kJ/mol
+    source: Table 5
   tg_dma:
     value: 0.1
-    unit: "℃"
-    source: "Table 6"
+    unit: ℃
+    source: Table 6
   tan_delta_max:
-    value: 1.30
-    unit: "-"
-    source: "Table 6"
+    value: 1.3
+    unit: '-'
+    source: Table 6
+skill_version: '2.0'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: v1.0 data
+        confidence: null
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: v1.0 data
+        confidence: null
+    validation:
+      known_points: []
+      overall_quality: pending
+    metadata:
+      point_count: 0
+      x_range:
+      - 0
+      - 0
+      y_range:
+      - 0
+      - 0
+      avg_confidence: 0
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: 无量纲
+    data_points:
+      - { x: -60, y: 0.03, confidence: 0.65, source: L3 }
+      - { x: -50, y: 0.04, confidence: 0.65, source: L3 }
+      - { x: -40, y: 0.06, confidence: 0.65, source: L3 }
+      - { x: -30, y: 0.10, confidence: 0.65, source: L3 }
+      - { x: -20, y: 0.20, confidence: 0.65, source: L3 }
+      - { x: -10, y: 0.55, confidence: 0.65, source: L3 }
+      - { x: 0, y: 1.20, confidence: 0.70, source: L3 }
+      - { x: 0.1, y: 1.30, confidence: 0.95, source: L1 }
+      - { x: 10, y: 0.75, confidence: 0.65, source: L3 }
+      - { x: 20, y: 0.40, confidence: 0.65, source: L3 }
+      - { x: 30, y: 0.25, confidence: 0.65, source: L3 }
+      - { x: 40, y: 0.18, confidence: 0.65, source: L3 }
+      - { x: 50, y: 0.14, confidence: 0.65, source: L3 }
+      - { x: 60, y: 0.11, confidence: 0.65, source: L3 }
+      - { x: 70, y: 0.09, confidence: 0.65, source: L3 }
+    curve_features:
+      tan_delta_0C:
+        value: 1.20
+        unit: '-'
+        source: L3 interpolated
+        confidence: 0.70
+      tan_delta_60C:
+        value: 0.11
+        unit: '-'
+        source: L3 interpolated
+        confidence: 0.65
+      tan_delta_max:
+        value: 1.30
+        unit: '-'
+        source: Table 6
+        confidence: 0.95
+      Tg:
+        value: 0.1
+        unit: °C
+        method: peak
+        source: Table 6
+        confidence: 0.95
+    validation:
+      known_points:
+        - { x: 0.1, y: 1.30, reference: "Table 6 tan δ max", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 15
+      x_range: [-60, 70]
+      y_range: [0.03, 1.30]
+      avg_confidence: 0.70
+  payne_storage_modulus:
+    x_axis:
+      label: 应变
+      unit: '%'
+      scale: logarithmic
+    y_axis:
+      label: 储能模量 G'
+      unit: MPa
+    data_points: []
+    curve_features:
+      G_prime_0:
+        value: null
+        unit: MPa
+        strain_at: 0.28
+        source: pending
+      G_prime_inf:
+        value: null
+        unit: MPa
+        strain_at: 42
+        source: pending
+      delta_G_prime:
+        value: null
+        unit: kPa
+        source: v1.0 data
+        confidence: null
+    validation:
+      known_points: []
+      overall_quality: pending
+    metadata:
+      point_count: 0
+      x_range:
+      - 0.1
+      - 100
+      y_range:
+      - 0
+      - 3
+      avg_confidence: 0
 ---
-
 # SSBR-030 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 一、动态力学性能（Payne效应）
 

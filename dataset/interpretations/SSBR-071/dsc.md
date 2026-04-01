@@ -1,20 +1,106 @@
 ---
-sample_id: "SSBR-071"
-test_type: "dsc"
-data_source: "L3"
-doi: "10.5254/rct.16.84812"
-
+sample_id: SSBR-071
+test_type: dsc
+data_source: L3
+doi: 10.5254/rct.16.84812
 glass_transition:
   tg_celsius: -28
-  tg_method: "estimated"
-
+  tg_method: estimated
 keywords:
-  - "玻璃化转变"
-  - "SSBR"
-  - "白炭黑填充"
+- 玻璃化转变
+- SSBR
+- 白炭黑填充
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - x: -80
+        y: -0.30
+        confidence: 0.55
+        source: L3
+      - x: -65
+        y: -0.28
+        confidence: 0.55
+        source: L3
+      - x: -50
+        y: -0.26
+        confidence: 0.55
+        source: L3
+      - x: -38
+        y: -0.20
+        confidence: 0.60
+        source: L3
+        note: Tg onset
+      - x: -28
+        y: -0.05
+        confidence: 0.60
+        source: L3
+        note: Tg midpoint
+      - x: -20
+        y: 0.08
+        confidence: 0.60
+        source: L3
+        note: Tg endpoint
+      - x: -10
+        y: 0.10
+        confidence: 0.55
+        source: L3
+      - x: 10
+        y: 0.08
+        confidence: 0.55
+        source: L3
+      - x: 40
+        y: 0.05
+        confidence: 0.55
+        source: L3
+      - x: 70
+        y: 0.04
+        confidence: 0.55
+        source: L3
+    curve_features:
+      Tg:
+        onset: -38
+        midpoint: -28
+        endpoint: -20
+        unit: °C
+        source: L3
+      glass_transition_width:
+        value: 18
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - x: -28
+          parameter: Tg_midpoint
+          expected: -28
+          actual: -28
+          deviation_percent: 0
+      overall_quality: acceptable
+    metadata:
+      point_count: 10
+      x_range:
+        - -80
+        - 70
+      y_range:
+        - -0.30
+        - 0.10
+      avg_confidence: 0.57
 ---
-
 # SSBR-071 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本背景
 

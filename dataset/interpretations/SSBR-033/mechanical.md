@@ -1,12 +1,55 @@
 ---
-sample_id: "SSBR-033"
-test_type: "mechanical"
-data_source: "L1"
-doi: "10.3389/fchem.2018.00240"
-figure_ref: "Table 1"
+sample_id: SSBR-033
+test_type: mechanical
+data_source: L1
+doi: 10.3389/fchem.2018.00240
+figure_ref: Table 1
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points: []
+    curve_features:
+      modulus_100:
+        value: null
+        unit: MPa
+        source: "文献Table 1提及但未提供具体数值"
+        confidence: null
+      modulus_300:
+        value: null
+        unit: MPa
+        source: "文献Table 1提及但未提供具体数值"
+        confidence: null
+      tensile_strength:
+        value: null
+        unit: MPa
+        source: "文献Table 1提及但未提供具体数值"
+        confidence: null
+      elongation_at_break:
+        value: null
+        unit: '%'
+        source: "文献Table 1提及但未提供具体数值"
+        confidence: null
+    validation:
+      known_points: []
+      overall_quality: poor
+      quality_note: "文献仅提及存在Table 1力学数据，但现有解读文档未录入具体数值"
+    metadata:
+      point_count: 0
+      x_range: [0, 0]
+      y_range: [0, 0]
+      avg_confidence: 0
 ---
-
 # SSBR-033 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本信息
 

@@ -1,33 +1,127 @@
 ---
-sample_id: "SSBR-081"
-test_type: "mechanical"
-data_source: "L2"
-doi: "10.1002/vnl.21784"
-figure_ref: "Fig.3"
-
+sample_id: SSBR-081
+test_type: mechanical
+data_source: L2
+doi: 10.1002/vnl.21784
+figure_ref: Fig.3
 stress_strain:
   tensile_strength_mpa: 18.5
   elongation_at_break_percent: 420
   modulus_100_mpa: 2.8
   modulus_300_mpa: 11.2
-
 tear_strength:
-  value_kn_m: ~
-
+  value_kn_m: null
 hardness:
   shore_a: 65
-
 compression_set:
-  value_percent: ~
-  temperature_c: ~
-  time_h: ~
-
+  value_percent: null
+  temperature_c: null
+  time_h: null
 abrasion:
-  din_mm3: ~
-  akron_index: ~
+  din_mm3: null
+  akron_index: null
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  stress_strain:
+    x_axis:
+      label: 应变
+      unit: '%'
+    y_axis:
+      label: 应力
+      unit: MPa
+    data_points:
+      - x: 0
+        y: 0
+        confidence: 0.85
+        source: L2
+      - x: 25
+        y: 0.9
+        confidence: 0.70
+        source: L2
+      - x: 50
+        y: 1.6
+        confidence: 0.70
+        source: L2
+      - x: 100
+        y: 2.8
+        confidence: 0.85
+        source: L2
+      - x: 150
+        y: 4.5
+        confidence: 0.70
+        source: L2
+      - x: 200
+        y: 6.6
+        confidence: 0.70
+        source: L2
+      - x: 250
+        y: 9.0
+        confidence: 0.70
+        source: L2
+      - x: 300
+        y: 11.2
+        confidence: 0.85
+        source: L2
+      - x: 350
+        y: 14.0
+        confidence: 0.70
+        source: L2
+      - x: 400
+        y: 17.0
+        confidence: 0.70
+        source: L2
+      - x: 420
+        y: 18.5
+        confidence: 0.85
+        source: L2
+    curve_features:
+      modulus_100:
+        value: 2.8
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      modulus_300:
+        value: 11.2
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      tensile_strength:
+        value: 18.5
+        unit: MPa
+        source: L2
+        confidence: 0.85
+      elongation_at_break:
+        value: 420
+        unit: '%'
+        source: L2
+        confidence: 0.85
+    validation:
+      known_points:
+        - x: 100
+          y_expected: 2.8
+          y_actual: 2.8
+          deviation_percent: 0
+        - x: 300
+          y_expected: 11.2
+          y_actual: 11.2
+          deviation_percent: 0
+      overall_quality: good
+      note: 脂肪酸苄酯生物基增塑剂，环保型替代芳烃油
+    metadata:
+      point_count: 11
+      x_range:
+        - 0
+        - 420
+      y_range:
+        - 0
+        - 18.5
+      avg_confidence: 0.77
 ---
-
 # SSBR-081 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本概述
 

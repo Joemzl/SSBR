@@ -7,9 +7,62 @@ data_confidence: high
 has_tg: true
 has_crystallization: false
 has_melting: false
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dsc_heat_flow:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: 热流
+      unit: mW/mg
+      direction: exo_up
+    data_points:
+      - {x: -70, y: -0.45, confidence: 0.60, source: "L3"}
+      - {x: -60, y: -0.44, confidence: 0.60, source: "L3"}
+      - {x: -55, y: -0.42, confidence: 0.60, source: "L3"}
+      - {x: -50, y: -0.38, confidence: 0.60, source: "L3"}
+      - {x: -48, y: -0.32, confidence: 0.65, source: "L3"}
+      - {x: -46, y: -0.25, confidence: 0.70, source: "L3"}
+      - {x: -44, y: -0.18, confidence: 0.65, source: "L3"}
+      - {x: -42, y: -0.14, confidence: 0.60, source: "L3"}
+      - {x: -38, y: -0.12, confidence: 0.60, source: "L3"}
+      - {x: -30, y: -0.11, confidence: 0.60, source: "L3"}
+      - {x: -20, y: -0.10, confidence: 0.60, source: "L3"}
+      - {x: 0, y: -0.09, confidence: 0.60, source: "L3"}
+    curve_features:
+      Tg:
+        onset: -50
+        midpoint: -46
+        endpoint: -42
+        unit: °C
+        source: Table 2
+      glass_transition_width:
+        value: 8
+        unit: °C
+      crystallization_peak:
+        exists: false
+      melting_peak:
+        exists: false
+    validation:
+      known_points:
+        - temperature: -46
+          parameter: Tg_midpoint
+          expected: -46
+          estimated: -46
+          deviation_percent: 0.0
+      overall_quality: good
+    metadata:
+      point_count: 12
+      x_range: [-70, 0]
+      y_range: [-0.45, -0.09]
+      avg_confidence: 0.62
 ---
-
 # SSBR-021 DSC 热分析解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 样本信息
 

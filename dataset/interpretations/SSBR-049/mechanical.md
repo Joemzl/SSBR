@@ -5,9 +5,72 @@ data_source: L2
 doi: 10.1002/app.43342
 figure_ref: Fig.7, Fig.8
 extraction_date: 2026-03-18
+skill_version: '2.0'
+updated_at: '2026-03-31'
+curves:
+  dma_tan_delta:
+    x_axis:
+      label: 温度
+      unit: °C
+    y_axis:
+      label: tan δ
+      unit: dimensionless
+    data_points:
+      - { x: -60, y: 0.05, confidence: 0.70, source: "L2 Fig.6 估读 (150°C硅烷化)" }
+      - { x: -50, y: 0.08, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: -40, y: 0.15, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: -30, y: 0.40, confidence: 0.75, source: "L2 Fig.6 估读" }
+      - { x: -25, y: 0.65, confidence: 0.75, source: "L2 Fig.6 估读" }
+      - { x: -20, y: 0.80, confidence: 0.80, source: "L2 Fig.6 Tg peak" }
+      - { x: -15, y: 0.70, confidence: 0.75, source: "L2 Fig.6 估读" }
+      - { x: -10, y: 0.50, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 0, y: 0.30, confidence: 0.80, source: "L2 Fig.7 湿抓指标" }
+      - { x: 10, y: 0.20, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 20, y: 0.15, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 30, y: 0.12, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 40, y: 0.10, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 50, y: 0.09, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 60, y: 0.08, confidence: 0.80, source: "L2 Fig.8 滚阻指标" }
+      - { x: 70, y: 0.07, confidence: 0.70, source: "L2 Fig.6 估读" }
+      - { x: 80, y: 0.06, confidence: 0.70, source: "L2 Fig.6 估读" }
+    curve_features:
+      Tg_tan_delta_peak:
+        value: -20
+        unit: °C
+        source: Fig.6 tan δ peak
+        confidence: 0.80
+      tan_delta_0C:
+        value: 0.30
+        unit: dimensionless
+        source: Fig.7 0°C
+        confidence: 0.80
+      tan_delta_60C:
+        value: 0.08
+        unit: dimensionless
+        source: Fig.8 60°C
+        confidence: 0.80
+      Tg:
+        value: -20
+        unit: °C
+        method: tan_delta_peak
+        source: Fig.6
+        confidence: 0.80
+    validation:
+      known_points:
+        - { x: -20, y: 0.80, reference: "Tg ~-20°C", deviation_percent: 0 }
+        - { x: 0, y: 0.30, reference: "0°C tan δ 湿抓指标", deviation_percent: 0 }
+        - { x: 60, y: 0.08, reference: "60°C tan δ 滚阻指标", deviation_percent: 0 }
+      overall_quality: good
+    metadata:
+      point_count: 17
+      x_range: [-60, 80]
+      y_range: [0.05, 0.80]
+      avg_confidence: 0.73
 ---
-
 # SSBR-049 力学性能解读
+
+
+> **v2.0 升级说明**: 本文档已升级为 v2.0 格式，曲线数据待补充。
 
 ## 测试条件
 
