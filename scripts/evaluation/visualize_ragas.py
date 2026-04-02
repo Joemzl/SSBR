@@ -89,10 +89,12 @@ def setup_matplotlib_style():
     
     # 科研论文配置
     rcParams.update({
-        # 字体设置
-        'font.family': 'sans-serif',
+        # 字体设置 - 英文使用 Times New Roman，中文使用可用字体
+        'font.family': ['Times New Roman', available_font, 'DejaVu Sans'],
+        'font.serif': ['Times New Roman', 'DejaVu Serif'],
         'font.sans-serif': [available_font, 'DejaVu Sans', 'Arial'],
         'font.size': 10,
+        'mathtext.fontset': 'stix',  # 数学字体使用 STIX (类似 Times)
         
         # 坐标轴
         'axes.titlesize': 12,

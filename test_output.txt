@@ -1,32 +1,71 @@
-﻿python : INFO:utils.embedding:使用代理 API: HTTPS://sg.uiuiapi.com/v1
-所在位置 行:1 字符: 13
-+ cd d:/SSBR; python scripts/test_prompt_format.py 2>&1 | Out-File -Enc ...
-+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (INFO:utils.embe....uiuiapi.com/v1:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-INFO:scripts.rag_search:执行检索: '改善白炭黑分散性...' (k=3, threshold=0.0)
-INFO:scripts.rag_search:找到 67 个可检索样本
-INFO:httpx:HTTP Request: POST https://sg.uiuiapi.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:utils.vector_store:ChromaDB 客户端已创建: d:\SSBR\.cache\chroma_db
-INFO:utils.vector_store:集合已加载: ssbr_summaries, 文档数: 67
-INFO:utils.vector_store:ChromaDB 已就绪: 67 个向量
-INFO:scripts.rag_search:ChromaDB 搜索返回 66 个结果，阈值过滤后 66 个
-INFO:scripts.rag_search:返回 3 个结果，耗时 4.08 秒
-Found 3 results
+﻿============================================================
+RAGAS 璇勬祴缁撴灉鍙鍖栧伐鍏?
+============================================================
+杈撳叆鏂囦欢: d:\SSBR\evaluation\ragas_reports\synthesis_report.csv
+杈撳嚭鐩綍: d:\SSBR\evaluation\figures
+杈撳嚭鏍煎紡: both
+鍒嗚鲸鐜? 300 DPI
+============================================================
 
-=== Sample Metadata ===
-SSBR-115:
-  reagent: 甲酸 + 过氧化氢 (原位过氧甲酸)
-  degree: 13.8 mol %
-  functional_group: 环氧基
-SSBR-069:
-  reagent: 二苯胍 (DPG)
-  degree: 135.25 mmol/kg (vs SiO2)
-  functional_group: 胍基
+[1/2] 閰嶇疆缁樺浘鏍峰紡...
+  鉁?浣跨敤瀛椾綋: SimHei
 
-=== _format_samples Output (first 1500 chars) ===
-Traceback (most recent call last):
-  File "D:\SSBR\scripts\test_prompt_format.py", line 53, in <module>
-    print(formatted[:1500])
-UnicodeEncodeError: 'gbk' codec can't encode character '\u2705' in position 946: illegal multibyte sequence
+[2/2] 鍔犺浇璇勬祴鏁版嵁...
+  鉁?鍔犺浇 12 鏉¤瘎娴嬭褰?
+
+[3/7] 鐢熸垚闆疯揪鍥?..
+  鉁?闆疯揪鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_radar.png
+  鉁?闆疯揪鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_radar.pdf
+
+[4/7] 鐢熸垚鏌辩姸鍥?..
+  鉁?鏌辩姸鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_bar.png
+  鉁?鏌辩姸鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_bar.pdf
+
+[5/7] 鐢熸垚鍒嗙粍瀵规瘮鍥?..
+  鉁?鍒嗙粍鏌辩姸鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_comparison.png
+  鉁?鍒嗙粍鏌辩姸鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_comparison.pdf
+
+[6/7] 鐢熸垚鍝嶅簲鏃堕棿鍥?..
+  鉁?鍝嶅簲鏃堕棿鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_response_time.png
+  鉁?鍝嶅簲鏃堕棿鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_response_time.pdf
+
+[7/7] 鐢熸垚鐑姏鍥?..
+  鉁?鐑姏鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_heatmap.png
+  鉁?鐑姏鍥惧凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_heatmap.pdf
+
+[Bonus] 鐢熸垚缁煎悎浠〃鐩?..
+  鉁?缁煎悎浠〃鐩樺凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_dashboard.png
+  鉁?缁煎悎浠〃鐩樺凡淇濆瓨: d:\SSBR\evaluation\figures\ragas_dashboard.pdf
+
+[Bonus] 鐢熸垚姹囨€昏〃...
+  鉁?姹囨€昏〃宸蹭繚瀛? d:\SSBR\evaluation\figures\ragas_summary_table.png
+  鉁?姹囨€昏〃宸蹭繚瀛? d:\SSBR\evaluation\figures\ragas_summary_table.pdf
+
+============================================================
+鉁?鍙鍖栧畬鎴愶紒
+============================================================
+
+鐢熸垚鐨勫浘琛ㄦ枃浠?
+  - ragas_bar.pdf
+  - ragas_bar.png
+  - ragas_comparison.pdf
+  - ragas_comparison.png
+  - ragas_dashboard.pdf
+  - ragas_dashboard.png
+  - ragas_heatmap.pdf
+  - ragas_heatmap.png
+  - ragas_radar.pdf
+  - ragas_radar.png
+  - ragas_response_time.pdf
+  - ragas_response_time.png
+  - ragas_summary_table.pdf
+  - ragas_summary_table.png
+
+馃搧 杈撳嚭鐩綍: d:\SSBR\evaluation\figures
+
+馃挕 寤鸿:
+  - ragas_dashboard 閫傚悎缁勪細姹囨姤鍜岃鏂囨鏂?
+  - ragas_summary_table 閫傚悎浣滀负璁烘枃琛ㄦ牸
+  - 鍏朵粬鍗曞浘閫傚悎浣滀负琛ュ厖鏉愭枡鎴栭檮褰?
+  - PDF 鏍煎紡涓虹煝閲忓浘锛岄€傚悎璁烘枃鎶曠
+  - PNG 鏍煎紡閫傚悎 PPT 鍜岀綉椤靛睍绀?
