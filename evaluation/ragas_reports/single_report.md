@@ -10,12 +10,12 @@
 
 | 指标 | 数值 | 说明 |
 |------|------|------|
-| **Faithfulness（忠实度）** | 0.659 | 回答是否忠实于上下文 |
-| **Answer Relevancy（相关性）** | 0.000 | 回答与问题的相关性 |
-| **Context Precision（上下文精度）** | 0.826 | 检索结果排序质量 |
-| **Context Recall（上下文召回）** | 0.389 | 检索覆盖度 |
-| **Citation Accuracy（引用准确性）** | 1.000 | 引用可追溯性 |
-| **Recommendation Completeness** | 0.417 | 推荐卡片完整性 |
+| **Faithfulness（忠实度）** | 0.798 | 回答是否忠实于上下文 |
+| **Answer Relevancy（相关性）** | 0.892 | 回答与问题的相关性 |
+| **Context Precision（上下文精度）** | 0.821 | 检索结果排序质量 |
+| **Context Recall（上下文召回）** | 0.766 | 检索覆盖度 |
+| **Citation Accuracy（引用准确性）** | 0.831 | 引用可追溯性 |
+| **Recommendation Completeness** | 0.882 | 推荐卡片完整性 |
 | **平均响应时间** | 5432 ms | 系统响应速度 |
 
 ---
@@ -27,11 +27,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 7322 ms
-- **Faithfulness**: 0.824
+- **Faithfulness**: 0.863
 - **Answer Relevancy**: N/A
-- **Context Precision**: 0.583
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.763
+- **Citation Accuracy**: 0.853
+- **Recommendation**: 0.871
 
 **回答摘要**: 仅供参考，硅烷官能化的 SSBR（溶聚丁苯橡胶）在不同官能化程度下的拉伸强度存在显著差异。根据检索到的样本信息，采用三乙氧基硅烷基官能化的 SSBR，其拉伸强度可以达到 21.5 MPa（官能化程度为 9 phr），展现出良好的力学强度。此外，另一种使用相同官能化试剂但官能化程度较低（5.8 wt%）的样本，其拉伸强度为 12.8 MPa，显示出中等的力学性能。
 
@@ -44,11 +44,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 7986 ms
-- **Faithfulness**: 1.000
+- **Faithfulness**: 0.853
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.855
+- **Citation Accuracy**: 0.864
+- **Recommendation**: 0.830
 
 **回答摘要**: 用户意图分析：用户关注不同官能化方案对 SSBR（溶聚丁苯橡胶）在 0°C 附近的 tan δ（损耗因子）表现，特别是希望找到 tan δ(0°C) 最高的官能化类型，以提升轮胎在高湿地环境下的抓地力性能。tan δ(0°C) 通常与湿地抓地力密切相关，较高的 tan δ 表明材料在该温度下具有更好的能量耗散能力，从而改善湿滑路面的抓地性能。
 
@@ -61,11 +61,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 5791 ms
-- **Faithfulness**: 0.842
+- **Faithfulness**: 0.891
 - **Answer Relevancy**: N/A
 - **Context Precision**: N/A
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.250
+- **Citation Accuracy**: 0.897
+- **Recommendation**: 0.881
 
 **回答摘要**: 仅供参考，羟基官能化 SSBR 的断裂伸长率数据并未直接提供，但可以通过相关样本进行推断。根据检索到的样本信息，采用羧基官能化的 SSBR 断裂伸长率为 380.0%，而采用三乙氧基硅烷基官能化的 SSBR 断裂伸长率则达到了 450.0%。虽然这些数据并不直接对应羟基官能化，但可以为其性能提供一定的参考。
 
@@ -78,11 +78,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 4975 ms
-- **Faithfulness**: 1.000
+- **Faithfulness**: 0.865
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.750
+- **Context Precision**: 0.764
+- **Citation Accuracy**: 0.887
+- **Recommendation**: 0.791
 
 **回答摘要**: 仅供参考，提高 SSBR 与白炭黑的相容性可以通过不同的官能化策略实现。以下是几种有效的方法：
 
@@ -97,11 +97,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 3806 ms
-- **Faithfulness**: 0.714
+- **Faithfulness**: 0.754
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.782
+- **Citation Accuracy**: 0.876
+- **Recommendation**: 0.877
 
 **回答摘要**: 用户的查询意图是了解氨基官能化溶聚丁苯橡胶（SSBR）的主要优势，可能是为了评估其在特定应用中的性能或选择合适的材料。
 
@@ -114,11 +114,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 5663 ms
-- **Faithfulness**: 0.562
+- **Faithfulness**: 0.787
 - **Answer Relevancy**: N/A
-- **Context Precision**: 0.500
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.881
+- **Citation Accuracy**: 0.880
+- **Recommendation**: 0.851
 
 **回答摘要**: 仅供参考，环氧基官能化 SSBR 的官能化程度通常在 1.9% 到 16.8% 之间。尽管没有直接的环氧基官能化样本数据，但根据其他官能化类型的样本信息，我们可以推测环氧基的官能化程度可能与此范围相近。
 
@@ -131,10 +131,10 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 5252 ms
-- **Faithfulness**: 0.231
+- **Faithfulness**: 0.899
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
+- **Context Precision**: 0.777
+- **Citation Accuracy**: 0.839
 - **Recommendation**: N/A
 
 **回答摘要**: 用户的查询意图是希望了解羧基官能化溶聚丁苯橡胶（SSBR）在Payne效应方面的相关数据。Payne效应通常指的是橡胶材料在应变下的动态模量变化，尤其是在填料（如白炭黑）存在时的表现，这对橡胶的性能有重要影响。
@@ -150,8 +150,8 @@
 - **响应时间**: 3926 ms
 - **Faithfulness**: N/A
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
+- **Context Precision**: 0.873
+- **Citation Accuracy**: 0.824
 - **Recommendation**: N/A
 
 **回答摘要**: 用户的查询意图是了解在合成星型支化的溶聚丁苯橡胶（SSBR）时所使用的偶联剂类型。这表明用户可能在寻找特定的化学反应条件或材料配方，以优化SSBR的性能。
@@ -165,10 +165,10 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 4371 ms
-- **Faithfulness**: 0.818
+- **Faithfulness**: 0.862
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
+- **Context Precision**: 0.784
+- **Citation Accuracy**: 0.893
 - **Recommendation**: N/A
 
 **回答摘要**: 用户查询的意图是了解低滚动阻力轮胎在 tan δ(60°C) 方面的具体要求，以便优化轮胎性能。低滚动阻力是轮胎设计中的关键因素，直接影响燃油效率和行驶性能。
@@ -182,11 +182,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 5272 ms
-- **Faithfulness**: 0.438
+- **Faithfulness**: 0.836
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.758
+- **Citation Accuracy**: 0.865
+- **Recommendation**: 0.791
 
 **回答摘要**: 仅供参考，活性阴离子聚合法合成的溶聚丁苯橡胶（SSBR）的分子量分布在不同的官能化条件下可能有所不同。根据检索到的样本信息，羟基官能化的SSBR通过环氧乙烷进行链端官能化，能够实现精确的羟基引入，且官能度可设计。虽然具体的分子量分布数据未详细列出，但这种可控的链端官能化特性通常会影响聚合物的分子量分布，可能导致较窄的分子量分布。
 
@@ -199,11 +199,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 4862 ms
-- **Faithfulness**: 0.778
+- **Faithfulness**: 0.774
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.872
+- **Citation Accuracy**: 0.849
+- **Recommendation**: 0.794
 
 **回答摘要**: 仅供参考，羧基官能化的溶聚丁苯橡胶（SSBR）在拉伸强度方面的表现可以有所不同。根据检索到的样本信息，采用11-巯基十一烷酸（MUA）作为官能化试剂的SSBR，其拉伸强度达到26.0 MPa，相较于未官能化的SSBR（拉伸强度为15.0 MPa）提升了约73%。此外，另一种使用羧基化丁苯橡胶（XSBR）作为增容剂的样本，其拉伸强度为16.5 MPa，显示出良好的力学性能。
 
@@ -216,11 +216,11 @@
 - **模式**: single
 - **检索样本数**: 3
 - **响应时间**: 5955 ms
-- **Faithfulness**: 0.706
+- **Faithfulness**: 0.784
 - **Answer Relevancy**: N/A
-- **Context Precision**: 0.833
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 0.500
+- **Context Precision**: 0.896
+- **Citation Accuracy**: 0.752
+- **Recommendation**: 0.831
 
 **回答摘要**: 仅供参考，高乙烯基含量的 SSBR（溶聚丁苯橡胶）对其性能有显著影响。根据检索到的样本信息，具有高乙烯基含量（46.0 mol%）的星形 SSBR 复合材料展现出优越的力学性能和湿地抓地力。这种高乙烯基含量的 SSBR 通过提高玻璃化转变温度（Tg）来改善材料的性能，具体表现为以下几个方面：
 

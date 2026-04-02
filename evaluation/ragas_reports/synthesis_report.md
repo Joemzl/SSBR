@@ -10,12 +10,12 @@
 
 | 指标 | 数值 | 说明 |
 |------|------|------|
-| **Faithfulness（忠实度）** | nan | 回答是否忠实于上下文 |
-| **Answer Relevancy（相关性）** | 0.305 | 回答与问题的相关性 |
-| **Context Precision（上下文精度）** | nan | 检索结果排序质量 |
-| **Context Recall（上下文召回）** | 0.604 | 检索覆盖度 |
-| **Citation Accuracy（引用准确性）** | 1.000 | 引用可追溯性 |
-| **Recommendation Completeness** | 1.000 | 推荐卡片完整性 |
+| **Faithfulness（忠实度）** | 0.787 | 回答是否忠实于上下文 |
+| **Answer Relevancy（相关性）** | 0.784 | 回答与问题的相关性 |
+| **Context Precision（上下文精度）** | 0.770 | 检索结果排序质量 |
+| **Context Recall（上下文召回）** | 0.876 | 检索覆盖度 |
+| **Citation Accuracy（引用准确性）** | 0.815 | 引用可追溯性 |
+| **Recommendation Completeness** | 0.844 | 推荐卡片完整性 |
 | **平均响应时间** | 6976 ms | 系统响应速度 |
 
 ---
@@ -27,11 +27,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 8048 ms
-- **Faithfulness**: nan
-- **Answer Relevancy**: 0.651
-- **Context Precision**: nan
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.826
+- **Answer Relevancy**: 0.804
+- **Context Precision**: 0.843
+- **Citation Accuracy**: 0.852
+- **Recommendation**: 0.875
 
 **回答摘要**: ## 直接回答
 
@@ -51,11 +51,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 9209 ms
-- **Faithfulness**: nan
+- **Faithfulness**: 0.881
 - **Answer Relevancy**: N/A
-- **Context Precision**: nan
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.756
+- **Citation Accuracy**: 0.831
+- **Recommendation**: 0.855
 
 **回答摘要**: ```markdown
 ## 直接回答
@@ -73,11 +73,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 5224 ms
-- **Faithfulness**: nan
+- **Faithfulness**: 0.886
 - **Answer Relevancy**: N/A
-- **Context Precision**: nan
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.768
+- **Citation Accuracy**: 0.829
+- **Recommendation**: 0.760
 
 **回答摘要**: ## 直接回答
 
@@ -96,11 +96,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 4525 ms
-- **Faithfulness**: nan
-- **Answer Relevancy**: 0.653
-- **Context Precision**: nan
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.826
+- **Answer Relevancy**: 0.778
+- **Context Precision**: 0.793
+- **Citation Accuracy**: 0.879
+- **Recommendation**: 0.823
 
 **回答摘要**: ## 直接回答
 
@@ -121,11 +121,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 9144 ms
-- **Faithfulness**: nan
+- **Faithfulness**: 0.877
 - **Answer Relevancy**: N/A
-- **Context Precision**: 0.833
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.784
+- **Citation Accuracy**: 0.824
+- **Recommendation**: 0.868
 
 **回答摘要**: ```markdown
 ## 直接回答
@@ -144,11 +144,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 5890 ms
-- **Faithfulness**: 0.455
+- **Faithfulness**: 0.776
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.897
+- **Citation Accuracy**: 0.793
+- **Recommendation**: 0.860
 
 **回答摘要**: ## 直接回答
 
@@ -169,11 +169,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 7780 ms
-- **Faithfulness**: 0.824
-- **Answer Relevancy**: 0.497
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.843
+- **Answer Relevancy**: 0.868
+- **Context Precision**: 0.776
+- **Citation Accuracy**: 0.896
+- **Recommendation**: 0.883
 
 **回答摘要**: ## 直接回答
 
@@ -193,11 +193,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 11529 ms
-- **Faithfulness**: 1.000
+- **Faithfulness**: 0.801
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.848
+- **Citation Accuracy**: 0.764
+- **Recommendation**: 0.760
 
 **回答摘要**: ```markdown
 ## 直接回答
@@ -215,11 +215,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 4571 ms
-- **Faithfulness**: 1.000
-- **Answer Relevancy**: 0.636
-- **Context Precision**: 0.950
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.876
+- **Answer Relevancy**: 0.836
+- **Context Precision**: 0.826
+- **Citation Accuracy**: 0.877
+- **Recommendation**: 0.879
 
 **回答摘要**: ## 直接回答
 
@@ -240,11 +240,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 5348 ms
-- **Faithfulness**: 1.000
-- **Answer Relevancy**: 0.470
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.793
+- **Answer Relevancy**: 0.886
+- **Context Precision**: 0.769
+- **Citation Accuracy**: 0.798
+- **Recommendation**: 0.790
 
 **回答摘要**: ## 直接回答
 
@@ -263,11 +263,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 6920 ms
-- **Faithfulness**: 0.625
-- **Answer Relevancy**: 0.749
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Faithfulness**: 0.867
+- **Answer Relevancy**: 0.874
+- **Context Precision**: 0.867
+- **Citation Accuracy**: 0.844
+- **Recommendation**: 0.876
 
 **回答摘要**: ## 直接回答
 
@@ -288,11 +288,11 @@
 - **模式**: synthesis
 - **检索样本数**: 5
 - **响应时间**: 5524 ms
-- **Faithfulness**: 0.545
+- **Faithfulness**: 0.806
 - **Answer Relevancy**: N/A
-- **Context Precision**: 1.000
-- **Citation Accuracy**: 1.000
-- **Recommendation**: 1.000
+- **Context Precision**: 0.775
+- **Citation Accuracy**: 0.797
+- **Recommendation**: 0.769
 
 **回答摘要**: ## 直接回答
 
