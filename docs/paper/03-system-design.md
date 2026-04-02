@@ -507,7 +507,7 @@ User Prompt 包含三部分：
 
 ### 3.6.1 Web Demo（Gradio）
 
-基于 Gradio 框架的 Web 界面，包含四个功能标签页：
+基于 Gradio 框架的 Web 界面，包含四个功能标签页，如图 3-2 所示：
 
 | 标签页 | 功能 | 对应模式 |
 |--------|------|---------|
@@ -515,6 +515,12 @@ User Prompt 包含三部分：
 | 综合分析 | 多文献综合推理 | SYNTHESIS |
 | 对比分析 | 方案对比表格 | COMPARISON |
 | 配方设计 | 目标驱动的配方建议 | FORMULA |
+
+<!-- TODO: 插入图片 -->
+<!-- 图片文件: figures/web_demo_interface.png -->
+<!-- 图片说明: Web Demo 界面截图，展示四个功能标签页和智能问答界面的输入输出区域 -->
+
+**图 3-2 SSBR 官能化知识库 Web Demo 界面**
 
 启动命令：
 ```bash
