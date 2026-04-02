@@ -39,8 +39,13 @@
 
 1. 引言 (Introduction)
    1.1 研究背景
-       1.1.1 绿色轮胎材料的发展需求
-       1.1.2 溶聚丁苯橡胶(SSBR)官能化研究现状
+       1.1.1 溶聚丁苯橡胶(SSBR)及其官能化技术概述
+             - SSBR 的结构特点与性能优势
+             - 官能化对填料相容性的改善机理
+             - 典型应用场景（绿色轮胎、高性能橡胶制品等）
+       1.1.2 SSBR 官能化研究现状与知识碎片化问题
+             - 文献数量庞大但数据分散
+             - 实验条件差异导致结果难以直接对比
        1.1.3 材料设计中的知识管理挑战
    1.2 人工智能在材料科学中的应用
        1.2.1 传统数据库检索的局限性
@@ -233,8 +238,13 @@ Keywords: Retrieval-Augmented Generation (RAG); Solution Styrene-Butadiene Rubbe
 
 1. Introduction
    1.1 Research Background
-       1.1.1 Development Needs for Green Tire Materials
-       1.1.2 Current Status of SSBR Functionalization Research
+       1.1.1 Overview of SSBR and Its Functionalization Technology
+             - Structural characteristics and performance advantages of SSBR
+             - Mechanism of functionalization improving filler compatibility
+             - Typical applications (green tires, high-performance rubber products, etc.)
+       1.1.2 Current Status of SSBR Functionalization Research and Knowledge Fragmentation
+             - Large volume of literature with scattered data
+             - Difficulty in direct comparison due to varying experimental conditions
        1.1.3 Knowledge Management Challenges in Material Design
    1.2 Artificial Intelligence Applications in Materials Science
        1.2.1 Limitations of Traditional Database Retrieval
