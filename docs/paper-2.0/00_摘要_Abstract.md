@@ -6,7 +6,7 @@
 
 ## 中文摘要
 
-溶聚丁苯橡胶（SSBR）的官能化改性是提升绿色轮胎性能的关键技术，然而该领域的研究知识高度分散于数百篇学术文献中，研究者面临"文献爆炸、条件异构、检索低效"的三重困境。传统的文献管理方式难以支撑跨文献的知识综合与推理，制约了配方设计效率。
+溶聚丁苯橡胶（SSBR）的官能化改性是提升橡胶材料性能的关键技术，广泛应用于高性能轮胎等领域。然而该领域的研究知识高度分散于数百篇学术文献中，研究者面临"文献爆炸、条件异构、检索低效"的三重困境。传统的文献管理方式难以支撑跨文献的知识综合与推理，制约了配方设计效率。
 
 针对上述问题，本文设计并实现了一套基于检索增强生成（RAG）技术的 SSBR 官能化知识综合与推荐系统。系统以"元数据-解读文档分离"架构构建领域知识库，通过向量化语义检索实现自然语言查询；采用多文献综合推理机制，从多个样本中提取共性规律并生成整合性回答；引入保守外推边界控制策略（CEBC），在提供预测性建议的同时严格控制外推范围；设计零幻觉保障机制，确保所有数值可追溯至原始文献。
 
@@ -20,7 +20,7 @@
 
 ## Abstract
 
-Functionalization of solution-polymerized styrene-butadiene rubber (SSBR) is a key technology for enhancing green tire performance. However, research knowledge in this field is highly dispersed across hundreds of academic papers, and researchers face the triple dilemma of "literature explosion, heterogeneous conditions, and inefficient retrieval." Traditional literature management methods cannot support cross-literature knowledge synthesis and reasoning, limiting formulation design efficiency.
+Functionalization of solution-polymerized styrene-butadiene rubber (SSBR) is a key technology for enhancing rubber material performance, with wide applications in high-performance tires and other fields. However, research knowledge in this field is highly dispersed across hundreds of academic papers, and researchers face the triple dilemma of "literature explosion, heterogeneous conditions, and inefficient retrieval." Traditional literature management methods cannot support cross-literature knowledge synthesis and reasoning, limiting formulation design efficiency.
 
 To address these problems, this thesis designs and implements a knowledge synthesis and recommendation system for SSBR functionalization based on Retrieval-Augmented Generation (RAG) technology. The system constructs a domain knowledge base with a "metadata-interpretation document separation" architecture and enables natural language queries through vectorized semantic retrieval. A multi-literature synthesis reasoning mechanism extracts common patterns from multiple samples and generates integrated answers. A Conservative Extrapolation Boundary Control (CEBC) strategy is introduced to provide predictive suggestions while strictly controlling the extrapolation range. A zero-hallucination assurance mechanism ensures all numerical values are traceable to original literature.
 
