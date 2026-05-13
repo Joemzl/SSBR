@@ -650,10 +650,197 @@ python scripts/build_vector_cache.py
 
 ---
 
-## 许可证
+### 许可证
 
 本项目仅用于学术研究和毕业设计演示。
 
 ---
 
 *SSBR 官能化知识库 · RAG 语义检索系统 · 2026*
+
+---
+
+### 新机器启动项目改动说明：
+
+本节说明：当前部署在 `E:\桌面\SSBR` 的本机版项目，相比这份原始 README 对应的 GitHub 原项目，实际做过哪些代码、配置、脚本、文档和评测产物改动；这些改动哪些属于功能增强，哪些只是为了让项目能在 Windows 本机成功部署和稳定运行。
+
+#### 1. 总体判断
+
+这次改动不是单纯“让项目能在我的电脑上启动”的临时改动，而是分为三类：
+
+| 改动类别 | 是否改变原项目功能 | 说明 |
+|---|---|---|
+| 本机部署适配 | 基本不改变原业务功能 | 让项目能在 Windows、PowerShell、`.venv`、阿里云百炼 OpenAI-compatible API、DashScope embedding 环境下稳定运行。 |
+| RAG 链路增强 | 会增强原项目能力 | 增加多 embedding backend、Markdown chunk 切分、向量库统计、metadata、RAGAS qwen 兼容等能力，使检索、问答、评测更完整。 |
+| 诊断与验收工具 | 不改变问答输出逻辑 | 新增 doctor、smoke test、一键脚本和本地运行文档，方便新机器复现部署、检查问题和做最小验收。 |
+
+结论：这些改动既包含“本机成功部署运行所必需的适配”，也包含“让 RAG 流程更完整、更可验证、更接近原作者预期运行效果的功能增强”。没有使用 fake embedding、random embedding、mock API、硬编码检索结果或硬编码 LLM 回答。
+
+#### 2. 已修改的项目文件
+
+| 文件 | 改动类型 | 具体改动 | 对原项目的功能变化 |
+|---|---|---|---|
+| `.env.example` | 配置模板增强 | 增加 OpenAI-compatible、DashScope、本地 embedding、RAG chunk、Gradio 端口等配置示例。 | 功能增强 + 部署适配。原项目更偏 OpenAI 配置，现在新机器可按模板切换不同模型供应商。 |
+| `demo/app.py` | 本机部署适配 | 支持从 `.env` 读取 `GRADIO_SERVER_PORT`。 | 主要是部署适配。Web UI 功能不变，但端口可配置，避免端口冲突。 |
+| `scripts/utils/llm_client.py` | LLM 接入增强 | 支持 OpenAI-compatible `base_url` 与 `.env` 模型名，适配阿里云百炼兼容接口；当前验证模型为 `qwen3.6-flash`。 | 功能增强。原项目主要按 OpenAI 方式调用，现在可走百炼兼容接口。 |
+| `scripts/utils/embedding.py` | Embedding 链路增强 | 新增 `EMBEDDING_BACKEND`，支持 `openai`、`openai_compatible`、`dashscope`、`local`；支持读取 `EMBEDDING_MODEL`、`EMBEDDING_API_KEY`、`EMBEDDING_BASE_URL`、`LOCAL_EMBEDDING_MODEL`、`LOCAL_EMBEDDING_DEVICE`。 | 功能增强。原项目 embedding 更容易卡在 OpenAI Key，现在可使用 DashScope embedding 或本地 sentence-transformers。 |
+| `scripts/utils/vector_store.py` | 向量库与 chunk 增强 | 增加 Markdown chunk 切分、chunk metadata、ChromaDB 统计、向量维度一致性处理。 | 功能增强。原项目偏整篇 `summary.md` 入库，现在可细粒度检索，chunk 数明显多于文档数。 |
+| `scripts/build_vector_cache.py` | 向量库构建增强 | 构建时输出原始文档数、chunk 数、平均/最大/最小 chunk 长度，并支持强制重建验证。 | 功能增强 + 部署验收。更容易判断向量库是否真实构建成功。 |
+| `scripts/rag_search.py` | 检索链路增强 | 适配新的 embedding/vector store 配置；search-only 能输出真实来源、分数和片段。 | 功能增强。方便判断检索结果是否来自知识库，而不是模型自由发挥。 |
+| `scripts/qa_engine.py` | 问答链路适配 | 统一使用新的 embedding、检索和 LLM 配置；保留 search-only 与完整问答两种路径。 | 主要是稳定性增强。业务目标不变，但链路更可验证。 |
+| `scripts/reranker.py` | 重排验证增强 | 保留 `BAAI/bge-reranker-base` 完整模型，增强 warmup、日志和失败提示。 | 部署适配 + 可靠性增强。避免 reranker 失败时被静默当作成功。 |
+| `scripts/evaluation/ragas_evaluator.py` | RAGAS 评测增强 | RAGAS LLM 不再硬编码 `gpt-4o-mini`，改为读取 `RAGAS_OPENAI_MODEL` 或 `OPENAI_MODEL`；RAGAS embedding 读取 `RAGAS_EMBEDDING_MODEL` 或 `EMBEDDING_MODEL`；适配 `qwen3.6-flash`；修复 qwen 偶发结构化输出不符合 RAGAS `StringIO` 解析器的问题；清理 `nan` 与 `0.000` 显示问题。 | 功能增强。原项目 RAGAS 默认更偏 OpenAI/gpt-4o-mini，现在可用百炼模型完成真实评测。 |
+| `evaluation/ragas_reports/synthesis_report.md` | 评测产物 | 运行 RAGAS 后生成/更新 Markdown 报告。 | 不是源码功能改动，是验收结果文件。 |
+| `evaluation/ragas_reports/synthesis_report.csv` | 评测产物 | 运行 RAGAS 后生成/更新 CSV 报告。 | 不是源码功能改动，是验收结果文件。 |
+| `README.md` | 文档更新 | 项目内 README 曾追加本机适配说明。 | 文档改动，不影响运行。当前这份新 README 是以桌面原始 README 为底稿重新追加说明。 |
+
+#### 3. 新增的项目文件
+
+| 文件 | 用途 | 属于功能增强还是部署适配 |
+|---|---|---|
+| `README_LOCAL_RUN.md` | 本地运行、配置、排错、推荐命令说明。 | 部署适配文档。 |
+| `scripts/doctor.py` | 一键检查 Python、虚拟环境、依赖、`.env`、embedding、LLM、reranker、dataset、ChromaDB、search-only、Web UI 入口。 | 诊断工具，不改变原问答功能。 |
+| `scripts/smoke_test.py` | 最小 RAG 验收：文档数量、chunk 数量、向量数量、检索 top-k、reranker 状态、LLM 状态。 | 验收工具，不改变原问答功能。 |
+| `run_build_index.ps1` | Windows 下一键重建向量库。 | 部署适配脚本。 |
+| `run_search_test.ps1` | Windows 下一键执行 search-only 检索测试。 | 部署适配脚本。 |
+| `run_qa_test.ps1` | Windows 下一键执行完整问答测试。 | 部署适配脚本。 |
+| `run_app.ps1` | Windows 下一键启动 Gradio Web UI。 | 部署适配脚本。 |
+| `run_all_check.ps1` | Windows 下一键执行 doctor、构建索引、reranker warmup、检索测试、问答测试。 | 部署适配 + 验收脚本。 |
+
+#### 4. 本机生成但不属于核心源码的内容
+
+| 文件或目录 | 说明 | 是否建议提交到 Git |
+|---|---|---|
+| `.env` | 本机真实 API Key 与模型配置文件。真实 Key 不应写入 README 或代码。 | 不建议提交。 |
+| `.cache/chroma_db` | 本机生成的 ChromaDB 向量库。当前已验证向量数为 850。 | 通常不提交，新机器重新构建。 |
+| Hugging Face 模型缓存 | reranker 模型缓存，例如 `~/.cache/huggingface/`。 | 不提交，新机器按需下载或复用缓存。 |
+| `scripts/evaluation/evaluation/` | 早期运行评测时生成的额外输出目录，不是核心代码。 | 不建议作为核心改动提交，可确认后清理。 |
+| `desktop.ini` | Windows 系统自动生成文件。 | 不建议提交。 |
+
+#### 5. 真正带来功能变化的改动
+
+以下改动属于“功能增强”，不只是为了启动项目：
+
+1. Embedding 后端从单一 OpenAI 扩展为多后端。
+2. 支持 DashScope / 阿里云百炼 embedding。
+3. 支持本地 sentence-transformers embedding 作为兜底方案。
+4. 文档入库从偏整篇 `summary.md` 入库，增强为 Markdown chunk 切分。
+5. ChromaDB metadata 更完整，检索结果更容易追踪到 `source_file`、`sample_id`、`section_heading`、`chunk_id`。
+6. 构建向量库时能报告文档数、chunk 数、向量数和 chunk 长度统计。
+7. search-only 能返回真实 top-k 检索结果，便于独立验证检索链路。
+8. RAGAS 评测可使用 `.env` 中的百炼 qwen 模型，而不是固定 `gpt-4o-mini`。
+9. RAGAS 对 qwen 结构化输出不稳定做了兼容处理，避免合法 JSON 因格式包装差异导致评分失败。
+10. 检索、问答、重排、评测都增加了更清晰的日志和失败提示。
+
+这些增强不会改变项目的领域目标：项目仍然是 SSBR 官能化方案 RAG 问答/推荐系统。
+
+#### 6. 主要只是为了本机部署运行的改动
+
+以下改动主要是为了让项目在你的电脑上更容易跑通，不改变原项目核心业务逻辑：
+
+1. `demo/app.py` 支持通过 `GRADIO_SERVER_PORT` 配置端口。
+2. 新增 PowerShell 一键脚本，减少手动输入长命令。
+3. 新增 `README_LOCAL_RUN.md`，整理本地运行步骤。
+4. 新增 `scripts/doctor.py` 和 `scripts/smoke_test.py` 作为检查和验收工具。
+5. `.env.example` 增加本机配置模板。
+6. RAGAS 报告文件作为最近一次验收记录保存。
+
+#### 7. 当前本机已验证的运行效果
+
+当前在 `E:\桌面\SSBR` 已验证：
+
+```text
+[PASS] 虚拟环境可用
+[PASS] requirements 已安装
+[PASS] pip check 无依赖冲突
+[PASS] 阿里云百炼 / DashScope LLM 可调用
+[PASS] DashScope embedding 可调用
+[PASS] ChromaDB 向量库可构建
+[PASS] summary.md 文档数为 67
+[PASS] Markdown chunk 数为 850
+[PASS] ChromaDB 向量数为 850
+[PASS] search-only 可返回真实检索结果
+[PASS] reranker 模型可 warmup
+[PASS] qa_engine 可基于检索结果生成回答
+[PASS] Gradio Web UI 可启动
+[PASS] RAGAS 评测可运行并生成报告
+```
+
+最近一次 RAGAS 统计结果：
+
+```text
+样本数: 12
+faithfulness: avg=0.193, missing=0, nan=0
+answer_relevancy: avg=0.402, missing=0, nan=0
+context_precision: avg=0.017, missing=0, nan=0
+context_recall: avg=0.243, missing=0, nan=0
+citation_accuracy: avg=1.000, missing=0, nan=0
+recommendation_completeness: avg=1.000, missing=0, nan=0
+```
+
+#### 8. 新机器启动时需要重新生成或重新配置的内容
+
+如果把项目复制到另一台新电脑，真正必须重新准备的是：
+
+1. `.env`
+   - 新机器需要重新填写 API Key、base URL、模型名。
+   - 不要把真实 API Key 写进代码或 README。
+
+2. `.cache/chroma_db`
+   - 这是本机向量库目录。
+   - 新机器建议执行 `scripts/build_vector_cache.py --force` 重新构建。
+
+3. reranker 模型缓存
+   - `BAAI/bge-reranker-base` 会缓存在用户目录，例如 `~/.cache/huggingface/`。
+   - 新机器首次运行可能需要重新下载。
+
+4. Python 虚拟环境 `.venv`
+   - 新机器应重新创建，避免复制旧机器环境导致路径或依赖异常。
+
+#### 9. 新机器推荐启动命令
+
+在新机器上，推荐按下面顺序执行：
+
+```powershell
+cd E:\桌面\SSBR
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+创建 `.env`，至少填写：
+
+```env
+OPENAI_API_KEY=你的百炼或 OpenAI-compatible Key
+OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+OPENAI_MODEL=qwen3.6-flash
+
+EMBEDDING_BACKEND=dashscope
+EMBEDDING_MODEL=text-embedding-v4
+EMBEDDING_API_KEY=你的百炼或 DashScope Key
+EMBEDDING_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+
+RAG_CHUNK_MODE=markdown
+RAG_CHUNK_SIZE=800
+RAG_CHUNK_OVERLAP=120
+GRADIO_SERVER_PORT=7861
+```
+
+然后执行：
+
+```powershell
+.\run_all_check.ps1
+.\run_app.ps1
+```
+
+如果不用一键脚本，也可以手动执行核心命令：
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 scripts\doctor.py
+.\.venv\Scripts\python.exe -X utf8 scripts\build_vector_cache.py --force
+.\.venv\Scripts\python.exe -X utf8 scripts\reranker.py --warmup
+.\.venv\Scripts\python.exe -X utf8 scripts\qa_engine.py --query "改善白炭黑分散性" --search-only --top-k 3
+.\.venv\Scripts\python.exe -X utf8 scripts\qa_engine.py --query "如何改善白炭黑分散性？" --top-k 3
+.\.venv\Scripts\python.exe -X utf8 demo\app.py
+```
+
+结论：源码中的这些改动是为了让项目在新机器上可重复部署、可诊断、可验证；其中 embedding、chunk、RAGAS qwen 兼容属于真实功能增强，PowerShell 脚本、doctor、smoke test、端口配置等主要属于本机部署和验收便利化改动。
